@@ -1,10 +1,7 @@
-# LR2-VT
-🍒🍒🍒🍒    LR2-VT    🍒🍒🍒🍒 
+# LR2R-VTMod
+🍒🍒🍒🍒    LR2R-VTMod    🍒🍒🍒🍒 
 
 💮 Adds a visual virginity tracker for those with the virgin/dom kinks.  Serums added to regrow the hymen or reset the virginities by stimulation and regrowth.
-
-🔥 It is a PATCH, not a mod! 
-🔥 It adds to the game files, and needs to overwrite a few of them.
 
 💮 Category: Visual, QoL, serums, virginity 💮 Dependencies: None 
 
@@ -52,10 +49,10 @@ Note: Tool tips explain what they are.  Some will explain briefly how to achieve
 - can be enabled and disabled
 
 🔥 Install Instructions: 🔥
-Unzip, then have the game folder in the LR-virgin to overwrites the game folder in your LR2 folder so it overwrites the proper game files.
+Place in the game/mods folder.
 
 ❓ Known issues: 
 NEEDS new game start due to Person_ren and Random file being edited which effects all NPCs (virgin stats).
 
 ❓ When will it break or need updates?
-If develop git modifies person or random generator files, Restart is required.  
+If develop git modifies person or random generator files, Restart is sometimes required.  
