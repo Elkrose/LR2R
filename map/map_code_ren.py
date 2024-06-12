@@ -285,5 +285,5 @@ def calculate_hub_offsets(hub: MapHub, idx: int, location: Room) -> tuple[int, i
 
 
 def check_for_any_room_events():
-    return (any(y for x in list_of_people for y in x.on_room_enter_event_list.enabled_actions(x) if x.location.visible and not y.silent)
-        or any(y for x in list_of_places for y in x.on_room_enter_event_list.enabled_actions() if x.visible and not y.silent))
+    return (any(y for x in list_of_people for y in x.on_room_enter_event_list.enabled_actions(x) if x.location.visible and x.location.is_accessible and not y.silent)
+        or any(y for x in list_of_places for y in x.on_room_enter_event_list.enabled_actions() if x.visible and x.is_accessible and not y.silent))
