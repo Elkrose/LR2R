@@ -200,7 +200,7 @@ class MenuItem():
         return hash((self.title, self.display_key))
 
     def __eq__(self, other: MenuItem) -> bool:
-        if not isinstance(self, MenuItem):
+        if not isinstance(other, MenuItem):
             return NotImplemented
         return self.title == other.title and self.display_key == other.display_key
 
