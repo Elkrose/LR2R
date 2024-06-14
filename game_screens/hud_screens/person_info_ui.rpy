@@ -78,7 +78,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         fetish_info = ", ".join(fetish_list)
 
     frame:
-        background Transform("gui/topboxVT.png", alpha=persistent.hud_alpha)
+        background Transform("topboxVT", alpha=persistent.hud_alpha)
         xsize 1100
         ysize 200
         yalign 0.0
@@ -230,7 +230,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         if person.has_story:
             imagebutton:
                 pos (10, 5)
-                idle "gui/extra_images/labbook.png"
+                idle "labbook"
                 focus_mask True
                 action [
                     Show("story_progress", None, person)
