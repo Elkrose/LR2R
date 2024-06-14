@@ -1,4 +1,5 @@
 init -10:
+    image topboxVT = "[topboxVT_image.filename]"
     image vtcherries = "[vtcherries_image.filename]"
     
     image information_mark = "[information_image.filename]"
@@ -67,7 +68,7 @@ init -10:
     image starttrance = "[starttrance_image.filename]"
     image donetrain = "[donetrain_image.filename]"
 
-    image labbook = "[labbook_image.filname]"
+    image labbook = "[labbook_image.filename]"
     image matureteen = "[matureteen_image.filename]"
     image ahegaoface = "[ahegaoface_image.filename]"
     

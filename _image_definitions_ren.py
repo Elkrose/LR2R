@@ -7,22 +7,21 @@ IF FLAG_OPT_IN_ANNOTATIONS:
     rpy python annotations
 init -100 python:
 """
-# def get_file_handle(file_name: str) -> str | None:
-    # return next((x for x in renpy.exports.list_files() if file_name in x), None)
+modpath = "mods/LR2R-VTMod/gui/extra_images/"
 
-gf_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/girlfriend.png")), 18, 18)
+gf_token_small_image = im.Scale(Image(get_file_handle(modpath+"girlfriend.png")), 18, 18)
 renpy.image("gf_token_small", gf_token_small_image)
 
-paramour_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/paramour.png")), 18, 18)
+paramour_token_small_image = im.Scale(Image(get_file_handle(modpath+"paramour.png")), 18, 18)
 renpy.image("paramour_token_small", paramour_token_small_image)
 
-harem_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/harem.png")), 18, 18)
+harem_token_small_image = im.Scale(Image(get_file_handle(modpath+"harem.png")), 18, 18)
 renpy.image("harem_token_small", harem_token_small_image)
 
-parapoly_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/parapoly.png")), 18, 18)
+parapoly_token_small_image = im.Scale(Image(get_file_handle(modpath+"parapoly.png")), 18, 18)
 renpy.image("parapoly_token_small", parapoly_token_small_image)
 
-virgin_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/virgin.png")), 18, 18)
+virgin_token_small_image = im.Scale(Image(get_file_handle(modpath+"virgin.png")), 18, 18)
 renpy.image("virgin_token_small", virgin_token_small_image)
 
 matureteen_token_small_image = im.Scale(Image(get_file_handle("matureteen.png")), 18, 18)
@@ -35,24 +34,23 @@ vtcherries_small_image = im.Scale(Image(get_file_handle("vtcherries.png")), 18, 
 renpy.image("vtcherries_small", vtcherries_small_image)
 vtcherries_image = Image(get_file_handle("vtcherries.png"))
 
-
 information_image = Image(get_file_handle("information.png"))
 question_image = Image(get_file_handle("question.png"))
-virgin_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/virgin_token.png"))
-bc_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/bc_token.png"))
+virgin_image = Image(get_file_handle(modpath+"virgin_token.png"))
+bc_image = Image(get_file_handle(modpath+"bc_token.png"))
 bc_cum_image = Image(get_file_handle("bc_cum.png"))
-nobc_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/nobc_token.png"))
+nobc_image = Image(get_file_handle(modpath+"nobc_token.png"))
 beezee_image = Image(get_file_handle("beezee.png"))
 knowbc_image = Image(get_file_handle("knowbc_token.png"))
 dontknow_image = Image(get_file_handle("dontknow.png"))
-parapoly_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/parapoly.png"))
-polyamorous_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/harem.png"))
-paramour_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/paramour.png"))
-rings_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/rings.png"))
-girlfriend_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/girlfriend.png"))
+parapoly_image = Image(get_file_handle(modpath+"parapoly.png"))
+polyamorous_image = Image(get_file_handle(modpath+"harem.png"))
+paramour_image = Image(get_file_handle(modpath+"paramour.png"))
+rings_image = Image(get_file_handle(modpath+"rings.png"))
+girlfriend_image = Image(get_file_handle(modpath+"girlfriend.png"))
 
-hadsextoday_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/sex.png"))
-truevirgin_image = Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/virgin.png"))
+hadsextoday_image = Image(get_file_handle(modpath+"sex.png"))
+truevirgin_image = Image(get_file_handle(modpath+"virgin.png"))
 dislike_image = Image(get_file_handle("dislike.png"))
 vaghymen_image = Image(get_file_handle("vaghymen.png"))
 pregnant_image = Image(get_file_handle("pregnant.png"))
