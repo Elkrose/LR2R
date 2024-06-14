@@ -1,5 +1,4 @@
 init -10:
-    define AHitR_background = Image(get_file_handle("AHitR_Background.png"))
     image vtcherries = "[vtcherries_image.filename]"
     
     image information_mark = "[information_image.filename]"
