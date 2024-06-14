@@ -7,8 +7,8 @@ IF FLAG_OPT_IN_ANNOTATIONS:
     rpy python annotations
 init -100 python:
 """
-def get_file_handle(file_name: str) -> str | None:
-    return next((x for x in renpy.exports.list_files() if file_name in x), None)
+# def get_file_handle(file_name: str) -> str | None:
+    # return next((x for x in renpy.exports.list_files() if file_name in x), None)
 
 gf_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod-LR2R-VTMod/gui/extra_images/girlfriend.png")), 18, 18)
 renpy.image("gf_token_small", gf_token_small_image)
@@ -122,8 +122,9 @@ renpy.image("handprint_token_small", handprint_token_small_image)
 
 labbook_token_small_image = im.Scale(Image(get_file_handle("labbook.png")), 18, 18)
 renpy.image("labbook_token_small", labbook_token_small_image)
-labbook_image = Image(get_file_handle("labbook.png"))
 
+topboxVT_image = Image(get_file_handle("topboxVT.png"))
+labbook_image = Image(get_file_handle("labbook.png"))
 matureteen_image = Image(get_file_handle("matureteen.png"))
 
 claimedmouth_image = Image(get_file_handle("claimedmouth.png"))
