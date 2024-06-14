@@ -10,10 +10,19 @@ init -100 python:
 def get_file_handle(file_name: str) -> str | None:
     return next((x for x in renpy.exports.list_files() if file_name in x), None)
 
-parapoly_token_small_image = im.Scale(Image(get_file_handle("parapoly32.png")), 18, 18)
+gf_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/girlfriend.png")), 18, 18)
+renpy.image("gf_token_small", gf_token_small_image)
+
+paramour_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/paramour.png")), 18, 18)
+renpy.image("paramour_token_small", paramour_token_small_image)
+
+harem_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/harem.png")), 18, 18)
+renpy.image("harem_token_small", harem_token_small_image)
+
+parapoly_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/parapoly.png")), 18, 18)
 renpy.image("parapoly_token_small", parapoly_token_small_image)
 
-virgin_token_small_image = im.Scale(Image(get_file_handle("virgin.png")), 18, 18)
+virgin_token_small_image = im.Scale(Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/virgin.png")), 18, 18)
 renpy.image("virgin_token_small", virgin_token_small_image)
 
 matureteen_token_small_image = im.Scale(Image(get_file_handle("matureteen.png")), 18, 18)
@@ -22,23 +31,28 @@ renpy.image("matureteen_token_small", matureteen_token_small_image)
 beezee_token_small_image = im.Scale(Image(get_file_handle("beezee.png")), 18, 18)
 renpy.image("beezee_token_small", beezee_token_small_image)
 
+vtcherries_small_image = im.Scale(Image(get_file_handle("vtcherries.png")), 18, 18)
+renpy.image("vtcherries_small", vtcherries_small_image)
+vtcherries_image = Image(get_file_handle("vtcherries.png"))
+
+
 information_image = Image(get_file_handle("information.png"))
 question_image = Image(get_file_handle("question.png"))
-virgin_image = Image(get_file_handle("virgin_token.png"))
-bc_image = Image(get_file_handle("bc_token32.png"))
+virgin_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/virgin_token.png"))
+bc_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/bc_token.png"))
 bc_cum_image = Image(get_file_handle("bc_cum.png"))
-nobc_image = Image(get_file_handle("nobc_token32.png"))
+nobc_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/nobc_token.png"))
 beezee_image = Image(get_file_handle("beezee.png"))
-knowbc_image = Image(get_file_handle("knowbc_token32.png"))
-dontknow_image = Image(get_file_handle("dontknow32.png"))
-parapoly_image = Image(get_file_handle("parapoly32.png"))
-polyamorous_image = Image(get_file_handle("harem32.png"))
-paramour_image = Image(get_file_handle("paramour32.png"))
-rings_image = Image(get_file_handle("rings32.png"))
-girlfriend_image = Image(get_file_handle("girlfriend32.png"))
+knowbc_image = Image(get_file_handle("knowbc_token.png"))
+dontknow_image = Image(get_file_handle("dontknow.png"))
+parapoly_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/parapoly.png"))
+polyamorous_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/harem.png"))
+paramour_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/paramour.png"))
+rings_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/rings.png"))
+girlfriend_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/girlfriend.png"))
 
-hadsextoday_image = Image(get_file_handle("sex32.png"))
-truevirgin_image = Image(get_file_handle("virgin.png"))
+hadsextoday_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/sex.png"))
+truevirgin_image = Image(get_file_handle("mods/LR2R-VTMod/gui/extra_images/virgin.png"))
 dislike_image = Image(get_file_handle("dislike.png"))
 vaghymen_image = Image(get_file_handle("vaghymen.png"))
 pregnant_image = Image(get_file_handle("pregnant.png"))
