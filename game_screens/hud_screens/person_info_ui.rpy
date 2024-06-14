@@ -294,6 +294,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 idle "beezee"
                 action NullAction()
                 tooltip "She is ovulating and has a higher chance of getting pregnant, based on birth control and desire to get pregnant."
+
+        # imagebutton:
+                # pos(240, 200)
+                # idle "vtcherries"
+                # action NullAction()
 #### Relationship Status
         $ VTrelationshipst = "norelations"
         $ VTrelationshiptt = "Has no romantic relations with you."
@@ -899,7 +904,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ VTbreedfetishst = "openvag"
                         $ VTbreedfetishtt = f"{{image=progress_token_small}} She loves your cum in her womb!"
                         if person.vaginal_creampie_count<19:
-                            $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Fill her full of cum "+ str(20 - person.vaginal_creampie_count)+" more times!"
+                            $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Fill her full of cum "+ str(19 - person.vaginal_creampie_count)+" more times!"
                         else:
                             $ VTbreedfetishtt += f"\n{{image=progress_token_small}} Wait for the breeding fetish event to trigger!"
                     else:
