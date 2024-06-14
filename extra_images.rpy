@@ -1,4 +1,5 @@
 init -10:
+    image topboxVT = "[topboxVT_image.filename]"
     image vtcherries = "[vtcherries_image.filename]"
     
     image information_mark = "[information_image.filename]"
