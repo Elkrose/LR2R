@@ -1,6 +1,5 @@
 from __future__ import annotations
 import renpy
-from pathlib import Path
 from renpy.display import im
 from renpy.display.im import Image
 """renpy
@@ -8,10 +7,7 @@ IF FLAG_OPT_IN_ANNOTATIONS:
     rpy python annotations
 init -100 python:
 """
-#modpathheader = os.getcwd()
-#modpathdir = sys.path[0]
-#modpath = os.path.join(os.getcwd(), "/gui/extra_images/")
-#modpath = r'modpathdir' + "/gui/extra_images/"
+
 modpath = "/VTgui/extra_images/"
 
 def get_file_handle(file_name: str) -> str | None:
