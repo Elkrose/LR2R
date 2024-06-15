@@ -6,12 +6,10 @@
 💮 Category: Visual, QoL, serums, virginity 💮 Dependencies: None 
 
 💮 Compatibility
-🥵 LR2 AIO Script - Awesome!
 🥵 Moresomes_2.1 - Good!
 🥵 Real Porn Mod 0.62 - Good!
 🥵 KiNA's Mods - Good!
 🥵 Kaden's Mods - Good!
-🥵 MonQ Mod - Good!
 ❗ Jennifer Content dev - no
 ❗ Pregnant Content dev - no
 
@@ -19,7 +17,7 @@
 
 🔥 lr2mods-develop - June 11, 2024 2:54 PM EDT - https://discord.com/channels/564870606382956576/571557121716387840/1248971714734329897
 
-💮 Vanilla files modified: 12 files
+💮 Vanilla files modified: none
 
 💮 Image Files added: 50+ images to gui
 
@@ -36,7 +34,7 @@ Note: Tool tips explain what they are.  Some will explain briefly how to achieve
 💮 Map and Menu Visuals
 - Spot trances faster, waste less time and clarity.
 - Fertile ladies will be easier to spot due to the busy Bee icon
-- Harem Mansion named to 'Last Name' Mansion on the map overview
+- Harem Mansion named to 'Last Name' Mansion on the map overview(currently not working)
 
 💮 Ladies Information/Overview
 - Virgin status listed there
@@ -49,10 +47,11 @@ Note: Tool tips explain what they are.  Some will explain briefly how to achieve
 - can be enabled and disabled
 
 🔥 Install Instructions: 🔥
-Place in the game/mods folder.
+Place in the game/mods folder. Should look like game/mods/LR2R-VTMod/ (should see all the VTmods in this folder)
 
 ❓ Known issues: 
 NEEDS new game start due to Person_ren and Random file being edited which effects all NPCs (virgin stats).
+Suggestion: Don't update till you really need to 😄
 
 ❓ When will it break or need updates?
 If develop git modifies person or random generator files, Restart is sometimes required.  
