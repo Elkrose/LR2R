@@ -1,0 +1,89 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Visual Studio Code
+.vscode/**
+/*.ps1
+/*.sh
+/*.json
+Visual Studio Code.edit.py
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Excluded Game Folders
+game/customizations/
+game/cache/
+game/OpenGL/
+game/saves/
+game/shader/
+game/unittest/
+game/mods/
+renpy/
+libs/
+
+# Files from Game Folder
+*.exe
+Lab*.py
+!.gitignore
+!README.md
+screenshot*
+Lab*.app/
+*.prof
+
+# Ren'Py
+**/*.rpyc
+/*.txt
+
+**/*.rpa
+local.code-workspace
+LR2RVTMod.code-workspace
