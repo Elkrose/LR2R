@@ -14,8 +14,8 @@ IF FLAG_OPT_IN_ANNOTATIONS:
 init 900 python:
 """
 VIRGIN_TRACKER_DEBUG = True
-
-#NOT SURE how to hook into the _map_definitions to edit the harem name
+# TO DO: Need to capture pros and adjust sluttiness to appropriate levels
+# TO DO: NOT SURE how to hook into the _map_definitions to edit the harem name
 # mansion_name = last_name +" Mansion"
 # harem_mansion = Room("harem_mansion", str(mansion_name), harem_mansion_background, harem_objects,
             # map_pos =[1, 1], visible = False, lighting_conditions = standard_indoor_lighting)
@@ -23,7 +23,6 @@ VIRGIN_TRACKER_DEBUG = True
 
 def _vt_prefix_person_init(wrapped_func):
     def wrapping_func(*args, **kwargs):
-        # hack
         # if age (args[3]) <= core game min age (default 18)
         if args[3] <= Person.get_age_floor() and kwargs["type"] not in ("story", "unique"):
             # ensure single with no kids
@@ -224,6 +223,10 @@ def _vt_create_random_person_override(wrapped_func):
         ######################
         person = wrapped_func(*args, **kwargs)
 
+        #TO DO: try to hook the pros to increase thier sluttiness
+        if kwargs.get("job") == prostitute_job:
+            kwargs["sluttiness"] = renpy.random.randint(90,100)
+        #TO DO write appropriate code to catch and set Clone virginities in create_random_person
         if VIRGIN_TRACKER_DEBUG:
             write_log("Overriding create_random_person; adding attributes")
 
@@ -303,6 +306,22 @@ def _vt_make_person_override(wrapped_func):
         #### Call to core code
         ######################
         return_character = wrapped_func(*args, **kwargs)
+        #TO DO: try to hook the pros to increase sluttiness - not working T.T
+        if kwargs.get("job") == prostitute_job:
+            kwargs["sluttiness"] = renpy.random.randint(90,100)
+        #Catch Clones - this will most likely not work
+        #TO DO write appropriate code to catch and set Clone virginities in make_person
+        if kwargs.get("title", "_default_") == "Clone" and kwargs.get("type") == "random":
+                setattr(return_character, "oral_virgin", 0)
+                setattr(return_character, "oral_first", None)
+                setattr(return_character, "oral_cum", 0)
+                setattr(return_character, "hymen", 0)
+                setattr(return_character, "vaginal_virgin", 0)
+                setattr(return_character, "vaginal_first", None)
+                setattr(return_character, "vaginal_cum", 0)
+                setattr(return_character, "anal_virgin", 0)
+                setattr(return_character, "anal_first", None)
+                setattr(return_character, "anal_cum", 0)
 
         if VIRGIN_TRACKER_DEBUG:
             write_log("Overriding make_person; adding attributes")

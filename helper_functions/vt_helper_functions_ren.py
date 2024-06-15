@@ -37,13 +37,15 @@ def _vt_is_virgin(person: Person, sex_kind: str) -> bool:
         return False
     else:
         # TODO: make virginity likelihood granular
+        # TODO: ADD a flag to enable defining person opinion on virgin likelihood in a VTMOD startup screen
+        # TODO: Allow player to say min floor is 100%, 19 being 100%, etc... etc..
         # based on sex type (oral/vaginal/anal)?
         VIRGINITY_LIKELIHOOD_BY_AGE: dict[tuple[int | float], dict[str, float]] = {
             # (min age, max age):
             #     {sex kind, virginity probability},
-            (-math.inf, Person.get_age_floor() - 1):
+            (-math.inf, Person.get_age_floor()):
                 {"Oral": 1.0, "Vaginal": 1.0, "Anal": 1.0},
-            (Person.get_age_floor(), 19):
+            ((Person.get_age_floor()+1), 19):
                 {"Oral": 0.3, "Vaginal": 0.3, "Anal": 0.3},
             (20, 30):
                 {"Oral": 0.3, "Vaginal": 0.3, "Anal": 0.3},
