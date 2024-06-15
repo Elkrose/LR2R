@@ -69,6 +69,9 @@ def _vt_virginal_stats(person: Person, sex_kind: str, sex_cap: int) -> dict:
         # if vaginal virgin/"just the tip" set hymen to sealed
         if sex_kind == "Vaginal":
             stats["hymen"] = 0
+            person.sex_skills["Vaginal"] = 1 if person.sex_skills["Vaginal"] == 1 else 0
+        else:
+            person.sex_skills[sex_kind] = 0
 
         # set sex_kind virginality to 0
         stats[sex_kind.lower() + "_virgin"] = 0
