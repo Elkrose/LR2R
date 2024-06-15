@@ -1,5 +1,6 @@
 from __future__ import annotations
 import renpy
+from pathlib import Path
 from renpy.display import im
 from renpy.display.im import Image
 """renpy
@@ -7,7 +8,14 @@ IF FLAG_OPT_IN_ANNOTATIONS:
     rpy python annotations
 init -100 python:
 """
-modpath = "mods/LR2R-VTMod/gui/extra_images/"
+#modpathheader = os.getcwd()
+#modpathdir = sys.path[0]
+#modpath = os.path.join(os.getcwd(), "/gui/extra_images/")
+#modpath = r'modpathdir' + "/gui/extra_images/"
+modpath = "/VTgui/extra_images/"
+
+def get_file_handle(file_name: str) -> str | None:
+    return next((x for x in renpy.exports.list_files() if file_name in x), None)
 
 gf_token_small_image = im.Scale(Image(get_file_handle(modpath+"girlfriend.png")), 18, 18)
 renpy.image("gf_token_small", gf_token_small_image)
