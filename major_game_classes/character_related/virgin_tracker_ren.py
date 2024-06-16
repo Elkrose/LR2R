@@ -2,12 +2,13 @@ import inspect
 
 import renpy
 from renpy.exports import write_log
-from game.helper_functions.random_generation_functions_ren import create_random_person, make_person
+from game.helper_functions.random_generation_functions_ren import create_random_person, make_person, create_party_schedule
 from game.major_game_classes.game_logic.Room_ren import Room, list_of_places, strip_club, bdsm_room, downtown_bar, downtown_hotel, downtown, hospital
 from game.main_character.MainCharacter_ren import mc
 from game.major_game_classes.character_related.Person_ren import Person
 from vt_helper_functions_ren import _vt_virginal_stats
 from renpy import persistent, basestring
+from game.major_game_classes.clothing_related.wardrobe_builder_ren import WardrobeBuilder
 
 day: int
 #last_name: str
@@ -226,9 +227,6 @@ def _vt_create_random_person_override(wrapped_func):
         ######################
         person = wrapped_func(*args, **kwargs)
 
-        #TO DO: try to hook the pros to increase thier sluttiness
-        if kwargs.get("job") == prostitute_job:
-            kwargs["sluttiness"] = renpy.random.randint(90,100)
         #TO DO write appropriate code to catch and set Clone virginities in create_random_person
         if VIRGIN_TRACKER_DEBUG:
             write_log("Overriding create_random_person; adding attributes")
