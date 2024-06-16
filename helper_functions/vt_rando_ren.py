@@ -5,7 +5,7 @@ from math import floor
 from renpy import persistent, basestring
 from renpy.exports import write_log
 from game.helper_functions.random_generation_functions_ren import make_person, create_hooker, create_old_hooker_with_daughter, create_stripper
-from game.major_game_classes.character_related.Person_ren import Person
+from game.major_game_classes.character_related.Person_ren import Person, generate_daughter, generate_home, home
 from game.major_game_classes.character_related._job_definitions_ren import JobDefinition, prostitute_job, stripper_job
 
 day: int
@@ -85,6 +85,7 @@ def _vt_create_old_hooker_with_daughter_override(wrapped_func):
         person.age = renpy.random.randint(40, 49)
         daughter = person.generate_daughter(job = prostitute_job)
         daughter.set_mc_title("Daddy")
+        daughter._sluttiness = renpy.random.randint(40, 60)
         return daughter
     # don't override the signature, because modded code might provide VT kwargs
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
