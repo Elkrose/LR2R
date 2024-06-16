@@ -2,6 +2,7 @@ import renpy
 from game.major_game_classes.character_related.Person_ren import Person
 from game.main_character.MainCharacter_ren import mc
 from typing import Union
+from renpy import persistent, basestring
 
 """renpy
 IF FLAG_OPT_IN_ANNOTATIONS:

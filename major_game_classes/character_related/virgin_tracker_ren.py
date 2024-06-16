@@ -2,10 +2,13 @@ import inspect
 
 import renpy
 from renpy.exports import write_log
-from game.helper_functions.random_generation_functions_ren import create_random_person
+from game.helper_functions.random_generation_functions_ren import create_random_person, make_person
+from game.major_game_classes.game_logic.Room_ren import Room, list_of_places, strip_club, bdsm_room, downtown_bar, downtown_hotel, downtown, hospital
 from game.main_character.MainCharacter_ren import mc
 from game.major_game_classes.character_related.Person_ren import Person
 from vt_helper_functions_ren import _vt_virginal_stats
+from renpy import persistent, basestring
+
 day: int
 #last_name: str
 """renpy
