@@ -1,7 +1,9 @@
 import renpy
 from renpy.exports import write_log
-from game.helper_functions.random_generation_functions_ren import create_hooker, create_old_hooker_with_daughter, create_stripper
+from game.helper_functions.random_generation_functions_ren import make_person, create_hooker, create_old_hooker_with_daughter, create_stripper
 from game.major_game_classes.character_related.Person_ren import Person
+from game.major_game_classes.character_related._job_definitions_ren import JobDefinition, prostitute_job, stripper_job
+
 day: int
 #last_name: str
 """renpy
@@ -19,7 +21,7 @@ VIRGIN_TRACKER_DEBUG = True
 
 def _vt_create_hooker_override(wrapped_func):
     def wrapping_func(*args, **kwargs):
-        hooker = make_person(sluttiness = renpy.random.randint(30, 55),
+        hooker = make_person( sluttiness = renpy.random.randint(30, 55),
             sex_skill_array = [renpy.random.randint(4,8),renpy.random.randint(3,8),renpy.random.randint(2,8),renpy.random.randint(2,8)],
             job = prostitute_job,
             type="unique",
@@ -75,7 +77,7 @@ def _vt_create_stripper_override(wrapped_func):
 
 def _vt_create_old_hooker_with_daughter_override(wrapped_func):
     def wrapping_func(*args, **kwargs):
-        person = create_hooker(add_to_game = True)
+        person = create_hooker()
         person.age = renpy.random.randint(40, 49)
         daughter = person.generate_daughter(job = prostitute_job)
         daughter.set_mc_title("Daddy")
