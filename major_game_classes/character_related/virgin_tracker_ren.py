@@ -345,12 +345,12 @@ def _vt_make_person_override(wrapped_func):
         if "forced_opinions" in opinions_vt_kwargs:
             forced_opinions = opinions_vt_kwargs["forced_opinions"]
             # apply forced opinions after we 'update opinions', so we don't override them there
-            if forced_opinions and isinstance(forced_opinions, list):
+            if forced_opinions and isinstance(forced_opinions, (list, tuple, set)):
                 for opinion in forced_opinions:
                     return_character.opinions[opinion[0]] = [opinion[1], opinion[2]]
         if "forced_sexy_opinions" in opinions_vt_kwargs:
             forced_sexy_opinions = opinions_vt_kwargs["forced_sexy_opinions"]
-            if forced_sexy_opinions and isinstance(forced_sexy_opinions, list):
+            if forced_sexy_opinions and isinstance(forced_sexy_opinions, (list, tuple, set)):
                 for opinion in forced_sexy_opinions:
                     return_character.sexy_opinions[opinion[0]] = [opinion[1], opinion[2]]
 
