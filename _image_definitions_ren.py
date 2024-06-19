@@ -13,6 +13,8 @@ modpath = "/VTgui/extra_images/"
 def get_file_handle(file_name: str) -> str | None:
     return next((x for x in renpy.exports.list_files() if file_name in x), None)
 
+Cherry_background_image = Image(get_file_handle("Cherry_Background.png"))
+
 gf_token_small_image = im.Scale(Image(get_file_handle(modpath+"girlfriend.png")), 18, 18)
 renpy.image("gf_token_small", gf_token_small_image)
 

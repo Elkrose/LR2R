@@ -1,6 +1,7 @@
 init -10:
     image topboxVT = "[topboxVT_image.filename]"
     image vtcherries = "[vtcherries_image.filename]"
+    image bg Cherry_menu_background = Cherry_background_image
     
     image information_mark = "[information_image.filename]"
     image question_mark = "[question_image.filename]"
