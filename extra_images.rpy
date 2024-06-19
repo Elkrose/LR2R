@@ -1,4 +1,5 @@
 init -10:
+    define VT_MOD = True
     image topboxVT = "[topboxVT_image.filename]"
     image vtcherries = "[vtcherries_image.filename]"
     image bg Cherry_menu_background = Cherry_background_image
