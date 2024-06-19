@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<Wardrobe name="AHitR_Lyriel_Wardrobe">
+	<FullSets>
+		<Outfit name="Stylish Tube Top and Denim Shorts with Medium Socks">
+			<UpperBody>
+				<Item name="Lace_Bra" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.35200" pgreen="0.23900" pblue="0.23900" palpha="0.95000"/>
+				<Item name="Tube_Top" red="0.28750" green="0.80500" blue="0.11500" alpha="0.95000"/>
+			</UpperBody>
+			<LowerBody>
+				<Item name="Cute_Lace_Panties" red="1.00000" green="1.00000" blue="1.00000" alpha="1.00000"/>
+				<Item name="Jean_Hotpants" red="0.55100" green="0.73702" blue="1.00000" alpha="0.95000"/>
+			</LowerBody>
+			<Feet>
+				<Item name="Long_Socks" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000"/>
+			</Feet>
+			<Accessories>
+				<Item name="Lipstick" red="0.47800" green="0.09000" blue="0.07100" alpha="0.95000"/>
+				<Item name="Upper_Eye_Shadow" red="0.15000" green="0.15000" blue="0.15000" alpha="0.95000"/>
+			</Accessories>
+		</Outfit>
+		<Outfit name="Stylish Tube Top and Denim Shorts with Medium Socks">
+			<UpperBody>
+				<Item name="Lace_Bra" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.35200" pgreen="0.23900" pblue="0.23900" palpha="0.95000"/>
+				<Item name="Tube_Top" red="0.28750" green="0.80500" blue="0.11500" alpha="0.95000"/>
+			</UpperBody>
+			<LowerBody>
+				<Item name="Cute_Lace_Panties" red="1.00000" green="1.00000" blue="1.00000" alpha="1.00000"/>
+				<Item name="Jean_Hotpants" red="0.55100" green="0.73702" blue="1.00000" alpha="0.95000"/>
+			</LowerBody>
+			<Feet>
+				<Item name="Long_Socks" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000"/>
+			</Feet>
+			<Accessories>
+				<Item name="Lipstick" red="0.47800" green="0.09000" blue="0.07100" alpha="0.95000"/>
+				<Item name="Upper_Eye_Shadow" red="0.15000" green="0.15000" blue="0.15000" alpha="0.95000"/>
+			</Accessories>
+		</Outfit>
+	</FullSets>
+	<UnderwearSets/>
+	<OverwearSets/>
+</Wardrobe>
