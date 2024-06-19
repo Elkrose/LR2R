@@ -139,13 +139,13 @@ def create_AHitR_characters():
 #   green top - white/blue shorts
     Lyriel_wardrobe = wardrobe_from_xml("AHitR_Lyriel_Wardrobe")
     
-    Lyriel_personality = Personality("bimbo", bimbo_personality.default_prefix,
-        common_likes = ["dresses", "flirting", "skirts", "makeup", "the colour red", "high heels", "working" "yoga"],
-        common_sexy_likes = ["bareback sex", "creampies", "giving blowjobs", "drinking cum", "incest", "public sex", "doggy style sex", "public sex", "not wearing underwear", "threesomes", "vaginal sex", "missionary style sex"],
-        common_dislikes = ["pants", "conservative outfits"],
-        common_sexy_dislikes = ["cheating on men"],
-        titles_function = AHitR_titles, possessive_titles_function = AHitR_possessive_titles, player_titles_function = AHitR_player_titles,
-        insta_chance = 0, dikdok_chance = 0)
+#    Lyriel_personality = Personality("bimbo", bimbo_personality.default_prefix,
+#        common_likes = ["dresses", "flirting", "skirts", "makeup", "the colour red", "high heels", "working" "yoga"],
+#        common_sexy_likes = ["bareback sex", "creampies", "giving blowjobs", "drinking cum", "incest", "public sex", "doggy style sex", "public sex", "not wearing underwear", "threesomes", "vaginal sex", "missionary style sex"],
+#        common_dislikes = ["pants", "conservative outfits"],
+#        common_sexy_dislikes = ["cheating on men"],
+#        titles_function = AHitR_titles, possessive_titles_function = AHitR_possessive_titles, player_titles_function = AHitR_player_titles,
+#        insta_chance = 0, dikdok_chance = 0)
 
     global Lyriel_role
     Lyriel_role = Role("Lyriel", [], hidden = True) #Used to hold any Stephanie specific actions not tied to another role, and to guarantee this is Steph even if she undergoes a personality change.
