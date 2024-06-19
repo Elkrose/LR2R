@@ -43,7 +43,7 @@ screen VTMOD_setup_ui():
     modal True
     zorder 49
 
-    default pref_selected = "Age Population"
+    default pref_selected = "Population"
     default current_total = 100
 
     frame: # top frame

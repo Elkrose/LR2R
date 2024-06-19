@@ -17,7 +17,7 @@ VT_Settings = {}
 #TO-DO Have the total 100% at the bottom to set the Age Population they wish to see more of.
 #TO-DO allow players to choose whatever Ages they wish to see etc.
 #TO-DO Don't think there is a weighted list for ages.
-VT_Settings["Age Population"] = {
+VT_Settings["Population"] = {
     "Adolescence": ["VT_Settings_Adolescence", 5, 0],
     "Young Adult": ["VT_Settings_PRE_Adult", 30, 1],
     "Millennial": ["VT_Settings_Adult", 30, 2],
