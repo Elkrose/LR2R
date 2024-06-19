@@ -153,7 +153,7 @@ def create_AHitR_characters():
     global Lyriel
     Lyriel = make_person(name = "Lyriel", last_name = "Edhel", age = 19, body_type = "thin_body", face_style = "Face_4", tits="C", height = 0.8,
         hair_colour = ["golden blonde", [0.895, 0.781, 0.656, 0.95]], hair_style = long_hair, pubes_style = diamond_pubes, skin = "white",
-        eyes = ["green", [0.35, 0.68, 0.40, 0.9]], personality = Lyriel_personality, name_color = "#33cc00", dial_color = "#66ff33", starting_wardrobe = Lyriel_wardrobe,
+        eyes = ["green", [0.35, 0.68, 0.40, 0.9]], personality = bimbo_personality, name_color = "#33cc00", dial_color = "#66ff33", starting_wardrobe = Lyriel_wardrobe,
         stat_array = [20,20,20], skill_array = [20,20,20,20,20], sex_skill_array = [20,20,20,20], sluttiness = 95, obedience = 280, happiness = 200, love = 100, suggestibility=100,
         title = "Daisy", possessive_title = "Your Elven Lover", mc_title = "Yeah", relationship = "Single", kids = 0, job = student_job,
         sex_cap = 20, oral_virgin = 0, oral_first = None, oral_cum = 0, hymen = 0, vaginal_virgin = 0, vaginal_first = None, vaginal_cum = 0, anal_virgin = 0, anal_first = None, anal_cum = 0,
