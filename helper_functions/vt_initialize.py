@@ -12,5 +12,4 @@ init -99 python:
 """
 VIRGIN_TRACKER_DEBUG = True
 
-bg_manager.load("/VTMod/VTimages/background_images")
-
+bg_manager.load("/VTimages/background_images")
