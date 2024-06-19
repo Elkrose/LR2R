@@ -1,7 +1,7 @@
 # LR2R-VTMod
 🍒🍒🍒🍒    LR2R-VTMod    🍒🍒🍒🍒 
 
-💮 Adds a visual virginity tracker for those with the virgin/dom kinks.  Serums added to regrow the hymen or reset the virginities by stimulation and regrowth.
+💮 Adds a visual HUD for those with the virgin/dom kinks.  Serums added to regrow the hymen or reset the virginities by stimulation and regrowth.
 
 💮 Category: Visual, QoL, serums, virginity 💮 Dependencies: None 
 
@@ -10,14 +10,14 @@
 🥵 Real Porn Mod 0.62 - Good!
 🥵 KiNA's Mods - Good!
 🥵 Kaden's Mods - Good!
-❗ Jennifer Content dev - no
+❗ Jennifer Content dev - YES
 ❗ Pregnant Content dev - no
 
 🔥 Lab Rats2 Reformulate: v2024.06-code-beta  Ren'Py 8.2.1
 
-🔥 lr2mods-develop - June 11, 2024 2:54 PM EDT - https://discord.com/channels/564870606382956576/571557121716387840/1248971714734329897
+🔥 lr2mods-develop - June 18, 2024 4:31 PM EDT - https://discord.com/channels/564870606382956576/571557121716387840/1252722366778310719
 
-💮 Vanilla files modified: none
+💮 Vanilla files modified: none - the MOD is completely on its own in the mods folder.
 
 💮 Image Files added: 50+ images to gui
 
