@@ -117,7 +117,10 @@ def create_tmnt_characters():
     yoshitmnt.generate_home().add_person(yoshitmnt)
     yoshitmnt.home.add_person(yoshitmnt)
     yoshitmnt.add_role(yoshitmnt_role)
-    yoshitmnt.home.background_name = "sewerlair"
+    if config.version not in ("2024.05B"): 
+        yoshitmnt.home.background_name = "sewerlair"
+    else:
+        yoshitmnt.home.background_image = sewerlair_background
     yoshitmnt.add_role(yoshitmnt_role)
     yoshitmnt.change_job(hr_job)
     mc.phone.register_number(yoshitmnt)

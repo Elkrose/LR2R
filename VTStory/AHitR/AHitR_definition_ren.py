@@ -68,7 +68,10 @@ def create_AHitR_characters():
     Azraesha.generate_home().add_person(Azraesha)
     Azraesha.home.add_person(Azraesha)
     Azraesha.add_role(Azraesha_role)
-    Azraesha.home.background_name = "AHitR_downstairslobby"
+    if config.version not in ("2024.05B"): 
+        Azraesha.home.background_name = "AHitR_downstairslobby"
+    else:
+        Azraesha.home.background_image = AHitR_background
     mc.phone.register_number(Azraesha)
     mc.known_home_locations.append(Azraesha.home)
     Azraesha.on_birth_control = False
