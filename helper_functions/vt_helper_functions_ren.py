@@ -32,7 +32,11 @@ def _vt_bounded_gaussian_int(lower=2, upper=8, mean=3.4, stdev=10/3) -> int:
     return value
 
 def _vt_is_virgin(person: Person, sex_kind: str) -> bool:
-    if person.type in ("story", "unique"):
+    if person.title == "Clone":
+        # all clones are total virgins
+        return True
+    elif person.type in ("story", "unique"):
+        # if story or unique (used as flag for hookers/strippers), virgin if skill == 0 else not
         return person.sex_skills[sex_kind] == 0 or (sex_kind=="Vaginal" and person.sex_skills[sex_kind] == 1)
     elif sex_kind == "Vaginal" and person.kids > 0:
         return False
