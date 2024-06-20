@@ -13,10 +13,10 @@ init -1 python:
     #config.window_icon = "VTimages/mod_icon.png"
     #config.name = _("Lab Rats 2 Reformuate - Cherries Edition")
     #config.window_icon = "VTimages/mod_icon.png"
-    
+
 init 5 python:
 #making it a habit to init hijank label lower priority
- 
+
     config.label_overrides["start"] = "improved_start"
 
 label improved_start():
@@ -58,7 +58,7 @@ label improved_start():
 
     $ easy_mode = False
     $ kina_mode = False
-    $ cherry_mode = True
+    $ cherry_mode = False
     "Choose a Game Mode..."
     menu:
         "Default Game Play":
@@ -132,7 +132,7 @@ label improved_start():
             purchase_policy(business_size_1_policy, ignore_cost = True)
             purchase_policy(theoretical_research, ignore_cost = True)
             purchase_policy(max_attention_increase_1_policy, ignore_cost = True)
-        
+
         #KiNA Mode
         if kina_mode:
             mc.charisma +=4
@@ -232,7 +232,7 @@ label improved_start():
             #max_attention_increase_1_policy,
             #attention_bleed_increase_1_policy,
             #attention_floor_increase_1_policy,
-            
+
             #======== Recruitment Policies===================================
             purchase_policy(recruitment_batch_one_policy, ignore_cost = True)
             purchase_policy(recruitment_batch_two_policy, ignore_cost = True)
@@ -262,7 +262,7 @@ label improved_start():
             #recruitment_old_policy,
             #recruitment_mothers_policy,
             #recruitment_childless_policy,
-          
+
             #======= Serum/Production Policies==========================
             purchase_policy(mandatory_paid_serum_testing_policy, ignore_cost = True)
             purchase_policy(mandatory_unpaid_serum_testing_policy, ignore_cost = True)
@@ -281,7 +281,7 @@ label improved_start():
             purchase_policy(high_suction_pumping_machinery_policy, ignore_cost = True)
 
         renpy.hide("Loading", layer = "solo")
-    
+
 
     $ renpy.block_rollback()
     menu:
