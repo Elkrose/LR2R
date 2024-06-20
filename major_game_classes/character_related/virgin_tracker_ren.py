@@ -21,10 +21,6 @@ init 900 python:
 VIRGIN_TRACKER_DEBUG = True
 # TO DO: Need to capture pros and adjust sluttiness to appropriate levels
 # TO DO: NOT SURE how to hook into the _map_definitions to edit the harem name
-# mansion_name = last_name +" Mansion"
-# harem_mansion = Room("harem_mansion", str(mansion_name), harem_mansion_background, harem_objects,
-            # map_pos =[1, 1], visible = False, lighting_conditions = standard_indoor_lighting)
-# harem_hub = MapHub("mansion", str(mansion_name), icon = "POI_Brothel", position = Point(120, 660), locations = [harem_mansion])
 
 def _vt_prefix_person_init(wrapped_func):
     def wrapping_func(*args, **kwargs):
@@ -355,8 +351,10 @@ def _vt_make_person_override(wrapped_func):
                 for opinion in forced_sexy_opinions:
                     return_character.sexy_opinions[opinion[0]] = [opinion[1], opinion[2]]
 
-        if return_character.base_outfit and len(return_character.base_outfit.accessories) == 0 and return_character.opinion.makeup > 0:
-            WardrobeBuilder.add_make_up_to_outfit(return_character, return_character.base_outfit)
+        #Added 2024.05B compatibility - Does not have a WardrobeBuilder make_up_to_outfit function
+        if  config.version not in ("2024.05B"):
+            if return_character.base_outfit and len(return_character.base_outfit.accessories) == 0 and return_character.opinion.makeup > 0:
+                WardrobeBuilder.add_make_up_to_outfit(return_character, return_character.base_outfit)
 
         if return_character.type == 'random':
             create_party_schedule(return_character)
