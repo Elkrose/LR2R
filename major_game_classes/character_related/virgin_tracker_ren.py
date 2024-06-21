@@ -12,6 +12,9 @@ from renpy import persistent, basestring
 from game.major_game_classes.clothing_related.wardrobe_builder_ren import WardrobeBuilder
 from typing import Optional, Callable, Iterable
 
+from VTrandom_lists_ren import VT_AGE_RANGES, VT_Settings, _vt_build_weighted_list
+from game.random_lists_ren import get_random_from_weighted_list
+
 day: int
 #last_name: str
 """renpy
@@ -220,6 +223,9 @@ def _vt_create_random_person_override(wrapped_func: Callable) -> Callable:
         if given_vt_kwargs.get("hymen", None) in (0, 1):
             kwargs["kids"] = 0
 
+        # set age_range based on VT preferences
+        if not kwargs.get("age") and not kwargs.get("age_range") and kwargs.get("type")=="random":
+            kwargs["age_range"] = VT_AGE_RANGES[get_random_from_weighted_list(_vt_build_weighted_list(VT_Settings["Population"]))]
         ######################
         #### Call to core code
         ######################
@@ -298,6 +304,10 @@ def _vt_make_person_override(wrapped_func: Callable) -> Callable:
                       kids_range=None,
                       relationship_list=None,
                       **kwargs) -> Person:
+
+        # set age_range based on VT preferences
+        if not kwargs.get("age") and not age_range and type:
+            age_range = VT_AGE_RANGES[get_random_from_weighted_list(_vt_build_weighted_list(VT_Settings["Population"]))]
 
         return_character = _vt_optional_get_premade(type=type, allow_premade=allow_premade,
             age_range=age_range, tits_range=tits_range,
