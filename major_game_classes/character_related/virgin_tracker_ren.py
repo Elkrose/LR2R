@@ -225,10 +225,6 @@ def _vt_create_random_person_override(wrapped_func: Callable) -> Callable:
         ######################
         person = wrapped_func(*args, **kwargs)
 
-        #TO DO write appropriate code to catch and set Clone virginities in create_random_person
-        if VIRGIN_TRACKER_DEBUG:
-            write_log("Overriding create_random_person; adding attributes")
-
         # NOTE: first assign any parameters passed by the calling location
         # this may set any combination of VT parameters
         for key, value in given_vt_kwargs.items():
@@ -243,6 +239,10 @@ def _vt_create_random_person_override(wrapped_func: Callable) -> Callable:
             # and apply them
             for key, value in stats.items():
                 setattr(person, key, value)
+
+        if VIRGIN_TRACKER_DEBUG:
+            write_log(f"Added VT Attributes - Virgins: {[getattr(person, sex_kind+'_virgin') for sex_kind in ('oral','vaginal','anal')]},"\
+                      + f" Firsts: {[getattr(person, sex_kind+'_first') for sex_kind in ('oral','vaginal','anal')]})")
 
         return person
 
