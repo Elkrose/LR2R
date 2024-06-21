@@ -7,7 +7,7 @@ from game.major_game_classes.game_logic.Room_ren import Room, list_of_places, st
 from game.main_character.MainCharacter_ren import mc
 from game.major_game_classes.character_related.Person_ren import Person
 from game.major_game_classes.character_related._job_definitions_ren import JobDefinition
-from helper_functions.vt_helper_functions_ren import _vt_virginity_stats
+from helper_functions.vt_helper_functions_ren import _vt_virginity_stats, _vt_get_person_age_tag
 from renpy import persistent, basestring
 from game.major_game_classes.clothing_related.wardrobe_builder_ren import WardrobeBuilder
 from typing import Optional, Callable, Iterable
@@ -22,10 +22,10 @@ IF FLAG_OPT_IN_ANNOTATIONS:
     rpy python annotations
 init 900 python:
 """
-
+# TODO: on release, set False?
 VIRGIN_TRACKER_DEBUG = True
-# TO DO: Need to capture pros and adjust sluttiness to appropriate levels
-# TO DO: NOT SURE how to hook into the _map_definitions to edit the harem name
+# TODO: Need to capture pros and adjust sluttiness to appropriate levels
+# TODO: NOT SURE how to hook into the _map_definitions to edit the harem name
 
 def _vt_prefix_person_init(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
@@ -249,6 +249,9 @@ def _vt_create_random_person_override(wrapped_func: Callable) -> Callable:
         if VIRGIN_TRACKER_DEBUG:
             write_log(f"Added VT Attributes - Virgins: {[getattr(person, sex_kind+'_virgin') for sex_kind in ('oral','vaginal','anal')]},"\
                       + f" Firsts: {[getattr(person, sex_kind+'_first') for sex_kind in ('oral','vaginal','anal')]})")
+            if person.type=="random":
+                age_tag = _vt_get_person_age_tag(person)
+                write_log(f"Random char | Age range: {age_tag} | Virginity chances: {[getattr(persistent, age_tag + '_' + sex_kind.lower()) for sex_kind in ['Oral','Vaginal','Anal']]}")
 
         return person
 
