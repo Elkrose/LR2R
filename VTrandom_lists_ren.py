@@ -2,8 +2,8 @@ from __future__ import annotations
 import builtins
 import renpy
 from renpy import persistent
-from game.helper_functions.list_functions_ren import get_random_from_list
 from typing import TypeVar
+from collections import OrderedDict
 T = TypeVar('T')
 """renpy
 IF FLAG_OPT_IN_ANNOTATIONS:
@@ -17,6 +17,15 @@ VT_Settings = {}
 #TO-DO Have the total 100% at the bottom to set the Age Population they wish to see more of.
 #TO-DO allow players to choose whatever Ages they wish to see etc.
 #TO-DO Don't think there is a weighted list for ages.
+VT_AGE_RANGES = {
+    "VT_Settings_Adolescence":  (18, 19),
+    "VT_Settings_PRE_Adult":    (20, 24),
+    "VT_Settings_Adult":        (25, 35),
+    "VT_Settings_Mature_Adult": (36, 51),
+    "VT_Settings_Elder":        (52, 72),
+    "VT_Settings_Ancient":      (73, 95),
+}
+
 VT_Settings["Population"] = {
     "Adolescence": ["VT_Settings_Adolescence", 5, 0],
     "Young Adult": ["VT_Settings_PRE_Adult", 30, 1],
@@ -51,7 +60,7 @@ VT_Settings["Virgin Stats"] = {
 #TO DO - Pregnancy  BunTimer (weeks in labor) 100% = 9 months x 3.5 weeks x 7 days x 7 turns, max (1544), min(172) 3.5 weeks, recommend(344)
 #TO DO - Type of pregnancy Natural / C-Section = 100% so its either 40% natural or 100% natural setting, recommended 50% to choose between them
 #To DO -  Postsex (sex wait period due to medical recovery usually 6 weeks).
-#TO DO - PostSex max 6 weeks = 6x7x7 = 294 turns, min 2 weeks = 98 turns, recommended 3 weeks=147, 
+#TO DO - PostSex max 6 weeks = 6x7x7 = 294 turns, min 2 weeks = 98 turns, recommended 3 weeks=147,
 VT_Settings["Pregnancy"] = {
     "Bun in the Oven Timer": ["VT_BunTimer", 4, 0],
     "Natural Delivery": ["VT_NatDelivery", 8, 1],
@@ -64,3 +73,18 @@ for pref in VT_Settings.values():
     for setting in pref.values():
         if not (getattr(persistent, setting[0]) or isinstance(getattr(persistent, setting[0]), int)):
             setattr(persistent, setting[0], setting[1])
+
+def _vt_build_weighted_list(options_dict: dict[str, list[str | int]], start = None, end = None):
+    weighted_list = []
+    if start is None:
+        start = 0
+    if end is None:
+        end = len(options_dict)
+
+    pref_dict = OrderedDict(options_dict)
+    for idx, x in enumerate(pref_dict):
+        if idx < start or idx > end:
+            continue
+        if getattr(persistent, options_dict[x][0], options_dict[x][1]) > 0:
+            weighted_list.append((options_dict[x][0], getattr(persistent, options_dict[x][0], options_dict[x][1])))
+    return weighted_list
