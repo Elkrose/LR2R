@@ -3,6 +3,7 @@ from game.major_game_classes.character_related.Person_ren import Person
 from game.main_character.MainCharacter_ren import mc
 from typing import Union
 from renpy import persistent, basestring
+from VTrandom_lists_ren import VT_AGE_RANGES, VT_Settings
 
 """renpy
 IF FLAG_OPT_IN_ANNOTATIONS:
@@ -12,9 +13,33 @@ init 900 python:
 import math
 import builtins
 
+def _vt_internal_age_tag(age_tag_repr: str) -> str:
+    internal, *other = VT_Settings["Population"].get(age_tag_repr)
+    if not internal:
+        # sanity check; should not reach this
+        raise ValueError(f"{age_tag_repr} not described in VirginTracker age ranges")
+    return internal
+
+def _vt_repr_age_tag(age_tag: str) -> str:
+    for repr, (internal, *other) in VT_Settings["Population"].items():
+        if age_tag == internal:
+            return repr
+    # sanity check; should not reach this
+    raise ValueError(f"{age_tag} not described in VirginTracker age ranges")
+
+def _vt_get_person_age_tag(person: Person) -> str:
+    for tag, (lower, upper) in VT_AGE_RANGES.items():
+        if lower <= person.age <= upper:
+            return tag
+    # sanity check; should not reach this
+    raise ValueError(f"{person.name} age value {person.age} not found in VirginTracker age ranges")
+
 # helper function; if the person has a sex skill, she must have gotten it with someone
 # returns name either random, SO_name, or MC
 def _vt_cherry_popper(person, sex_kind: str) -> str | None:
+    # TODO: for girls in relationships, someone before their current partner might have popped their cherry?
+    # could factor in presumed/random relationship length, loyalty/desire to save for marriage, etc.
+
     # was already assigned by something else
     if hasattr(person, sex_kind.lower() + "_first") and getattr(person, sex_kind.lower() + "_first") is not None:
         return getattr(person, sex_kind.lower() + "_first")
@@ -54,28 +79,13 @@ def _vt_is_virgin(person: Person, sex_kind: str) -> bool:
     elif sex_kind == "Vaginal" and person.kids > 0:
         return False
     else:
-        # TODO: make virginity likelihood granular
-        # TODO: ADD a flag to enable defining person opinion on virgin likelihood in a VTMOD startup screen
-        # TODO: Allow player to say min floor is 100%, 19 being 100%, etc... etc..
-        # based on sex type (oral/vaginal/anal)?
-        VIRGINITY_LIKELIHOOD_BY_AGE: dict[tuple[int | float], dict[str, float]] = {
-            # (min age, max age):
-            #     {sex kind, virginity probability},
-            (-math.inf, Person.get_age_floor()):
-                {"Oral": 1.0, "Vaginal": 1.0, "Anal": 1.0},
-            ((Person.get_age_floor()+1), 19):
-                {"Oral": 0.3, "Vaginal": 0.3, "Anal": 0.3},
-            (20, 30):
-                {"Oral": 0.3, "Vaginal": 0.3, "Anal": 0.3},
-            (31, math.inf):
-                {"Oral": 0.1, "Vaginal": 0.1, "Anal": 0.1},
-        }
-        for (min_age, max_age), virginity_probability in VIRGINITY_LIKELIHOOD_BY_AGE.items():
-            if min_age <= person.age <= max_age:
-                return renpy.random.random() < virginity_probability[sex_kind]
-        # NOTE: should never get this far
-        # FIXME: VIRGINITY_LIKELIHOOD_BY_AGE should be rigorously tested/validated
-        raise ValueError(f"Could not assess whether {person.fname} (aged {person.age}) is a(n) {sex_kind} virgin")
+        # TODO: mixin age/relationship status? e.g. 19 w/ boyfriend might likely have tried oral, 25 w/ fiancee likely tried it all (but might be saving for marriage)
+        age_tag = _vt_get_person_age_tag(person)
+        age_tag_repr = _vt_repr_age_tag(age_tag)
+
+        # get the value from persistent settings store if available, else from default mod value
+        virginity_probability = getattr(persistent, age_tag + "_" + sex_kind.lower(), VT_Settings["Virgin Stats"].get(age_tag_repr + " - " + sex_kind)[1])
+        return renpy.random.randint(1,100) <= virginity_probability
 
 def _vt_threshold_to_reroll(person: Person) -> int:
     # story/unique/mod characters get a boost
