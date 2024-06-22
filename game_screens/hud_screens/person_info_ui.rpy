@@ -1266,7 +1266,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ vt_store.anal_status_icon = "ahegaopeach"
                     $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} "+ str(person.anal_cum) +" doses of your cum\ncoating her bowels."
 
-            elif person.arousla_perc < 60:
+            elif person.arousal_perc < 60:
                 if person.anal_first == mc.name:
                     $ vt_store.anal_status_icon = "claimedass"
                     $ vt_store.anal_tooltip = f"{{image=handprint_token_small}} You Claimed this Ass!"
