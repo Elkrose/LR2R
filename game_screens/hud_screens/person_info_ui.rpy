@@ -1437,27 +1437,26 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 action NullAction()
                 tooltip "You had fun with her today."
 #### Tranced
-        if person.has_exact_role(very_heavy_trance_role):
-            imagebutton:
-                pos(826, 166)
-                idle "ahegaotrance"
-                action NullAction()
-                tooltip "In a very deep trance! Good time to train her!"
-        elif person.has_exact_role(heavy_trance_role):
-            imagebutton:
-                pos(826, 166)
-                idle "heavytrance"
-                action NullAction()
-                tooltip "In a deep trance! Good time to train her!"
-        elif person.has_exact_role(trance_role):
-            imagebutton:
-                pos(826, 166)
-                idle "starttrance"
-                action NullAction()
-                tooltip "In a trance! She is open to suggestions!"
+        $ vt_store.trance_status_icon = ""
+        $ vt_store.trance_tooltip = ""
+        if not person.is_in_trance:
+            $ vt_store.trance_status_icon = "notrance"
+            $ vt_store.trance_tooltip = "Not in a trance! Make her climax!"
         elif person.is_in_trance and not person.trance_training_available:
-            imagebutton:
-                pos(826, 166)
-                idle "donetrain"
-                action NullAction()
-                tooltip "Already Trained her!"
+            $ vt_store.trance_status_icon = "donetrain"
+            $ vt_store.trance_tooltip "Already Trained her!"
+        elif person.has_exact_role(very_heavy_trance_role):
+            $ vt_store.trance_status_icon = "ahegaotrance"
+            $ vt_store.trance_tooltip "In a very deep trance! Good time to train her!"
+        elif person.has_exact_role(heavy_trance_role):
+            $ vt_store.trance_status_icon = "heavytrance"
+            $ vt_store.trance_tooltip "In a deep trance! Good time to train her!"
+        elif person.has_exact_role(trance_role):
+            $ vt_store.trance_status_icon = "starttrance"
+            $ vt_store.trance_tooltip "In a trance! She is open to suggestions!"
+
+        imagebutton:
+            pos(826, 166)
+            idle vt_store.trance_status_icon
+            action NullAction()
+            tooltip vt_store.trance_tooltip

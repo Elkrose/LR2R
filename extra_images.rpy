@@ -3,7 +3,7 @@ init -10:
     image topboxVT = "[topboxVT_image.filename]"
     image vtcherries = "[vtcherries_image.filename]"
     image bg Cherry_menu_background = Cherry_background_image
-    
+
     image information_mark = "[information_image.filename]"
     image question_mark = "[question_image.filename]"
     image virgin_image_marker = "[virgin_image.filename]"
@@ -68,15 +68,16 @@ init -10:
     image ahegaotrance = "[ahegaotrance_image.filename]"
     image heavytrance = "[heavytrance_image.filename]"
     image starttrance = "[starttrance_image.filename]"
+    image notrance = "[notrance_image.filename]"
     image donetrain = "[donetrain_image.filename]"
 
     image labbook = "[labbook_image.filename]"
     image matureteen = "[matureteen_image.filename]"
     image ahegaoface = "[ahegaoface_image.filename]"
-    
-    image truevirgin = "[truevirgin_image.filename]"   
+
+    image truevirgin = "[truevirgin_image.filename]"
     image vaghymen = "[vaghymen_image.filename]"
 
-    image claimedmouth = "[claimedmouth_image.filename]"   
+    image claimedmouth = "[claimedmouth_image.filename]"
     image claimedass = "[claimedass_image.filename]"
     image claimedvag = "[claimedvag_image.filename]"
