@@ -346,7 +346,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 ###### Birth Control Status
         $ VTbcat = "talking"
         $ VTbcst = "knowbirthcontrol"
-        $ VTbctt = "Is she on birth control?"
+        $ VTbctt = f"{{image=question_mark_small}} Is she on birth control?"
         $ VTpro = ""
         if person.bc_status_known:
             if person._birth_control and person.on_birth_control:
@@ -366,7 +366,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ VTpro = " protected"
         else:
             $ VTbcst = "knowbirthcontrol"
-            $ VTbctt = "Is she is on birth control?"
+            $ VTbctt = f"{{image=question_mark_small}} Is she is on birth control?"
 
         $ VTbreedfertile = ""
         if person.bc_status_known and person.is_highly_fertile and not person.on_birth_control and perk_system.has_ability_perk("Ovulation Cycle Perception"):
@@ -374,7 +374,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         #the interactive icons during sex stuff
         if 'position_choice' in globals():
             $ VTbcat = "sexualized"
-         #PREGNANCY HAXX
+        #PREGNANCY HAXX
         if person.knows_pregnant:
                 $ VTbcst = "pregnant"
                 $ VTbctt = "She is pregnant."
@@ -839,7 +839,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         #the interactive icons during sex stuff
         if 'position_choice' in globals():
-           # if hasattr(position_choice, 'skill_tag'):
+            # if hasattr(position_choice, 'skill_tag'):
             $ VTanalfetishat = "sexualized"
 
         if VTcumfetishat=="sexualized":
