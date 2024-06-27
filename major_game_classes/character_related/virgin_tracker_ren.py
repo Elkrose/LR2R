@@ -2,13 +2,18 @@ import inspect
 
 import renpy
 from renpy.exports import write_log
-from game.helper_functions.random_generation_functions_ren import create_random_person, make_person, create_party_schedule
+from game.helper_functions.random_generation_functions_ren import create_random_person, make_person, create_party_schedule, get_premade_character
 from game.major_game_classes.game_logic.Room_ren import Room, list_of_places, strip_club, bdsm_room, downtown_bar, downtown_hotel, downtown, hospital
 from game.main_character.MainCharacter_ren import mc
 from game.major_game_classes.character_related.Person_ren import Person
-from vt_helper_functions_ren import _vt_virginal_stats
+from game.major_game_classes.character_related._job_definitions_ren import JobDefinition
+from helper_functions.vt_helper_functions_ren import _vt_virginity_stats, _vt_get_person_age_tag
 from renpy import persistent, basestring
 from game.major_game_classes.clothing_related.wardrobe_builder_ren import WardrobeBuilder
+from typing import Optional, Callable, Iterable
+
+from VTrandom_lists_ren import VT_AGE_RANGES, VT_Settings, _vt_build_weighted_list
+from game.random_lists_ren import get_random_from_weighted_list
 
 day: int
 #last_name: str
@@ -17,15 +22,15 @@ IF FLAG_OPT_IN_ANNOTATIONS:
     rpy python annotations
 init 900 python:
 """
-
+# TODO: on release, set False?
 VIRGIN_TRACKER_DEBUG = True
-# TO DO: Need to capture pros and adjust sluttiness to appropriate levels
-# TO DO: NOT SURE how to hook into the _map_definitions to edit the harem name
+# TODO: Need to capture pros and adjust sluttiness to appropriate levels
+# TODO: NOT SURE how to hook into the _map_definitions to edit the harem name
 
-def _vt_prefix_person_init(wrapped_func):
+def _vt_prefix_person_init(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # if age (args[3]) <= core game min age (default 18)
-        if args[3] <= Person.get_age_floor() and kwargs["type"] not in ("story", "unique"):
+        if args[3] <= Person.get_age_floor() and kwargs["type"]=="random":
             # ensure single with no kids
             kwargs["relationship"] = "Single"
             kwargs["kids"] = 0
@@ -33,8 +38,9 @@ def _vt_prefix_person_init(wrapped_func):
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
-def _vt_postfix_person_run_turn(wrapped_func):
+def _vt_postfix_person_run_turn(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
+        # TODO: make mod install compatible with existing savegames (person doesn't have VT attributes)
         # Call core code; has core side effects
         ret_val = wrapped_func(*args, **kwargs)
 
@@ -52,8 +58,9 @@ def _vt_postfix_person_run_turn(wrapped_func):
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
-def _vt_postfix_person_run_day(wrapped_func):
+def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
+        # TODO: make mod install compatible with existing savegames (person doesn't have VT attributes)
         # Call core code; has core side effects
         ret_val = wrapped_func(*args, **kwargs)
 
@@ -99,8 +106,9 @@ def _vt_postfix_person_run_day(wrapped_func):
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
-def _vt_postfix_person_cum_in_mouth(wrapped_func):
+def _vt_postfix_person_cum_in_mouth(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
+        # TODO: make mod install compatible with existing savegames (person doesn't have VT attribute oral_cum)
         ret_val = wrapped_func(*args, **kwargs)
 
         self = args[0]
@@ -110,8 +118,9 @@ def _vt_postfix_person_cum_in_mouth(wrapped_func):
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
-def _vt_postfix_person_cum_in_vagina(wrapped_func):
+def _vt_postfix_person_cum_in_vagina(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
+        # TODO: make mod install compatible with existing savegames (person doesn't have VT attribute vaginal_cum)
         ret_val = wrapped_func(*args, **kwargs)
 
         self = args[0]
@@ -121,8 +130,9 @@ def _vt_postfix_person_cum_in_vagina(wrapped_func):
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
-def _vt_postfix_person_cum_in_ass(wrapped_func):
+def _vt_postfix_person_cum_in_ass(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
+        # TODO: make mod install compatible with existing savegames (person doesn't have VT attribute anal_cum)
         ret_val = wrapped_func(*args, **kwargs)
 
         self = args[0]
@@ -132,8 +142,9 @@ def _vt_postfix_person_cum_in_ass(wrapped_func):
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
-def _vt_postfix_person_update_sex_record(wrapped_func):
+def _vt_postfix_person_update_sex_record(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
+        # TODO: make mod install compatible with existing savegames (person doesn't have VT attributes)
         ret_val = wrapped_func(*args, **kwargs)
 
         self, report_log = args
@@ -181,8 +192,8 @@ Person.cum_in_vagina    = _vt_postfix_person_cum_in_vagina(Person.cum_in_vagina)
 Person.cum_in_ass       = _vt_postfix_person_cum_in_ass(Person.cum_in_ass)
 Person.update_person_sex_record = _vt_postfix_person_update_sex_record(Person.update_person_sex_record)
 
-def _vt_create_random_person_override(wrapped_func):
-    def wrapping_func(*args, **kwargs):
+def _vt_create_random_person_override(wrapped_func: Callable) -> Callable:
+    def wrapping_func(*args, **kwargs) -> Person:
         virgin_tracker_args: tuple[str] = (
             "oral_virgin",
             "oral_first",
@@ -196,16 +207,9 @@ def _vt_create_random_person_override(wrapped_func):
             "anal_cum",
         )
 
-        # use this line to keep core game balance
-        sex_cap = Person.get_skill_ceiling()
-
-        # else uncomment this line for uniform distribution from 2-8
-        #sex_cap = 8
-
-        # override above sex_cap if passed as keyword arg
-        if "sex_cap" in kwargs:
-            sex_cap = kwargs["sex_cap"]
-            kwargs.pop("sex_cap", None)
+        # use sex_cap arg if passed, else get_sex_skill_ceiling to keep core balance
+        sex_cap = kwargs.get("sex_cap", Person.get_sex_skill_ceiling())
+        kwargs.pop("sex_cap", None)
 
         # grab any provided VirginTracker keyword args
         # remove them from the kwargs dict
@@ -219,30 +223,35 @@ def _vt_create_random_person_override(wrapped_func):
         if given_vt_kwargs.get("hymen", None) in (0, 1):
             kwargs["kids"] = 0
 
+        # set age_range based on VT preferences
+        if not kwargs.get("age") and not kwargs.get("age_range") and kwargs.get("type")=="random":
+            kwargs["age_range"] = VT_AGE_RANGES[get_random_from_weighted_list(_vt_build_weighted_list(VT_Settings["Population"]))]
         ######################
         #### Call to core code
         ######################
         person = wrapped_func(*args, **kwargs)
 
-        #TO DO write appropriate code to catch and set Clone virginities in create_random_person
-        if VIRGIN_TRACKER_DEBUG:
-            write_log("Overriding create_random_person; adding attributes")
+        # NOTE: first assign any parameters passed by the calling location
+        # this may set any combination of VT parameters
+        for key, value in given_vt_kwargs.items():
+            # set the values directly
+            setattr(person, key, value)
 
-        # NOTE: this is all-or-nothing; if some but not all of the VT kwargs are provided
-        # the provided values will be ignored, and instead all values estimated based on sex skills
-        # if create_random_person was called with all the VirginTracker keyword args
-        if set(virgin_tracker_args) == set(given_vt_kwargs.keys()):
-            for key, value in given_vt_kwargs.items():
-                # set the values directly
+        # NOTE: then fill in the remaining stats
+        virginity_types = ["Oral", "Vaginal", "Anal"]
+        for sex_type in virginity_types:
+            # compute the values
+            stats = _vt_virginity_stats(person, sex_type, sex_cap)
+            # and apply them
+            for key, value in stats.items():
                 setattr(person, key, value)
-        else:
-            virginity_types = ["Oral", "Vaginal", "Anal"]
-            for sex_type in virginity_types:
-                # compute the values
-                stats = _vt_virginal_stats(person, sex_type, sex_cap)
-                # and apply them
-                for key, value in stats.items():
-                    setattr(person, key, value)
+
+        if VIRGIN_TRACKER_DEBUG:
+            write_log(f"Added VT Attributes - Virgins: {[getattr(person, sex_kind+'_virgin') for sex_kind in ('oral','vaginal','anal')]},"\
+                      + f" Firsts: {[getattr(person, sex_kind+'_first') for sex_kind in ('oral','vaginal','anal')]})")
+            if person.type=="random":
+                age_tag = _vt_get_person_age_tag(person)
+                write_log(f"Random char | Age range: {age_tag} | Virginity chances: {[getattr(persistent, age_tag + '_' + sex_kind.lower()) for sex_kind in ['Oral','Vaginal','Anal']]}")
 
         return person
 
@@ -252,117 +261,76 @@ def _vt_create_random_person_override(wrapped_func):
 
 create_random_person = _vt_create_random_person_override(create_random_person)
 
-def _vt_make_person_override(wrapped_func):
-    def wrapping_func(*args, **kwargs):
-        virgin_tracker_args: tuple[str] = (
-            "oral_virgin",
-            "oral_first",
-            "oral_cum",
-            "hymen",
-            "vaginal_virgin",
-            "vaginal_first",
-            "vaginal_cum",
-            "anal_virgin",
-            "anal_first",
-            "anal_cum",
+def _vt_optional_get_premade(**kwargs) -> Optional[Person]:
+    if kwargs.get("type")=="random" and kwargs.get("allow_premade") and renpy.random.randint(1,100) < 20:
+        return get_premade_character(kwargs.get("age_range"),
+                                     kwargs.get("tits_range"),
+                                     kwargs.get("height_range"),
+                                     kwargs.get("kids_range"),
+                                     kwargs.get("relationship_list"),
         )
-        opinions_tracker_args: tuple[str] = (
-            "forced_opinions",
-            "forced_sexy_opinions",
+    return None
+
+def _vt_apply_opinions_makeup_and_schedule(person: Person, forced_opinions: Optional[list | tuple | set], forced_sexy_opinions: Optional[list | tuple | set]) -> Person:
+    # apply forced opinions after we 'update opinions', so we don't override them there
+    if forced_opinions and isinstance(forced_opinions, (list, tuple, set)):
+        for opinion in forced_opinions:
+            person.opinions[opinion[0]] = [opinion[1], opinion[2]]
+
+    if forced_sexy_opinions and isinstance(forced_sexy_opinions, (list, tuple, set)):
+        for opinion in forced_sexy_opinions:
+            person.sexy_opinions[opinion[0]] = [opinion[1], opinion[2]]
+
+    if config.version not in ("2024.05B"):
+        if person.base_outfit and len(person.base_outfit.accessories) == 0 and person.opinion.makeup > 0:
+            WardrobeBuilder.add_make_up_to_outfit(person, person.base_outfit)
+
+    if person.type == 'random':
+        create_party_schedule(person)
+
+    # not strictly necessary to return the person object
+    # because all the above modified the provided object directly
+    # but still, good practice
+    return person
+
+def _vt_make_person_override(wrapped_func: Callable) -> Callable:
+    def wrapping_func(*args,
+                      ## DO NOT PASS THESE THRU TO CREATE_RANDOM_PERSON
+                      forced_opinions=None,
+                      forced_sexy_opinions=None,
+                      allow_premade=False,
+                      ## MUST PASS THESE THRU TO CREATE_RANDOM_PERSON
+                      type="random",
+                      age_range=None,
+                      tits_range=None,
+                      height_range=None,
+                      kids_range=None,
+                      relationship_list=None,
+                      **kwargs) -> Person:
+
+        # set age_range based on VT preferences
+        if not kwargs.get("age") and not age_range and type:
+            age_range = VT_AGE_RANGES[get_random_from_weighted_list(_vt_build_weighted_list(VT_Settings["Population"]))]
+
+        return_character = _vt_optional_get_premade(type=type, allow_premade=allow_premade,
+            age_range=age_range, tits_range=tits_range,
+            height_range=height_range, kids_range=kids_range,
+            relationship_list=relationship_list,
         )
-        # use this line to keep core game balance
-        sex_cap = Person.get_skill_ceiling()
 
-        # used to check for forced_opinions
-        forced_opinions = None
-        forced_sexy_opinions = None
-        # else uncomment this line for uniform distribution from 2-8
-        #sex_cap = 8
+        if not return_character:
+            return_character = create_random_person(*args,
+                                                    type=type,
+                                                    age_range=age_range,
+                                                    tits_range=tits_range,
+                                                    height_range=height_range,
+                                                    kids_range=kids_range,
+                                                    relationship_list=relationship_list,
+                                                    **kwargs)
 
-        # override above sex_cap if passed as keyword arg
-        if "sex_cap" in kwargs:
-            sex_cap = kwargs["sex_cap"]
-            kwargs.pop("sex_cap", None)
-
-        # grab any provided VirginTracker keyword args
-        # remove them from the kwargs dict
-        given_vt_kwargs: dict[str, int | None] = {}
-        for arg_name in virgin_tracker_args:
-            if arg_name in kwargs:
-                given_vt_kwargs[arg_name] = kwargs[arg_name]
-                kwargs.pop(arg_name, None)
-        opinions_vt_kwargs: dict[str, array] = {}
-        for arg_name in opinions_tracker_args:
-            if arg_name in kwargs:
-                opinions_vt_kwargs[arg_name] = kwargs[arg_name]
-                kwargs.pop(arg_name, None)
-        # force kids=0 if hymen is sealed or recently torn
-        if given_vt_kwargs.get("hymen", None) in (0, 1):
-            kwargs["kids"] = 0
-
-        ######################
-        #### Call to core code
-        ######################
-        return_character = wrapped_func(*args, **kwargs)
-        #TO DO: try to hook the pros to increase sluttiness - not working T.T
-        if kwargs.get("job") == prostitute_job:
-            kwargs["sluttiness"] = renpy.random.randint(90,100)
-        #Catch Clones - this will most likely not work
-        #TO DO write appropriate code to catch and set Clone virginities in make_person
-        if kwargs.get("title", "_default_") == "Clone" and kwargs.get("type") == "random":
-                setattr(return_character, "oral_virgin", 0)
-                setattr(return_character, "oral_first", None)
-                setattr(return_character, "oral_cum", 0)
-                setattr(return_character, "hymen", 0)
-                setattr(return_character, "vaginal_virgin", 0)
-                setattr(return_character, "vaginal_first", None)
-                setattr(return_character, "vaginal_cum", 0)
-                setattr(return_character, "anal_virgin", 0)
-                setattr(return_character, "anal_first", None)
-                setattr(return_character, "anal_cum", 0)
-
-        if VIRGIN_TRACKER_DEBUG:
-            write_log("Overriding make_person; adding attributes")
-
-        # NOTE: this is all-or-nothing; if some but not all of the VT kwargs are provided
-        # the provided values will be ignored, and instead all values estimated based on sex skills
-        # if make_person was called with all the VirginTracker keyword args
-        if set(virgin_tracker_args) == set(given_vt_kwargs.keys()):
-            for key, value in given_vt_kwargs.items():
-                # set the values directly
-                setattr(return_character, key, value)
-        else:
-            virginity_types = ["Oral", "Vaginal", "Anal"]
-            for sex_type in virginity_types:
-                # compute the values
-                stats = _vt_virginal_stats(return_character, sex_type, sex_cap)
-                # and apply them
-                for key, value in stats.items():
-                    setattr(return_character, key, value)
-        if "forced_opinions" in opinions_vt_kwargs:
-            forced_opinions = opinions_vt_kwargs["forced_opinions"]
-            # apply forced opinions after we 'update opinions', so we don't override them there
-            if forced_opinions and isinstance(forced_opinions, (list, tuple, set)):
-                for opinion in forced_opinions:
-                    return_character.opinions[opinion[0]] = [opinion[1], opinion[2]]
-        if "forced_sexy_opinions" in opinions_vt_kwargs:
-            forced_sexy_opinions = opinions_vt_kwargs["forced_sexy_opinions"]
-            if forced_sexy_opinions and isinstance(forced_sexy_opinions, (list, tuple, set)):
-                for opinion in forced_sexy_opinions:
-                    return_character.sexy_opinions[opinion[0]] = [opinion[1], opinion[2]]
-
-        #Added 2024.05B compatibility - Does not have a WardrobeBuilder make_up_to_outfit function
-        if  config.version not in ("2024.05B"):
-            if return_character.base_outfit and len(return_character.base_outfit.accessories) == 0 and return_character.opinion.makeup > 0:
-                WardrobeBuilder.add_make_up_to_outfit(return_character, return_character.base_outfit)
-
-        if return_character.type == 'random':
-            create_party_schedule(return_character)
-
+        return_character = _vt_apply_opinions_makeup_and_schedule(return_character, forced_opinions, forced_sexy_opinions)
 
         return return_character
-
-    # don't override the signature, because modded code might provide VT kwargs
     #wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
