@@ -1389,10 +1389,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     if person.hymen == 0:
                         $ VTvaginalst = "vaghymen"
                         $ VTvaginaltt = f"{{image=handprint_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with your seed."
-                    elif hymen == 1:
+                    elif person.hymen == 1:
                         $ VTvaginalst = "vaghymen"
                         $ VTvaginaltt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with your seed."
-                    elif hymen == 2:
+                    elif person.hymen == 2:
                         $ VTvaginalst = "openvag"
                         $ VTvaginaltt += f"\n{{image=beezee_token_small}} Your seed in her" + vt_store.fertility_tag + " womb."
                 else:
@@ -1404,7 +1404,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             $ VTvaginalst = "vaghymen"
                             $ VTvaginaltt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with "+str(person.vaginal_cum)+ " doses of your seed."
 
-                    elif hymen == 2:
+                    elif person.hymen == 2:
                         if person.vaginal_cum > 3:
                             $ VTvaginalst = "ahegaovag"
                             $ VTvaginaltt += f"\n{{image=beezee_token_small}} Her pussy can barely contain\n the "+ str(person.vaginal_cum) +" doses of your cum \n swimming \nin her" + vt_store.fertility_tag + " womb and is already oozing out."+daysince
