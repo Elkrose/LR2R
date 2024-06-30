@@ -75,7 +75,7 @@ def _vt_is_virgin(person: Person, sex_kind: str) -> bool:
         return getattr(person, sex_kind.lower() + "_virgin") <= (1 if sex_kind=="Vaginal" else 0)
     elif person.type != "random":
         # story/unique characters might have sex skill assigned; base virginality on that
-        return person.sex_skills[sex_kind] == (1 if sex_kind=="Vaginal" else 0)
+        return person.sex_skills[sex_kind] <= (1 if sex_kind=="Vaginal" else 0)
     elif sex_kind == "Vaginal" and person.kids > 0:
         return False
     else:
