@@ -804,8 +804,6 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $ vt_store.anal_fetish_status_icon = "knowpeach"
             $ vt_store.anal_fetish_tooltip = f"{{image=question_mark_small}} Her thoughts on anal sex?"
 
-
-
         if person.anal_cum == 1:
             if vt_store.sexualized and person.anal_cum <= 3:
                 $ vt_store.anal_fetish_status_icon = "handass"

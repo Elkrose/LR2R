@@ -7,16 +7,8 @@ define config.window_icon = "VTimages/mod_icon.png"
 init -1 python:
     gui.main_menu_background = Image(get_file_handle("VTimages/background_images/LR2_Title.png"))
     gui.game_menu_background = Image(get_file_handle("VTimages/background_images/LR2_Title.png"))
-    #gui.main_menu_background = "C:/_repos/ManualLR2R/lr2mods-Develop/game/mods/LR2R-VTMod/VTimages/background_images/LR2_Title.png"
-    #gui.game_menu_background = "C:/_repos/ManualLR2R/lr2mods-Develop/game/mods/LR2R-VTMod/VTimages/background_images/LR2_Title.png"
-    #config.name = _("Lab Rats 2 Reformuate - Cherries Edition")
-    #config.window_icon = "VTimages/mod_icon.png"
-    #config.name = _("Lab Rats 2 Reformuate - Cherries Edition")
-    #config.window_icon = "VTimages/mod_icon.png"
 
 init 5 python:
-#making it a habit to init hijank label lower priority
-
     config.label_overrides["start"] = "improved_start"
 
 label improved_start():
@@ -135,23 +127,11 @@ label improved_start():
 
         #KiNA Mode
         if kina_mode:
-            mc.charisma +=4
-            mc.int +=4
-            mc.focus +=4
-            mc.hr_skill +=4
-            mc.market_skill +=4
-            mc.research_skill +=4
-            mc.production_skill +=4
-            mc.supply_skill +=4
-            mc.sex_skills["Foreplay"] +=4
-            mc.sex_skills["Oral"] +=4
-            mc.sex_skills["Anal"] +=4
-            mc.sex_skills["Vaginal"] +=4
             mc.max_stats = 10
             mc.max_work_skills = 10
             mc.max_sex_skills = 10
-            mc.max_energy_cap = 500
-            mc.business.supply_goal += 1000
+            mc.max_energy_cap = 300
+            mc.business.supply_goal = 1000
             purchase_policy(theoretical_research, ignore_cost = True)
 
         #Cherry Mode
