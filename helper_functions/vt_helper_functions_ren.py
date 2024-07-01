@@ -73,11 +73,11 @@ def _vt_is_virgin(person: Person, sex_kind: str) -> bool:
         # if person has e.g. "anal_virgin" > 0, then is not virgin
         # NOTE: vaginal_virgin == 1 is treated as virgin ("just the tip")
         return getattr(person, sex_kind.lower() + "_virgin") <= (1 if sex_kind=="Vaginal" else 0)
+    elif sex_kind == "Vaginal" and (person.kids > 0 or person.is_pregnant):
+        return False
     elif person.type != "random":
         # story/unique characters might have sex skill assigned; base virginality on that
         return person.sex_skills[sex_kind] <= (1 if sex_kind=="Vaginal" else 0)
-    elif sex_kind == "Vaginal" and person.kids > 0:
-        return False
     else:
         # TODO: mixin age/relationship status? e.g. 19 w/ boyfriend might likely have tried oral, 25 w/ fiancee likely tried it all (but might be saving for marriage)
         age_tag = _vt_get_person_age_tag(person)
