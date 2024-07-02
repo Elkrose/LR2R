@@ -105,6 +105,7 @@ knowthreesome_image = Image(get_file_handle("knowthreesome.png"))
 ahegaotrance_image = Image(get_file_handle("ahegaotrance.png"))
 heavytrance_image = Image(get_file_handle("heavytrance.png"))
 starttrance_image = Image(get_file_handle("starttrance.png"))
+notrance_image = Image(get_file_handle("notrance.png"))
 donetrain_image = Image(get_file_handle("donetrain.png"))
 
 ahegaoface_image = Image(get_file_handle("ahegaoface.png"))

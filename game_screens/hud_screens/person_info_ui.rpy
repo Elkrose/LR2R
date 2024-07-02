@@ -1327,10 +1327,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     if person.hymen == 0:
                         $ VTvaginalst = "vaghymen"
                         $ VTvaginaltt = f"{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh" + vt_store.fertility_tag + " womb with your seed."
-                    elif hymen == 1:
+                    elif person.hymen == 1:
                         $ VTvaginalst = "vaghymen"
                         $ VTvaginaltt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with your seed."
-                    elif hymen == 2:
+                    elif person.hymen == 2:
                         $ VTvaginalst = "openvag"
                         $ VTvaginaltt = f"{{image=beezee_token_small}} Your seed in her" + vt_store.fertility_tag + " womb."
                 elif person.vaginal_cum > 1:
@@ -1341,7 +1341,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         elif person.vaginal_cum <= 3:
                             $ VTvaginalst = "vaghymen"
                             $ VTvaginaltt = f"{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb\nwith "+str(person.vaginal_cum)+ " doses of your seed."
-                    elif hymen == 2:
+                    elif person.hymen == 2:
                         if person.vaginal_cum > 3:
                             $ VTvaginalst = "ahegaovag"
                             $ VTvaginaltt = f"{{image=beezee_token_small}} Her pussy can barely contain \nthe "+ str(person.vaginal_cum) +" doses of your cum swimming in\nher" + vt_store.fertility_tag + " womb and is already oozing out."+daysince
@@ -1435,27 +1435,26 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 action NullAction()
                 tooltip "You had fun with her today."
 #### Tranced
-        if person.has_exact_role(very_heavy_trance_role):
-            imagebutton:
-                pos(826, 166)
-                idle "ahegaotrance"
-                action NullAction()
-                tooltip "In a very deep trance! Good time to train her!"
-        elif person.has_exact_role(heavy_trance_role):
-            imagebutton:
-                pos(826, 166)
-                idle "heavytrance"
-                action NullAction()
-                tooltip "In a deep trance! Good time to train her!"
-        elif person.has_exact_role(trance_role):
-            imagebutton:
-                pos(826, 166)
-                idle "starttrance"
-                action NullAction()
-                tooltip "In a trance! She is open to suggestions!"
+        $ vt_store.trance_status_icon = ""
+        $ vt_store.trance_tooltip = ""
+        if not person.is_in_trance:
+            $ vt_store.trance_status_icon = "notrance"
+            $ vt_store.trance_tooltip = "Not in a trance! Make her climax!"
         elif person.is_in_trance and not person.trance_training_available:
-            imagebutton:
-                pos(826, 166)
-                idle "donetrain"
-                action NullAction()
-                tooltip "Already Trained her!"
+            $ vt_store.trance_status_icon = "donetrain"
+            $ vt_store.trance_tooltip = "Already Trained her!"
+        elif person.has_exact_role(very_heavy_trance_role):
+            $ vt_store.trance_status_icon = "ahegaotrance"
+            $ vt_store.trance_tooltip = "In a very deep trance! Good time to train her!"
+        elif person.has_exact_role(heavy_trance_role):
+            $ vt_store.trance_status_icon = "heavytrance"
+            $ vt_store.trance_tooltip = "In a deep trance! Good time to train her!"
+        elif person.has_exact_role(trance_role):
+            $ vt_store.trance_status_icon = "starttrance"
+            $ vt_store.trance_tooltip = "In a trance! She is open to suggestions!"
+
+        imagebutton:
+            pos(826, 166)
+            idle vt_store.trance_status_icon
+            action NullAction()
+            tooltip vt_store.trance_tooltip
