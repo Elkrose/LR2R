@@ -1087,6 +1087,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if position_choice.name == 'Kissing':
                     $ vt_store.oral_status_icon = "pinklips"
                     $ vt_store.oral_tooltip = "In the throes of kissing you."
+                else:
+                    $ vt_store.oral_status_icon = "bitelip"
+                    $ vt_store.oral_tooltip = "She bites her lip coyly."
 
             elif person.oral_cum == 1:
                 if person.arousal_perc >= 60:
@@ -1167,12 +1170,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     else:
                         $ vt_store.oral_tooltip += f"\n{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
 
-            # display talking status
-            imagebutton:
-                pos(678, 166)
-                idle vt_store.oral_status_icon
-                action NullAction()
-                tooltip vt_store.oral_tooltip
+        imagebutton:
+            pos(678, 166)
+            idle vt_store.oral_status_icon
+            action NullAction()
+            tooltip vt_store.oral_tooltip
 
 ### Anal Virgin Flag
         $ vt_store.anal_status_icon = ""
