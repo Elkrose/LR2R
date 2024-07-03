@@ -326,26 +326,27 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 # action NullAction()
 
 #### Relationship Status
-        $ vt_store.relationship_icon = "norelations"
-        $ vt_store.relationship_tooltip = "Has no romantic relations with you."
+        $ vt_store.relationship_icon = ""
+        $ vt_store.relationship_tooltip = ""
         if person.has_relation_with_mc:
-            if person.has_role(harem_role):
-                if person.has_role(affair_role):
-                    $ vt_store.relationship_icon = "parapoly"
-                    $ vt_store.relationship_tooltip = "She is part of your polycule, and your paramour."
-                else:
-                    $ vt_store.relationship_icon = "polyamorous"
-                    $ vt_store.relationship_tooltip = "She is part of your polycule."
+            if person.has_role(harem_role) and person.has_role(affair_role):
+                $ vt_store.relationship_icon = "parapoly"
+                $ vt_store.relationship_tooltip = "{{image=parapoly_token_small}} She is part of your polycule, and your paramour."
+            elif person.has_role(harem_role):
+                $ vt_store.relationship_icon = "polyamorous"
+                $ vt_store.relationship_tooltip = "{{image=harem_token_small}} She is part of your polycule."
+            elif person.has_role(affair_role):
+                $ vt_store.relationship_icon = "paramour"
+                $ vt_store.relationship_tooltip = "{{image=paramour_token_small}} She is your paramour."
             else:
-                if person.has_role(affair_role):
-                    $ vt_store.relationship_icon = "paramour"
-                    $ vt_store.relationship_tooltip = "She is your paramour."
-                else:
-                    $ vt_store.relationship_icon = "girlfriend"
-                    $ vt_store.relationship_tooltip = "She is your girlfriend."
+                $ vt_store.relationship_icon = "girlfriend"
+                $ vt_store.relationship_tooltip = "{{image=gf_token_small}} She is your girlfriend."
+        else:
+            $ vt_store.relationship_icon = "norelations"
+            $ vt_store.relationship_tooltip = "{{image=dontknow_token_small}} Has no romantic relations with you."
 
             # append global MC relationship numbers
-            $ vt_store.relationship_tooltip += f"\nGirlfriends: "+ str(mc.stats.girlfriends) +" \nParamours: "+ str(mc.stats.paramours) +"\nSlaves: "+ str(mc.stats.slaves)
+            $ vt_store.relationship_tooltip += f"\n{{image=harem_token_small}} Polycules: " + str(mc.stats.polycule_girlfriends) + f"\t\t{{image=parapoly_token_small}} Parapolys: "+ str(mc.stats.polycule_paramours) +f"\n{{image=gf_token_small}} Girlfriends: "+ str(mc.stats.girlfriends) + f"\t\t{{image=paramour_token_small}} Paramours: "+ str(mc.stats.paramours) +f"\n{{image=triskelion_token_small}} Slaves: "+ str(mc.stats.slaves)
 
         imagebutton:
             pos(*vt_store.icon_location["relationship"])
@@ -355,7 +356,8 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
 ### Teen
         if person.age < Person.get_age_floor() + 1:
-            $ vt_store.teen_tooltip = "She looks so innocent and inexperienced."
+            # this line does nothing; should be removed or `if`-branch corrected
+            # $ vt_store.teen_tooltip = "She looks so innocent and inexperienced."
             if person.hymen <= 1 and person.vaginal_virgin <= 1:
                 $ vt_store.teen_tooltip = f"{{image=virgin_token_small}} She looks so young, innocent and inexperienced."
             else:
@@ -376,16 +378,16 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             if person.opinion.threesomes >= 2 and person.has_cum_fetish and person.has_anal_fetish and person.known_opinion("polyamory") >=2:
                 # she really loves it
                 $ vt_store.poly_status_icon = "ahegaothreesomes"
-                $ vt_store.poly_tooltip = "More the merrier! The mess we will make!"
+                $ vt_store.poly_tooltip = "{{image=creamcherry_small}} More the merrier! The mess we will make!"
             elif person.opinion.threesomes >= 2:
                 # she loves it
                 $ vt_store.poly_status_icon = "threesometriad"
                 $ vt_store.poly_tooltip = f"{{image=progress_token_small}} Open her mind up to more!"
                 if not person.has_role(harem_role):
                     if person.love < 80:
-                        $ vt_store.poly_tooltip += f"\n{{image=red_heart_token_small}} "+ str(80 - person.love) +" more to add her to your polycule!"
+                        $ vt_store.poly_tooltip += f"\n{{image=progress_token_small}} "+ str(80 - person.love) +"{{image=red_heart_token_small}} more to add her to your polycule!"
                     else:
-                        $ vt_store.poly_tooltip += "\nShe is ready to be part of your polycule!"
+                        $ vt_store.poly_tooltip += "\n{{image=red_heart_token_small}} She is ready to be part of your polycule!"
                 if person.known_opinion("polyamory") < 2:
                     if person.known_opinion("polyamory") == 1:
                         # polyamory opinion is known, but not high enough
@@ -393,10 +395,13 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     else:
                         # polyamory opinion might not be known, or is zero/negative
                         $ vt_store.poly_tooltip += f"\n{{image=question_mark_small}} Needs to like polyamorous relationships."
-                if not person.has_anal_fetish:
-                    $ vt_store.poly_tooltip += f"\n{{image=ahegaoanal_small}} Needs the Anal Fetish Unlocked."
-                if not person.has_cum_fetish:
-                    $ vt_store.poly_tooltip += f"\n{{image=ahegaomouth_small}} Needs the Cum Fetish Unlocked."
+
+                # TODO: are these moved elsewhere?
+                # if not person.has_anal_fetish:
+                #     $ vt_store.poly_tooltip += f"\n{{image=ahegaoanal_small}} Needs the Anal Fetish Unlocked."
+                # if not person.has_cum_fetish:
+                #     $ vt_store.poly_tooltip += f"\n{{image=ahegaomouth_small}} Needs the Cum Fetish Unlocked."
+
             else:
                 # she doesn't love it
                 $ vt_store.poly_status_icon = "opentriad"
@@ -406,13 +411,13 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ vt_store.poly_tooltip += f"\n{{image=red_heart_token_small}} Make her love threesomes!"
                 elif person.opinion.threesomes == 0:
                     # she doesn't care
-                    $ vt_store.poly_tooltip = "She's indifferent to threesomes, so make her like it..."
+                    $ vt_store.poly_tooltip = "{{image=question_mark_small}} She's indifferent to threesomes, so make her like it..."
                 elif person.opinion.threesomes == -1:
                     # she dislikes it
-                    $ vt_store.poly_tooltip = f"She dislikes threesomes!"
+                    $ vt_store.poly_tooltip = f"{{image=dislike_small}} She dislikes threesomes!"
                 elif person.opinion.threesomes == -2:
                     # she hates it
-                    $ vt_store.poly_tooltip = f"She hates threesomes!"
+                    $ vt_store.poly_tooltip = f"{{image=dislike_small}} She hates threesomes!"
         else:
             # opinion not known
             $ vt_store.poly_status_icon = "knowthreesome"
@@ -439,36 +444,42 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
 ###### Birth Control Status
         # set defaults
-        $ vt_store.birth_control_status_icon = "knowbirthcontrol"
-        $ vt_store.birth_control_tooltip = "Is she on birth control?"
+        $ vt_store.birth_control_status_icon = ""
+        $ vt_store.birth_control_tooltip = ""
         $ vt_store.fertility_tag = ""
         $ vt_store.known_fertile = False
 
-        if person.bc_status_known:
-            if person._birth_control:
+        # pregnancy takes priority
+        if person.knows_pregnant:
+            $ vt_store.birth_control_status_icon = "pregnant"
+            $ vt_store.birth_control_tooltip = "{{image=vtcherries_small}} She is pregnant."
+            $ vt_store.fertility_tag = " pregnant"
+
+        elif person.bc_status_known:
+            if person._birth_control: # she's on birth control (she could also be infertile)
                 $ vt_store.birth_control_status_icon = "birthcontrol"
-                $ vt_store.birth_control_tooltip = "She is on birth control."
+                $ vt_store.birth_control_tooltip = "{{image=bc_image_small}} She is on birth control."
                 $ vt_store.fertility_tag = " protected"
-            elif person.is_infertile:
+            elif person.is_infertile: # she's not on birth control, but she is infertile
                 $ vt_store.birth_control_status_icon = "birthcontrol"
+                # TODO: small icon in tooltip?
                 $ vt_store.birth_control_tooltip = "She is infertile."
                 $ vt_store.fertility_tag = " infertile"
-            else:
+            else: # she is not on birth control, and is not infertile
                 $ vt_store.birth_control_status_icon = "nobirthcontrol"
-                $ vt_store.birth_control_tooltip = "She is not on birth control."
-                $ vt_store.fertility_tag = " defenseless"
 
-                # person is not on birth control, and is not infertile
-                if person.is_highly_fertile and perk_system.has_ability_perk("Ovulation Cycle Perception"):
+                if person.is_highly_fertile and perk_system.has_ability_perk("Ovulation Cycle Perception") and persistent.pregnancy_pref > 0:
+                    $ vt_store.birth_control_tooltip += "\n{{image=beezee_token_small}} She is highly fertile."
                     $ vt_store.fertility_tag = " highly fertile" + vt_store.fertility_tag
-                    $ vt_store.birth_control_tooltip += "\nShe is highly fertile."
                     $ vt_store.known_fertile = True
 
-        # after above, check if pregnant, and override anything set above
-        if person.knows_pregnant:
-                $ vt_store.birth_control_status_icon = "pregnant"
-                $ vt_store.birth_control_tooltip = "She is pregnant."
-                $ vt_store.fertility_tag = " pregnant"
+                else: # can't tell if she's highly fertile, but know she is fertile and off birth control
+                    $ vt_store.birth_control_tooltip = "{{image=nobc_image_small}} She is not on birth control."
+                    $ vt_store.fertility_tag = " defenseless"
+
+        else: # not pregnant and don't know birth control status
+            $ vt_store.birth_control_status_icon = "knowbirthcontrol"
+            $ vt_store.birth_control_tooltip = "{{image=knowbc_token_small}} Is she on birth control?"
 
         # display base icon
         imagebutton:
@@ -505,16 +516,19 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         # validate that the opinion exists and is known
         if "bareback sex" in person.get_known_opinion_list(include_sexy=True, include_normal=False):
-            if person.opinion.bareback_sex >= 2 and person.wants_creampie and person.has_cum_fetish and person.has_anal_fetish and person.has_breeding_fetish and not person.wants_condom():
+            if person.opinion.bareback_sex >= 2 and person.wants_creampie and (person.has_cum_fetish or person.has_anal_fetish or person.has_breeding_fetish) and not person.wants_condom():
                 # she loves it
-                $ vt_store.condom_status_icon = "ahegaocondom"
-                $ vt_store.condom_status_tooltip = "She loves it raw!"
+                # TODO: previously the status icon was "ahegaocondom" -- is there a more specific/indicative icon?
+                # FIXME: this icon is incongruous
+                $ vt_store.condom_status_icon = "vtcherries"
+                $ vt_store.condom_status_tooltip = "{{image=creamcherry_small}} She loves it raw!"
 
             elif person.opinion.bareback_sex >= 0:
                 # she doesn't dislike it
-                $ vt_store.condom_status_icon = "wearcondom"
-                if person.opinion.bareback_sex == 2 and not person.wants_condom():
-                    $ vt_store.condom_status_tooltip = f"{{image=progress_token_small}} She seems to love raw sex! "
+                if person.opinion.bareback_sex >= 2 and not person.wants_condom():
+                    $ vt_store.condom_status_icon = "nocondom"
+                    $ vt_store.condom_status_tooltip = f"{{image=progress_token_small}} She seems to love raw sex!"
+
                     if not person.has_anal_fetish:
                         $ vt_store.condom_status_tooltip += f"\n{{image=ahegaoanal_small}} Needs the Anal Fetish Unlocked."
                     if not person.has_breeding_fetish:
@@ -523,9 +537,12 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ vt_store.condom_status_tooltip += f"\n{{image=ahegaomouth_small}} Needs the Cum Fetish Unlocked."
 
                 elif person.opinion.bareback_sex == 1:
+                    $ vt_store.condom_status_icon = "wearcondom"
                     $ vt_store.condom_status_tooltip = f"{{image=progress_token_small}} Open her mind up to enjoying raw more!"
                     $ vt_store.condom_status_tooltip += f"\n{{image=red_heart_token_small}} Make her love raw sex more!"
+
                 elif person.opinion.bareback_sex == 0:
+                    $ vt_store.condom_status_icon = "wearcondom"
                     $ vt_store.condom_status_tooltip = f"{{image=progress_token_small}} She's indifferent to raw sex, so make her like it..."
 
             else:
@@ -533,22 +550,29 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 # display the nocondom icon with a "not" overlay
                 $ vt_store.condom_status_icon = "nocondom"
                 if person.opinion.bareback_sex == -1:
-                    $ vt_store.condom_status_tooltip = f"She dislikes raw sex!"
+                    $ vt_store.condom_status_tooltip = f"{{image=dislike_small}} She dislikes raw sex!"
                 elif person.opinion.bareback_sex == -2:
-                    $ vt_store.condom_status_tooltip = f"She hates raw sex!"
+                    $ vt_store.condom_status_tooltip = f"{{image=dislike_small}} She hates raw sex!"
         else:
             # opinion not known
             $ vt_store.condom_status_icon = "knowcondom"
-            $ vt_store.condom_status_tooltip = f"{{image=question_mark_small}} Does she like bareback sex?"
+            $ vt_store.condom_status_tooltip = f"{{image=knowcondom_token_small}} Does she like bareback sex?"
 
         # override during sex
         if vt_store.sexualized:
             # during sex
-            $ vt_store.condom_status_icon = "wearcondom"
             if mc.condom:
-                $ vt_store.condom_status_tooltip = "You are wearing a condom"
+                $ vt_store.condom_status_icon = "wearcondom"
+                $ vt_store.condom_status_tooltip = "{{image=wearcondom_token_small}} You are wearing a condom"
+            elif not mc.condom and mc.recently_orgasmed:
+                # FIXME: this icon is incongruous
+                $ vt_store.condom_status_icon = "creamcherry"
+                $ vt_store.condom_status_tooltip = "{{image=vtcherries_small}} You are natural."
             else:
-                $ vt_store.condom_status_tooltip = "You are natural."
+                # FIXME: this icon is incongruous
+                $ vt_store.condom_status_icon = "vtcherries"
+                $ vt_store.condom_status_tooltip = "{{image=vtcherries_small}} You are natural."
+
 
             # show condom icon
             imagebutton:
@@ -557,13 +581,14 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 action NullAction()
                 tooltip vt_store.condom_status_tooltip
 
+            # FIXME: remove; unused
             # overlay "not" icon if not wearing condom
-            if not mc.condom:
-                imagebutton:
-                    pos(*vt_store.icon_location["wants_condom"])
-                    idle "dislike"
-                    action NullAction()
-                    tooltip vt_store.condom_status_tooltip
+            # if not mc.condom:
+            #     imagebutton:
+            #         pos(434, 166)
+            #         idle "dislike"
+            #         action NullAction()
+            #         tooltip vt_store.condom_status_tooltip
 
         else:
             # in conversation
@@ -588,19 +613,20 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         $ vt_store.trance_tooltip = ""
         if not person.is_in_trance:
             $ vt_store.trance_status_icon = "notrance"
+            # TODO: small icon?
             $ vt_store.trance_tooltip = "Not in a trance! Make her climax!"
         elif person.is_in_trance and not person.trance_training_available:
             $ vt_store.trance_status_icon = "donetrain"
-            $ vt_store.trance_tooltip = "Already Trained her!"
+            $ vt_store.trance_tooltip = "{{image=donetrain_token_small}} Already trained her!"
         elif person.has_exact_role(very_heavy_trance_role):
             $ vt_store.trance_status_icon = "ahegaotrance"
-            $ vt_store.trance_tooltip = "In a very deep trance! Good time to train her!"
+            $ vt_store.trance_tooltip = "{{image=ahegaotrance_token_small}} In a very deep trance!\nGood time to train her!"
         elif person.has_exact_role(heavy_trance_role):
             $ vt_store.trance_status_icon = "heavytrance"
-            $ vt_store.trance_tooltip = "In a deep trance! Good time to train her!"
+            $ vt_store.trance_tooltip = "{{image=heavytrance_token_small}} In a deep trance!\nGood time to train her!"
         elif person.has_exact_role(trance_role):
             $ vt_store.trance_status_icon = "starttrance"
-            $ vt_store.trance_tooltip = "In a trance! She is open to suggestions!"
+            $ vt_store.trance_tooltip = "{{image=starttrance_token_small}} In a trance! She is open to suggestions!"
 
         imagebutton:
             pos(*vt_store.icon_location["tranced"])
@@ -625,33 +651,38 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
                 $ vt_store.oral_status_icon = "openmouth"
                 if position_choice.name == 'Blowjob':
-                    $ vt_store.oral_tooltip = "She sucks your cock."
+                    $ vt_store.oral_tooltip = "{{image=openmouth_small}} She sucks your cock."
                 elif position_choice.name == "Deepthroat":
-                    $ vt_store.oral_status_icon = "openmouth"
-                    $ vt_store.oral_tooltip = "You deeply fuck her throat with your cock."
+                    $ vt_store.oral_tooltip = "{{image=openmouth_small}} You deeply fuck her throat with your cock."
                 elif position_choice.name == "Skull Fuck":
-                    $ vt_store.oral_status_icon = "openmouth"
-                    $ vt_store.oral_tooltip = "You grab her head and skull fuck her with your cock."
+                    $ vt_store.oral_tooltip = "{{image=openmouth_small}} You grab her head and skull fuck her with your cock."
 
             elif position_choice.skill_tag == 'Oral' and 'climax_type' in globals():
-                $ vt_store.oral_status_icon = "ahegaomouth"
                 if climax_type == "mouth":
                     if mc.condom:
-                        $ vt_store.oral_tooltip = "You fill the condom as her tongue wraps around you."
+                        $ vt_store.oral_status_icon = "openmouth"
+                        $ vt_store.oral_tooltip = "{{image=openmouth_small}} You fill the condom as her tongue wraps around you."
                     else:
-                        $ vt_store.oral_tooltip = "You flood her mouth full of your cum."
+                        $ vt_store.oral_status_icon = "ahegaomouth"
+                        $ vt_store.oral_tooltip = "{{image=ahegaomouth_small}} You flood her mouth full of your cum."
 
                 elif climax_type == "throat":
                     if mc.condom:
-                        $ vt_store.oral_tooltip = "You fill the condom as her throat squeezes you."
+                        $ vt_store.oral_status_icon = "openmouth"
+                        $ vt_store.oral_tooltip = "{{image=openmouth_small}} You fill the condom as her throat squeezes you."
                     else:
-                        $ vt_store.oral_tooltip = "You flood her belly with your cum."
+                        $ vt_store.oral_status_icon = "ahegaomouth"
+                        $ vt_store.oral_tooltip = "{{image=ahegaomouth_small}} You flood her belly with your cum."
 
                 elif climax_type == "face":
+                    # TODO: similar icon to ahegaomouth but closed mouth, cum over face
+                    $ vt_store.oral_status_icon = "ahegaomouth"
+                    # TODO: small icon in tooltip
                     $ vt_store.oral_tooltip = "You shoot your load all over her face."
 
                 elif climax_type =="body":
-                    # $ vt_store.oral_status_icon = "ahegaobody" # or "openmouth"?
+                    $ vt_store.oral_status_icon = "bitelip"
+                    # TODO: small icon in tooltip
                     $ vt_store.oral_tooltip = "You blow your load all over her body."
 
             elif position_choice.skill_tag == 'Foreplay':
@@ -673,7 +704,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif 1 < person.oral_cum <= 3:
                 if person.arousal_perc >= 60:
                     $ vt_store.oral_status_icon = "ahegaoface"
-                    $ vt_store.oral_tooltip = f"*She hungrily gazes at you for more cum.*\n{{image=ahegaomouth_small}} She has "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
+                    $ vt_store.oral_tooltip = f"{i}She hungrily gazes at you for more cum.{/i}\n{{image=ahegaomouth_small}} She has "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
                 else:
                     $ vt_store.oral_status_icon = "bitelip"
                     $ vt_store.oral_tooltip = f"{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \nswimming in her belly."
@@ -681,7 +712,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif person.oral_cum > 3:
                 if person.arousal_perc >= 60:
                     $ vt_store.oral_status_icon = "ahegaoface"
-                    $ vt_store.oral_tooltip = f"*Hunger in her eyes wants more cum*\n{{image=ahegaomouth_small}} She has "+ str(person.oral_cum) +" doses of your cum \n swimming in her stomach, causing a bit of a bulge."
+                    $ vt_store.oral_tooltip = f"{i}Hunger in her eyes wants more cum{/i}\n{{image=ahegaomouth_small}} She has "+ str(person.oral_cum) +" doses of your cum \n swimming in her stomach, causing a bit of a bulge."
                 else:
                     $ vt_store.oral_status_icon = "ahegaomouth"
                     $ vt_store.oral_tooltip = f"{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \n swimming in the slight bulge of her belly."
@@ -693,10 +724,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 elif person.oral_first == mc.name:
                     $ vt_store.oral_tooltip = f"{{image=handprint_token_small}} She locks eyes with you and bite her lip sexily."
                 else:
-                    $ vt_store.oral_tooltip = "She pants and breathes heavily and bites her lip."
+                    $ vt_store.oral_tooltip = "{{image=bitelip_small}} She pants and breathes heavily, biting her lip."
 
                 if person.energy < 20 and person.had_sex_today:
-                    $ vt_store.oral_tooltip += "She seems lost in her bliss and panting."
+                    $ vt_store.oral_tooltip += "{{image=bitelip_small}} She seems lost in her bliss and panting."
 
 
         elif not vt_store.sexualized:
@@ -709,17 +740,17 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     elif person.oral_first == mc.name:
                         $ vt_store.oral_tooltip = f"{{image=handprint_token_small}} She starts to drool \n and undress you with her eyes."
                     else:
-                        $ vt_store.oral_tooltip = "She looks at you with savage lust in her eyes."
+                        $ vt_store.oral_tooltip = "{{image=bitelip_small}} She looks at you with savage lust in her eyes."
 
                     if person.energy <20 and person.had_sex_today:
-                        $ vt_store.oral_tooltip = "She seems lost in her bliss and panting."
+                        $ vt_store.oral_tooltip = "{{image=bitelip_small}} She seems lost in her bliss and panting."
 
                 elif person.oral_cum > 0:
                     $ vt_store.oral_status_icon = "ahegaoface"
                     if person.energy < 20 and person.had_sex_today:
-                        $ vt_store.oral_tooltip = "She seems lost in her bliss and panting."
+                        $ vt_store.oral_tooltip = "{{image=bitelip_small}} She seems lost in her bliss and panting."
                     else:
-                        $ vt_store.oral_tooltip = "She hungrily gazes as you for more cum."
+                        $ vt_store.oral_tooltip = "{{image=bitelip_small}} She hungrily gazes as you for more cum."
 
                     if person.oral_cum == 1:
                         $ vt_store.oral_tooltip += f"\n{{image=ahegaomouth_small}} She has a dose of your protein in her belly."
@@ -748,12 +779,12 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             tooltip vt_store.oral_tooltip
 
 ### Vaginal Virgin Flag
-        $ VTvaginalst = ""
-        $ VTvaginaltt = ""
+        $ vt_store.vaginal_status_icon = ""
+        $ vt_store.vaginal_tooltip = ""
 
         if person.hymen == 0 and person.vaginal_virgin <= 1: #morevisual with virgin
-            $ VTvaginalst = "truevirgin"
-            $ VTvaginaltt = f"{{image=virgin_token_small}} She looks so innocent and inexperienced."
+            $ vt_store.vaginal_status_icon = "truevirgin"
+            $ vt_store.vaginal_tooltip = f"{{image=virgin_token_small}} She looks so innocent and inexperienced."
 
         #the interactive icons during sex stuff
         elif vt_store.sexualized:
@@ -761,135 +792,138 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if climax_type == "pussy":
                     if not mc.condom:
                         if person.hymen == 1:
-                            $ VTvaginalst = "vaghymen"
-                            $ VTvaginaltt = f"{{image=handprint_token_small}} You mark her fresh" + vt_store.fertility_tag + " womb with your virile seed! \n Her virinity mixes with your cum!"
+                            $ vt_store.vaginal_status_icon = "vaghymen"
+                            $ vt_store.vaginal_tooltip = f"{{image=handprint_token_small}} You mark her fresh" + vt_store.fertility_tag + " womb with your virile seed! \n Her virinity mixes with your cum!"
                         else:
-                            $ VTvaginalst = "openvag"
-                            $ VTvaginaltt = "You flood her" + vt_store.fertility_tag + " womb with your seed!"
+                            $ vt_store.vaginal_status_icon = "openvag"
+                            $ vt_store.vaginal_tooltip = "{{image=openvag_small}} You flood her" + vt_store.fertility_tag + " womb with your seed!"
                             if person.vaginal_cum >= 1:
-                                $ VTvaginalst = "ahegaovag"
+                                $ vt_store.vaginal_status_icon = "ahegaovag"
 
                     elif mc.condom:
                         if person.hymen == 1:
-                            $ VTvaginalst = "spreadvag"
-                            $ VTvaginaltt = f"{{image=handprint_token_small}} You fill the condom in her freshly fucked pussy with your cum!"
+                            $ vt_store.vaginal_status_icon = "spreadvag"
+                            $ vt_store.vaginal_tooltip = f"{{image=handprint_token_small}} You fill the condom in her freshly fucked pussy with your cum!"
                         else:
-                            $ VTvaginalst = "spreadvag"
-                            $ VTvaginaltt = "You push deep and fill the condom with your seed!"
+                            $ vt_store.vaginal_status_icon = "spreadvag"
+                            $ vt_store.vaginal_tooltip = "{{image=spreadvag_small}} You push deep and fill the condom with your seed!"
 
                 elif climax_type == "body":
-                    $ VTvaginalst = "spreadvag"
-                    $ VTvaginaltt = "You blow your load all over her body."
+                    $ vt_store.vaginal_status_icon = "spreadvag"
+                    $ vt_store.vaginal_tooltip = "{{image=spreadvag_small}} You blow your load all over her body."
 
             elif position_choice.skill_tag == 'Vaginal':
-                $ VTvaginalst = "spreadvag"
-                $ VTvaginaltt = "You fuck her juicy" + vt_store.fertility_tag + " pussy with your cock."
+                $ vt_store.vaginal_status_icon = "spreadvag"
+                $ vt_store.vaginal_tooltip = "{{image=spreadvag_small}} You fuck her juicy" + vt_store.fertility_tag + " pussy with your cock."
 
             elif person.vaginal_cum > 0:
                 if person.vaginal_cum == 1:
                     if person.hymen == 0:
-                        $ VTvaginalst = "vaghymen"
-                        $ VTvaginaltt = f"{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh" + vt_store.fertility_tag + " womb with your seed."
+                        $ vt_store.vaginal_status_icon = "vaghymen"
+                        $ vt_store.vaginal_tooltip = f"{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh" + vt_store.fertility_tag + " womb with your seed."
                     elif person.hymen == 1:
-                        $ VTvaginalst = "vaghymen"
-                        $ VTvaginaltt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with your seed."
+                        $ vt_store.vaginal_status_icon = "vaghymen"
+                        $ vt_store.vaginal_tooltip += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with your seed."
                     elif person.hymen == 2:
-                        $ VTvaginalst = "openvag"
-                        $ VTvaginaltt = f"{{image=beezee_token_small}} Your seed in her" + vt_store.fertility_tag + " womb."
+                        $ vt_store.vaginal_status_icon = "openvag"
+                        $ vt_store.vaginal_tooltip = f"{{image=beezee_token_small}} Your seed in her" + vt_store.fertility_tag + " womb."
                 elif person.vaginal_cum > 1:
                     if person.hymen <= 1:
                         if person.vaginal_cum > 3:
-                            $ VTvaginalst = "ahegaovag"
-                            $ VTvaginaltt = f"{{image=handprint_token_small}}{{image=beezee_token_small}} Her freshly fucked" + vt_store.fertility_tag + " womb\ncan barely contain your "+str(person.vaginal_cum)+ " doses of your seed.\nIt is already oozing out."
+                            $ vt_store.vaginal_status_icon = "ahegaovag"
+                            $ vt_store.vaginal_tooltip = f"{{image=handprint_token_small}}{{image=beezee_token_small}} Her freshly fucked" + vt_store.fertility_tag + " womb\ncan barely contain your "+str(person.vaginal_cum)+ " doses of your seed.\nIt is already oozing out."
                         elif person.vaginal_cum <= 3:
-                            $ VTvaginalst = "vaghymen"
-                            $ VTvaginaltt = f"{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb\nwith "+str(person.vaginal_cum)+ " doses of your seed."
+                            $ vt_store.vaginal_status_icon = "vaghymen"
+                            $ vt_store.vaginal_tooltip = f"{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb\nwith "+str(person.vaginal_cum)+ " doses of your seed."
                     elif person.hymen == 2:
                         if person.vaginal_cum > 3:
-                            $ VTvaginalst = "ahegaovag"
-                            $ VTvaginaltt = f"{{image=beezee_token_small}} Her pussy can barely contain \nthe "+ str(person.vaginal_cum) +" doses of your cum swimming in\nher" + vt_store.fertility_tag + " womb and is already oozing out."+daysince
+                            $ vt_store.vaginal_status_icon = "ahegaovag"
+                            $ vt_store.vaginal_tooltip = f"{{image=beezee_token_small}} Her pussy can barely contain \nthe "+ str(person.vaginal_cum) +" doses of your cum swimming in\nher" + vt_store.fertility_tag + " womb and is already oozing out."+vt_store.last_insemination_tag_text
                         elif person.vaginal_cum <= 3:
-                            $ VTvaginalst = "openvag"
-                            $ VTvaginaltt = f"{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum\nswimming in her" + vt_store.fertility_tag + " womb."+daysince
+                            $ vt_store.vaginal_status_icon = "openvag"
+                            $ vt_store.vaginal_tooltip = f"{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum\nswimming in her" + vt_store.fertility_tag + " womb."+vt_store.last_insemination_tag_text
 
                 if person.arousal_perc >= 60:
-                    $ VTvaginaltt += f"\n*You can really smell her arousal*"
+                    $ vt_store.vaginal_tooltip += f"\n{{image=spreadvag_small}} {i}You can really smell her arousal{/i}"
+
             else:
-                $ VTvaginalst = "spreadvag"
-                if person.vaginal_virgin == 0:
-                    $ VTvaginaltt = f"{{image=virgin_token_small}} She plays with her fresh innocent hungry pussy."
-                elif person.vaginal_first == mc.name:
-                    $ VTvaginaltt = f"{{image=handprint_token_small}} She locks eyes with you and licks her lips\nand plays with her pussy."
-                else:
-                    $ VTvaginaltt = "She pants heavily as she plays with her pussy."
+                $ vt_store.vaginal_status_icon = "spreadvag"
 
-                if person.energy <20 and person.had_sex_today:
-                    $ VTvaginaltt = "She seems lost in her bliss and panting."
+                # prioritize low-energy already-sexed tooltip
+                if person.energy < 20 and person.had_sex_today:
+                    $ vt_store.vaginal_tooltip = "{{image=spreadvag_small}} She seems lost in her bliss and panting."
 
+                # otherwise she either has energy, or has not had sex today, or both
+                elif person.vaginal_virgin == 0: # she is a virgin
+                    $ vt_store.vaginal_tooltip = f"{{image=virgin_token_small}} She plays with her fresh innocent hungry pussy."
+                elif person.vaginal_first == mc.name: # MC was her first
+                    $ vt_store.vaginal_tooltip = f"{{image=handprint_token_small}} She locks eyes with you and licks her lips\nwhile playing with her pussy."
+                else: # someone else claimed her
+                    $ vt_store.vaginal_tooltip = "{{image=spreadvag_small}} She pants heavily as she plays with her pussy."
 
         elif not vt_store.sexualized:
             if person.vaginal_first == mc.name:
-                $ VTvaginalst = "claimedvag"
-                $ VTvaginaltt = f"{{image=handprint_token_small}} You claimed this pussy!"
+                $ vt_store.vaginal_status_icon = "claimedvag"
+                $ vt_store.vaginal_tooltip = f"{{image=handprint_token_small}} You claimed this pussy!"
             elif person.vaginal_first is not None and person.hymen == 2:
-                $ VTvaginalst = "knowpeach"
-                $ VTvaginaltt = f"{{image=taboo_break}} Someone else had this pussy before you... OWN IT!"
+                $ vt_store.vaginal_status_icon = "knowpeach"
+                $ vt_store.vaginal_tooltip = f"{{image=taboo_break}} Someone else had this pussy before you... OWN IT!"
 
-            if person.arousal_perc >= 59 and person.vaginal_cum <= 0:
-                $ VTvaginalst = "spreadvag"
+            if person.arousal_perc >= 60 and person.vaginal_cum <= 0:
+                $ vt_store.vaginal_status_icon = "spreadvag"
                 if person.vaginal_virgin <= 1:
-                    $ VTvaginaltt += f"\n{{image=virgin_token_small}} Her fresh pussy is dripping for you.\n*You can really smell her arousal*"
+                    $ vt_store.vaginal_tooltip += f"\n{{image=virgin_token_small}} Her fresh pussy is dripping for you.\n{i}You can really smell her arousal{/i}"
                     if person.hymen == 0:
-                        $ VTvaginaltt += f"\n{{image=virgin_token_small}} She is more than ready to be fucked."
+                        $ vt_store.vaginal_tooltip += f"\n{{image=virgin_token_small}} She is more than ready to be fucked."
                 elif person.vaginal_virgin > 2:
                     if person.vaginal_first == mc.name:
-                        $ VTvaginaltt += f"\n{{image=handprint_token_small}} Her pussy is dripping for you.\n*You can really smell her arousal*\nCome take me!"
+                        $ vt_store.vaginal_tooltip += f"\n{{image=handprint_token_small}} Her pussy is dripping for you.\n{i}You can really smell her arousal{/i}\n\"Come take me!\""
                     elif person.vaginal_first != mc.name:
-                        $ VTvaginaltt += "\nHer pussy is dripping down her leg.\n*She is really aroused*"
+                        $ vt_store.vaginal_tooltip += "\n{{image=vagclosed_small}} Her pussy is dripping down her leg.\n{i}She is really aroused{/i}"
 
             elif person.vaginal_cum > 0:
                 if person.vaginal_cum == 1:
                     if person.hymen == 0:
-                        $ VTvaginalst = "vaghymen"
-                        $ VTvaginaltt = f"{{image=handprint_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with your seed."
+                        $ vt_store.vaginal_status_icon = "vaghymen"
+                        $ vt_store.vaginal_tooltip = f"{{image=handprint_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with your seed."
                     elif person.hymen == 1:
-                        $ VTvaginalst = "vaghymen"
-                        $ VTvaginaltt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with your seed."
+                        $ vt_store.vaginal_status_icon = "vaghymen"
+                        $ vt_store.vaginal_tooltip += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with your seed."
                     elif person.hymen == 2:
-                        $ VTvaginalst = "openvag"
-                        $ VTvaginaltt += f"\n{{image=beezee_token_small}} Your seed in her" + vt_store.fertility_tag + " womb."
+                        $ vt_store.vaginal_status_icon = "openvag"
+                        $ vt_store.vaginal_tooltip += f"\n{{image=beezee_token_small}} Your seed in her" + vt_store.fertility_tag + " womb."
                 else:
                     if person.hymen <= 1:
                         if person.vaginal_cum > 3:
-                            $ VTvaginalst = "ahegaovag"
-                            $ VTvaginaltt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} Her freshly fucked" + vt_store.fertility_tag + " womb can barely contain your "+str(person.vaginal_cum)+ " doses of your seed.\nIt is already oozing out."
+                            $ vt_store.vaginal_status_icon = "ahegaovag"
+                            $ vt_store.vaginal_tooltip += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} Her freshly fucked" + vt_store.fertility_tag + " womb can barely contain your "+str(person.vaginal_cum)+ " doses of your seed.\nIt is already oozing out."
                         elif person.vaginal_cum <= 3:
-                            $ VTvaginalst = "vaghymen"
-                            $ VTvaginaltt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with "+str(person.vaginal_cum)+ " doses of your seed."
+                            $ vt_store.vaginal_status_icon = "vaghymen"
+                            $ vt_store.vaginal_tooltip += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh" + vt_store.fertility_tag + " womb with "+str(person.vaginal_cum)+ " doses of your seed."
 
                     elif person.hymen == 2:
                         if person.vaginal_cum > 3:
-                            $ VTvaginalst = "ahegaovag"
-                            $ VTvaginaltt += f"\n{{image=beezee_token_small}} Her pussy can barely contain\n the "+ str(person.vaginal_cum) +" doses of your cum \n swimming \nin her" + vt_store.fertility_tag + " womb and is already oozing out."+daysince
+                            $ vt_store.vaginal_status_icon = "ahegaovag"
+                            $ vt_store.vaginal_tooltip += f"\n{{image=beezee_token_small}} Her pussy can barely contain\n the "+ str(person.vaginal_cum) +" doses of your cum \n swimming \nin her" + vt_store.fertility_tag + " womb and is already oozing out."+vt_store.last_insemination_tag_text
                         elif person.vaginal_cum <= 3:
-                            $ VTvaginalst = "openvag"
-                            $ VTvaginaltt += f"\n{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her" + vt_store.fertility_tag + " womb."+daysince
+                            $ vt_store.vaginal_status_icon = "openvag"
+                            $ vt_store.vaginal_tooltip += f"\n{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her" + vt_store.fertility_tag + " womb."+vt_store.last_insemination_tag_text
 
-                if person.arousal_perc >= 59:
-                    $ VTvaginaltt += f"\n*You can really smell her arousal*"
+                if person.arousal_perc >= 60:
+                    $ vt_store.vaginal_tooltip += f"\n*You can really smell her arousal*"
 
         imagebutton:
             pos(*vt_store.icon_location["virginity_vaginal"])
-            idle VTvaginalst
+            idle vt_store.vaginal_status_icon
             action NullAction()
-            tooltip VTvaginaltt
+            tooltip vt_store.vaginal_tooltip
 
         if not vt_store.sexualized and person.hymen > 1 and person.vaginal_cum > 3:
             imagebutton:
                 pos(*vt_store.icon_location["virginity_vaginal"])
                 idle "bc_cum"
                 action NullAction()
-                tooltip VTvaginaltt
+                tooltip vt_store.vaginal_tooltip
 
 ### Anal Virgin Flag
         $ vt_store.anal_status_icon = ""
@@ -905,34 +939,34 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if climax_type == "anal":
                         if mc.condom:
                             $ vt_store.anal_status_icon = "yesanal"
-                            $ vt_store.anal_tooltip = "You fill the condom with your seed, as she pulses around you!"
+                            $ vt_store.anal_tooltip = "{{image=yesanal_small}} You fill the condom with your seed, as she pulses around you!"
                         else:
-                            $ vt_store.anal_tooltip = "You flood her bowels with your seed!"
-                            if person.anal_cum == 0:
+                            if person.anal_cum <= 0:
                                 $ vt_store.anal_status_icon = "handass"
                             elif person.anal_cum >= 1:
                                 $ vt_store.anal_status_icon = "ahegaopeach"
+                            $ vt_store.anal_tooltip = "{{image=handass_small}} You flood her bowels with your seed!"
 
                 if climax_type =="body":
                     $ vt_store.anal_status_icon = "yesanal"
-                    $ vt_store.anal_tooltip = "You blow your load all over her body."
+                    $ vt_store.anal_tooltip = "{{image=yesanal_small}} You blow your load all over her body."
 
             elif position_choice.skill_tag == 'Anal':
                 $ vt_store.anal_status_icon = "yesanal"
-                $ vt_store.anal_tooltip = "You fuck her ass with your cock."
+                $ vt_store.anal_tooltip = "{{image=yesanal_small}} You fuck her ass with your cock."
 
             elif person.anal_cum == 1:
                 if person.arousal_perc >= 60:
                     $ vt_store.anal_status_icon = "handass"
-                    $ vt_store.anal_tooltip = f"She seems lost in her bliss and panting.\n{{image=ahegaoanal_small}} She has a dose of your protein in her bowels."
+                    $ vt_store.anal_tooltip = f"{{image=handass_small}} She seems lost in her bliss and panting.\n{{image=ahegaoanal_small}} She has a dose of your protein in her bowels."
                 else:
                     $ vt_store.anal_status_icon = "handass"
-                    $ vt_store.anal_tooltip = f"She looks at you with lust\nin her innocent hungry eyes.\n{{image=ahegaoanal_small}} She has a dose of your protein in her bowels."
+                    $ vt_store.anal_tooltip = f"{{image=handass_small}} She looks at you with lust\nin her innocent hungry eyes.\n{{image=ahegaoanal_small}} She has a dose of your protein in her bowels."
 
             elif 1 < person.anal_cum <= 3:
                 if person.arousal_perc >= 60:
                     $ vt_store.anal_status_icon = "ahegaopeach"
-                    $ vt_store.anal_tooltip = f"*She hungrily gazes at you for more cum.*\n{{image=ahegaomouth_small}} She has "+ str(person.anal_cum) +" doses of your cum\nswimming in her belly."
+                    $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} {i}She hungrily gazes at you for more cum.{/i}\n{{image=ahegaomouth_small}} She has "+ str(person.anal_cum) +" doses of your cum\nswimming in her belly."
                 else:
                     $ vt_store.anal_status_icon = "handass"
                     $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} "+ str(person.anal_cum) +" doses of your cum\nswimming in her belly."
@@ -940,25 +974,27 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif person.anal_cum > 3:
                 if person.arousal_perc >= 60:
                     $ vt_store.anal_status_icon = "ahegaopeach"
-                    $ vt_store.anal_tooltip = f"*Hunger in her eyes wants more cum*\n{{image=ahegaoanal_small}} She has "+ str(person.anal_cum) +" doses of your cum\nswimming in her bowels, causing her belly a bit of a bulge."
+                    $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} {i}Hunger in her eyes wants more cum{/i}\n{{image=ahegaoanal_small}} She has "+ str(person.anal_cum) +" doses of your cum\nswimming in her bowels, causing her belly a bit of a bulge."
                 else:
                     $ vt_store.anal_status_icon = "ahegaomouth"
                     $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} "+ str(person.anal_cum) +" doses of your cum\nswimming in the slight bulge of her belly."
 
             else: # having sex, no specific anal related details
                 $ vt_store.anal_status_icon = "yespeach"
-                if person.anal_virgin == 0:
-                    $ vt_store.anal_tooltip = f"{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking!"
-                elif person.anal_first == mc.name:
-                    $ vt_store.anal_tooltip = f"\n{{image=handprint_token_small}} Her ass sways, hypnotizing you..\nThen she slaps it!"
-                elif person.anal_virgin < 4:
-                    $ vt_store.anal_tooltip = "Her ass sways and she spreads her ass for you.\nCome take me!"
-                elif person.anal_virgin >= 4:
-                    $ vt_store.anal_tooltip = "Her ass sways and she spreads her gaping asshole for you.\nCome take me!"
 
+                # prioritize low-energy already-sexed
                 if person.energy < 20 and person.had_sex_today:
-                    $ vt_store.anal_tooltip += "She seems lost in her bliss and panting."
+                    $ vt_store.anal_tooltip += "{{image=handass_small}} She seems lost in her bliss and panting."
 
+                # otherwise she either has energy, or has not had sex today, or both
+                elif person.anal_virgin == 0: # she is a virgin
+                    $ vt_store.anal_tooltip = f"{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking!"
+                elif person.anal_first == mc.name: # MC was her first
+                    $ vt_store.anal_tooltip = f"\n{{image=handprint_token_small}} Her ass sways, hypnotizing you..\nThen she slaps it!"
+                elif person.anal_virgin < 4: # her ass is fresh
+                    $ vt_store.anal_tooltip = "Her ass sways and she spreads her ass for you.\n\"Come take me!\""
+                elif person.anal_virgin >= 4: # her ass is gaping
+                    $ vt_store.anal_tooltip = "Her ass sways and she spreads her gaping asshole for you.\n\"Come take me!\""
 
         elif not vt_store.sexualized:
             # talking
@@ -968,11 +1004,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     if person.anal_virgin == 0:
                         $ vt_store.anal_tooltip = f"\n{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking!"
                     elif person.anal_first == mc.name:
-                        $ vt_store.anal_tooltip = f"{{image=handprint_token_small}} Her ass sways, hypnotizing you while\nshe rubs it!"
+                        $ vt_store.anal_tooltip = f"{{image=handprint_token_small}} Her ass sways, hypnotizing you\nwhile she rubs it!"
                     elif person.anal_virgin < 4:
-                        $ vt_store.anal_tooltip = "Her ass sways and she spreads her ass for you.\nCome take me!"
+                        $ vt_store.anal_tooltip = "{{image=yesanal_small}} Her ass sways and she spreads her ass for you.\n\"Come take me!\""
                     elif person.anal_virgin >=4:
-                        $ vt_store.anal_tooltip = "Her ass sways and she spreads her gaping asshole for you.\nCome take me!"
+                        $ vt_store.anal_tooltip = "{{image=yesanal_small}} Her ass sways and she spreads her gaping asshole for you.\n\"Come take me!\""
 
                 elif person.anal_cum == 1:
                     $ vt_store.anal_status_icon = "handass"
@@ -984,7 +1020,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif person.arousal_perc < 60:
                 if person.anal_first == mc.name:
                     $ vt_store.anal_status_icon = "claimedass"
-                    $ vt_store.anal_tooltip = f"{{image=handprint_token_small}} You Claimed this Ass!"
+                    $ vt_store.anal_tooltip = f"{{image=handprint_token_small}} You claimed this ass!"
                 elif person.anal_first is not None and person.anal_virgin > 0:
                     $ vt_store.anal_status_icon = "knowpeach"
                     $ vt_store.anal_tooltip = f"{{image=taboo_break}} Someone else had her ass before you... RECLAIM IT!"
@@ -1007,7 +1043,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 pos(*vt_store.icon_location["had_sex_today"])
                 idle "hadsextoday"
                 action NullAction()
-                tooltip "You had fun with her today."
+                tooltip f"{{image=hadsextoday_small}} You had fun with her today."
 
 ######## Exhibitionist Fetish
         $ vt_store.exhibitionist_fetish_status_icon = ""
@@ -1016,12 +1052,14 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         if "public sex" in person.get_known_opinion_list(include_sexy=True, include_normal=False):
             if person.has_exhibition_fetish:
                 # she has the fetish
-                $ vt_store.exhibitionist_fetish_status_icon = "ahegaoex"
-                $ vt_store.exhibitionist_fetish_tooltip = "My body deserves to be seen!"
-                if person.event_triggers_dict.get("anal_fetish_locked",0) >= day:
-                    $ vt_store.exhibitionist_fetish_tooltip = "Ugh my skin is itchy I need\nmy skin free soon!"
+                # TODO: this icon used to be ahegaoex; is there a more specific/indicative icon?
+                $ vt_store.exhibitionist_fetish_status_icon = "vtcherries"
+                # TODO: unused tooltip
+                # $ vt_store.exhibitionist_fetish_tooltip = "{{image=vtcherries_small}} My body deserves to be seen!"
+                if person.event_triggers_dict.get("exhibition_fetish_locked", 0) >= day:
+                    $ vt_store.exhibitionist_fetish_tooltip = "{{image=triskelion_token_small}} \"Ugh, my skin is itchy—\nI need to free my skin soon!\""
                 else:
-                    $ vt_store.exhibitionist_fetish_tooltip = "MMmmMm my skin feels good."
+                    $ vt_store.exhibitionist_fetish_tooltip = "\n{{image=creamcherry_small}} \"MMmmMm, my skin feels good.\""
 
             elif builtins.all(person.known_opinion(vt_opinion) >= 2 for vt_opinion in ("public sex", "not wearing underwear", "not wearing anything", "showing her ass", "showing her tits", "skimpy outfits", "skimpy uniforms")):
                 $ vt_store.exhibitionist_fetish_status_icon = "nudebody"
@@ -1065,9 +1103,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if person.opinion.public_sex == 0:
                     $ vt_store.exhibitionist_fetish_tooltip = f"{{image=progress_token_small}} She's indifferent to public sex, so make her like it..."
                 elif person.opinion.public_sex == -1:
-                    $ vt_store.exhibitionist_fetish_tooltip = f"She dislikes public sex!"
+                    $ vt_store.exhibitionist_fetish_tooltip = f"{{image=dislike_small}} She dislikes public sex!"
                 elif person.opinion.public_sex <= -2:
-                    $ vt_store.exhibitionist_fetish_tooltip = f"She hates public sex!"
+                    $ vt_store.exhibitionist_fetish_tooltip = f"{{image=dislike_small}} She hates public sex!"
 
         else:
             $ vt_store.exhibitionist_fetish_status_icon = "knowbody"
@@ -1076,33 +1114,33 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         if vt_store.sexualized:
             if not person.vagina_available and not person.tits_available:
                 $ vt_store.exhibitionist_fetish_status_icon = "bodyskimpy"
-                $ vt_store.exhibitionist_fetish_tooltip += "\nShe is fully clothed."
+                $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=progress_token_small}} She is fully clothed."
 
             elif person.vagina_available and person.tits_available:
                 $ vt_store.exhibitionist_fetish_status_icon = "nudebody"
                 if person.arousal_perc <= 59:
-                    $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see her tits and pussy."
+                    $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=vtcherries_small}} You can see her tits and pussy."
                 elif person.arousal_perc >= 60 and person.vaginal_cum == 0:
-                    $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see her tits and wet hot juicy pussy."
+                    $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=vtcherries_small}} You can see her tits and wet hot juicy pussy."
                 elif 1 < person.vaginal_cum <= 3:
-                    $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see your cum starting to drip from her pussy."
+                    $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=openvag_small}} You can see your cum starting to drip from her pussy."
                 elif person.vaginal_cum > 3:
-                    $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see your cum oozing from her pussy."
+                    $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=openvag_small}} You can see your cum oozing from her pussy."
 
             elif person.tits_available:
                 $ vt_store.exhibitionist_fetish_status_icon = "bodypanties"
-                $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see her tits."
+                $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=vtcherries_small}} You can see her tits."
 
             elif person.vagina_available:
                 $ vt_store.exhibitionist_fetish_status_icon = "bodybra"
                 if person.arousal_perc <= 59:
-                    $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see her pussy."
+                    $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=spreadvag_small}} You can see her pussy."
                 elif person.arousal_perc >= 60 and person.vaginal_cum == 0:
-                    $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see her wet hot juicy pussy."
+                    $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=spreadvag_small}} You can see her wet hot juicy pussy."
                 elif 1 < person.vaginal_cum <= 3:
-                    $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see your cum starting to drip from her pussy."
+                    $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=openvag_small}} You can see your cum starting to drip from her pussy."
                 elif person.vaginal_cum > 3:
-                    $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see your cum oozing from her pussy."
+                    $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=openvag_small}} You can see your cum oozing from her pussy."
 
         imagebutton:
             pos(*vt_store.icon_location["fetish_exhibitionist"])
@@ -1125,13 +1163,16 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         if "giving blowjobs" in person.get_known_opinion_list(include_sexy=True, include_normal=False):
             if person.has_cum_fetish:
                 # she loves it
-                $ vt_store.cum_fetish_status_icon = "ahegaomouth"
+                # TODO: this icon used to be "ahegaomouth" -- is there a more specific/indicative icon?
+                $ vt_store.cum_fetish_status_icon = "vtcherries"
+                # TODO: tooltip unused
+                # $ vt_store.cum_fetish_tooltip = "Loves your cum! \"Paint me! Fill me! Feed me! More cummies!\""
                 if person.days_since_event("LastCumFetish") > 10:
-                    $ vt_store.cum_fetish_tooltip = "MMmmMm going to need your yummy\nlollipop in my mouth in soon!"
+                    $ vt_store.cum_fetish_tooltip = "\n{{image=triskelion_token_small}} \"MMmmMm going to need your yummy\nlollipop in my mouth in soon!\""
                 else:
-                    $ vt_store.cum_fetish_tooltip = "MMmmMm still taste you in my mouth..."
+                    $ vt_store.cum_fetish_tooltip = "\n{{image=creamcherry_small}} \"MMmmMm still taste you in my mouth...\""
 
-            elif person.oral_sex_skill >= 5 and person.opinion.giving_blowjobs >= 2 and (person.known_opinion("drinking cum") >= 2 or person.known_opinion("cum facials") >= 2) and person.known_opinion("being covered in cum") >= 2:
+            elif person.oral_sex_skill >= 4 and person.opinion.giving_blowjobs >= 2 and (person.known_opinion("drinking cum") >= 2 or person.known_opinion("cum facials") >= 2) and person.known_opinion("being covered in cum") >= 2:
                 # she likes it and is quite good at it
                 $ vt_store.cum_fetish_status_icon = "openmouth"
                 $ vt_store.cum_fetish_tooltip = f"{{image=progress_token_small}} Likes your cum! EVERYWHERE!"
@@ -1164,9 +1205,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             else:
                 $ vt_store.cum_fetish_status_icon = "openmouth"
                 if person.opinion.giving_blowjobs == -1:
-                    $ vt_store.cum_fetish_tooltip = f"She dislikes oral!"
+                    $ vt_store.cum_fetish_tooltip = f"{{image=dislike_small}} She dislikes oral!"
                 elif person.opinion.giving_blowjobs == -2:
-                    $ vt_store.cum_fetish_tooltip = f"She hates oral!"
+                    $ vt_store.cum_fetish_tooltip = f"{{image=dislike_small}} She hates oral!"
         else:
             # opinion unknown
             $ vt_store.cum_fetish_status_icon = "knowlips"
@@ -1214,22 +1255,23 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         if "anal sex" in person.get_known_opinion_list(include_sexy=True, include_normal=False):
             if person.has_anal_fetish:
                 # she loves it
-                $ vt_store.anal_fetish_status_icon = "ahegaopeach"
+                # TODO: this icon used to be ahegaopeach; is there a more specific/indicative icon?
+                $ vt_store.anal_fetish_status_icon = "vtcherries"
                 if person.days_since_event("LastAnalFetish") > 10:
-                    $ vt_store.anal_fetish_tooltip = "MMmmMm going to need your yummy\ncock in my ass in soon!"
+                    $ vt_store.anal_fetish_tooltip = f"{{image=triskelion_token_small}} \"MMmmMm I'm going to need your yummy\ncock in my ass in soon!\""
                 else:
-                    $ vt_store.anal_fetish_tooltip = "MMmmMm my ass still molded to your cock."
+                    $ vt_store.anal_fetish_tooltip = f"{{image=creamcherry_small}} \"MMmmMm my ass is still molded to your cock!\""
 
-            elif person.anal_sex_skill >= 5 and (person.opinion.anal_sex >= 2  or person.known_opinion("anal creampies") >= 2):
+            elif person.anal_sex_skill >= 4 and (person.opinion.anal_sex >= 2  or person.known_opinion("anal creampies") >= 2):
                 # she likes it, and is quite good at it
                 $ vt_store.anal_fetish_status_icon = "handass"
                 $ vt_store.anal_fetish_tooltip = f"{{image=progress_token_small}} Sodomize your Anal Queen!"
-                if person.anal_sex_count >= 19 or person.anal_creampie_count >= 19:
+                if person.anal_sex_count > 19 or person.anal_creampie_count > 19:
                     $ vt_store.anal_fetish_tooltip += f"\n{{image=progress_token_small}} Wait for the anal fetish event to trigger!"
-                elif person.anal_sex_count < 19 and person.opinion.anal_sex >= 2:
-                    $ vt_store.anal_fetish_tooltip += f"\n{{image=triskelion_token_small}} Have anal sex with her "+str(19 - person.anal_sex_count)+" more times!"
-                elif person.anal_creampie_count < 19 and person.opinion.anal_creampies >=2:
-                    $ vt_store.anal_fetish_tooltip += f"\n{{image=triskelion_token_small}} Fill her bowels full of cum "+str(19 - person.anal_creampie_count)+" more times!"
+                elif person.anal_sex_count <= 19 and person.opinion.anal_sex >= 2:
+                    $ vt_store.anal_fetish_tooltip += f"\n{{image=triskelion_token_small}} Have anal sex with her " + str(19 - person.anal_sex_count) + " more times!"
+                elif person.anal_creampie_count <= 19 and person.opinion.anal_creampies >=2:
+                    $ vt_store.anal_fetish_tooltip += f"\n{{image=triskelion_token_small}} Fill her bowels full of cum " + str(19 - person.anal_creampie_count) + " more times!"
 
             elif person.opinion.anal_sex >= 1 or person.known_opinion("anal creampies") >= 1:
                 # she likes it, but could be better
@@ -1250,9 +1292,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.anal_fetish_status_icon = "yespeach"
                 $ vt_store.anal_fetish_tooltip = f"{{image=progress_token_small}} Train your Anal Queen!"
                 if person.opinion.anal_sex == -1:
-                    $ vt_store.anal_fetish_tooltip = f"She dislikes anal!"
+                    $ vt_store.anal_fetish_tooltip = f"{{image=dislike_small}} She dislikes anal!"
                 elif person.opinion.anal_sex == -2:
-                    $ vt_store.anal_fetish_tooltip = f"She hates anal!"
+                    $ vt_store.anal_fetish_tooltip = f"{{image=dislike_small}} She hates anal!"
         else:
             $ vt_store.anal_fetish_status_icon = "knowpeach"
             $ vt_store.anal_fetish_tooltip = f"{{image=question_mark_small}} Her thoughts on anal sex?"
@@ -1282,26 +1324,27 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 ###### Breeding Fetish
         $ vt_store.breed_fetish_status_icon = ""
         $ vt_store.breed_fetish_tooltip = ""
-        $ dayslastsex = 0
-        $ daysince = ""
+        $ vt_store.breeding_fetish_days_since_last_insemination = 0
+        $ vt_store.last_insemination_tag_text = ""
 
         if person.has_event_day("last_insemination") and 1 < person.days_since_event("last_insemination") < 4:
-            $ dayslastsex = 4 - person.days_since_event("last_insemination")
-            if dayslastsex == 1:
-                $ daysince = "\nMy womb feels empty!"
+            $ vt_store.breeding_fetish_days_since_last_insemination = 4 - person.days_since_event("last_insemination")
+            if vt_store.breeding_fetish_days_since_last_insemination == 1:
+                $ vt_store.last_insemination_tag_text = "\n\"My womb feels empty!\""
             else:
-                $ daysince = "\nYour sperm in me for "+str(dayslastsex)+" more days!\n Such warm butterflies!"
+                $ vt_store.last_insemination_tag_text = "\n\"Your sperm is in me for " + str(vt_store.breeding_fetish_days_since_last_insemination) + " more days!\nSuch warm butterflies!\""
 
         # validate opinion exists and known
         if "vaginal sex" in person.get_known_opinion_list(include_sexy=True, include_normal=False):
             if person.has_breeding_fetish:
                 # she has the fetish
                 $ vt_store.breed_fetish_status_icon = "ahegaovag"
-                $ vt_store.breed_fetish_tooltip = "Breed me! I need your cum!"
+                # TODO: this tooltip is always overwritten
+                # $ vt_store.breed_fetish_tooltip = "\"Breed me! I need your cum!\""
                 if person.days_since_event("LastBreedingFetish") > 10:
-                    $ vt_store.breed_fetish_tooltip = "MMmmMm going to need another \nyummy creampie filling soon!"
+                    $ vt_store.breed_fetish_tooltip = "{{image=triskelion_token_small}} \"MMmmMm, I'm going to need another \nyummy creampie filling soon!\""
                 else:
-                    $ vt_store.breed_fetish_tooltip = "MMmmMmmm my womb is happy."
+                    $ vt_store.breed_fetish_tooltip = "{{image=creamcherry_small}} \"MMmmMmmm, my womb is happy.\""
 
             elif person.vaginal_sex_skill >= 5 and person.opinion.vaginal_sex >= 2  and person.known_opinion("creampies") >= 2:
                 # she loves it and is pretty good at it
@@ -1335,9 +1378,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if person.opinion.vaginal_sex == 0:
                     $ vt_store.breed_fetish_tooltip = f"{{image=progress_token_small}} She's indifferent to vaginal sex, so make her like it..."
                 elif person.opinion.vaginal_sex == -1:
-                    $ vt_store.breed_fetish_tooltip = f"She dislikes vaginal sex!"
+                    $ vt_store.breed_fetish_tooltip = f"{{image=dislike_small}} She dislikes vaginal sex!"
                 elif person.opinion.vaginal_sex <= -2:
-                    $ vt_store.breed_fetish_tooltip = f"She hates vaginal sex!"
+                    $ vt_store.breed_fetish_tooltip = f"{{image=dislike_small}} She hates vaginal sex!"
         else:
             # opinion not known
             $ vt_store.breed_fetish_status_icon = "knowpeach"
@@ -1358,9 +1401,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif person.vaginal_cum == 1: # and hymen == 2
                 $ vt_store.breed_fetish_tooltip = f"{{image=beezee_token_small}} Your seed is in her" + vt_store.fertility_tag + " womb."
             elif person.hymen <= 1 and person.vaginal_cum > 1:
-                $ vt_store.breed_fetish_tooltip = f"{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh" + vt_store.fertility_tag + " womb with "+str(person.vaginal_cum)+ " doses of your seed."
+                $ vt_store.breed_fetish_tooltip = f"{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh" + vt_store.fertility_tag + " womb with " + str(person.vaginal_cum) + " doses of your seed."
             else: # vaginal_cum > 0 and hymen == 2
-                $ vt_store.breed_fetish_tooltip = f"{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her" + vt_store.fertility_tag + " womb."+daysince
+                $ vt_store.breed_fetish_tooltip = f"{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her" + vt_store.fertility_tag + " womb." + vt_store.last_insemination_tag_text
 
         imagebutton:
             pos(*vt_store.icon_location["fetish_breeding"])
@@ -1390,10 +1433,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         if person.wants_creampie and person.known_opinion("creampies") >= 2 and person.known_opinion("anal_creampies") >= 2 and (person.has_anal_fetish and person.has_breeding_fetish):
             # she really loves both
-            $ vt_store.creampie_status_icon = "ahegaopeach"
-            $ vt_store.creampie_tooltip = "She wants to be filled!"
+            # FIXME: this used to be "ahegaopeach" -- is there a more specific/indicative icon?
+            $ vt_store.creampie_status_icon = "vtcherries"
+            $ vt_store.creampie_tooltip = "{{image=ahegaovag_small}} She wants to be filled!"
 
-        elif builtins.max(person.known_opinion("anal creampies"), person.known_opinion("creampies")) >= 1:
+        elif person.known_opinion("anal creampies") >= 1 or person.known_opinion("creampies"):
             # she likes at least one
             $ vt_store.creampie_status_icon = "openpeach"
             $ vt_store.creampie_tooltip = f"{{image=progress_token_small}} Keep giving her the cream fillings!"
@@ -1408,7 +1452,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             if not person.has_breeding_fetish:
                 $ vt_store.creampie_tooltip += f"\n{{image=ahegaovag_small}} Needs the Breeding Fetish Unlocked."
 
-        elif builtins.min(person.known_opinion("anal creampies"), person.known_opinion("creampies")) <= 0 and builtins.any(builtins.set(person.get_known_opinion_list(include_sexy=True, include_normal=False)).union(builtins.set(("anal creampies", "creampies")))):
+        elif (person.known_opinion("anal creampies") <= 0 or person.known_opinion("creampies") <= 0) and builtins.any(creampie_opinion in person.get_known_opinion_list(include_sexy=True, include_normal=False) for creampie_opinion in ["anal creampies", "creampies"]):
             # she does not have a positive opinion of either (else would take previous branch)
             # but she does have a known opinion
             $ vt_store.creampie_tooltip = f"{{image=progress_token_small}} Doesn't seem to like creampies?"
@@ -1432,11 +1476,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.creampie_status_icon = "yespeach"
                 if person.known_opinion("anal creampies") < -1 and person.known_opinion("creampies") < -1:
                     # she hates both
-                    $ vt_store.creampie_tooltip = f"{{image=progress_token_small}} She hates creampies!"
-                elif person.known_opinion("anal creampies") < -1:
-                    $ vt_store.creampie_tooltip = f"She hates anal creampies!"
+                    $ vt_store.creampie_tooltip = f"{{image=dislike_small}} She hates creampies!"
                 elif person.known_opinion("creampies") < -1:
-                    $ vt_store.creampie_tooltip = f"She hates vaginal creampies!"
+                    $ vt_store.creampie_tooltip = f"{{image=dislike_small}} She hates vaginal creampies!"
+                elif person.known_opinion("anal creampies") < -1:
+                    $ vt_store.creampie_tooltip = f"{{image=dislike_small}} She hates anal creampies!"
 
         else:
             $ vt_store.creampie_status_icon = "knowpeach"
