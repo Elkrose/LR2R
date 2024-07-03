@@ -133,3 +133,4 @@ style VTmenu_text_style:
     outlines [(2,"#222222",0,0)]
     text_align 0.0
     line_spacing 2
+
