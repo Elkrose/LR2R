@@ -1,6 +1,25 @@
 # Override default person_info_ui screen by VREN to show extra information about character
 init 900 python in vt_store:
     DEBUG = True
+    icon_location = {
+    "relationship":         (249, 166),
+    "teen":                 (286, 166),
+    "threesome":            (323, 166),
+    "personality":          (360, 166),
+    "birth_control":        (397, 166),
+    "wants_condom":         (434, 166),
+    "tranced":              (486, 166),
+    "virginity_oral":       (523, 166),
+    "virginity_vaginal":    (560, 166),
+    "virginity_anal":       (597, 166),
+    "had_sex_today":        (634, 166),
+    "arousal":              (681, 166),
+    "fetish_exhibitionist": (718, 166),
+    "fetish_cum":           (755, 166),
+    "fetish_anal":          (792, 166),
+    "fetish_breeding":      (829, 166),
+    "creampies":            (866, 166)
+}
 
 init -2 python:
     @renpy.pure
@@ -329,7 +348,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $ vt_store.relationship_tooltip += f"\nGirlfriends: "+ str(mc.stats.girlfriends) +" \nParamours: "+ str(mc.stats.paramours) +"\nSlaves: "+ str(mc.stats.slaves)
 
         imagebutton:
-            pos(285, 166)
+            pos(*vt_store.icon_location["relationship"])
             idle vt_store.relationship_icon
             action NullAction()
             tooltip vt_store.relationship_tooltip
@@ -343,7 +362,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.teen_tooltip = f"{{image=yespeach_small}} She looks like a young vixen."
 
             imagebutton:
-                pos(322, 166)
+                pos(*vt_store.icon_location["teen"])
                 idle "matureteen"
                 action NullAction()
                 tooltip vt_store.teen_tooltip
@@ -383,7 +402,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         # display base icon
         imagebutton:
-            pos(359, 166)
+            pos(*vt_store.icon_location["birth_control"])
             idle vt_store.birth_control_status_icon
             action NullAction()
             tooltip vt_store.birth_control_tooltip
@@ -391,7 +410,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # display beezee overlay if known fertile
         if vt_store.known_fertile:
             imagebutton:
-                pos(359, 166)
+                pos(*vt_store.icon_location["birth_control"])
                 idle "beezee"
                 action NullAction()
                 tooltip vt_store.birth_control_tooltip
@@ -404,7 +423,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.birth_control_tooltip += f"\n{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her" + vt_store.fertility_tag + " womb."
 
             imagebutton:
-                pos(359, 166)
+                pos(*vt_store.icon_location["birth_control"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip vt_store.birth_control_tooltip
@@ -463,7 +482,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
             # show condom icon
             imagebutton:
-                pos(396, 166)
+                pos(*vt_store.icon_location["wants_condom"])
                 idle vt_store.condom_status_icon
                 action NullAction()
                 tooltip vt_store.condom_status_tooltip
@@ -471,7 +490,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             # overlay "not" icon if not wearing condom
             if not mc.condom:
                 imagebutton:
-                    pos(396, 166)
+                    pos(*vt_store.icon_location["wants_condom"])
                     idle "dislike"
                     action NullAction()
                     tooltip vt_store.condom_status_tooltip
@@ -480,7 +499,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             # in conversation
             # show the base status
             imagebutton:
-                pos(396, 166)
+                pos(*vt_store.icon_location["wants_condom"])
                 idle vt_store.condom_status_icon
                 action NullAction()
                 tooltip vt_store.condom_status_tooltip
@@ -489,7 +508,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             if person.known_opinion("bareback sex") < 0:
                 # show the "dislike" overlay
                 imagebutton:
-                    pos(396, 166)
+                    pos(*vt_store.icon_location["wants_condom"])
                     idle "dislike"
                     action NullAction()
                     tooltip vt_store.condom_status_tooltip
@@ -551,7 +570,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         # show the base icon
         imagebutton:
-            pos(433, 166)
+            pos(*vt_store.icon_location["threesome"])
             idle vt_store.poly_status_icon
             action NullAction()
             tooltip vt_store.poly_tooltip
@@ -559,7 +578,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # potentially overlay dislike icon
         if person.known_opinion("threesomes") < 0 or person.known_opinion("polyamory") < 0:
             imagebutton:
-                pos(433, 166)
+                pos(*vt_store.icon_location["threesome"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.poly_tooltip
@@ -644,7 +663,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         # show the status and tooltip
         imagebutton:
-            pos(470, 166)
+            pos(*vt_store.icon_location["creampies"])
             idle vt_store.creampie_status_icon
             action NullAction()
             tooltip vt_store.creampie_tooltip
@@ -652,7 +671,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # if talking and they have lots of cum in them, show the overlay
         if not vt_store.sexualized and (person.anal_cum > 1 or person.vaginal_cum > 1):
             imagebutton:
-                pos(470, 166)
+                pos(*vt_store.icon_location["creampies"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip vt_store.creampie_tooltip
@@ -660,7 +679,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # if they don't like creampies, show the dislike overlay
         if person.known_opinion("anal creampies") < 0 or person.known_opinion("creampies") < 0:
             imagebutton:
-                pos(470, 166)
+                pos(*vt_store.icon_location["creampies"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.creampie_tooltip
@@ -735,21 +754,21 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.cum_fetish_tooltip += f"\n{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
 
         imagebutton:
-            pos(507, 166)
+            pos(*vt_store.icon_location["fetish_cum"])
             idle vt_store.cum_fetish_status_icon
             action NullAction()
             tooltip vt_store.cum_fetish_tooltip
 
         if not vt_store.sexualized and person.oral_cum > 1:
             imagebutton:
-                pos(507, 166)
+                pos(*vt_store.icon_location["fetish_cum"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip vt_store.cum_fetish_tooltip
 
         if person.known_opinion("giving blowjobs") < 0:
             imagebutton:
-                pos(507, 166)
+                pos(*vt_store.icon_location["fetish_cum"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.cum_fetish_tooltip
@@ -814,14 +833,14 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.anal_fetish_status_icon = "ahegaopeach"
 
         imagebutton:
-            pos(544, 166)
+            pos(*vt_store.icon_location["fetish_anal"])
             idle vt_store.anal_fetish_status_icon
             action NullAction()
             tooltip vt_store.anal_fetish_tooltip
 
         if person.known_opinion("anal sex") < 0:
             imagebutton:
-                pos(544, 166)
+                pos(*vt_store.icon_location["fetish_anal"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.anal_fetish_tooltip
@@ -910,7 +929,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.breed_fetish_tooltip = f"{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her" + vt_store.fertility_tag + " womb."+daysince
 
         imagebutton:
-            pos(581, 166)
+            pos(*vt_store.icon_location["fetish_breeding"])
             idle vt_store.breed_fetish_status_icon
             action NullAction()
             tooltip vt_store.breed_fetish_tooltip
@@ -918,7 +937,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # show cum overlay when talking
         if not vt_store.sexualized and person.hymen > 1 and person.vaginal_cum > 1:
             imagebutton:
-                pos(581, 166)
+                pos(*vt_store.icon_location["fetish_breeding"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip vt_store.breed_fetish_tooltip
@@ -926,7 +945,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # show dislike overlay
         if person.known_opinion("vaginal sex") < 0:
             imagebutton:
-                pos(581, 166)
+                pos(*vt_store.icon_location["fetish_breeding"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.breed_fetish_tooltip
@@ -1027,14 +1046,14 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ vt_store.exhibitionist_fetish_tooltip += "\nYou can see your cum oozing from her pussy."
 
         imagebutton:
-            pos(618, 166)
+            pos(*vt_store.icon_location["fetish_exhibitionist"])
             idle vt_store.exhibitionist_fetish_status_icon
             action NullAction()
             tooltip vt_store.exhibitionist_fetish_tooltip
 
         if person.known_opinion("public sex") < 0 and not vt_store.sexualized:
                 imagebutton:
-                    pos(618, 166)
+                    pos(*vt_store.icon_location["fetish_exhibitionist"])
                     idle "dislike"
                     action NullAction()
                     tooltip vt_store.exhibitionist_fetish_tooltip
@@ -1171,7 +1190,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ vt_store.oral_tooltip += f"\n{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
 
         imagebutton:
-            pos(678, 166)
+            pos(*vt_store.icon_location["virginity_oral"])
             idle vt_store.oral_status_icon
             action NullAction()
             tooltip vt_store.oral_tooltip
@@ -1281,7 +1300,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ vt_store.anal_tooltip += f"\n{{image=ahegaoanal_small}} "+ str(person.anal_cum) +" doses of your cum\ncoating her bowels."
 
         imagebutton:
-            pos(715, 166)
+            pos(*vt_store.icon_location["virginity_anal"])
             idle vt_store.anal_status_icon
             action NullAction()
             tooltip vt_store.anal_tooltip
@@ -1418,21 +1437,21 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ VTvaginaltt += f"\n*You can really smell her arousal*"
 
         imagebutton:
-            pos(752, 166)
+            pos(*vt_store.icon_location["virginity_vaginal"])
             idle VTvaginalst
             action NullAction()
             tooltip VTvaginaltt
 
         if not vt_store.sexualized and person.hymen > 1 and person.vaginal_cum > 3:
             imagebutton:
-                pos(752, 166)
+                pos(*vt_store.icon_location["virginity_vaginal"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip VTvaginaltt
 #### Had sex today
         if person.had_sex_today:
             imagebutton:
-                pos(789, 166)
+                pos(*vt_store.icon_location["had_sex_today"])
                 idle "hadsextoday"
                 action NullAction()
                 tooltip "You had fun with her today."
@@ -1456,7 +1475,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $ vt_store.trance_tooltip = "In a trance! She is open to suggestions!"
 
         imagebutton:
-            pos(826, 166)
+            pos(*vt_store.icon_location["tranced"])
             idle vt_store.trance_status_icon
             action NullAction()
             tooltip vt_store.trance_tooltip
