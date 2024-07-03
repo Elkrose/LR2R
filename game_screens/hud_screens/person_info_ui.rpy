@@ -1275,9 +1275,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             if person.event_triggers_dict.get("cum_fetish_locked",0)<day:
                                 $ VTcumfetishtt += f"\n{{image=creamcherry_small}} Natural fetish event will trigger soon!"
                         if person.has_taboo("sucking_cock"):
-                           $ VTcumfetishtt += f"\n{{image=triskelion_token_small}} Have her suck your cock!"
+                            $ VTcumfetishtt += f"\n{{image=triskelion_token_small}} Have her suck your cock!"
                         if person.has_taboo("condomless_sex"):
-                           $ VTcumfetishtt += f"\n{{image=triskelion_token_small}} Have sex without a condom with her!"
+                            $ VTcumfetishtt += f"\n{{image=triskelion_token_small}} Have sex without a condom with her!"
                     else:
                         if person.opinion.giving_blowjobs >= 2 and ((person.opinion.drinking_cum >= 2 and person.known_opinion("drinking cum")) or (person.opinion.cum_facials >= 2 and person.known_opinion("cum facials"))) and person.opinion.being_covered_in_cum>=2:
                             $ VTcumfetishst = "bitelip"
