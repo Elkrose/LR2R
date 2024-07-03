@@ -10,12 +10,11 @@
 🥵 Real Porn Mod 0.62 - Good!
 🥵 KiNA's Mods - Good!
 🥵 Kaden's Mods - Good!
-❗ Jennifer Content dev - YES
 ❗ Pregnant Content dev - no
 
 🔥 Lab Rats2 Reformulate: v2024.06-code-beta  Ren'Py 8.2.1
 
-🔥 lr2mods-develop - June 18, 2024 4:31 PM EDT - https://discord.com/channels/564870606382956576/571557121716387840/1252722366778310719
+🔥 lr2mods-develop - July 2, 2024 6:29 PM EDT - https://discord.com/channels/564870606382956576/571557121716387840/1257825615315206176
 
 💮 Vanilla files modified: none - the MOD is completely on its own in the mods folder.
 
@@ -45,6 +44,10 @@ Note: Tool tips explain what they are.  Some will explain briefly how to achieve
 💮 3 Serums / Stims
 - Stims for resetting the Virgin Status of the girl
 - can be enabled and disabled
+
+💮 4 Natural Fetish Forming Fetishes: Anal/Breeding/Cum/Exhibition
+- the Icons are there to guide you into unlocking the fetishes if you wish to
+- should not interfere with serum/nano fetishes.
 
 🔥 Install Instructions: 🔥
 Place in the game/mods folder. Should look like game/mods/LR2R-VTMod/ (should see all the VTmods in this folder)
