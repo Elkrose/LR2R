@@ -344,7 +344,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $ vt_store.relationship_tooltip += f"\n{{image=harem_token_small}} Polycules: " + str(mc.stats.polycule_girlfriends) + f"\t\t{{image=parapoly_token_small}} Parapolys: "+ str(mc.stats.polycule_paramours) +f"\n{{image=gf_token_small}} Girlfriends: "+ str(mc.stats.girlfriends) + f"\t\t{{image=paramour_token_small}} Paramours: "+ str(mc.stats.paramours) +f"\n{{image=triskelion_token_small}} Slaves: "+ str(mc.stats.slaves)
 
         imagebutton:
-            pos(*vt_store.icon_location["relationship"])
+            pos(vt_store.icon_location["relationship"])
             idle vt_store.relationship_icon
             action NullAction()
             tooltip vt_store.relationship_tooltip
@@ -359,7 +359,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.teen_tooltip = f"{{image=yespeach_small}} She looks like a young vixen."
 
             imagebutton:
-                pos(*vt_store.icon_location["teen"])
+                pos(vt_store.icon_location["teen"])
                 idle "matureteen"
                 action NullAction()
                 tooltip vt_store.teen_tooltip
@@ -424,7 +424,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         # show the base icon
         imagebutton:
-            pos(*vt_store.icon_location["threesome"])
+            pos(vt_store.icon_location["threesome"])
             idle vt_store.poly_status_icon
             action NullAction()
             tooltip vt_store.poly_tooltip
@@ -432,7 +432,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # potentially overlay dislike icon
         if person.known_opinion("threesomes") < 0 or person.known_opinion("polyamory") < 0:
             imagebutton:
-                pos(*vt_store.icon_location["threesome"])
+                pos(vt_store.icon_location["threesome"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.poly_tooltip
@@ -469,7 +469,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $ vt_store.personality_tooltip = f"{{image=vtcherries_small}} Her personality is unique."
 
         imagebutton:
-            pos(*vt_store.icon_location["personality"])
+            pos(vt_store.icon_location["personality"])
             idle vt_store.personality_icon
             action NullAction()
             tooltip vt_store.personality_tooltip
@@ -515,7 +515,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         # display base icon
         imagebutton:
-            pos(*vt_store.icon_location["birth_control"])
+            pos(vt_store.icon_location["birth_control"])
             idle vt_store.birth_control_status_icon
             action NullAction()
             tooltip vt_store.birth_control_tooltip
@@ -523,7 +523,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # display beezee overlay if known fertile
         if vt_store.known_fertile:
             imagebutton:
-                pos(*vt_store.icon_location["birth_control"])
+                pos(vt_store.icon_location["birth_control"])
                 idle "beezee"
                 action NullAction()
                 tooltip vt_store.birth_control_tooltip
@@ -536,7 +536,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.birth_control_tooltip += f"\n{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her" + vt_store.fertility_tag + " womb."
 
             imagebutton:
-                pos(*vt_store.icon_location["birth_control"])
+                pos(vt_store.icon_location["birth_control"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip vt_store.birth_control_tooltip
@@ -608,7 +608,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
             # show condom icon
             imagebutton:
-                pos(*vt_store.icon_location["wants_condom"])
+                pos(vt_store.icon_location["wants_condom"])
                 idle vt_store.condom_status_icon
                 action NullAction()
                 tooltip vt_store.condom_status_tooltip
@@ -626,7 +626,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             # in conversation
             # show the base status
             imagebutton:
-                pos(*vt_store.icon_location["wants_condom"])
+                pos(vt_store.icon_location["wants_condom"])
                 idle vt_store.condom_status_icon
                 action NullAction()
                 tooltip vt_store.condom_status_tooltip
@@ -635,7 +635,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             if person.known_opinion("bareback sex") < 0:
                 # show the "dislike" overlay
                 imagebutton:
-                    pos(*vt_store.icon_location["wants_condom"])
+                    pos(vt_store.icon_location["wants_condom"])
                     idle "dislike"
                     action NullAction()
                     tooltip vt_store.condom_status_tooltip
@@ -661,7 +661,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $ vt_store.trance_tooltip = "{{image=starttrance_token_small}} In a trance! She is open to suggestions!"
 
         imagebutton:
-            pos(*vt_store.icon_location["tranced"])
+            pos(vt_store.icon_location["tranced"])
             idle vt_store.trance_status_icon
             action NullAction()
             tooltip vt_store.trance_tooltip
@@ -736,7 +736,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif 1 < person.oral_cum <= 3:
                 if person.arousal_perc >= 60:
                     $ vt_store.oral_status_icon = "ahegaoface"
-                    $ vt_store.oral_tooltip = f"{i}She hungrily gazes at you for more cum.{/i}\n{{image=ahegaomouth_small}} She has "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
+                    $ vt_store.oral_tooltip = f"{{i}}She hungrily gazes at you for more cum.{{/i}}\n{{image=ahegaomouth_small}} She has "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
                 else:
                     $ vt_store.oral_status_icon = "bitelip"
                     $ vt_store.oral_tooltip = f"{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \nswimming in her belly."
@@ -744,7 +744,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif person.oral_cum > 3:
                 if person.arousal_perc >= 60:
                     $ vt_store.oral_status_icon = "ahegaoface"
-                    $ vt_store.oral_tooltip = f"{i}Hunger in her eyes wants more cum{/i}\n{{image=ahegaomouth_small}} She has "+ str(person.oral_cum) +" doses of your cum \n swimming in her stomach, causing a bit of a bulge."
+                    $ vt_store.oral_tooltip = f"{{i}}Hunger in her eyes wants more cum{{/i}}\n{{image=ahegaomouth_small}} She has "+ str(person.oral_cum) +" doses of your cum \n swimming in her stomach, causing a bit of a bulge."
                 else:
                     $ vt_store.oral_status_icon = "ahegaomouth"
                     $ vt_store.oral_tooltip = f"{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \n swimming in the slight bulge of her belly."
@@ -805,7 +805,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ vt_store.oral_tooltip += f"\n{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
 
         imagebutton:
-            pos(*vt_store.icon_location["virginity_oral"])
+            pos(vt_store.icon_location["virginity_oral"])
             idle vt_store.oral_status_icon
             action NullAction()
             tooltip vt_store.oral_tooltip
@@ -876,7 +876,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             $ vt_store.vaginal_tooltip = f"{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum\nswimming in her" + vt_store.fertility_tag + " womb."+vt_store.last_insemination_tag_text
 
                 if person.arousal_perc >= 60:
-                    $ vt_store.vaginal_tooltip += f"\n{{image=spreadvag_small}} {i}You can really smell her arousal{/i}"
+                    $ vt_store.vaginal_tooltip += f"\n{{image=spreadvag_small}} {{i}}You can really smell her arousal{{/i}}"
 
             else:
                 $ vt_store.vaginal_status_icon = "spreadvag"
@@ -904,14 +904,14 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             if person.arousal_perc >= 60 and person.vaginal_cum <= 0:
                 $ vt_store.vaginal_status_icon = "spreadvag"
                 if person.vaginal_virgin <= 1:
-                    $ vt_store.vaginal_tooltip += f"\n{{image=virgin_token_small}} Her fresh pussy is dripping for you.\n{i}You can really smell her arousal{/i}"
+                    $ vt_store.vaginal_tooltip += f"\n{{image=virgin_token_small}} Her fresh pussy is dripping for you.\n{{i}}You can really smell her arousal{{/i}}"
                     if person.hymen == 0:
                         $ vt_store.vaginal_tooltip += f"\n{{image=virgin_token_small}} She is more than ready to be fucked."
                 elif person.vaginal_virgin > 2:
                     if person.vaginal_first == mc.name:
-                        $ vt_store.vaginal_tooltip += f"\n{{image=handprint_token_small}} Her pussy is dripping for you.\n{i}You can really smell her arousal{/i}\n\"Come take me!\""
+                        $ vt_store.vaginal_tooltip += f"\n{{image=handprint_token_small}} Her pussy is dripping for you.\n{{i}}You can really smell her arousal{{/i}}\n\"Come take me!\""
                     elif person.vaginal_first != mc.name:
-                        $ vt_store.vaginal_tooltip += "\n{{image=vagclosed_small}} Her pussy is dripping down her leg.\n{i}She is really aroused{/i}"
+                        $ vt_store.vaginal_tooltip += "\n{{image=vagclosed_small}} Her pussy is dripping down her leg.\n{{i}}She is really aroused{{/i}}"
 
             elif person.vaginal_cum > 0:
                 if person.vaginal_cum == 1:
@@ -945,14 +945,14 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ vt_store.vaginal_tooltip += f"\n*You can really smell her arousal*"
 
         imagebutton:
-            pos(*vt_store.icon_location["virginity_vaginal"])
+            pos(vt_store.icon_location["virginity_vaginal"])
             idle vt_store.vaginal_status_icon
             action NullAction()
             tooltip vt_store.vaginal_tooltip
 
         if not vt_store.sexualized and person.hymen > 1 and person.vaginal_cum > 3:
             imagebutton:
-                pos(*vt_store.icon_location["virginity_vaginal"])
+                pos(vt_store.icon_location["virginity_vaginal"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip vt_store.vaginal_tooltip
@@ -998,7 +998,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif 1 < person.anal_cum <= 3:
                 if person.arousal_perc >= 60:
                     $ vt_store.anal_status_icon = "ahegaopeach"
-                    $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} {i}She hungrily gazes at you for more cum.{/i}\n{{image=ahegaomouth_small}} She has "+ str(person.anal_cum) +" doses of your cum\nswimming in her belly."
+                    $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} {{i}}She hungrily gazes at you for more cum.{{/i}}\n{{image=ahegaomouth_small}} She has "+ str(person.anal_cum) +" doses of your cum\nswimming in her belly."
                 else:
                     $ vt_store.anal_status_icon = "handass"
                     $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} "+ str(person.anal_cum) +" doses of your cum\nswimming in her belly."
@@ -1006,7 +1006,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif person.anal_cum > 3:
                 if person.arousal_perc >= 60:
                     $ vt_store.anal_status_icon = "ahegaopeach"
-                    $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} {i}Hunger in her eyes wants more cum{/i}\n{{image=ahegaoanal_small}} She has "+ str(person.anal_cum) +" doses of your cum\nswimming in her bowels, causing her belly a bit of a bulge."
+                    $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} {{i}}Hunger in her eyes wants more cum{{/i}}\n{{image=ahegaoanal_small}} She has "+ str(person.anal_cum) +" doses of your cum\nswimming in her bowels, causing her belly a bit of a bulge."
                 else:
                     $ vt_store.anal_status_icon = "ahegaomouth"
                     $ vt_store.anal_tooltip = f"{{image=ahegaoanal_small}} "+ str(person.anal_cum) +" doses of your cum\nswimming in the slight bulge of her belly."
@@ -1064,7 +1064,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ vt_store.anal_tooltip += f"\n{{image=ahegaoanal_small}} "+ str(person.anal_cum) +" doses of your cum\ncoating her bowels."
 
         imagebutton:
-            pos(*vt_store.icon_location["virginity_anal"])
+            pos(vt_store.icon_location["virginity_anal"])
             idle vt_store.anal_status_icon
             action NullAction()
             tooltip vt_store.anal_tooltip
@@ -1072,7 +1072,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 #### Had sex today
         if person.had_sex_today:
             imagebutton:
-                pos(*vt_store.icon_location["had_sex_today"])
+                pos(vt_store.icon_location["had_sex_today"])
                 idle "hadsextoday"
                 action NullAction()
                 tooltip f"{{image=hadsextoday_small}} You had fun with her today."
@@ -1099,7 +1099,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $ vt_store.arousal_tooltip = f"{{image=vtcherries_small}} She seems okay, really."
 
         imagebutton:
-            pos(*vt_store.icon_location["arousal"])
+            pos(vt_store.icon_location["arousal"])
             idle vt_store.arousal_status_icon
             action NullAction()
             tooltip vt_store.arousal_tooltip
@@ -1216,14 +1216,14 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ vt_store.exhibitionist_fetish_tooltip += "\n{{image=openvag_small}} You can see your cum oozing from her pussy."
 
         imagebutton:
-            pos(*vt_store.icon_location["fetish_exhibitionist"])
+            pos(vt_store.icon_location["fetish_exhibitionist"])
             idle vt_store.exhibitionist_fetish_status_icon
             action NullAction()
             tooltip vt_store.exhibitionist_fetish_tooltip
 
         if person.known_opinion("public sex") < 0 and not vt_store.sexualized:
                 imagebutton:
-                    pos(*vt_store.icon_location["fetish_exhibitionist"])
+                    pos(vt_store.icon_location["fetish_exhibitionist"])
                     idle "dislike"
                     action NullAction()
                     tooltip vt_store.exhibitionist_fetish_tooltip
@@ -1307,21 +1307,21 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.cum_fetish_tooltip += f"\n{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
 
         imagebutton:
-            pos(*vt_store.icon_location["fetish_cum"])
+            pos(vt_store.icon_location["fetish_cum"])
             idle vt_store.cum_fetish_status_icon
             action NullAction()
             tooltip vt_store.cum_fetish_tooltip
 
         if not vt_store.sexualized and person.oral_cum > 1:
             imagebutton:
-                pos(*vt_store.icon_location["fetish_cum"])
+                pos(vt_store.icon_location["fetish_cum"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip vt_store.cum_fetish_tooltip
 
         if person.known_opinion("giving blowjobs") < 0:
             imagebutton:
-                pos(*vt_store.icon_location["fetish_cum"])
+                pos(vt_store.icon_location["fetish_cum"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.cum_fetish_tooltip
@@ -1387,14 +1387,14 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.anal_fetish_status_icon = "ahegaopeach"
 
         imagebutton:
-            pos(*vt_store.icon_location["fetish_anal"])
+            pos(vt_store.icon_location["fetish_anal"])
             idle vt_store.anal_fetish_status_icon
             action NullAction()
             tooltip vt_store.anal_fetish_tooltip
 
         if person.known_opinion("anal sex") < 0:
             imagebutton:
-                pos(*vt_store.icon_location["fetish_anal"])
+                pos(vt_store.icon_location["fetish_anal"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.anal_fetish_tooltip
@@ -1492,7 +1492,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.breed_fetish_tooltip = f"{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her" + vt_store.fertility_tag + " womb." + vt_store.last_insemination_tag_text
 
         imagebutton:
-            pos(*vt_store.icon_location["fetish_breeding"])
+            pos(vt_store.icon_location["fetish_breeding"])
             idle vt_store.breed_fetish_status_icon
             action NullAction()
             tooltip vt_store.breed_fetish_tooltip
@@ -1500,7 +1500,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # show cum overlay when talking
         if not vt_store.sexualized and person.hymen > 1 and person.vaginal_cum > 1:
             imagebutton:
-                pos(*vt_store.icon_location["fetish_breeding"])
+                pos(vt_store.icon_location["fetish_breeding"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip vt_store.breed_fetish_tooltip
@@ -1508,7 +1508,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # show dislike overlay
         if person.known_opinion("vaginal sex") < 0:
             imagebutton:
-                pos(*vt_store.icon_location["fetish_breeding"])
+                pos(vt_store.icon_location["fetish_breeding"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.breed_fetish_tooltip
@@ -1594,7 +1594,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         # show the status and tooltip
         imagebutton:
-            pos(*vt_store.icon_location["creampies"])
+            pos(vt_store.icon_location["creampies"])
             idle vt_store.creampie_status_icon
             action NullAction()
             tooltip vt_store.creampie_tooltip
@@ -1602,7 +1602,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # if talking and they have lots of cum in them, show the overlay
         if not vt_store.sexualized and (person.anal_cum > 1 or person.vaginal_cum > 1):
             imagebutton:
-                pos(*vt_store.icon_location["creampies"])
+                pos(vt_store.icon_location["creampies"])
                 idle "bc_cum"
                 action NullAction()
                 tooltip vt_store.creampie_tooltip
@@ -1610,7 +1610,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         # if they don't like creampies, show the dislike overlay
         if person.known_opinion("anal creampies") < 0 or person.known_opinion("creampies") < 0:
             imagebutton:
-                pos(*vt_store.icon_location["creampies"])
+                pos(vt_store.icon_location["creampies"])
                 idle "dislike"
                 action NullAction()
                 tooltip vt_store.creampie_tooltip
