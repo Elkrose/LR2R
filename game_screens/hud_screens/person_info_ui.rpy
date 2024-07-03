@@ -437,6 +437,43 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 action NullAction()
                 tooltip vt_store.poly_tooltip
 
+### Personalities
+        # TODO: how does MC discover the person's personality?
+        # TODO: initial assignment is always overwritten -- fix?
+        $ vt_store.personality_icon = "knowpeach"
+        $ vt_store.personality_tooltip = f"{{image=question_mark_small}} What is her personality?"
+
+        if person.personality.default_prefix == "bimbo":
+            $ vt_store.personality_icon = "bimbo"
+            $ vt_store.personality_tooltip = f"{{image=vtcherries_small}} Her brain is with NASA, in space."
+        elif person.personality.default_prefix == "cougar":
+            $ vt_store.personality_icon = "cougar"
+            $ vt_store.personality_tooltip = f"{{image=vtcherries_small}} She's a cougar, didn't ya know?"
+        elif person.personality.default_prefix == "alpha":
+            $ vt_store.personality_icon = "alpha"
+            $ vt_store.personality_tooltip = f"{{image=vtcherries_small}} She is very strong willed."
+        elif person.personality.default_prefix == "relaxed":
+            $ vt_store.personality_icon = "relaxed"
+            $ vt_store.personality_tooltip = f"{{image=vtcherries_small}} She always seem to be quite relaxed."
+        elif person.personality.default_prefix == "introvert":
+            $ vt_store.personality_icon = "introvert"
+            $ vt_store.personality_tooltip = f"{{image=vtcherries_small}} She likes being left alone."
+        elif person.personality.default_prefix == "reserved":
+            $ vt_store.personality_icon = "reserved"
+            $ vt_store.personality_tooltip = f"{{image=vtcherries_small}} She's usually quite reserved."
+        elif person.personality.default_prefix == "wild":
+            $ vt_store.personality_icon = "wild"
+            $ vt_store.personality_tooltip = f"{{image=vtcherries_small}} Her personality is on the wild side."
+        else:
+            $ vt_store.personality_icon = "vtcherries"
+            $ vt_store.personality_tooltip = f"{{image=vtcherries_small}} Her personality is unique."
+
+        imagebutton:
+            pos(*vt_store.icon_location["personality"])
+            idle vt_store.personality_icon
+            action NullAction()
+            tooltip vt_store.personality_tooltip
+
 ###### Birth Control Status
         # set defaults
         $ vt_store.birth_control_status_icon = ""
@@ -1039,6 +1076,33 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 idle "hadsextoday"
                 action NullAction()
                 tooltip f"{{image=hadsextoday_small}} You had fun with her today."
+
+### Thermometer - Arousal
+        # FIXME: this always gets overwritten
+        $ vt_store.arousal_status_icon = "tempblank"
+        $ vt_store.arousal_tooltip = f"{{image=vtcherries_small}} She is completely sedated."
+
+        if person.arousal > 100:
+            $ vt_store.arousal_status_icon = "tempbroke"
+            $ vt_store.arousal_tooltip = f"{{image=creamcherry_small}} Her brain is melting! Way to go!"
+        elif person.arousal > 90:
+            $ vt_store.arousal_status_icon = "temp90"
+            $ vt_store.arousal_tooltip = f"{{image=vtcherries_small}} She is on the verge of cumming!"
+        elif person.arousal > 80:
+            $ vt_store.arousal_status_icon = "temp80"
+            $ vt_store.arousal_tooltip = f"{{image=vtcherries_small}} She is extremely horny."
+        elif person.arousal > 70:
+            $ vt_store.arousal_status_icon = "temp70"
+            $ vt_store.arousal_tooltip = f"{{image=vtcherries_small}} She is really aroused."
+        else:
+            $ vt_store.arousal_status_icon = "tempnormal"
+            $ vt_store.arousal_tooltip = f"{{image=vtcherries_small}} She seems okay, really."
+
+        imagebutton:
+            pos(*vt_store.icon_location["arousal"])
+            idle vt_store.arousal_status_icon
+            action NullAction()
+            tooltip vt_store.arousal_tooltip
 
 ######## Exhibitionist Fetish
         $ vt_store.exhibitionist_fetish_status_icon = ""
