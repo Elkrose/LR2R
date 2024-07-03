@@ -318,12 +318,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 pos(10, 50)
                 idle "beezee"
                 action NullAction()
-                tooltip "She is ovulating and has a higher chance of getting pregnant, based on birth control and desire to get pregnant."
-
-        # imagebutton:
-                # pos(240, 200)
-                # idle "vtcherries"
-                # action NullAction()
+                tooltip f"{{image=beezee_token_small}} She is ovulating and has a higher chance of getting pregnant, based on birth control and desire to get pregnant."
 
 #### Relationship Status
         $ vt_store.relationship_icon = ""
