@@ -137,7 +137,7 @@ style VTmenu_text_style:
 screen cum_screen():
     zorder 300
     frame at cum_effect():
-        background "/VTgui/images/background_images/BorderPulse.png"
+        background "/VTimages/background_images/BorderPulse.png"
 
         xsize 2304
         ysize 1296
