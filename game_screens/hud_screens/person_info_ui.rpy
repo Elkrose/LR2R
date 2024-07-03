@@ -1064,8 +1064,22 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             elif builtins.all(person.known_opinion(vt_opinion) >= 2 for vt_opinion in ("public sex", "not wearing underwear", "not wearing anything", "showing her ass", "showing her tits", "skimpy outfits", "skimpy uniforms")):
                 $ vt_store.exhibitionist_fetish_status_icon = "nudebody"
                 $ vt_store.exhibitionist_fetish_tooltip = f"{{image=progress_token_small}} My skin needs to breathe and be free!"
-                if person.event_triggers_dict.get("anal_fetish_locked",0) >= day:
-                    $ vt_store.exhibitionist_fetish_tooltip += f"\n{{image=question_mark_small}} Exhibition Fetish Event (not yet written)"
+                if person.event_triggers_dict.get("exhibition_fetish_locked", 0) < day:
+                    $ vt_store.exhibitionist_fetish_tooltip += f"\n{{image=question_mark_small}} Wait for Exhibition Fetish Event."
+
+                if person.has_taboo("sucking_cock"):
+                    $ vt_store.exhibitionist_fetish_tooltip += f"\n{{image=triskelion_token_small}} Have her suck your cock."
+                if person.has_taboo("vaginal_sex"):
+                    $ vt_store.exhibitionist_fetish_tooltip += f"\n{{image=triskelion_token_small}} Have sex with her."
+
+                for opinion in ("being covered in cum", ):
+                    if opinion not in person.get_known_opinion_list(include_sexy=True, include_normal=False):
+                        $ vt_store.cum_fetish_tooltip += f"\n{{image=question_mark_small}} Need her opinion on " + opinion + "."
+                    elif person.known_opinion(opinion) < 2:
+                        $ vt_store.cum_fetish_tooltip += f"\n{{image=red_heart_token_small}} Need her to be more comfortable " + opinion + "."
+
+                if person.cum_exposure_count < 19:
+                    $ vt_store.exhibitionist_fetish_tooltip += f"\n{{image=triskelion_token_small}} Feed her, spray her, or fill her\n with your cum " + str(19 - person.cum_exposure_count) + " more times!"
 
             elif builtins.all(person.known_opinion(vt_opinion) >= 2 for vt_opinion in ("public sex", "not wearing underwear", "not wearing anything", "skimpy outfits", "skimpy uniforms")):
                 $ vt_store.exhibitionist_fetish_status_icon = "nudebody"
@@ -1178,8 +1192,13 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ vt_store.cum_fetish_tooltip = f"{{image=progress_token_small}} Likes your cum! EVERYWHERE!"
                 if person.cum_exposure_count < 19:
                     $ vt_store.cum_fetish_tooltip += f"\n{{image=triskelion_token_small}} Feed her, spray her, or fill her\n with your cum "+ str(19 - person.cum_exposure_count)+" more times!"
-                else:
-                    $ vt_store.cum_fetish_tooltip += f"\n{{image=progress_token_small}} Wait for the cum fetish event to trigger!"
+                elif person.event_triggers_dict.get("cum_fetish_locked", 0) < day:
+                    $ vt_store.cum_fetish_tooltip += f"\n{{image=creamcherry_small}} Natural fetish event will trigger soon!"
+
+                if person.has_taboo("sucking_cock"):
+                    $ vt_store.cum_fetish_tooltip += f"\n{{image=triskelion_token_small}} Have her suck your cock!"
+                if person.has_taboo("condomless_sex"):
+                    $ vt_store.cum_fetish_tooltip += f"\n{{image=triskelion_token_small}} Have no-condom sex with her!"
 
             elif person.opinion.giving_blowjobs >= 2 and (person.known_opinion("drinking cum") >= 2 or person.known_opinion("cum facials") >= 2) and person.known_opinion("being covered in cum") >= 2:
                 # she likes it a lot, but she could be better
@@ -1355,6 +1374,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 else:
                     $ vt_store.breed_fetish_tooltip += f"\n{{image=progress_token_small}} Wait for the breeding fetish event to trigger!"
 
+                if person.has_taboo("condomless_sex"):
+                    $ vt_store.breed_fetish_tooltip += f"\n{{image=triskelion_token_small}} Break her condomless sex taboo!"
+                if person.has_taboo("vaginal_sex"):
+                    $ vt_store.breed_fetish_tooltip += f"\n{{image=triskelion_token_small}} Have vaginal sex with her to break taboo!"
+
             elif person.opinion.vaginal_sex >= 2  and person.known_opinion("creampies") >= 2:
                 # she loves it, but she could be better
                 $ vt_store.breed_fetish_status_icon = "spreadvag"
@@ -1371,6 +1395,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ vt_store.cum_fetish_tooltip += f"\n{{image=question_mark_small}} Need her opinion on " + opinion + "."
                     elif person.known_opinion(opinion) < 2:
                         $ vt_store.cum_fetish_tooltip += f"\n{{image=red_heart_token_small}} Need her to love " + opinion + "."
+
+                if person.vaginal_sex_skill < 2:
+                    $ vt_store.cum_fetish_tooltip += f"\n{{image=triskelion_token_small}} Need to raise her vaginal sex skill."
 
             elif person.opinion.vaginal_sex <= 0:
                 # her opinion is not positive
