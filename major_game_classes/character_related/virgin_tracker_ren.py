@@ -5,7 +5,8 @@ from renpy.exports import write_log
 from game.helper_functions.random_generation_functions_ren import create_random_person, make_person, create_party_schedule, get_premade_character
 from game.major_game_classes.game_logic.Room_ren import Room, list_of_places, strip_club, bdsm_room, downtown_bar, downtown_hotel, downtown, hospital
 from game.main_character.MainCharacter_ren import mc
-from game.major_game_classes.character_related.Person_ren import Person
+from game.major_game_classes.character_related.StatTracker_ren import StatTracker
+from game.major_game_classes.game_logic.Person_ren import Person, list_of_people
 from game.major_game_classes.character_related._job_definitions_ren import JobDefinition
 from helper_functions.vt_helper_functions_ren import _vt_virginity_stats, _vt_get_person_age_tag
 from renpy import persistent, basestring
@@ -26,6 +27,59 @@ init 900 python:
 VIRGIN_TRACKER_DEBUG = True
 # TODO: Need to capture pros and adjust sluttiness to appropriate levels
 # TODO: NOT SURE how to hook into the _map_definitions to edit the harem name
+
+class VTPerson(Person):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    @property
+    def VT_has_started_anal_fetish(self) -> bool:
+        return self.event_triggers_dict.get("VT_anal_fetish_start", False)
+
+    @property
+    def VT_has_started_breeding_fetish(self) -> bool:
+        return self.event_triggers_dict.get("VT_breeding_fetish_start", False)
+
+    @property
+    def VT_has_started_cum_fetish(self) -> bool:
+        return self.event_triggers_dict.get("VT_cum_fetish_start", False)
+
+    @property
+    def VT_has_started_exhibition_fetish(self) -> bool:
+        return self.event_triggers_dict.get("VT_exhibition_fetish_start", False)
+
+Person         = VTPerson
+
+class VTStatTracker(StatTracker):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        ##### Seperate the harem girlfriends from girlfriends
+    @property
+    def polycule_girlfriends(self) -> int:
+        return sum(1 for x in list_of_people if x.is_girlfriend and x.has_role(harem_role))
+    ##### Seperate the harem paramour from paramours
+    @property
+    def polycule_paramours(self) -> int:
+        return sum(1 for x in list_of_people if x.is_affair and x.has_role(harem_role))
+    #### total Polycules
+    @property
+    def polycules(self) -> int:
+        return sum(1 for x in list_of_people if x.has_role(harem_role))
+    #### total girlfriends not in polycule
+    @property
+    def girlfriends(self) -> int:
+        return sum(1 for x in list_of_people if x.is_girlfriend and not x.has_role(harem_role))
+    #### total paramours not in polycule
+    @property
+    def paramours(self) -> int:
+        return sum(1 for x in list_of_people if x.is_affair and not x.has_role(harem_role))
+
+    @property
+    def slaves(self) -> int:
+        return sum(1 for x in list_of_people if x.is_slave)
+
+StatTracker     = VTStatTracker
 
 def _vt_prefix_person_init(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
@@ -83,24 +137,53 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
         if self.vaginal_cum > 0 and (day - self.sex_record.get("Last Vaginal Day", -1)) >= 4:
             self.vaginal_cum -= 1
 
-        # auto-develop fetishes without serum
-        #if (not self.has_anal_fetish and self.anal_sex_skill >= 5
-        #        and self.opinion.anal_sex >= 2 and self.opinion.anal_creampies >= 2
-        #        and (self.anal_sex_count > 19 or self.anal_creampie_count > 19)):
-            #if VT_start_anal_fetish_quest(self):
-                #self.event_triggers_dict["VT_anal_fetish_start"] = True
+        # auto-develop natural fetishes without serums or nanos
+        if (not self.has_cum_fetish \
+            and not self.has_taboo(["sucking_cock", "condomless_sex"]) \
+            and self.oral_sex_skill >= 4 \
+            and self.sluttiness >= 70 \
+            and self.opinion.giving_blowjobs >=2 \
+            and self.opinion.being_covered_in_cum < 2 \
+            and self.cum_exposure_count >=19 ):
+            if VT_start_cum_fetish_quest(self):
+                self.event_triggers_dict["VT_cum_fetish_start"] = True
+        
+        if (not self.has_anal_fetish \
+                and not self.has_taboo("anal_sex") \
+                and self.anal_sex_skill >= 4 \
+                and self.opinion.anal_sex >= 2 \
+                and self.opinion.anal_creampies >= 2 \
+                and self.is_willing(doggy_anal) \
+                and self.sluttiness >= 70 \
+                and (self.anal_sex_count >= 19 or self.anal_creampie_count >= 19)):
+            if VT_start_anal_fetish_quest(self):
+                self.event_triggers_dict["VT_anal_fetish_start"] = True
 
-        #if (not self.has_cum_fetish and self.oral_sex_skill >= 5
-        #        and self.opinion.giving_blowjobs >= 2 and (self.opinion.drinking_cum >= 2 or self.opinion.cum_facials >= 2)
-        #        and self.cum_exposure_count > 19):
-            #if VT_start_cum_fetish_quest(self):
-                #self.event_triggers_dict["VT_cum_fetish_start"] = True
+        if (not self.has_breeding_fetish \
+                and persistent.pregnancy_pref > 0
+                and not self.has_taboo(["condomless_sex", "vaginal_sex"]) \
+                and self.opinion.bareback_sex >=2 \
+                and self.is_willing(missionary) \
+                and self.vaginal_sex_skill >= 4 \
+                and self.opinion.vaginal_sex >= 2 \
+                and self.opinion.creampies >= 2 \
+                and self.sluttiness >=70 \
+                and self.vaginal_creampie_count >= 19):
+            if VT_start_breeding_fetish_quest(self):
+                self.event_triggers_dict["VT_breeding_fetish_start"] = True
 
-       # if (not self.has_breeding_fetish and self.vaginal_sex_skill >= 5
-                #and self.opinion.vaginal_sex >= 2 and self.opinion.creampies >= 2
-                #and self.vaginal_creampie_count > 19):
-           # if VT_start_breeding_fetish_quest(self):
-                #self.event_triggers_dict["VT_breeding_fetish_start"] = True
+        if (not self.has_exhibition_fetish \
+            and self.sex_record.get("Public Sex", 0) > 19 \
+            and not self.has_taboo(["sucking_cock", "vaginal_sex"]) \
+            and self.oral_sex_skill >= 4 \
+            and self.anal_sex_skill >= 4 \
+            and self.vaginal_sex_skill >= 4 \
+            and self.sluttiness >= 70 \
+            and self.opinion.public_sex >=2 \
+            and self.opinion.being_covered_in_cum >= 2 \
+            and self.cum_exposure_count >=19 ):
+            if VT_start_exhibition_fetish_quest(self):
+                self.event_triggers_dict["VT_exhibition_fetish_start"] = True
 
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)

@@ -133,3 +133,19 @@ style VTmenu_text_style:
     outlines [(2,"#222222",0,0)]
     text_align 0.0
     line_spacing 2
+
+screen cum_screen():
+    zorder 300
+    frame at cum_effect():
+        background "/VTgui/images/background_images/BorderPulse.png"
+
+        xsize 2304
+        ysize 1296
+
+        xanchor 0.5
+        yanchor 0.5
+        xalign 0.5
+        yalign 0.5
+
+    timer 0.6 action Show("flash_screen", None, 0.65)
+    timer 0.7 action Hide("cum_screen")
