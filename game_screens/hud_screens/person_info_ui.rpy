@@ -300,7 +300,16 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 idle "beezee"
                 action NullAction()
                 tooltip f"{{image=beezee_token_small}} She is ovulating and has a higher chance of getting pregnant, based on birth control and desire to get pregnant."
-
+#### Virgin UI ####
+        $ dayslastsex = 0
+        $ daysince = ""
+        if person.has_event_day("last_insemination") and person.days_since_event("last_insemination") < 4:
+            if person.days_since_event("last_insemination") > 1:
+                $ dayslastsex = 4 - person.days_since_event("last_insemination") 
+                if dayslastsex == 1:
+                    $ daysince = "\nMy womb feels empty!"
+                else:
+                    $ daysince = "\nYour sperm in me for "+str(dayslastsex)+" more days!\n Such warm butterflies!"
 #### Relationship Status
         $ VTrelationshipst = "norelations"
         $ VTrelationshiptt = f"{{image=dontknow_token_small}} Has no romantic relations with you."
@@ -1462,15 +1471,6 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         $ VTbreedfetishat = "talking"
         $ VTbreedfetishst = "knowpeach"
         $ VTbreedfetishtt = f"{{image=question_mark_small}} Her thoughts on vaginal sex?"
-        $ dayslastsex = 0
-        $ daysince = ""
-        if person.has_event_day("last_insemination") and person.days_since_event("last_insemination") < 4:
-            if person.days_since_event("last_insemination") > 1:
-                $ dayslastsex = 4 - person.days_since_event("last_insemination") 
-                if dayslastsex == 1:
-                    $ daysince = "\nMy womb feels empty!"
-                else:
-                    $ daysince = "\nYour sperm in me for "+str(dayslastsex)+" more days!\n Such warm butterflies!"
         if person.sexy_opinions.get("vaginal sex")==None:
             $ VTbreedfetishst = "knowpeach"
             $ VTbreedfetishtt = f"{{image=question_mark_small}} Her thoughts on vaginal sex?"
