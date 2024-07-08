@@ -45,9 +45,14 @@ def VT_breeding_fetish_family_sleep_crisis_requirement():
     return False
 
 def VT_breeding_fetish_employee_high_fertility_crisis_requirement():
-    if mc.business.is_open_for_business and mc.is_at_office:
-        return not VT_get_highly_fertile_employee_breeder() is None
-    return False
+    if config.version is ("2024.05B"):
+        if mc.business.is_open_for_business and mc.is_at_work:
+            return not VT_get_highly_fertile_employee_breeder() is None
+        return False
+    else:
+        if mc.business.is_open_for_business and mc.is_at_office:
+            return not VT_get_highly_fertile_employee_breeder() is None
+        return False
 
 def update_breeding_fetish_state(person: Person):
     person.energy = max(person.energy, 80)
