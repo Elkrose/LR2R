@@ -55,14 +55,14 @@ def update_breeding_fetish_state(person: Person):
     if person.arousal_perc <= 20:
         person.change_arousal(30)
 
-VT_breeding_fetish_high_fertility_crisis = ActionMod("Breeding fetish desperation", VT_breeding_fetish_high_fertility_crisis_requirement, "VT_breeding_fetish_high_fertility_crisis_label",
-    menu_tooltip = "You are visited by a highly fertile breeder.", category = "Fetish", is_crisis = True)
+VT_breeding_fetish_high_fertility_crisis = ActionMod("Highly fertile breeding desperation", VT_breeding_fetish_high_fertility_crisis_requirement, "VT_breeding_fetish_high_fertility_crisis_label",
+    menu_tooltip = "You are visited by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_happy_breeder_crisis = ActionMod("Breeding fetish desperation", VT_breeding_fetish_happy_breeder_crisis_requirement, "VT_breeding_fetish_happy_breeder_crisis_label",
-    menu_tooltip = "You are visited by a highly fertile breeder.", category = "Fetish", is_crisis = True)
-VT_breeding_fetish_family_sleep_crisis = ActionMod("Familial nighttime breeding", VT_breeding_fetish_family_sleep_crisis_requirement, "VT_breeding_fetish_family_sleep_crisis_label",
-    menu_tooltip = "You are visited at night by a thirsty family member.", category = "Fetish", is_crisis = True)
+    menu_tooltip = "You are visited by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
+VT_breeding_fetish_family_sleep_crisis = ActionMod("Familial night time breeding", VT_breeding_fetish_family_sleep_crisis_requirement, "VT_breeding_fetish_family_sleep_crisis_label",
+    menu_tooltip = "You are visited at night by a thirsty family member.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_employee_high_fertility_crisis = ActionMod("Highly fertile employee needs breeding", VT_breeding_fetish_employee_high_fertility_crisis_requirement, "VT_breeding_fetish_employee_high_fertility_crisis_label",
-    menu_tooltip = "An employee surprises you in your office", category = "Fetish", is_crisis = True)
+    menu_tooltip = "An employee surprises you in your office", category = "VT Natural Fetish", is_crisis = True)
 
 def VT_add_breeding_fetish(person: Person):
     person.add_role(breeding_fetish_role)
