@@ -107,14 +107,34 @@ def get_location_tooltip(location: Room) -> str:
                 if person.has_role(affair_role):
                     info.append("{image=parapoly_token_small}")
                 else:
-                    info.append("{image=harem_token_small}")
+                    if person.is_family:
+                        info.append("{image=familypoly_small}")
+                    else:
+                        info.append("{image=harem_token_small}")
             else:
                 if person.has_role(affair_role):
                     info.append("{image=paramour_token_small}")
                 else:
-                    info.append("{image=gf_token_small}")
-        if person.age <= 18:
-            info.append("{image=matureteen_token_small}")
+                    if person.is_family:
+                        info.append("{image=familylove_small}")
+                    else:
+                        info.append("{image=gf_token_small}")
+        else:
+            if person.is_family:
+                info.append("{image=familycircle_small}")
+        if person.has_cum_fetish and (person.has_breeding_fetish or person.has_anal_fetish) and person.has_exhibition_fetish and person.opinion.polyamory>1:
+            info.append("{image=goldlotus_small}")
+        else:
+            if person.age <= 19:
+                info.append("{image=whitelotus_small}")
+            if person.age >19 and person.age <=29:
+                info.append("{image=redlotus_small}")
+            if person.age >29 and person.age <=35:
+                info.append("{image=pinklotus_small}")
+            if person.age >35:
+                info.append("{image=bluelotus_small}")
+        if (person.hymen <= 1 or person.oral_virgin <1 or person.anal_virgin <1):
+            info.append("{image=virgin_token_small}")
         if person.is_clone:
             info.append("{image=dna_token_small}")
         if person.knows_pregnant:
@@ -193,16 +213,32 @@ def build_tile_information(known_people: list[Person], total_people: int, locati
         extra_info.append("{image=full_star_token_small}")
     if any(x for x in known_people if x.type=="story"):
         extra_info.append("{image=labbook_token_small}")
-    if any(x for x in known_people if x.has_exact_role(harem_role) and x.has_exact_role(affair_role)==False):
+    if any(x for x in known_people if x.has_exact_role(harem_role) and x.has_exact_role(affair_role)==False and not x.is_family):
         extra_info.append("{image=harem_token_small}")
     if any(x for x in known_people if x.has_exact_role(harem_role) and x.has_exact_role(affair_role)):
         extra_info.append("{image=parapoly_token_small}")
-    if any(x for x in known_people if x.has_exact_role(affair_role) and x.has_exact_role(harem_role)==False):
+    if any(x for x in known_people if x.has_exact_role(harem_role) and x.is_family):
+        extra_info.append("{image=familypoly_small}")
+    if any(x for x in known_people if x.has_exact_role(affair_role) and x.has_exact_role(harem_role)==False and not x.is_family):
         extra_info.append("{image=paramour_token_small}")
     if any(x for x in known_people if x.has_exact_role(girlfriend_role)):
         extra_info.append("{image=gf_token_small}")
-    if any(x for x in known_people if x.age <=18):
-        extra_info.append("{image=matureteen_token_small}")
+    if any(x for x in known_people if x.has_exact_role(girlfriend_role) and x.is_family):
+        extra_info.append("{image=familylove_small}")
+    if any(x for x in known_people if x.is_family and not x.has_relation_with_mc):
+        extra_info.append("{image=familycircle_small}")
+    if any(x for x in known_people if x.age <=19):
+        extra_info.append("{image=whitelotus_small}")
+    if any(x for x in known_people if x.age >19 and x.age <=29):
+        extra_info.append("{image=redlotus_small}")
+    if any(x for x in known_people if x.age >29 and x.age <=35):
+        extra_info.append("{image=pinklotus_small}")
+    if any(x for x in known_people if x.age >35):
+        extra_info.append("{image=bluelotus_small}")
+    if any(x for x in known_people if x.has_cum_fetish and (x.has_breeding_fetish or x.has_anal_fetish) and x.has_exhibition_fetish and x.opinion.polyamory>1):
+        extra_info.append("{image=goldlotus_small}")
+    if any(x for x in known_people if (x.hymen <= 1 or x.oral_virgin <1 or x.anal_virgin <1)):
+        extra_info.append("{image=virgin_token_small}")
     if any(x for x in known_people if x.knows_pregnant):
         extra_info.append("{image=feeding_bottle_token_small}")
     if any(x for x in known_people if x.has_exact_role(very_heavy_trance_role) and x.trance_training_available):
@@ -228,10 +264,10 @@ def build_tile_information(known_people: list[Person], total_people: int, locati
     if any(x for x in known_people if x.had_sex_today):
         extra_info.append("{image=hadsex_token_small}")
 
-    if len(extra_info) > 6:
-        break_insert = int((len(extra_info) + 1) / 2.0)
-        print("Insert tile break at {break_insert}")
-        extra_info.insert(break_insert, "\n")
+    # if len(extra_info) > 6:
+        # break_insert = int((len(extra_info) + 1) / 2.0)
+        # print("Insert tile break at {break_insert}")
+        # extra_info.insert(break_insert, "\n")
 
     info = []
     if extra_info:
@@ -282,7 +318,6 @@ def calculate_hub_offsets(hub: MapHub, idx: int, location: Room) -> tuple[int, i
         if GRID_MAP_POS[(idx % 3)][0] % 2 == 1:
             offset_y += 75
     return (offset_x, offset_y - hex_offset)
-
 
 def check_for_any_room_events():
     return (any(y for x in list_of_people for y in x.on_room_enter_event_list.enabled_actions(x) if x.location.visible and x.location.is_accessible and not y.silent)

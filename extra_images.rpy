@@ -3,7 +3,6 @@ init -10:
     image topboxVT = "[topboxVT_image.filename]"
     image vtcherries = "[vtcherries_image.filename]"
     image bg Cherry_menu_background = Cherry_background_image
-    
     image information_mark = "[information_image.filename]"
     image question_mark = "[question_image.filename]"
     
@@ -13,8 +12,18 @@ init -10:
     image polyamorous = "[polyamorous_image.filename]"
     image parapoly = "[parapoly_image.filename]"
     image virgin_image_marker = "[virgin_image.filename]"
-    image matureteen = "[matureteen_image.filename]"
     image norelations = "[dontknow_image.filename]"
+    image familycircle = "[familycircle_image.filename]"
+    image familylove = "[familylove_image.filename]"
+    image familypoly = "[familypoly_image.filename]"
+
+##### Age Icons #####
+    image matureteen = "[matureteen_image.filename]"
+    image whitelotus = "[whitelotus_image.filename]"
+    image redlotus = "[redlotus_image.filename]"
+    image pinklotus = "[pinklotus_image.filename]"
+    image bluelotus = "[bluelotus_image.filename]"
+    image goldlotus = "[goldlotus_image.filename]"
 
 ###### Threesome - note polyamorous added
     image ahegaothreesomes = "[ahegaothreesomes_image.filename]"
@@ -37,7 +46,6 @@ init -10:
     image beezee = "[beezee_image.filename]"
     image knowbirthcontrol = "[knowbc_image.filename]"
     image pregnant = "[pregnant_image.filename]"
-
 
 ##### Condom Icons #####
     image knowcondom = "[knowcondom_image.filename]"
@@ -112,6 +120,5 @@ init -10:
 ##### Status Icons #####
     image creamcherry = "[creamcherry_image.filename]"
     image labbook = "[labbook_image.filename]"
-
     image bareback = "[bareback_image.filename]"
 

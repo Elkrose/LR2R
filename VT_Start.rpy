@@ -66,7 +66,7 @@ label improved_start():
             $ kina_mode = True
             $ easy_mode = True
         "Easy Cherries":
-            "Easy Cherries! Easy Mode + Higher Stats, everything set to just have fun"
+            "Easy Cherries! Easy Mode + Higher Stats, everything set to just have fun."
             $ cherry_mode = True
 
     "Finally, the game uses random generated characters, the mod offers you the ability to control the random generation."

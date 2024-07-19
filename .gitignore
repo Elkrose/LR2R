@@ -87,3 +87,6 @@ Lab*.app/
 **/*.rpa
 local.code-workspace
 LR2RVTMod.code-workspace
+VTStory/Kysera/kysera_definition_ren.py
+VTStory/Kysera/Kysera_Wardrobe.xml
+VTStory/Kysera/rose_blossom_serum_ren.py
