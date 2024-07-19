@@ -85,11 +85,11 @@ def VT_get_fetish_cum_dosage_non_employee():
 
 
 VT_exhibition_fetish_morning_shower_crisis = ActionMod("Morning shower with company", VT_exhibition_fetish_morning_shower_requirement, "VT_exhibition_fetish_morning_shower_label",
-    menu_tooltip = "You are taking a shower when a family member joins you.", category = "Fetish", is_crisis = True)
+    menu_tooltip = "You are taking a shower when a family member joins you.", category = "VT Natural Fetish", is_crisis = True)
 VT_exhibition_fetish_employee_dosage_request_crisis = ActionMod("Employee Casually asks for cum", VT_exhibition_fetish_employee_dosage_request_requirement, "VT_exhibition_fetish_employee_casual_request_label",
-    menu_tooltip = "An employee is thirsty for cum.", category = "Fetish", is_crisis = True)
+    menu_tooltip = "An employee is thirsty for cum.", category = "VT Natural Fetish", is_crisis = True)
 VT_exhibition_fetish_non_employee_dosage_request_crisis = ActionMod("Someone asks for cum", VT_exhibition_fetish_non_employee_dosage_request_requirement, "VT_exhibition_fetish_non_employee_dosage_request_label",
-    menu_tooltip = "Someone calls and asks for a favour.", category = "Fetish", is_crisis = True)
+    menu_tooltip = "Someone calls and asks for a favour.", category = "VT Natural Fetish", is_crisis = True)
 
 
 

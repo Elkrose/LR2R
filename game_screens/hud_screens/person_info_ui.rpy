@@ -717,10 +717,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         if person.oral_cum == 1:
                             if person.arousal_perc >= 59:
                                 $ VToralst = "ahegaoface"
-                                $ VToraltt = "She seems lost in her bliss and panting. \n{{image=ahegaomouth_small}}She has a dose of your protein in her belly."
+                                $ VToraltt = f"She seems lost in her bliss and panting. \n{{image=ahegaomouth_small}}She has a dose of your protein in her belly."
                             else:
                                 $ VToralst = "bitelip"
-                                $ VToraltt = "She looks at you with lust \n in her innocent hungry eyes. \n{{image=ahegaomouth_small}}She has a dose of your protein in her belly."
+                                $ VToraltt = f"She looks at you with lust \n in her innocent hungry eyes. \n{{image=ahegaomouth_small}}She has a dose of your protein in her belly."
                         else:
                             if person.oral_cum >3:
                                 if person.arousal_perc >= 59:

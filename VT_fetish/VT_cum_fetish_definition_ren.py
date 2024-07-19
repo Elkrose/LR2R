@@ -38,11 +38,11 @@ def VT_get_fetish_cum_dosage_non_employee():
     return get_random_from_list([x for x in known_people_in_the_game(excluded_people = mc.business.employee_list + [mom, lily]) if x.has_cum_fetish and x.days_since_event("LastCumFetish") > 10])
 
 VT_cum_fetish_morning_shower_crisis = ActionMod("Morning shower with company", VT_cum_fetish_morning_shower_requirement, "VT_cum_fetish_morning_shower_label",
-    menu_tooltip = "You are taking a shower when a family member joins you.", category = "Fetish", is_crisis = True)
+    menu_tooltip = "You are taking a shower when a family member joins you.", category = "VT Natural Fetish", is_crisis = True)
 VT_cum_fetish_employee_dosage_request_crisis = ActionMod("Employee asks for cum", VT_cum_fetish_employee_dosage_request_requirement, "VT_cum_fetish_employee_dosage_request_label",
-    menu_tooltip = "An employee is thirsty for cum.", category = "Fetish", is_crisis = True)
+    menu_tooltip = "An employee is thirsty for cum.", category = "VT Natural Fetish", is_crisis = True)
 VT_cum_fetish_non_employee_dosage_request_crisis = ActionMod("Someone asks for cum", VT_cum_fetish_non_employee_dosage_request_requirement, "VT_cum_fetish_non_employee_dosage_request_label",
-    menu_tooltip = "Someone calls and asks for a favour.", category = "Fetish", is_crisis = True)
+    menu_tooltip = "Someone calls and asks for a favour.", category = "VT Natural Fetish", is_crisis = True)
 
 
 def VT_add_cum_fetish(person: Person):
