@@ -1,5 +1,3 @@
-import inspect, copy
-from typing import Callable
 from game.major_game_classes.serum_related.SerumDesign_ren import SerumDesign
 from game.game_roles.business_roles._business_role_definitions_ren import clone_role
 from game.game_roles.role_pregnant_definition_ren import become_pregnant
@@ -9,8 +7,13 @@ from game.major_game_classes.serum_related.SerumDesign_ren import SerumDesign
 from game.major_game_classes.serum_related.serums._serum_traits_T0_ren import basic_med_app
 
 """renpy
+IF FLAG_OPT_IN_ANNOTATIONS:
+    rpy python annotations
 init -1 python:
 """
+import inspect
+from typing import Callable
+
 list_of_instantiation_functions.append("init_Virginal_Serum")
 ##VIRGINITY##
 ## Virginity Tracker ##
@@ -52,12 +55,12 @@ def clone_womb_restore_on_apply(person: Person, serum: SerumDesign, add_to_log: 
 ### Virgin ON TURN ###
 def hymen_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     person.change_happiness(-5, add_to_log=add_to_log)
-    if person.vaginal_virgin >= 1: 
+    if person.vaginal_virgin >= 1:
         person.vaginal_virgin -= 1
         if person in mc.location.people: #If you're here applying this trait in person it causes her to exclaim.
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Oh my god my....it itches!")
     elif person.vaginal_virgin == 0:
-        if person.hymen == 2: 
+        if person.hymen == 2:
             person.hymen = 1
             person.restore_taboo('vaginal_sex')
             if add_to_log:
@@ -70,7 +73,7 @@ def hymen_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
 
 def anal_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     person.change_happiness(-5, add_to_log=add_to_log)
-    if person.anal_virgin >= 1: 
+    if person.anal_virgin >= 1:
         person.anal_virgin -= 1
         if person in mc.location.people: #If you're here applying this trait in person it causes her to exclaim.
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Oh my god! Excuse me! How embarrassing!")
@@ -80,7 +83,7 @@ def anal_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
 
 def oral_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     person.change_happiness(-5, add_to_log=add_to_log)
-    if person.oral_virgin >= 1: 
+    if person.oral_virgin >= 1:
         person.oral_virgin -= 1
         if person in mc.location.people: #If you're here applying this trait in person it causes her to exclaim.
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Ugh, why am I drooling???!")
@@ -90,7 +93,7 @@ def oral_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
 
 def clone_womb_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     person.change_happiness(-5, add_to_log=add_to_log)
-    if person.vaginal_virgin >= 1: 
+    if person.vaginal_virgin >= 1:
         person.vaginal_virgin -= 1
         if person in mc.location.people: #If you're here applying this trait in person it causes her to exclaim.
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Ugh, my tummy feels weird... I think I need to... *turns pale* OMG out of my way! *hic*")
@@ -127,33 +130,32 @@ def clone_womb_restore_on_remove(person: Person, serum: SerumDesign, add_to_log:
 
 ## Override/inject into core code
 def _vt_is_clone_override(wrapped_func: Callable) -> Callable:
-    def wrapping_func(self: Person) -> bool:
+    def wrapping_func(*args, **kwargs):
+        self = args[0] if len(args) > 0 and isinstance(args[0], Person) else (kwargs["person"] if kwargs.get("person") else None)
+        if not self:
+            raise ValueError
         # wrapped_func (is_clone) returns True iff has_role(clone_role)
         #
         # if clone has been given "Clone Womb Revival Stim", then
         # `not self.clone_can_become_pregnant` == False, so that `become_pregnant` proceeds as if `person.is_clone == False`
-        return wrapped_func() \
+        return wrapped_func(*args, **kwargs) \
             and not getattr(self, "clone_can_become_pregnant", False)
-    
+
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
-    return wrapping_func
+    # NOTE: because is_clone is a property, this is different than other injections
+    return property(wrapping_func)
 
 def _vt_become_pregnant_override(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # variable initialization; get the `person` variable
-        person = None
-        if isinstance(args[0], Person):
-            person = args[0]
-        elif "person" in kwargs.keys():
-            person = kwargs["person"]
-        else: # short-circuit return; something went wrong
-            # TODO: write error to log?
-            return
-        
+        person = args[0] if len(args) > 0 and isinstance(args[0], Person) else (kwargs["person"] if kwargs.get("person") else None)
+        if not person:
+            raise ValueError
+
         # set the "being called from `become_pregnant`" flag
         if hasattr(person, "clone_can_become_pregnant") and getattr(person, "clone_womb_revived", False):
             person.clone_can_become_pregnant = True
-        
+
         # call core code (has side-effects)
         wrapped_func(*args, **kwargs)
 
@@ -163,13 +165,13 @@ def _vt_become_pregnant_override(wrapped_func: Callable) -> Callable:
             person.clone_can_become_pregnant = False
 
         return
-    
+
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
 # set the injections
 # TODO: should be called from an instantiation function?
-Person.is_clone = _vt_is_clone_override(Person.is_clone)
+setattr(Person, "is_clone", _vt_is_clone_override(Person.is_clone.__get__))
 become_pregnant = _vt_become_pregnant_override(become_pregnant)
 
 ### Virginal SerumDesign ###
