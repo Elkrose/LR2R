@@ -387,10 +387,12 @@ def _vt_create_random_person_override(wrapped_func: Callable) -> Callable:
         virginity_types = ["Oral", "Vaginal", "Anal"]
         for sex_type in virginity_types:
             # compute the values
+            # NOTE: this has side-effects; it affects the person's sex skills
             stats = _vt_virginity_stats(person, sex_type, sex_cap)
-            # and apply them
+            # and apply them (if they don't already exist)
             for key, value in stats.items():
-                setattr(person, key, value)
+                if not hasattr(person, key):
+                    setattr(person, key, value)
 
         if VIRGIN_TRACKER_DEBUG:
             write_log(f"Added VT Attributes - Virgins: {[getattr(person, sex_kind+'_virgin') for sex_kind in ('oral','vaginal','anal')]},"\

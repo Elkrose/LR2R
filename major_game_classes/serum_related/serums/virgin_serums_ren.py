@@ -1,3 +1,4 @@
+import renpy # @UnresolvedImport
 from game.major_game_classes.serum_related.SerumDesign_ren import SerumDesign
 from game.game_roles.business_roles._business_role_definitions_ren import clone_role
 from game.game_roles.role_pregnant_definition_ren import become_pregnant
