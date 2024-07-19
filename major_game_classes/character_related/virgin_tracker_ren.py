@@ -48,13 +48,18 @@ class VTPerson(Person):
     def VT_has_started_exhibition_fetish(self) -> bool:
         return self.event_triggers_dict.get("VT_exhibition_fetish_start", False)
 
+    @property
+    def is_family(self) -> bool:
+        return self in (mom, lily, aunt, cousin) or hasattr(self, 'is_daughter_of_mc')
+
 Person         = VTPerson
 
+#keep an eye on the vanilla stats, likes to change them alot, so might need to bring them here to keep stability
 class VTStatTracker(StatTracker):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        
-        ##### Seperate the harem girlfriends from girlfriends
+
+    ##### Seperate the harem girlfriends from girlfriends
     @property
     def polycule_girlfriends(self) -> int:
         return sum(1 for x in list_of_people if x.is_girlfriend and x.has_role(harem_role))
@@ -62,6 +67,10 @@ class VTStatTracker(StatTracker):
     @property
     def polycule_paramours(self) -> int:
         return sum(1 for x in list_of_people if x.is_affair and x.has_role(harem_role))
+    #### Poly Familia
+    @property
+    def polycule_familia(self) -> int:
+        return sum(1 for x in list_of_people if x.is_girlfriend and x.has_role(harem_role) and x.is_family)
     #### total Polycules
     @property
     def polycules(self) -> int:
@@ -70,11 +79,15 @@ class VTStatTracker(StatTracker):
     @property
     def girlfriends(self) -> int:
         return sum(1 for x in list_of_people if x.is_girlfriend and not x.has_role(harem_role))
+    #### total familia not in polycule
+    @property
+    def familia(self) -> int:
+        return sum(1 for x in list_of_people if x.is_girlfriend and not x.has_role(harem_role) and x.is_family)
     #### total paramours not in polycule
     @property
     def paramours(self) -> int:
         return sum(1 for x in list_of_people if x.is_affair and not x.has_role(harem_role))
-
+    #### total slaves
     @property
     def slaves(self) -> int:
         return sum(1 for x in list_of_people if x.is_slave)
@@ -92,12 +105,73 @@ def _vt_prefix_person_init(wrapped_func: Callable) -> Callable:
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
+def _vt_postfix_break_taboo(wrapped_func: Callable) -> Callable:
+    def wrapping_func(*args, **kwargs):
+        # TODO: make more virgin taboo break dialogs for personalities
+        ret_val = wrapped_func(*args, **kwargs)
+        self = args[0]
+        the_taboo = args[1]
+        #VirginTracker virginity taboo breaks
+        if the_taboo == "vaginal_sex" and self.hymen==0:
+            def get_blood_item(clothing):
+                item = clothing.get_copy()
+                item.colour = [.71, .1, .1, 0.8]
+                item.layer = 0
+                return item
+
+            self.outfit.add_accessory(get_blood_item(creampie_cum))
+            self.outfit.add_accessory(get_blood_item(ass_cum))
+            self.event_triggers_dict["given_virginity"] = True
+            self.vaginal_first = mc.name
+            self.vaginal_virgin += 1
+            self.hymen = 1
+            if self.opinion.vaginal_sex < 1:
+                self.update_opinion_with_score("vaginal sex", 1)
+
+        elif the_taboo == "sucking_cock" and self.oral_virgin==0:
+            self.oral_virgin += 1
+            self.oral_first = mc.name
+            if self.opinion.giving_blowjobs < 1:
+                self.update_opinion_with_score("giving blowjobs", 1)
+        elif the_taboo == "anal_sex" and self.anal_virgin==0:
+            self.anal_virgin +=1
+            self.anal_first = mc.name
+            if self.opinion.anal_sex < 1:
+                self.update_opinion_with_score("anal sex", 1)
+
+        return ret_val # probably None, but core could change
+    wrapping_func.__signature__ = inspect.signature(wrapped_func)
+    return wrapping_func
+
+def _vt_postfix_restore_taboo(wrapped_func: Callable) -> Callable:
+    def wrapping_func(*args, **kwargs):
+        ret_val = wrapped_func(*args, **kwargs)
+        self = args[0]
+        the_taboo = args[1]
+        #virginity taboo restores
+        if the_taboo == "vaginal_sex" and self.vaginal_virgin<=1:
+            restore_virginity(self)
+            self.restore_taboo('vaginal_sex')
+            self.vaginal_virgin = 0
+            self.hymen = 0
+
+        if the_taboo == "sucking_cock" and self.oral_virgin<=1:
+            self.restore_taboo('sucking_cock')
+            self.oral_virgin = 0
+
+        if the_taboo == "anal_sex" and self.anal_virgin<=1:
+            self.restore_taboo('anal_sex')
+            self.anal_virgin = 0
+
+        return ret_val # probably None, but core could change
+    wrapping_func.__signature__ = inspect.signature(wrapped_func)
+    return wrapping_func
+
 def _vt_postfix_person_run_turn(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # TODO: make mod install compatible with existing savegames (person doesn't have VT attributes)
         # Call core code; has core side effects
         ret_val = wrapped_func(*args, **kwargs)
-
         self = args[0]
         #VirginTracker cum tracker dealing with cum in orifices
         # NOTE: vaginal_cum has floor 1, other two have floor 0
@@ -147,7 +221,7 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
             and self.cum_exposure_count >=19 ):
             if VT_start_cum_fetish_quest(self):
                 self.event_triggers_dict["VT_cum_fetish_start"] = True
-        
+
         if (not self.has_anal_fetish \
                 and not self.has_taboo("anal_sex") \
                 and self.anal_sex_skill >= 4 \
@@ -193,10 +267,8 @@ def _vt_postfix_person_cum_in_mouth(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # TODO: make mod install compatible with existing savegames (person doesn't have VT attribute oral_cum)
         ret_val = wrapped_func(*args, **kwargs)
-
         self = args[0]
         self.oral_cum += 1
-
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
@@ -205,10 +277,8 @@ def _vt_postfix_person_cum_in_vagina(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # TODO: make mod install compatible with existing savegames (person doesn't have VT attribute vaginal_cum)
         ret_val = wrapped_func(*args, **kwargs)
-
         self = args[0]
         self.vaginal_cum += 1
-
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
@@ -217,10 +287,8 @@ def _vt_postfix_person_cum_in_ass(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # TODO: make mod install compatible with existing savegames (person doesn't have VT attribute anal_cum)
         ret_val = wrapped_func(*args, **kwargs)
-
         self = args[0]
         self.anal_cum += 1
-
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
@@ -229,14 +297,11 @@ def _vt_postfix_person_update_sex_record(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # TODO: make mod install compatible with existing savegames (person doesn't have VT attributes)
         ret_val = wrapped_func(*args, **kwargs)
-
         self, report_log = args
         types_seen = set(position_type.record_class for position_type in report_log.get("positions_used", []))
-
         # .get(, default=Foreplay) is necessary because standing_grope and drysex_cowgirl do not have record_class
         sex_classes = set(Person._record_skill_map.get(sex_type, "Foreplay") for sex_type in types_seen)
         sex_classes.discard("Foreplay")
-
         # at this point, sex_classes is guaranteed to be some subset of
         # {"Oral", "Vaginal", "Anal"}
         for sex_class in sex_classes:
@@ -244,10 +309,8 @@ def _vt_postfix_person_update_sex_record(wrapped_func: Callable) -> Callable:
             # using these strings with setattr/getattr allows same code in loop
             _sex_type_first = sex_class.lower() + "_first"
             _sex_type_virgin = sex_class.lower() + "_virgin"
-
             # set last day had this kind of sex
             self.sex_record["Last " + sex_class + " Day"] = day
-
             # if _virgin is 0
             if getattr(self, _sex_type_virgin, 3) == 0:
                 # set _first name
@@ -256,18 +319,18 @@ def _vt_postfix_person_update_sex_record(wrapped_func: Callable) -> Callable:
                 if sex_class == "Vaginal":
                     # tear hymen
                     self.hymen = 1
-
             # if _virgin <= 9 (NOTE: this condition is always evaluated,
             # whether or not the previous `if _virgin == 0`` was True)
             if getattr(self, _sex_type_virgin) <= 9:
                 # increase it by one
                 setattr(self, _sex_type_virgin, getattr(self, _sex_type_virgin, 3) + 1)
-
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
 Person.__init__         = _vt_prefix_person_init(Person.__init__)
+Person.break_taboo      = _vt_postfix_break_taboo(Person.break_taboo)
+Person.restore_taboo    = _vt_postfix_restore_taboo(Person.restore_taboo)
 Person.run_turn         = _vt_postfix_person_run_turn(Person.run_turn)
 Person.run_day          = _vt_postfix_person_run_day(Person.run_day)
 Person.cum_in_mouth     = _vt_postfix_person_cum_in_mouth(Person.cum_in_mouth)

@@ -314,7 +314,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         $ VTrelationshipst = "norelations"
         $ VTrelationshiptt = f"{{image=dontknow_token_small}} Has no romantic relations with you."
         if person.has_relation_with_mc:
-            $ VTrelationshipStatusTT = f"\n{{image=harem_token_small}} Polycules: "+ str(mc.stats.polycule_girlfriends) +f"     {{image=parapoly_token_small}} Parapolys: "+ str(mc.stats.polycule_paramours) +f"\n{{image=gf_token_small}} Girlfriends: "+ str(mc.stats.girlfriends) + f"     {{image=paramour_token_small}} Paramours: "+ str(mc.stats.paramours) +f"\n{{image=triskelion_token_small}} Slaves: "+ str(mc.stats.slaves)
+            $ VTrelationshipStatusTT = f"\n{{image=harem_token_small}} Poly: "+ str(mc.stats.polycule_girlfriends) +f" {{image=parapoly_token_small}} Parapoly: "+ str(mc.stats.polycule_paramours) +f" {{image=familypoly_small}} Polyfamilia: "+ str(mc.stats.polycule_familia) +f"\n{{image=gf_token_small}} Girlfriends: "+ str(mc.stats.girlfriends) + f" {{image=paramour_token_small}} Paramours: "+ str(mc.stats.paramours) + f" {{image=familylove_small}} Familia: "+ str(mc.stats.familia) +f"\n{{image=triskelion_token_small}} Slaves: "+ str(mc.stats.slaves)
             if person.has_role(harem_role):
                 if person.has_role(affair_role):
                     $ VTrelationshipst = "parapoly"
@@ -322,6 +322,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 else:
                     $ VTrelationshipst = "polyamorous"
                     $ VTrelationshiptt = f"{{image=harem_token_small}} She is part of your polycule."
+                    if person.is_family:
+                        $ VTrelationshipst = "familypoly"
+                        $ VTrelationshiptt = f"{{image=familypoly_small}} She is "+str(person.relation_possessive_title)+",\nand part of your polycule."
             else:
                 if person.has_role(affair_role):
                     $ VTrelationshipst = "paramour"
@@ -329,6 +332,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 else:
                     $ VTrelationshipst = "girlfriend"
                     $ VTrelationshiptt = f"{{image=gf_token_small}} She is your girlfriend."
+                    if person.is_family:
+                        $ VTrelationshipst = "familylove"
+                        $ VTrelationshiptt = f"{{image=familylove_small}} She is "+str(person.relation_possessive_title)+",\nand your girlfriend."
             imagebutton:
                 pos(249, 166)
                 idle VTrelationshipst
@@ -337,23 +343,56 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         else:
             $ VTrelationshipst = "norelations"
             $ VTrelationshiptt = f"{{image=dontknow_token_small}} Has no romantic relations with you."
+            if person.is_family:
+                $ VTrelationshipst = "familycircle"
+                $ VTrelationshiptt = f"{{image=familycircle_small}} She is "+str(person.relation_possessive_title)+"."
             imagebutton:
                 pos(249, 166)
                 idle VTrelationshipst
                 action NullAction()
                 tooltip VTrelationshiptt
-### Teen 
-        if person.age<19:
-            $ VTteentt = "She looks so innocent and inexperienced."
+### Age 
+        $ VTagest = "knowpeach"
+        $ VTagett = "Talk to her to get a glimpse of her age."
+        if person.age<=18:
+            $ VTagest = "whitelotus"
+            $ VTagett = f"{{image=whitelotus_small}} The White Lotus: Young, pure and growth."
             if person.hymen <= 1 and person.vaginal_virgin <=1:
-                $ VTteentt = f"{{image=vtcherries_small}} She looks so young, innocent and inexperienced."
+                $ VTagett += f"\n{{image=virgin_token_small}} She looks so young, innocent and inexperienced."
             else:
-                $ VTteentt = f"{{image=yespeach_small}} She looks like a young vixen."
-            imagebutton:
-                pos(286, 166)
-                idle "matureteen"
-                action NullAction()
-                tooltip VTteentt
+                $ VTagett += f"\n{{image=vtcherries_small}} She looks like a young vixen."
+        if person.age >18 and person.age <=29:
+            $ VTagest = "redlotus"
+            $ VTagett = f"{{image=redlotus_small}} The Red Lotus: Passion, inspiration and emotions."
+            if person.hymen <= 1 and person.vaginal_virgin <=1:
+                $ VTagett += f"\n{{image=virgin_token_small}} She looks sexually inexperienced."
+            else:
+                $ VTagett += f"\n{{image=vtcherries_small}} She is in her prime fertile peak."
+        if person.age >29 and person.age <=35:
+            $ VTagest = "pinklotus"
+            $ VTagett = f"{{image=pinklotus_small}} The Pink Lotus: Feminine energy and passion."
+            if person.hymen <= 1 and person.vaginal_virgin <=1:
+                $ VTagett += f"\n{{image=virgin_token_small}} She looks sexually inexperienced."
+            else:
+                $ VTagett += f"\n{{image=vtcherries_small}} She is in her prime sexual peak."
+        if person.age >35:
+            $ VTagest = "bluelotus"
+            $ VTagett = f"{{image=bluelotus_small}} The Blue Lotus: Wisedom and maturity."
+            if person.hymen <= 1 and person.vaginal_virgin <=1:
+                $ VTagett += f"\n{{image=virgin_token_small}} She looks sexually inexperienced."
+            else:
+                $ VTagett += f"\n{{image=vtcherries_small}} She is ready to rumble and tumble."
+            if person.age>=45 and person.sluttiness>20:
+                $ VTagest = "cougar"
+                $ VTagett += f"\n{{image=vtcherries_small}} She is on the prowl.... Beware!"
+        if person.has_cum_fetish and (person.has_breeding_fetish or person.has_anal_fetish) and person.has_exhibition_fetish and person.opinion.polyamory>1:
+            $ VTagest = "goldlotus"
+            $ VTagett = f"{{image=creamcherry_small}} The Golden Lotus: Total Sexual Enlightenment."
+        imagebutton:
+            pos(286, 166)
+            idle VTagest
+            action NullAction()
+            tooltip VTagett
 
 ###### Threesome Flag - note polyamorous added
         $ VTpolyat = "talking"
@@ -528,9 +567,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         if person.vaginal_cum >0:
             $ VTbcst = "bc_cum"
             if person.vaginal_cum ==1:
-                $ VTbctt += f"\n{{image=bc_cum_image_small}} Your cum swimming in her"+VTbreedfertile+VTpro+" womb."
+                $ VTbctt += f"\n{{image=creamcherry_small}} Your cum swimming in her"+VTbreedfertile+VTpro+" womb."
             else:
-                $ VTbctt += f"\n{{image=bc_cum_image_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her"+VTbreedfertile+VTpro+" womb."
+                $ VTbctt += f"\n{{image=creamcherry_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her"+VTbreedfertile+VTpro+" womb."
             imagebutton:
                 pos(397, 166)
                 idle VTbcst
@@ -854,7 +893,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     $ VTvaginaltt = f"{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh"+VTbreedfertile+VTpro+" womb with your seed."                            
                                 else:
                                     $ VTvaginalst = "vaghymen"
-                                    $ VTvaginaltt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh"+VTbreedfertile+VTpro+" womb with your seed."
+                                    $ VTvaginaltt += f"{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh"+VTbreedfertile+VTpro+" womb with your seed."
                             else:
                                 $ VTvaginalst = "openvag"
                                 $ VTvaginaltt = f"{{image=beezee_token_small}} Your seed in her"+VTbreedfertile+VTpro+" womb."
@@ -1128,19 +1167,20 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     if person.opinion.public_sex >=2 and person.opinion.not_wearing_underwear >= 2 and person.opinion.not_wearing_anything >= 2  and person.known_opinion("not wearing underwear") and person.known_opinion("not wearing anything") and person.opinion.showing_her_ass >= 2 and person.opinion.showing_her_tits >= 2  and person.known_opinion("showing her ass") and person.known_opinion("showing her tits") and person.opinion.skimpy_outfits >= 2 and person.opinion.skimpy_uniforms >= 2 and person.known_opinion("skimpy outfits") and person.known_opinion("skimpy uniforms"):
                         $ VTexhibitfetishst = "nudebody"
                         $ VTexhibitfetishtt = f"{{image=progress_token_small}} My skin needs to breathe and be free!"
-                        if person.event_triggers_dict.get("exhibition_fetish_locked",0)<day:
-                            $ VTexhibitfetishtt += f"\n{{image=progress_token_small}} Wait for Exhibition Fetish Event."
                         if person.has_taboo("sucking_cock"):
                             $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Have her suck your cock."
                         if person.has_taboo("vaginal_sex"):
                             $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Have sex with her."
                         if person.known_opinion("being covered in cum"):
-                            if person.opinion.being_covered_in_cum <=2:
+                            if person.opinion.being_covered_in_cum <2:
                                 $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Needs to love being covered in cum!"
                         else:
                             $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Need her opinion on being covered in cum."
                         if person.cum_exposure_count < 19:
                             $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}}  Feed her, spray her, or fill her\n with your cum "+ str(19 - person.cum_exposure_count)+" more times!"
+                        else:
+                            if person.event_triggers_dict.get("exhibition_fetish_locked",0)<day:
+                                $ VTexhibitfetishtt += f"\n{{image=creamcherry_small}} Natural Exhibition Fetish Event will trigger soon!"
                     else:
                         if person.opinion.not_wearing_underwear >= 2 and person.opinion.not_wearing_anything >= 2  and person.known_opinion("not wearing underwear") and person.known_opinion("not wearing anything") and person.opinion.skimpy_outfits >= 2 and person.opinion.skimpy_uniforms >= 2 and person.known_opinion("skimpy outfits") and person.known_opinion("skimpy uniforms") and person.opinion.public_sex>=2 and person.known_opinion("public sex"):
                             $ VTexhibitfetishst = "nudebody"
@@ -1518,7 +1558,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     if person.opinion.vaginal_sex < 2:
                                         $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Need her to love vaginal sex."
                                 if person.vaginal_sex_skill <2:
-                                    $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Needs her vaginal sex skill raised to 2."
+                                    $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Train her vaginal sex skills."
                             else:
                                 if person.opinion.vaginal_sex == 0:
                                     $ VTbreedfetishst = "vagclosed"
