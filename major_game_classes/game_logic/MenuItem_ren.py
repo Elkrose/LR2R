@@ -75,14 +75,22 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                     if item.has_role(affair_role):
                         info.append("{image=parapoly_token_small}")
                     else:
-                        info.append("{image=harem_token_small}")
+                        if item.is_family:
+                            info.append("{image=familypoly_small}")
+                        else:
+                            info.append("{image=harem_token_small}")
                 else:
                     if item.has_role(affair_role):
                         info.append("{image=paramour_token_small}")
                     else:
-                        info.append("{image=gf_token_small}")
-            if item.age <= 18:
-                info.append("{image=matureteen_token_small}")
+                        if item.is_family:
+                            info.append("{image=familylove_small}")
+                        else:
+                            info.append("{image=gf_token_small}")
+            else:
+                if item.is_family:
+                    info.append("{image=familycircle_small}")
+
             if any(not isinstance(x, Limited_Time_Action) for x in item.on_talk_event_list.enabled_actions(item) if not x.silent):
                 info.append("{image=speech_bubble_exclamation_token_small}")
             elif any(x for x in item.on_talk_event_list.enabled_actions(item) if not x.silent):
@@ -90,6 +98,19 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
 
             info.append(format_titles(item))
 
+            if item.has_cum_fetish and (item.has_breeding_fetish or item.has_anal_fetish) and item.has_exhibition_fetish and item.opinion.polyamory>1:
+                info.append("{image=goldlotus_small}")
+            else:
+                if item.age <= 18:
+                    info.append("{image=whitelotus_small}")
+                if item.age >18 and item.age <=29:
+                    info.append("{image=redlotus_small}")
+                if item.age >29 and item.age <=35:
+                    info.append("{image=pinklotus_small}")
+                if item.age >35:
+                    info.append("{image=bluelotus_small}")
+            if (item.hymen <= 1 or item.oral_virgin <1 or item.anal_virgin <1):
+                info.append("{image=virgin_token_small}")
             if any((draw_insta, draw_dikdok, draw_onlyfans)):
                 if ((draw_insta and item.has_instapic_post)
                         or (draw_dikdok and item.has_dikdok_post)
