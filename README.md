@@ -1,5 +1,6 @@
 # LR2R-VTMod
 🍒🍒🍒🍒    LR2R-VTMod    🍒🍒🍒🍒 
+Lab Rats 2 Reformulate Virginity Tracker Mod
 
 💮 Adds a visual HUD for those with the virgin/dom kinks.  Serums added to regrow the hymen or reset the virginities by stimulation and regrowth.
 
@@ -11,10 +12,11 @@
 🥵 KiNA's Mods - Good!
 🥵 Kaden's Mods - Good!
 ❗ Pregnant Content dev - no
+❗ SerumBalanceTest - no
 
 🔥 Lab Rats2 Reformulate: v2024.06-code-beta  Ren'Py 8.2.1
 
-🔥 lr2mods-develop - July 2, 2024 6:29 PM EDT - https://discord.com/channels/564870606382956576/571557121716387840/1257825615315206176
+🔥 lr2mods-develop - July 19, 2024 7:56 AM EDT - https://discord.com/channels/564870606382956576/571557121716387840/1263826912547966997
 
 💮 Vanilla files modified: none - the MOD is completely on its own in the mods folder.
 
@@ -41,8 +43,9 @@ Note: Tool tips explain what they are.  Some will explain briefly how to achieve
 💮 New Chat Interactions
 - Hug/Kiss Goodbye - Grants happy/love and stops follow
 
-💮 3 Serums / Stims
+💮 4 Serums / Stims
 - Stims for resetting the Virgin Status of the girl
+- NEW STIM - for turning a clone into a viable person - removes clone status and infertility
 - can be enabled and disabled
 
 💮 4 Natural Fetish Forming Fetishes: Anal/Breeding/Cum/Exhibition

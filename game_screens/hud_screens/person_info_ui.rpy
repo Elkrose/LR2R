@@ -1,25 +1,36 @@
 # Override default person_info_ui screen by VREN to show extra information about character
 init 900 python in vt_store:
+    from collections import OrderedDict
     DEBUG = True
     icon_location = {
-    "relationship":         (249, 166),
-    "teen":                 (286, 166),
-    "threesome":            (323, 166),
-    "personality":          (360, 166),
-    "birth_control":        (397, 166),
-    "wants_condom":         (434, 166),
-    "tranced":              (486, 166),
-    "virginity_oral":       (523, 166),
-    "virginity_vaginal":    (560, 166),
-    "virginity_anal":       (597, 166),
-    "had_sex_today":        (634, 166),
-    "arousal":              (681, 166),
-    "fetish_exhibitionist": (718, 166),
-    "fetish_cum":           (755, 166),
-    "fetish_anal":          (792, 166),
-    "fetish_breeding":      (829, 166),
-    "creampies":            (866, 166)
-}
+        "relationship":         (249, 166),
+        "age":                  (286, 166),
+        "threesome":            (323, 166),
+        "personality":          (360, 166),
+        "birth_control":        (397, 166),
+        "wants_condom":         (434, 166),
+        "tranced":              (486, 166),
+        "virginity_oral":       (523, 166),
+        "virginity_vaginal":    (560, 166),
+        "virginity_anal":       (597, 166),
+        "had_sex_today":        (634, 166),
+        "arousal":              (681, 166),
+        "fetish_exhibitionist": (718, 166),
+        "fetish_cum":           (755, 166),
+        "fetish_anal":          (792, 166),
+        "fetish_breeding":      (829, 166),
+        "creampies":            (866, 166)
+    }
+
+    relationship_names_and_icons = OrderedDict(
+        ("polycule_girlfriends", ("Poly",        "harem_token_small"     )), #f"\n{{image=harem_token_small}} Poly: "+ str(mc.stats.polycule_girlfriends)
+        ("polycule_paramours",   ("Parapoly",    "parapoly_token_small"  )), #f" {{image=parapoly_token_small}} Parapoly: "+ str(mc.stats.polycule_paramours)
+        ("polycule_familia",     ("Polyfamilia", "familypoly_small"      )), #f" {{image=familypoly_small}} Polyfamilia: "+ str(mc.stats.polycule_familia)
+        ("girlfriends",          ("Girlfriends", "gf_token_small"        )), #f"\n{{image=gf_token_small}} Girlfriends: "+ str(mc.stats.girlfriends)
+        ("paramours",            ("Paramours",   "paramour_token_small"  )), #f" {{image=paramour_token_small}} Paramours: "+ str(mc.stats.paramours)
+        ("familia",              ("Familia",     "familylove_small"      )), #f" {{image=familylove_small}} Familia: "+ str(mc.stats.familia)
+        ("slaves",               ("Slaves",      "triskelion_token_small")), #f"\n{{image=triskelion_token_small}} Slaves: "+ str(mc.stats.slaves)
+    )
 
 init -2 python:
     @renpy.pure
@@ -79,6 +90,9 @@ init -2 python:
         if extra_jobs:
             return f"{title} {{size=14}}[{', '.join(extra_jobs)}]{{/size}}"
         return title
+
+    def _vt_detailed_relationship_stats():
+        return " ".join(f"{chr(10) if idx % 3 == 0 else ''}{{image={icon}}} {name}: {str(getattr(mc.stats, attr))}" for idx, (attr, (name, icon)) in enumerate(relationship_names_and_icons.items()))
 
 screen person_info_ui(person): #Used to display stats for a person while you're talking to them.
     tag master_tooltip
@@ -319,29 +333,53 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 idle "beezee"
                 action NullAction()
                 tooltip f"{{image=beezee_token_small}} She is ovulating and has a higher chance of getting pregnant, based on birth control and desire to get pregnant."
-
+#### Virgin UI ####
+        $ dayslastsex = 0
+        $ daysince = ""
+        if person.has_event_day("last_insemination") and 1 < person.days_since_event("last_insemination") < 4:
+            $ dayslastsex = 4 - person.days_since_event("last_insemination")
+            if dayslastsex == 1:
+                $ daysince = "\nMy womb feels empty!"
+            else:
+                $ daysince = "\nYour sperm in me for "+str(dayslastsex)+" more days!\n Such warm butterflies!"
 #### Relationship Status
         $ vt_store.relationship_icon = ""
         $ vt_store.relationship_tooltip = ""
         if person.has_relation_with_mc:
-            if person.has_role(harem_role) and person.has_role(affair_role):
+            # if person.has_role(harem_role) and person.has_role(affair_role) and person.is_family:
+            #   not possible
+            #   pass
+            if person.has_role(harem_role) and person.has_role(affair_role) and not person.is_family:
                 $ vt_store.relationship_icon = "parapoly"
                 $ vt_store.relationship_tooltip = f"{{image=parapoly_token_small}} She is part of your polycule, and your paramour."
-            elif person.has_role(harem_role):
+            elif person.has_role(harem_role) and not person.has_role(affair_role) and person.is_family:
+                $ vt_store.relationship_icon = "familypoly"
+                $ vt_store.relationship_tooltip = f"{{image=familypoly_small}} She is "+str(person.relation_possessive_title)+",\nand part of your polycule."
+            elif person.has_role(harem_role) and not person.has_role(affair_role) and not person.is_family:
                 $ vt_store.relationship_icon = "polyamorous"
                 $ vt_store.relationship_tooltip = f"{{image=harem_token_small}} She is part of your polycule."
-            elif person.has_role(affair_role):
+            elif not person.has_role(harem_role) and person.has_role(affair_role) and person.is_family:
+                # not possible
+                pass
+            elif not person.has_role(harem_role) and person.has_role(affair_role) and not person.is_family:
                 $ vt_store.relationship_icon = "paramour"
                 $ vt_store.relationship_tooltip = f"{{image=paramour_token_small}} She is your paramour."
-            else:
+            elif not person.has_role(harem_role) and not person.has_role(affair_role) and person.is_family:
+                $ vt_store.relationship_icon = "familylove"
+                $ vt_store.relationship_tooltip = f"{{image=familylove_small}} She is "+str(person.relation_possessive_title)+",\nand your girlfriend."
+            elif not person.has_role(harem_role) and not person.has_role(affair_role) and not person.is_family:
                 $ vt_store.relationship_icon = "girlfriend"
                 $ vt_store.relationship_tooltip = f"{{image=gf_token_small}} She is your girlfriend."
+
+        elif person.is_family:
+            $ vt_store.relationship_icon = "girlfriend"
+            $ vt_store.relationship_tooltip = f"{{image=gf_token_small}} She is your girlfriend."
         else:
             $ vt_store.relationship_icon = "norelations"
             $ vt_store.relationship_tooltip = f"{{image=dontknow_token_small}} Has no romantic relations with you."
 
-            # append global MC relationship numbers
-            $ vt_store.relationship_tooltip += f"\n{{image=harem_token_small}} Polycules: " + str(mc.stats.polycule_girlfriends) + f"\t\t{{image=parapoly_token_small}} Parapolys: "+ str(mc.stats.polycule_paramours) +f"\n{{image=gf_token_small}} Girlfriends: "+ str(mc.stats.girlfriends) + f"\t\t{{image=paramour_token_small}} Paramours: "+ str(mc.stats.paramours) +f"\n{{image=triskelion_token_small}} Slaves: "+ str(mc.stats.slaves)
+        # append global MC relationship numbers
+        $ vt_store.relationship_tooltip += _vt_detailed_relationship_stats()
 
         imagebutton:
             pos(vt_store.icon_location["relationship"])
@@ -349,30 +387,73 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             action NullAction()
             tooltip vt_store.relationship_tooltip
 
-### Teen
-        if person.age < Person.get_age_floor() + 1:
-            # this line does nothing; should be removed or `if`-branch corrected
-            # $ vt_store.teen_tooltip = "She looks so innocent and inexperienced."
-            if person.hymen <= 1 and person.vaginal_virgin <= 1:
-                $ vt_store.teen_tooltip = f"{{image=virgin_token_small}} She looks so young, innocent and inexperienced."
-            else:
-                $ vt_store.teen_tooltip = f"{{image=yespeach_small}} She looks like a young vixen."
+### Age
+        $ vt_store.age_icon = ""
+        $ vt_store.age_tooltip = ""
+        if person.has_cum_fetish and (person.has_breeding_fetish or person.has_anal_fetish) and person.has_exhibition_fetish and person.known_opinion("polyamory") >= 2:
+            $ vt_store.age_icon = "goldlotus"
+            $ vt_store.age_tooltip = f"{{image=creamcherry_small}} The Golden Lotus: Total sexual enlightenment."
+        elif person.age <= Person.get_age_floor():
+            $ vt_store.age_icon = "whitelotus"
+            $ vt_store.age_tooltip = f"{{image=whitelotus_small}} The White Lotus: Youth, purity, and growth."
 
-            imagebutton:
-                pos(vt_store.icon_location["teen"])
-                idle "matureteen"
-                action NullAction()
-                tooltip vt_store.teen_tooltip
+            if person.hymen <= 1 and person.vaginal_virgin <= 1:
+                $ vt_store.age_tooltip = f"{{image=virgin_token_small}} She looks so young, innocent, and inexperienced."
+            else:
+                $ vt_store.age_tooltip = f"{{image=vtcherries_small}} She looks like a young vixen."
+
+        elif Person.get_age_floor() < person.age <= VT_AGE_RANGES["young_adult"][-1]: # 19-24
+            $ vt_store.age_icon = "redlotus"
+            $ vt_store.age_tooltip = f"{{image=redlotus_small}} The Red Lotus: Passion, inspiration, and emotions."
+
+            if person.hymen <= 1 and person.vaginal_virgin <= 1:
+                $ vt_store.age_tooltip = f"{{image=virgin_token_small}} She looks sexually inexperienced."
+            else:
+                $ vt_store.age_tooltip = f"{{image=vtcherries_small}} She is in her prime fertile peak."
+
+        elif VT_AGE_RANGES["early_adult"][0] <= person.age <= VT_AGE_RANGES["early_adult"][-1]: # 25-35
+            $ vt_store.age_icon = "pinklotus"
+            $ vt_store.age_tooltip = f"{{image=pinklotus_small}} The Pink Lotus: Feminine energy and passion."
+
+            if person.hymen <= 1 and person.vaginal_virgin <= 1:
+                $ vt_store.age_tooltip = f"{{image=virgin_token_small}} She looks sexually inexperienced."
+            else:
+                $ vt_store.age_tooltip = f"{{image=vtcherries_small}} She is in her prime sexual peak."
+
+        elif VT_AGE_RANGES["middle_adult"][0] <= person.age:
+            $ vt_store.age_icon = "bluelotus"
+            $ vt_store.age_tooltip = f"{{image=redlotus_small}} The Blue Lotus: Wisdom and maturity."
+
+            if person.hymen <= 1 and person.vaginal_virgin <= 1:
+                $ vt_store.age_tooltip = f"{{image=virgin_token_small}} She looks sexually inexperienced."
+            else:
+                $ vt_store.age_tooltip = f"{{image=vtcherries_small}} She is ready to rumble and tumble."
+
+            if (person.sluttiness > 20 and person.age >= 45):
+                $ vt_store.age_icon = "cougar"
+                $ vt_store.age_tooltip += f"\n{{image=vtcherries_small}} She is on the prowl.... Beware!"
+
+        else:
+            # FIXME: this can't ever be reached, right?
+            $ vt_store.age_icon = "knowpeach"
+            $ vt_store.age_tooltip = "Talk to her to learn her age."
+
+        imagebutton:
+            pos(vt_store.icon_location["age"])
+            idle vt_store.age_icon
+            action NullAction()
+            tooltip vt_store.age_tooltip
 
 ###### Threesome Flag
         $ vt_store.poly_status_icon = ""
         $ vt_store.poly_tooltip = ""
 
         # validate the opinion exists and is known
-        if "threesomes" in person.get_known_opinion_list(include_sexy=True, include_normal=False):
-            if person.opinion.threesomes >= 2 and person.has_cum_fetish and person.has_anal_fetish and person.known_opinion("polyamory") >=2:
+        if person.sexy_opinions.get("threesomes", (None, False))[1]:
+            if person.opinion.threesomes >= 2 and person.known_opinion("polyamory") >=2 and mc.stats.polycules >= 2:
+                # FIXME: what if she's the only one in MC's polycule?
                 # she really loves it
-                $ vt_store.poly_status_icon = "ahegaothreesomes"
+                $ vt_store.poly_status_icon = "threesometriad"
                 $ vt_store.poly_tooltip = f"{{image=creamcherry_small}} More the merrier! The mess we will make!"
             elif person.opinion.threesomes >= 2:
                 # she loves it
@@ -386,16 +467,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if person.known_opinion("polyamory") < 2:
                     if person.known_opinion("polyamory") == 1:
                         # polyamory opinion is known, but not high enough
-                        $ vt_store.poly_tooltip += f"\n{{image=red_heart_token_small}} Needs to love polyamorous more!"
+                        $ vt_store.poly_tooltip += f"\n{{image=red_heart_token_small}} Needs to love polyamory more!"
                     else:
                         # polyamory opinion might not be known, or is zero/negative
                         $ vt_store.poly_tooltip += f"\n{{image=question_mark_small}} Needs to like polyamorous relationships."
-
-                # TODO: are these moved elsewhere?
-                # if not person.has_anal_fetish:
-                #     $ vt_store.poly_tooltip += f"\n{{image=ahegaoanal_small}} Needs the Anal Fetish Unlocked."
-                # if not person.has_cum_fetish:
-                #     $ vt_store.poly_tooltip += f"\n{{image=ahegaomouth_small}} Needs the Cum Fetish Unlocked."
 
             else:
                 # she doesn't love it
@@ -488,15 +563,15 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $ vt_store.fertility_tag = " pregnant"
 
         elif person.bc_status_known:
-            if person._birth_control: # she's on birth control (she could also be infertile)
-                $ vt_store.birth_control_status_icon = "birthcontrol"
-                $ vt_store.birth_control_tooltip = f"{{image=bc_image_small}} She is on birth control."
-                $ vt_store.fertility_tag = " protected"
-            elif person.is_infertile: # she's not on birth control, but she is infertile
+            if person.is_infertile: # she is infertile
                 $ vt_store.birth_control_status_icon = "birthcontrol"
                 # TODO: small icon in tooltip?
                 $ vt_store.birth_control_tooltip = "She is infertile."
                 $ vt_store.fertility_tag = " infertile"
+            elif person.on_birth_control: # she's on birth control (she's not infertile)
+                $ vt_store.birth_control_status_icon = "birthcontrol"
+                $ vt_store.birth_control_tooltip = f"{{image=bc_image_small}} She is on birth control."
+                $ vt_store.fertility_tag = " protected"
             else: # she is not on birth control, and is not infertile
                 $ vt_store.birth_control_status_icon = "nobirthcontrol"
 

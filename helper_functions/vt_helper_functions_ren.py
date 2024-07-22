@@ -116,9 +116,13 @@ def _vt_virginity_stats(person: Person, sex_kind: str, sex_cap: int) -> dict:
         # TODO: is there a scenario where sex_skills[sex_kind] should be untouched?
         if sex_kind == "Vaginal":
             stats["hymen"] = 0
-            person.sex_skills["Vaginal"] = (1 if person.sex_skills["Vaginal"] == 1 else 0)
-        else:
-            person.sex_skills[sex_kind] = 0
+
+        # clamp the sex_skill to 0 (possibly 1 if Vaginal) if they're a random character (story/unique/clone get to keep their sex skills)
+        if person.type == "random" and person.title != "Clone":
+            if sex_kind == "Vaginal":
+                person.sex_skills["Vaginal"] = (1 if person.sex_skills["Vaginal"] == 1 else 0)
+            else:
+                person.sex_skills[sex_kind] = 0
 
         # set sex_kind virginality to 0
         stats[sex_kind.lower() + "_virgin"] = 0
@@ -136,10 +140,14 @@ def _vt_virginity_stats(person: Person, sex_kind: str, sex_cap: int) -> dict:
             stats["hymen"] = 2
 
         # set the person's skill
-        if person.sex_skills[sex_kind] <= _vt_threshold_to_reroll(person): #threshold is 0 if random, 2 otherwise
-            # reroll = _vt_bounded_gaussian_int(_vt_reroll_lower_bound(person), sex_cap)
-            # TODO: if using bounded gaussian, should shift the median too
-            person.sex_skills[sex_kind] = renpy.random.randint(_vt_reroll_lower_bound(person, sex_kind, sex_cap), sex_cap)
+        if person.sex_skills[sex_kind] <= _vt_threshold_to_reroll(person): # threshold is 0 if random, 2 otherwise
+            # TODO: should we be touching story character stats?
+            if person.type == "story":
+                person.sex_skills[sex_kind] += 2
+            else:
+                # reroll = _vt_bounded_gaussian_int(_vt_reroll_lower_bound(person), sex_cap)
+                # TODO: if using bounded gaussian, should shift the median too
+                person.sex_skills[sex_kind] = renpy.random.randint(_vt_reroll_lower_bound(person, sex_kind, sex_cap), sex_cap)
 
         # ensure that _virgin is in the range [3..10] and matches the sex_skill if possible
         stats[sex_kind.lower() + "_virgin"] = 3

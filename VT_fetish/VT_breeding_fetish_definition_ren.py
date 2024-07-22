@@ -45,9 +45,14 @@ def VT_breeding_fetish_family_sleep_crisis_requirement():
     return False
 
 def VT_breeding_fetish_employee_high_fertility_crisis_requirement():
-    if mc.business.is_open_for_business and mc.is_at_office:
-        return not VT_get_highly_fertile_employee_breeder() is None
-    return False
+    if config.version is ("2024.05B"):
+        if mc.business.is_open_for_business and mc.is_at_work:
+            return not VT_get_highly_fertile_employee_breeder() is None
+        return False
+    else:
+        if mc.business.is_open_for_business and mc.is_at_office:
+            return not VT_get_highly_fertile_employee_breeder() is None
+        return False
 
 def update_breeding_fetish_state(person: Person):
     person.energy = max(person.energy, 80)
@@ -55,11 +60,11 @@ def update_breeding_fetish_state(person: Person):
     if person.arousal_perc <= 20:
         person.change_arousal(30)
 
-VT_breeding_fetish_high_fertility_crisis = ActionMod("Highly fertile breeding desperation", VT_breeding_fetish_high_fertility_crisis_requirement, "VT_breeding_fetish_high_fertility_crisis_label",
+VT_breeding_fetish_high_fertility_crisis = ActionMod("Fertile breeding desperation", VT_breeding_fetish_high_fertility_crisis_requirement, "VT_breeding_fetish_high_fertility_crisis_label",
     menu_tooltip = "You are visited by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_happy_breeder_crisis = ActionMod("Breeding fetish desperation", VT_breeding_fetish_happy_breeder_crisis_requirement, "VT_breeding_fetish_happy_breeder_crisis_label",
     menu_tooltip = "You are visited by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
-VT_breeding_fetish_family_sleep_crisis = ActionMod("Familial night time breeding", VT_breeding_fetish_family_sleep_crisis_requirement, "VT_breeding_fetish_family_sleep_crisis_label",
+VT_breeding_fetish_family_sleep_crisis = ActionMod("Familial nighttime breeding", VT_breeding_fetish_family_sleep_crisis_requirement, "VT_breeding_fetish_family_sleep_crisis_label",
     menu_tooltip = "You are visited at night by a thirsty family member.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_employee_high_fertility_crisis = ActionMod("Highly fertile employee needs breeding", VT_breeding_fetish_employee_high_fertility_crisis_requirement, "VT_breeding_fetish_employee_high_fertility_crisis_label",
     menu_tooltip = "An employee surprises you in your office", category = "VT Natural Fetish", is_crisis = True)

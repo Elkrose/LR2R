@@ -48,9 +48,42 @@ virgin_image = Image(get_file_handle(modpath+"virgin_token.png"))
 virgin_token_small_image = im.Scale(Image(get_file_handle(modpath+"virgin.png")), 18, 18)
 renpy.image("virgin_token_small", virgin_token_small_image)
 
+familycircle_image = Image(get_file_handle(modpath+"familycircle.png"))
+familycircle_small_image = im.Scale(Image(get_file_handle(modpath+"familycircle.png")), 18, 18)
+renpy.image("familycircle_small", familycircle_small_image)
+
+familylove_image = Image(get_file_handle(modpath+"familylove.png"))
+familylove_small_image = im.Scale(Image(get_file_handle(modpath+"familylove.png")), 18, 18)
+renpy.image("familylove_small", familylove_small_image)
+
+familypoly_image = Image(get_file_handle(modpath+"familypoly.png"))
+familypoly_small_image = im.Scale(Image(get_file_handle(modpath+"familypoly.png")), 18, 18)
+renpy.image("familypoly_small", familypoly_small_image)
+
+##### Age Icons #####
 matureteen_image = Image(get_file_handle("matureteen.png"))
 matureteen_token_small_image = im.Scale(Image(get_file_handle("matureteen.png")), 18, 18)
 renpy.image("matureteen_token_small", matureteen_token_small_image)
+
+whitelotus_image = Image(get_file_handle("white-lotus.png"))
+whitelotus_small_image = im.Scale(Image(get_file_handle("white-lotus.png")), 18, 18)
+renpy.image("whitelotus_small", whitelotus_small_image)
+
+redlotus_image = Image(get_file_handle("red-lotus.png"))
+redlotus_small_image = im.Scale(Image(get_file_handle("red-lotus.png")), 18, 18)
+renpy.image("redlotus_small", redlotus_small_image)
+
+pinklotus_image = Image(get_file_handle("pink-lotus.png"))
+pinklotus_small_image = im.Scale(Image(get_file_handle("pink-lotus.png")), 18, 18)
+renpy.image("pinklotus_small", pinklotus_small_image)
+
+bluelotus_image = Image(get_file_handle("blue-lotus.png"))
+bluelotus_small_image = im.Scale(Image(get_file_handle("blue-lotus.png")), 18, 18)
+renpy.image("bluelotus_small", bluelotus_small_image)
+
+goldlotus_image = Image(get_file_handle("gold-lotus.png"))
+goldlotus_small_image = im.Scale(Image(get_file_handle("gold-lotus.png")), 18, 18)
+renpy.image("goldlotus_small", goldlotus_small_image)
 
 ###### Threesome - note polyamorous added
 ahegaothreesomes_image = Image(get_file_handle("ahegaothreesomes.png"))
@@ -66,6 +99,9 @@ renpy.image("knowthreesome_small", knowthreesome_small_image)
 
 ### Personalities #####
 bimbo_image = Image(get_file_handle("bimbo.png"))
+bimbo_small_image = im.Scale(Image(get_file_handle("bimbo.png")), 18, 18)
+renpy.image("bimbo_small", bimbo_small_image)
+
 cougar_image = Image(get_file_handle("cougar.png"))
 alpha_image = Image(get_file_handle("alpha.png"))
 relaxed_image = Image(get_file_handle("relaxed.png"))
