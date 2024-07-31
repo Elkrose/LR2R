@@ -313,44 +313,80 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 #### Relationship Status
         $ VTrelationshipst = "norelations"
         $ VTrelationshiptt = f"{{image=dontknow_token_small}} Has no romantic relations with you."
+        $ VTrelationshipStatusTT = f"\n\n Total in Polycule: "+str(mc.stats.polycules)+f"\n{{image=harem_token_small}} Poly: "+ str(mc.stats.polycule_girlfriends) +f" {{image=parapoly_token_small}} Parapoly: "+ str(mc.stats.polycule_paramours) +f" {{image=familypoly_small}} Polyfamilia: "+ str(mc.stats.polycule_familia) +f"\n\n Total Girlfriends: "+str(mc.stats.girlfriends)+f"\n{{image=gf_token_small}} Girlfriends: "+ str(mc.stats.girlfriends_sansfamilia) + f" {{image=paramour_token_small}} Paramours: "+ str(mc.stats.paramours) + f" {{image=familylove_small}} Familia: "+ str(mc.stats.familia) +f"\n\nTotal Slaves: "+str(mc.stats.slaves)+f"\n{{image=slave_small}} Slaves: "+ str(mc.stats.slaves_norel)+f" {{image=gfslave_small}} Girlfriends: "+ str(mc.stats.slaves_girlfriends)+f" {{image=paraslave_small}} Paramours: "+ str(mc.stats.slaves_paramour)+f" {{image=familiaslave_small}} Familia: "+ str(mc.stats.slaves_familia)+f" {{image=gffamiliaslave_small}} Girlfriend: "+ str(mc.stats.slaves_gffamilia)+f" {{image=polyfamiliaslave_small}} Polycule: "+ str(mc.stats.slaves_polyfamilia)
+
         if person.has_relation_with_mc:
-            $ VTrelationshipStatusTT = f"\n{{image=harem_token_small}} Poly: "+ str(mc.stats.polycule_girlfriends) +f" {{image=parapoly_token_small}} Parapoly: "+ str(mc.stats.polycule_paramours) +f" {{image=familypoly_small}} Polyfamilia: "+ str(mc.stats.polycule_familia) +f"\n{{image=gf_token_small}} Girlfriends: "+ str(mc.stats.girlfriends) + f" {{image=paramour_token_small}} Paramours: "+ str(mc.stats.paramours) + f" {{image=familylove_small}} Familia: "+ str(mc.stats.familia) +f"\n{{image=triskelion_token_small}} Slaves: "+ str(mc.stats.slaves)
-            if person.has_role(harem_role):
-                if person.has_role(affair_role):
-                    $ VTrelationshipst = "parapoly"
-                    $ VTrelationshiptt = f"{{image=parapoly_token_small}} She is part of your polycule, and your paramour."
+            if person.is_slave:
+                if person.has_role(harem_role):
+                    if person.has_role(affair_role):
+                        $ VTrelationshipst = "parapolyslave"
+                        $ VTrelationshiptt = f"{{image=parapolyslave_small}} She is your slave, part of your polycule, and your paramour."
+                    else:
+                        if person.is_family:
+                            $ VTrelationshipst = "polyfamiliaslave"
+                            $ VTrelationshiptt = f"{{image=polyfamiliaslave_small}} She is "+person.relation_possessive_title+",\n slave, and part of your polycule."
+                        else:
+                            $ VTrelationshipst = "polyslave"
+                            $ VTrelationshiptt = f"{{image=polyslave_small}} She is your slave and part of your polycule."
                 else:
-                    $ VTrelationshipst = "polyamorous"
-                    $ VTrelationshiptt = f"{{image=harem_token_small}} She is part of your polycule."
-                    if person.is_family:
-                        $ VTrelationshipst = "familypoly"
-                        $ VTrelationshiptt = f"{{image=familypoly_small}} She is "+str(person.relation_possessive_title)+",\nand part of your polycule."
+                    if person.has_role(affair_role):
+                        $ VTrelationshipst = "paraslave"
+                        $ VTrelationshiptt = f"{{image=paraslave_small}} She is your slave and paramour."
+                    else:
+                        if person.is_family:
+                            $ VTrelationshipst = "gffamiliaslave"
+                            $ VTrelationshiptt = f"{{image=gffamiliaslave_small}} She is "+person.relation_possessive_title+",\nand your slave."
+                        else:
+                            $ VTrelationshipst = "gfslave"
+                            $ VTrelationshiptt = f"{{image=gfslave_small}} She is your girlfriend and your slave."
             else:
-                if person.has_role(affair_role):
-                    $ VTrelationshipst = "paramour"
-                    $ VTrelationshiptt = f"{{image=paramour_token_small}} She is your paramour."
+                if person.has_role(harem_role):
+                    if person.has_role(affair_role):
+                        $ VTrelationshipst = "parapoly"
+                        $ VTrelationshiptt = f"{{image=parapoly_token_small}} She is part of your polycule, and your paramour."
+                    else:
+                        if person.is_family:
+                            $ VTrelationshipst = "familypoly"
+                            $ VTrelationshiptt = f"{{image=familypoly_small}} She is "+person.relation_possessive_title+",\nand part of your polycule."
+                        else:
+                            $ VTrelationshipst = "polyamorous"
+                            $ VTrelationshiptt = f"{{image=harem_token_small}} She is part of your polycule."
                 else:
-                    $ VTrelationshipst = "girlfriend"
-                    $ VTrelationshiptt = f"{{image=gf_token_small}} She is your girlfriend."
-                    if person.is_family:
-                        $ VTrelationshipst = "familylove"
-                        $ VTrelationshiptt = f"{{image=familylove_small}} She is "+str(person.relation_possessive_title)+",\nand your girlfriend."
+                    if person.has_role(affair_role):
+                        $ VTrelationshipst = "paramour"
+                        $ VTrelationshiptt = f"{{image=paramour_token_small}} She is your paramour."
+                    else:
+                        if person.is_family:
+                            $ VTrelationshipst = "familylove"
+                            $ VTrelationshiptt = f"{{image=familylove_small}} She is "+person.relation_possessive_title+",\nand your girlfriend."
+                        else:
+                            $ VTrelationshipst = "girlfriend"
+                            $ VTrelationshiptt = f"{{image=gf_token_small}} She is your girlfriend."
             imagebutton:
                 pos(249, 166)
                 idle VTrelationshipst
                 action NullAction()
                 tooltip VTrelationshiptt+VTrelationshipStatusTT
         else:
-            $ VTrelationshipst = "norelations"
-            $ VTrelationshiptt = f"{{image=dontknow_token_small}} Has no romantic relations with you."
             if person.is_family:
-                $ VTrelationshipst = "familycircle"
-                $ VTrelationshiptt = f"{{image=familycircle_small}} She is "+str(person.relation_possessive_title)+"."
+                if person.is_slave:
+                    $ VTrelationshipst = "familiaslave"
+                    $ VTrelationshiptt = f"{{image=familiaslave_small}} She is "+person.relation_possessive_title+", and your slave."
+                else:
+                    $ VTrelationshipst = "familycircle"
+                    $ VTrelationshiptt = f"{{image=familycircle_small}} She is "+person.relation_possessive_title+"."
+            else:
+                if person.is_slave:
+                    $ VTrelationshipst = "slave"
+                    $ VTrelationshiptt = f"{{image=slave_small}} She is your slave."
+                else:
+                    $ VTrelationshipst = "norelations"
+                    $ VTrelationshiptt = f"{{image=dontknow_token_small}} Has no romantic relations with you."
             imagebutton:
                 pos(249, 166)
                 idle VTrelationshipst
                 action NullAction()
-                tooltip VTrelationshiptt
+                tooltip VTrelationshiptt+VTrelationshipStatusTT
 ### Age 
         $ VTagest = "knowpeach"
         $ VTagett = "Talk to her to get a glimpse of her age."
@@ -1076,7 +1112,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if person.anal_cum ==0:
                     $ VTanalst = "yespeach"
                     if person.anal_virgin == 0:
-                        $ VTanaltt = f"\n{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking!"
+                        $ VTanaltt = f"{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking!"
                     else:
                         if person.anal_first == mc.name:
                             $ VTanaltt = f"{{image=handprint_token_small}} Her ass sways, hypnotizing you while \nshe rubs it!"
@@ -1252,21 +1288,23 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ VTexhibitfetishst = "nudebody"
                         $ VTexhibitfetishtt = f"{{image=vtcherries_small}} You can see her tits and pussy."
                         if person.arousal_perc >= 59:
-                                $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} You can see her tits and wet hot juicy pussy."
+                            $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} You can see her aroused nipples and wet hot juicy pussy."
                         if person.vaginal_cum >0:
                             if person.vaginal_cum >3:
                                 $ VTexhibitfetishtt += f"\n{{image=openvag_small}} You can see your cum oozing from her pussy."
                             else:
                                 $ VTexhibitfetishtt += f"\n{{image=openvag_small}} You can see your cum starting to drip from her pussy."
                     else:
+                        $ VTexhibitfetishtt = f"{{image=vtcherries_small}} She is partly clothed."
                         if person.tits_available:
                             $ VTexhibitfetishst = "bodypanties"
                             $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} You can see her tits."
                         if person.vagina_available:
                             $ VTexhibitfetishst = "bodybra"
-                            $ VTexhibitfetishtt += f"\n{{image=spreadvag_small}} You can see her pussy."
                             if person.arousal_perc >= 59:
                                 $ VTexhibitfetishtt += f"\n{{image=spreadvag_small}} You can see her wet hot juicy pussy."
+                            else:
+                                $ VTexhibitfetishtt += f"\n{{image=spreadvag_small}} You can see her pussy."
                             if person.vaginal_cum >0:
                                 if person.vaginal_cum >3:
                                     $ VTexhibitfetishtt += f"\n{{image=openvag_small}} You can see your cum oozing from her pussy."
@@ -1321,8 +1359,8 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         if person.cum_exposure_count<19:
                             $ VTcumfetishtt += f"\n{{image=triskelion_token_small}} Feed her, spray her, or fill her\n with your cum "+ str(19 - person.cum_exposure_count)+" more times!" 
                         else:
-                            if person.event_triggers_dict.get("cum_fetish_locked",0)<day:
-                                $ VTcumfetishtt += f"\n{{image=creamcherry_small}} Natural fetish event will trigger soon!"
+                            if person.event_triggers_dict.get("cum_fetish_locked",-1)<day:
+                                $ VTcumfetishtt += f"\n{{image=creamcherry_small}} Natural Oral fetish event will trigger soon!"
                         if person.has_taboo("sucking_cock"):
                             $ VTcumfetishtt += f"\n{{image=triskelion_token_small}} Have her suck your cock!"
                         if person.has_taboo("condomless_sex"):

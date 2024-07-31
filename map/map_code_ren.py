@@ -10,6 +10,7 @@ from game.major_game_classes.game_logic.Action_ren import Limited_Time_Action
 from game.major_game_classes.character_related.Progression_Scene_ren import list_of_progression_scenes
 from game.map.HomeHub_ren import HomeHub
 from game.map.MapHub_ren import MapHub
+from VTrandom_lists_ren import VT_Settings
 
 list_of_hubs: list[MapHub] = []
 day = 0
@@ -84,11 +85,11 @@ def get_location_tooltip(location: Room) -> str:
     for person in known_people:
         info = []
         #added girlfriend statuses to beginning
-        if person.is_favourite:
+        if person.is_favourite and VT_Settings["Trackers"]["Favorites"][1]==1:
             info.append("{image=full_star_token_small}")
         else:
             info.append("{image=empty_token_small}")
-        if person.type=="story":
+        if person.type=="story" and VT_Settings["Trackers"]["Story Characters"][1]==1:
             info.append("{image=labbook_token_small}")
         else:
             info.append("{image=empty_token_small}")
@@ -103,25 +104,50 @@ def get_location_tooltip(location: Room) -> str:
             info.append("{image=speech_bubble_token_small}")
         #made to sort through girlfriend faster
         if person.has_relation_with_mc:
-            if person.has_role(harem_role):
-                if person.has_role(affair_role):
-                    info.append("{image=parapoly_token_small}")
-                else:
-                    if person.is_family:
-                        info.append("{image=familypoly_small}")
+            if person.is_slave:
+                if person.has_role(harem_role):
+                    if person.has_role(affair_role):
+                        info.append("{image=parapolyslave_small}")
                     else:
-                        info.append("{image=harem_token_small}")
+                        if person.is_family:
+                            info.append("{image=polyfamiliaslave_small}")
+                        else:
+                            info.append("{image=polyslave_small}")
+                else:
+                    if person.has_role(affair_role):
+                        info.append("{image=paraslave_small}")
+                    else:
+                        if person.is_family:
+                            info.append("{image=gffamiliaslave_small}")
+                        else:
+                            info.append("{image=gfslave_small}")
             else:
-                if person.has_role(affair_role):
-                    info.append("{image=paramour_token_small}")
-                else:
-                    if person.is_family:
-                        info.append("{image=familylove_small}")
+                if person.has_role(harem_role):
+                    if person.has_role(affair_role):
+                        info.append("{image=parapoly_token_small}")
                     else:
-                        info.append("{image=gf_token_small}")
+                        if person.is_family:
+                            info.append("{image=familypoly_small}")
+                        else:
+                            info.append("{image=harem_token_small}")
+                else:
+                    if person.has_role(affair_role):
+                        info.append("{image=paramour_token_small}")
+                    else:
+                        if person.is_family:
+                            info.append("{image=familylove_small}")
+                        else:
+                            info.append("{image=gf_token_small}")
         else:
             if person.is_family:
-                info.append("{image=familycircle_small}")
+                if person.is_slave:
+                    info.append("{image=familiaslave_small}")
+                else:
+                    info.append("{image=familycircle_small}")
+            else:
+                if person.is_slave:
+                    info.append("{image=slave_small}")
+        #### AGE ####
         if person.has_cum_fetish and (person.has_breeding_fetish or person.has_anal_fetish) and person.has_exhibition_fetish and person.opinion.polyamory>1:
             info.append("{image=goldlotus_small}")
         else:
@@ -133,7 +159,7 @@ def get_location_tooltip(location: Room) -> str:
                 info.append("{image=pinklotus_small}")
             if person.age >35:
                 info.append("{image=bluelotus_small}")
-        if (person.hymen <= 1 or person.oral_virgin <1 or person.anal_virgin <1):
+        if person.hymen == 0:
             info.append("{image=virgin_token_small}")
         if person.is_clone:
             info.append("{image=dna_token_small}")
@@ -209,60 +235,177 @@ def get_hub_tile_text(hub: MapHub) -> str:
 def build_tile_information(known_people: list[Person], total_people: int, location_name: str, has_event: bool, has_progress: bool) -> str:
     #setting the catches
     extra_info = []
-    if any(x for x in known_people if x.is_favourite):
-        extra_info.append("{image=full_star_token_small}")
-    if any(x for x in known_people if x.type=="story"):
-        extra_info.append("{image=labbook_token_small}")
-    if any(x for x in known_people if x.has_exact_role(harem_role) and x.has_exact_role(affair_role)==False and not x.is_family):
-        extra_info.append("{image=harem_token_small}")
-    if any(x for x in known_people if x.has_exact_role(harem_role) and x.has_exact_role(affair_role)):
-        extra_info.append("{image=parapoly_token_small}")
-    if any(x for x in known_people if x.has_exact_role(harem_role) and x.is_family):
-        extra_info.append("{image=familypoly_small}")
-    if any(x for x in known_people if x.has_exact_role(affair_role) and x.has_exact_role(harem_role)==False and not x.is_family):
-        extra_info.append("{image=paramour_token_small}")
-    if any(x for x in known_people if x.has_exact_role(girlfriend_role)):
-        extra_info.append("{image=gf_token_small}")
-    if any(x for x in known_people if x.has_exact_role(girlfriend_role) and x.is_family):
-        extra_info.append("{image=familylove_small}")
-    if any(x for x in known_people if x.is_family and not x.has_relation_with_mc):
-        extra_info.append("{image=familycircle_small}")
-    if any(x for x in known_people if x.age <=19):
-        extra_info.append("{image=whitelotus_small}")
-    if any(x for x in known_people if x.age >19 and x.age <=29):
-        extra_info.append("{image=redlotus_small}")
-    if any(x for x in known_people if x.age >29 and x.age <=35):
-        extra_info.append("{image=pinklotus_small}")
-    if any(x for x in known_people if x.age >35):
-        extra_info.append("{image=bluelotus_small}")
-    if any(x for x in known_people if x.has_cum_fetish and (x.has_breeding_fetish or x.has_anal_fetish) and x.has_exhibition_fetish and x.opinion.polyamory>1):
-        extra_info.append("{image=goldlotus_small}")
-    if any(x for x in known_people if (x.hymen <= 1 or x.oral_virgin <1 or x.anal_virgin <1)):
-        extra_info.append("{image=virgin_token_small}")
-    if any(x for x in known_people if x.knows_pregnant):
-        extra_info.append("{image=feeding_bottle_token_small}")
-    if any(x for x in known_people if x.has_exact_role(very_heavy_trance_role) and x.trance_training_available):
-        extra_info.append("{image=ahegaotrance_token_small}")
-    if any(x for x in known_people if x.has_exact_role(heavy_trance_role) and x.trance_training_available):
-        extra_info.append("{image=heavytrance_token_small}")
-    if any(x for x in known_people if x.has_exact_role(trance_role) and x.trance_training_available):
-        extra_info.append("{image=starttrance_token_small}")
+    if VT_Settings["Trackers"]["Favorites"][1]==1:
+        if any(x for x in known_people if x.is_favourite):
+            extra_info.append("{image=full_star_token_small}")
+    if VT_Settings["Trackers"]["Story Characters"][1]==1:
+        if any(x for x in known_people if x.type=="story"):
+            extra_info.append("{image=labbook_token_small}")
+    #relationships
+    #Polycule
+    if VT_Settings["Trackers"]["Polycule"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and x.has_exact_role(harem_role) and not x.has_exact_role(affair_role) and not x.is_family):
+            extra_info.append("{image=harem_token_small}")
+    #Polycule - Paramour
+    if VT_Settings["Trackers"]["Polycule - Paramour"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and x.has_exact_role(harem_role) and x.has_exact_role(affair_role) and not x.is_family):
+            extra_info.append("{image=parapoly_token_small}")
+    #Polycule - Familia
+    if VT_Settings["Trackers"]["Polycule - Familia"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and x.has_exact_role(harem_role) and not x.has_exact_role(affair_role) and x.is_family):
+            extra_info.append("{image=familypoly_small}")
+
+    #Girlfriend
+    if VT_Settings["Trackers"]["Girlfriend"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and not x.has_exact_role(harem_role) and not x.has_exact_role(affair_role) and not x.is_family):
+            extra_info.append("{image=gf_token_small}")
+    #Girlfriend - Paramour
+    if VT_Settings["Trackers"]["Girlfriend - Paramour"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and not x.has_exact_role(harem_role) and x.has_exact_role(affair_role) and not x.is_family):
+            extra_info.append("{image=paramour_token_small}")
+    #Girlfriend - Familia
+    if VT_Settings["Trackers"]["Girlfriend - Familia"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and not x.has_exact_role(harem_role) and not x.has_exact_role(affair_role) and x.is_family):
+            extra_info.append("{image=familylove_small}")
+
+    #Familia
+    if VT_Settings["Trackers"]["Familia"][1]==1:
+        if any(x for x in known_people if not x.has_relation_with_mc and not x.is_slave and x.is_family):
+            extra_info.append("{image=familycircle_small}")
+
+    #Slave
+    if VT_Settings["Trackers"]["Slave"][1]==1:
+        if any(x for x in known_people if not x.has_relation_with_mc and x.is_slave and not x.has_exact_role(harem_role) and not x.has_exact_role(affair_role) and not x.is_family):
+            extra_info.append("{image=slave_small}")
+    #Slave - Polyamorous
+    if VT_Settings["Trackers"]["Slave - Polyamorous"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and x.is_slave and x.has_exact_role(harem_role) and x.has_exact_role(affair_role) and not x.is_family):
+            extra_info.append("{image=polyslave_small}")
+    #Slave - Poly Paramour
+    if VT_Settings["Trackers"]["Slave - Poly Paramour"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and x.is_slave and x.has_exact_role(harem_role) and x.has_exact_role(affair_role)):
+            extra_info.append("{image=parapolyslave_small}")
+    #Slave - Poly Familia
+    if VT_Settings["Trackers"]["Slave - Poly Familia"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and x.is_slave and x.has_exact_role(harem_role) and not x.has_exact_role(affair_role) and x.is_family):
+            extra_info.append("{image=polyfamiliaslave_small}")
+    #Slave - Paramour
+    if VT_Settings["Trackers"]["Slave - Paramour"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and x.is_slave and not x.has_exact_role(harem_role) and x.has_exact_role(affair_role) and not x.is_family):
+            extra_info.append("{image=paraslave_small}")
+    #Slave - GF Familia
+    if VT_Settings["Trackers"]["Slave - GF Familia"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and x.is_slave and not x.has_exact_role(harem_role) and not x.has_exact_role(affair_role) and x.is_family):
+            extra_info.append("{image=gffamiliaslave_small}")
+    #Slave - Girlfriend
+    if VT_Settings["Trackers"]["Slave - Girlfriend"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and x.is_slave and  not x.has_exact_role(harem_role) and not x.has_exact_role(affair_role) and not x.is_family):
+            extra_info.append("{image=gfslave_small}")
+    #Slave - Familia
+    if VT_Settings["Trackers"]["Slave - Familia"][1]==1:
+        if any(x for x in known_people if not x.has_relation_with_mc and x.is_slave and x.is_family):
+            extra_info.append("{image=familiaslave_small}")
+
+    #Polycules Only
+    if VT_Settings["Trackers"]["Polycules Only"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and x.has_exact_role(harem_role) and not x.is_family):
+            extra_info.append("{image=harem_token_small}")
+    #Girlfriends Only
+    if VT_Settings["Trackers"]["Girlfriends Only"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and not x.has_exact_role(harem_role) and not x.is_family):
+            extra_info.append("{image=gf_token_small}")
+    #Familias Only
+    if VT_Settings["Trackers"]["Familias Only"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and x.has_exact_role(harem_role) and not x.is_family):
+            extra_info.append("{image=familycircle_small}")
+    #Slaves Only
+    if VT_Settings["Trackers"]["Slaves Only"][1]==1:
+        if any(x for x in known_people if x.has_relation_with_mc and not x.is_slave and x.has_exact_role(harem_role) and not x.is_family):
+            extra_info.append("{image=slave_small}")
+    #Lotuses
+    if VT_Settings["Trackers"]["Lotus - White"][1]==1:
+        if any(x for x in known_people if x.age <=19):
+            extra_info.append("{image=whitelotus_small}")
+    if VT_Settings["Trackers"]["Lotus - Red"][1]==1:
+        if any(x for x in known_people if x.age >19 and x.age <=29):
+            extra_info.append("{image=redlotus_small}")
+    if VT_Settings["Trackers"]["Lotus - Pink"][1]==1:
+        if any(x for x in known_people if x.age >29 and x.age <=35):
+            extra_info.append("{image=pinklotus_small}")
+    if VT_Settings["Trackers"]["Lotus - Blue"][1]==1:
+        if any(x for x in known_people if x.age >35):
+            extra_info.append("{image=bluelotus_small}")
+    if VT_Settings["Trackers"]["Lotus - Gold"][1]==1:
+        if any(x for x in known_people if x.has_cum_fetish and (x.has_breeding_fetish or x.has_anal_fetish) and x.has_exhibition_fetish and x.opinion.polyamory>1):
+            extra_info.append("{image=goldlotus_small}")
+
+    #Virginal
+    if VT_Settings["Trackers"]["Virgin - Vaginal"][1]==1:
+        if any(x for x in known_people if x.hymen == 0):
+            extra_info.append("{image=virgin_token_small}")
+    if VT_Settings["Trackers"]["Virgin - Anal"][1]==1:
+        if any(x for x in known_people if x.anal_virgin == 0):
+            extra_info.append("{image=virgin_token_small}")
+    if VT_Settings["Trackers"]["Virgin - Oral"][1]==1:
+        if any(x for x in known_people if x.oral_virgin == 0):
+            extra_info.append("{image=virgin_token_small}")
+
+    #Pregnant
+    if VT_Settings["Trackers"]["Pregnant"][1]==1:
+        if any(x for x in known_people if x.knows_pregnant):
+            extra_info.append("{image=feeding_bottle_token_small}")
+
+    #Trance - Very Heavy
+    if VT_Settings["Trackers"]["Trance - Very Heavy"][1]==1:
+        if any(x for x in known_people if x.has_exact_role(very_heavy_trance_role) and x.trance_training_available):
+            extra_info.append("{image=ahegaotrance_token_small}")
+    #Trance - Heavy
+    if VT_Settings["Trackers"]["Trance - Heavy"][1]==1:
+        if any(x for x in known_people if x.has_exact_role(heavy_trance_role) and x.trance_training_available):
+            extra_info.append("{image=heavytrance_token_small}")
+    #Trance - Available
+    if VT_Settings["Trackers"]["Trance - Available"][1]==1:
+        if any(x for x in known_people if x.has_exact_role(trance_role) and x.trance_training_available):
+            extra_info.append("{image=starttrance_token_small}")
+    #Trance Only
+    if VT_Settings["Trackers"]["Trance Only"][1]==1:
+        if any(x for x in known_people if x.trance_training_available):
+            extra_info.append("{image=starttrance_token_small}")
+
     if any(y for y in known_people if any(not isinstance(x, Limited_Time_Action) for x in y.on_talk_event_list.enabled_actions(y) if not x.silent)):
         extra_info.append("{image=speech_bubble_exclamation_token_small}")
     if any(y for y in known_people if any(x for x in y.on_talk_event_list.enabled_actions(y) if not x.silent)):
         extra_info.append("{image=speech_bubble_token_small}")
-    if any(x for x in known_people if x.arousal >= 60):
-        extra_info.append("{image=arousal_token_small}")
-    if any(x for x in known_people if x.serum_effects):
-        extra_info.append("{image=vial_token_small}")
-    if any(x for x in known_people if x.infractions and x.is_at_office):
-        extra_info.append("{image=infraction_token_small}")
-    if any(x for x in known_people if x.is_clone):
-        extra_info.append("{image=dna_token_small}")
-    if any(x for x in known_people if (x.bc_status_known and x.is_highly_fertile and perk_system.has_ability_perk("Ovulation Cycle Perception"))):
-        extra_info.append("{image=beezee_token_small}")
-    if any(x for x in known_people if x.had_sex_today):
-        extra_info.append("{image=hadsex_token_small}")
+
+    #Arousal
+    if VT_Settings["Trackers"]["Arousal"][1]==1:
+        if any(x for x in known_people if x.arousal >= 60):
+            extra_info.append("{image=arousal_token_small}")
+
+    #Serums
+    if VT_Settings["Trackers"]["Serums"][1]==1:
+        if any(x for x in known_people if x.serum_effects):
+            extra_info.append("{image=vial_token_small}")
+
+    #Infractions
+    if VT_Settings["Trackers"]["Infractions"][1]==1:
+        if any(x for x in known_people if x.infractions and x.is_at_office):
+            extra_info.append("{image=infraction_token_small}")
+
+    #DNA Available
+    if VT_Settings["Trackers"]["DNA"][1]==1:
+        if any(x for x in known_people if x.is_clone):
+            extra_info.append("{image=dna_token_small}")
+
+    #Fertility Bee
+    if VT_Settings["Trackers"]["Fertility Bee"][1]==1:
+        if any(x for x in known_people if (x.bc_status_known and x.is_highly_fertile and perk_system.has_ability_perk("Ovulation Cycle Perception"))):
+            extra_info.append("{image=beezee_token_small}")
+
+    #Had Sex Today
+    if VT_Settings["Trackers"]["Had Sex Today"][1]==1:
+        if any(x for x in known_people if x.had_sex_today):
+            extra_info.append("{image=hadsex_token_small}")
 
     # if len(extra_info) > 6:
         # break_insert = int((len(extra_info) + 1) / 2.0)

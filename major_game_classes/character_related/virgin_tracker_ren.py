@@ -1,5 +1,4 @@
 import inspect
-
 import renpy
 from renpy.exports import write_log
 from game.helper_functions.random_generation_functions_ren import create_random_person, make_person, create_party_schedule, get_premade_character
@@ -12,7 +11,6 @@ from helper_functions.vt_helper_functions_ren import _vt_virginity_stats, _vt_ge
 from renpy import persistent, basestring
 from game.major_game_classes.clothing_related.wardrobe_builder_ren import WardrobeBuilder
 from typing import Optional, Callable, Iterable
-
 from VTrandom_lists_ren import VT_AGE_RANGES, VT_Settings, _vt_build_weighted_list
 from game.random_lists_ren import get_random_from_weighted_list
 
@@ -50,7 +48,42 @@ class VTPerson(Person):
 
     @property
     def is_family(self) -> bool:
-        return self in (mom, lily, aunt, cousin) or hasattr(self, 'is_daughter_of_mc')
+        return self in (mom, lily, aunt, cousin) or hasattr(self, 'is_daughter_of_mc') or self.has_role(clone_role)
+
+    @property
+    def relation_possessive_title(self) -> str:
+        '''
+        Returns the possessive title always as family relationship if person is family.
+        When person is not family will return appropriate relationship reference.
+        Usage: for dialogues where you specifically want to refer to your family relationship
+        '''
+        if not self.is_family:
+            if self.is_girlfriend:
+                if self.has_role(harem_role):
+                    return "your polygirl"
+                return "your girlfriend"
+            if self.is_affair:
+                if self.has_role(harem_role):
+                    return "your polyamour"
+                return "your mistress"
+            if self.vaginal_sex_count > 9:
+                if self.has_role(harem_role):
+                    return "your polypussy"
+                return "your booty call"
+            return "your friend"
+        if self == mom:
+            return "your mother"
+        if self == lily:
+            return "your sister"
+        if self == aunt:
+            return "your aunt"
+        if self == cousin:
+            return "your cousin"
+        if hasattr(self, 'is_daughter_of_mc'):
+            return "your daughter"
+        if self.has_role(clone_role):
+            return "your cloned daughter"
+        return "your family"
 
 Person         = VTPerson
 
@@ -59,10 +92,14 @@ class VTStatTracker(StatTracker):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    #### total Polycules
+    @property
+    def polycules(self) -> int:
+        return sum(1 for x in list_of_people if x.has_role(harem_role))
     ##### Seperate the harem girlfriends from girlfriends
     @property
     def polycule_girlfriends(self) -> int:
-        return sum(1 for x in list_of_people if x.is_girlfriend and x.has_role(harem_role))
+        return sum(1 for x in list_of_people if x.is_girlfriend and x.has_role(harem_role) and not x.is_family and not x.is_affair)
     ##### Seperate the harem paramour from paramours
     @property
     def polycule_paramours(self) -> int:
@@ -71,14 +108,15 @@ class VTStatTracker(StatTracker):
     @property
     def polycule_familia(self) -> int:
         return sum(1 for x in list_of_people if x.is_girlfriend and x.has_role(harem_role) and x.is_family)
-    #### total Polycules
-    @property
-    def polycules(self) -> int:
-        return sum(1 for x in list_of_people if x.has_role(harem_role))
+
     #### total girlfriends not in polycule
     @property
     def girlfriends(self) -> int:
-        return sum(1 for x in list_of_people if x.is_girlfriend and not x.has_role(harem_role))
+        return sum(1 for x in list_of_people if (x.is_girlfriend or x.is_affair) and not x.has_role(harem_role))
+    #### total girlfriends sans familia not in polycule and not affair
+    @property
+    def girlfriends_sansfamilia(self) -> int:
+        return sum(1 for x in list_of_people if x.is_girlfriend and not x.has_role(harem_role) and not x.is_family and not x.is_affair)
     #### total familia not in polycule
     @property
     def familia(self) -> int:
@@ -87,10 +125,36 @@ class VTStatTracker(StatTracker):
     @property
     def paramours(self) -> int:
         return sum(1 for x in list_of_people if x.is_affair and not x.has_role(harem_role))
+
     #### total slaves
     @property
     def slaves(self) -> int:
         return sum(1 for x in list_of_people if x.is_slave)
+    #### total slaves no relations
+    @property
+    def slaves_norel(self) -> int:
+        return sum(1 for x in list_of_people if x.is_slave and not x.is_family and not x.has_relation_with_mc)
+    #### total girlfriend slaves
+    @property
+    def slaves_girlfriends(self) -> int:
+        return sum(1 for x in list_of_people if x.is_slave and x.is_girlfriend and not x.is_family and not x.is_affair)
+    #### total paramour slaves
+    @property
+    def slaves_paramour(self) -> int:
+        return sum(1 for x in list_of_people if x.is_slave and not x.is_family and x.is_affair and not x.has_role(harem_role))
+    
+    #### famila slaves
+    @property
+    def slaves_familia(self) -> int:
+        return sum(1 for x in list_of_people if x.is_slave and x.is_family and not x.is_girlfriend and not x.has_role(harem_role))
+    #### famila gf slaves
+    @property
+    def slaves_gffamilia(self) -> int:
+        return sum(1 for x in list_of_people if x.is_slave and x.is_family and x.is_girlfriend and not x.has_role(harem_role))
+    #### famila poly slaves
+    @property
+    def slaves_polyfamilia(self) -> int:
+        return sum(1 for x in list_of_people if x.is_slave and x.is_family and x.has_role(harem_role))
 
 StatTracker     = VTStatTracker
 
@@ -118,7 +182,6 @@ def _vt_postfix_break_taboo(wrapped_func: Callable) -> Callable:
                 item.colour = [.71, .1, .1, 0.8]
                 item.layer = 0
                 return item
-
             self.outfit.add_accessory(get_blood_item(creampie_cum))
             self.outfit.add_accessory(get_blood_item(ass_cum))
             self.event_triggers_dict["given_virginity"] = True
@@ -127,7 +190,6 @@ def _vt_postfix_break_taboo(wrapped_func: Callable) -> Callable:
             self.hymen = 1
             if self.opinion.vaginal_sex < 1:
                 self.update_opinion_with_score("vaginal sex", 1)
-
         elif the_taboo == "sucking_cock" and self.oral_virgin==0:
             self.oral_virgin += 1
             self.oral_first = mc.name
@@ -148,21 +210,32 @@ def _vt_postfix_restore_taboo(wrapped_func: Callable) -> Callable:
         ret_val = wrapped_func(*args, **kwargs)
         self = args[0]
         the_taboo = args[1]
+
+        if the_taboo not in self.broken_taboos:
+            return False
+        while the_taboo in self.broken_taboos:
+            self.broken_taboos.remove(the_taboo)
         #virginity taboo restores
         if the_taboo == "vaginal_sex" and self.vaginal_virgin<=1:
-            restore_virginity(self)
-            self.restore_taboo('vaginal_sex')
+            #restore_virginity(self)
+            #self.restore_taboo('vaginal_sex')
             self.vaginal_virgin = 0
             self.hymen = 0
+            self.vaginal_first = None
 
-        if the_taboo == "sucking_cock" and self.oral_virgin<=1:
-            self.restore_taboo('sucking_cock')
+        if the_taboo == "sucking_cock" and self.oral_virgin==0:
+            #self.restore_taboo('sucking_cock')
             self.oral_virgin = 0
+            self.oral_first = None
 
-        if the_taboo == "anal_sex" and self.anal_virgin<=1:
-            self.restore_taboo('anal_sex')
+        if the_taboo == "anal_sex" and self.anal_virgin==0:
+            #self.restore_taboo('anal_sex')
             self.anal_virgin = 0
+            self.anal_first = None
 
+        if add_to_log:
+            mc.log_event(f"Taboo reasserted with {self.display_name}!", "float_text_red")
+        return True
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func

@@ -49,6 +49,7 @@ screen VTMOD_setup_ui():
     frame: # top frame
         background "#4B0303"
         xsize 1200
+        ysize 600
         yalign 0.4
         xalign 0.5
         xanchor 0.5
@@ -69,36 +70,108 @@ screen VTMOD_setup_ui():
                         action [
                             Function(vt_switch_preference, pref)
                         ]
+            viewport id "vtvp":
+                mousewheel True
+                scrollbars "vertical"
+                for pref in sorted(VT_Settings):
+                    if pref == pref_selected:
 
-            for pref in sorted(VT_Settings):
-                if pref == pref_selected:
-                    vbox:
-                        for pref_opt in (x[0] for x in sorted(VT_Settings[pref].items(), key = lambda x: x[1][2])):
-                            hbox:
-                                spacing 5
-                                vbox:
-                                    xsize 340
-                                    ysize 50
-                                    yoffset 5
-                                    text pref_opt style "VTtextbutton_text_style"
-                                vbox:
-                                    xsize 600
-                                    ysize 50
-                                    bar value FieldValue(persistent, VT_Settings[pref][pref_opt][0], 100, step = 1, style = "slider", action = [ Function(vt_preference_value_changed, pref_selected) ]) xsize 600 ysize 45
-                                vbox:
-                                    xsize 60
-                                    ysize 50
-                                    yoffset 5
-                                    text (str(getattr(persistent, VT_Settings[pref][pref_opt][0])) + "%" if getattr(persistent, VT_Settings[pref][pref_opt][0]) > 0 else "None") style "VTmenu_text_style" xsize 100
+                        vbox:
 
-            hbox:
-                text f"Total: {current_total}%":
-                    xalign 1.0
-                    style "VTmenu_text_style"
+                            for pref_opt in (x[0] for x in sorted(VT_Settings[pref].items(), key = lambda x: x[1][2])):
+                                if pref_selected in ["Population", "Virgin Stats"]:
+                                    hbox:
+                                        spacing 5
+                                        vbox:
+                                            xsize 340
+                                            ysize 50
+                                            yoffset 5
+                                            text pref_opt style "VTtextbutton_text_style"
+                                        vbox:
+                                            xsize 600
+                                            ysize 50
+                                            bar value FieldValue(persistent, VT_Settings[pref][pref_opt][0], 100, step = 1, style = "slider", action = [ Function(vt_preference_value_changed, pref_selected) ]) xsize 600 ysize 45
+                                        vbox:
+                                            xsize 60
+                                            ysize 50
+                                            yoffset 5
+                                            text (str(getattr(persistent, VT_Settings[pref][pref_opt][0])) + "%" if getattr(persistent, VT_Settings[pref][pref_opt][0]) > 0 else "None") style "VTmenu_text_style" xsize 100
+                                else:
+                                    if pref_selected == "Trackers":
+                                        $ VTSettingsicon = f"{{image="+str(VT_Settings[pref][pref_opt][0])+"}"
+                                        #$ checked = "checkbox_check.png"
+                                        #$ unchecked = "checkbox_uncheck.png"
+                                        hbox:
+                                            spacing 5
+                                            vbox:
+                                                xsize 300
+                                                ysize 50
+                                                yoffset 5
+                                                text pref_opt style "VTtextbutton_text_style"
+                                            vbox:
+                                                xsize 50
+                                                ysize 50
+                                                text VTSettingsicon style "VTtextbutton_text_style"
+                                            vbox:
+                                                xsize 200
+                                                ysize 50
+                                                hbox:
+                                                    
+                                                    # if getattr(persistent, VT_Settings[pref][pref_opt][1]) is None:
+                                                        # setsetattr(persistent, VT_Settings[pref][pref_opt][1]) = 1
+                                                        # if persistent.VT_Settings[pref][pref_opt] in ["Polycules Only","Girlfriends Only","Familias Only","Slaves Only", "Trance Only"]:
+                                                            # if persistent.VT_Settings[pref][pref_opt]=="Polycules Only":
+                                                                # if persistent.VT_Settings[pref][pref_opt][1]==1:
+                                                                    # persistent.VT_Settings[pref]["Polycule"][1] = 1
+                                                                    # persistent.VT_Settings[pref]["Polycule - Paramour"][1] = 0
+                                                                    # persistent.VT_Settings[pref]["Polycule - Familia"][1] = 0
+                                                                # else:
+                                                                    # persistent.VT_Settings[pref][pref_opt][1]=0
+
+                                                    if VT_Settings[pref][pref_opt][1]==1:
+                                                         textbutton "YES" style "VTtextbuttonON_style" text_style "menu_text_title_style" text_text_align 0.5 text_xalign 0.5
+                                                         #action [persistent.VT_Settings[pref][pref_opt][1]=0]
+                                                         #action Set(VT_Settings[pref][pref_opt][1], 0 )
+                                                    else:
+                                                         textbutton "NO" style "VTtextbuttonOFF_style" text_style "menu_text_title_style" text_text_align 0.5 text_xalign 0.5
+                                                         #action Set( persistent.VT_Settings[pref][pref_opt][1], 1 )
+                                                    # $ vtoption = VT_Settings[pref][pref_opt][1]
+                                                    # if vtoption == 1:
+                                                        # label "YES"
+                                                    # else:
+                                                        # label "NO"
+                                            vbox:
+                                                xsize 50
+                                                ysize 50
+                                                text (str(VT_Settings[pref][pref_opt][1])) style "VTtextbutton_text_style"
+                                            vbox:
+                                                xsize 50
+                                                ysize 50
+                                                text (str(getattr(persistent,VT_Settings[pref][pref_opt][0]))) style "VTtextbutton_text_style"
+                                    else:
+                                        hbox:
+                                            spacing 5
+                                            vbox:
+                                                xsize 300
+                                                ysize 50
+                                                yoffset 5
+                                                text pref_opt style "VTtextbutton_text_style"
+                                            vbox:
+                                                xsize 50
+                                                ysize 50
+                                                text (str(getattr(persistent,VT_Settings[pref][pref_opt][0]))) style "VTtextbutton_text_style"
+
+            vbar value YScrollValue("vtvp")
+
+            if pref_selected in ["Population"]:
+                hbox:
+                    text f"Total: {current_total}%":
+                        xalign 1.0
+                        style "VTmenu_text_style"
 
             hbox:
                 xsize 800
-                text "{size=16}Warning: PROOF OF CONCEPT ONLY!!!! CURRENTLY NOT SET FOR VT at the moment, but will get there! :P" style "warning_text"
+                text "{size=16}Warning: Pregnancy Tab and Trackers, still being worked on." style "warning_text"
 
             hbox:
                 xalign 0.5
@@ -115,6 +188,20 @@ style VTtextbutton_style: ##The generic style used for text button backgrounds. 
     background "#792323"
     insensitive_background "#00000088"
     hover_background "#237979"
+
+style VTtextbuttonOFF_style: ##The generic style used for text button backgrounds. TODO: Replace this with a pretty background image instead of a flat colour.
+    padding (5,5)
+    margin (2,2)
+    background "#792323"
+    insensitive_background "#00000088"
+    hover_background "#237979"
+
+style VTtextbuttonON_style: ##The generic style used for text button backgrounds. TODO: Replace this with a pretty background image instead of a flat colour.
+    padding (5,5)
+    margin (2,2)
+    background "#237979"
+    insensitive_background "#00000088"
+    hover_background "#792323"
 
 style VTtextbutton_text_style: ##The generic style used for text button backgrounds. TODO: Replace this with a pretty background image instead of a flat colour.
     size 22
@@ -134,3 +221,10 @@ style VTmenu_text_style:
     text_align 0.0
     line_spacing 2
 
+style VTcheckbox_button:
+    xysize (50, 50)
+    background Solid("#ffff00") # Unchecked
+    hover_background Solid("#ffffff") # Unchecked Hovered (I usually increase brightness of the image by 15% unsing im. matrix manipulators)
+    insensitive_background Solid("#d3d3d3") # Disabled (May not be required, I usually use im.Sepia() for images)
+    selected_idle_background Solid("#00ff00") # Checked
+    selected_hover_background Solid("#00ff11") # Checked Hovered
