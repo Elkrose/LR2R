@@ -16,6 +16,14 @@ init -10:
     image familycircle = "[familycircle_image.filename]"
     image familylove = "[familylove_image.filename]"
     image familypoly = "[familypoly_image.filename]"
+    image parapolyslave = "[parapolyslave_image.filename]"
+    image polyslave = "[polyslave_image.filename]"
+    image polyfamiliaslave = "[polyfamiliaslave_image.filename]"
+    image paraslave = "[paraslave_image.filename]"
+    image gfslave = "[gfslave_image.filename]"
+    image slave = "[slave_image.filename]"
+    image familiaslave = "[familiaslave_image.filename]"
+    image gffamiliaslave = "[gffamiliaslave_image.filename]"
 
 ##### Age Icons #####
     image matureteen = "[matureteen_image.filename]"

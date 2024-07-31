@@ -75,7 +75,7 @@ screen person_info_detailed(person):
                                 text f"- Visible Day: {person.pregnancy_show_day}" style "menu_text_style"
                             elif day < person.pregnancy_due_day:
                                 text f"- Delivery Day: {person.pregnancy_due_day}" style "menu_text_style"
-                        elif person.is_clone:
+                        elif (person.is_clone and hasattr(person, 'clone_womb_revived')==False):
                             text "Fertility: Sterile" style "menu_text_style"
                         elif person.is_infertile:
                             text "Fertility: Infertile" style "menu_text_style"

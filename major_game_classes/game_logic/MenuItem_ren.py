@@ -16,7 +16,7 @@ from game.major_game_classes.game_logic.Action_ren import Action, Limited_Time_A
 """renpy
 IF FLAG_OPT_IN_ANNOTATIONS:
     rpy python annotations
-init -5 python:
+init -2 python:
 """
 import re
 
@@ -71,25 +71,49 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
             if item.type=="story":
                 info.append("{image=labbook_token_small}")
             if item.has_relation_with_mc:
-                if item.has_role(harem_role):
-                    if item.has_role(affair_role):
-                        info.append("{image=parapoly_token_small}")
-                    else:
-                        if item.is_family:
-                            info.append("{image=familypoly_small}")
+                if item.is_slave:
+                    if item.has_role(harem_role):
+                        if item.has_role(affair_role):
+                            info.append("{image=parapolyslave_small}")
                         else:
-                            info.append("{image=harem_token_small}")
+                            if item.is_family:
+                                info.append("{image=polyfamiliaslave_small}")
+                            else:
+                                info.append("{image=polyslave_small}")
+                    else:
+                        if item.has_role(affair_role):
+                            info.append("{image=paraslave_small}")
+                        else:
+                            if item.is_family:
+                                info.append("{image=familiaslave_small}")
+                            else:
+                                info.append("{image=gfslave_small}")
                 else:
-                    if item.has_role(affair_role):
-                        info.append("{image=paramour_token_small}")
-                    else:
-                        if item.is_family:
-                            info.append("{image=familylove_small}")
+                    if item.has_role(harem_role):
+                        if item.has_role(affair_role):
+                            info.append("{image=parapoly_token_small}")
                         else:
-                            info.append("{image=gf_token_small}")
+                            if item.is_family:
+                                info.append("{image=familypoly_small}")
+                            else:
+                                info.append("{image=harem_token_small}")
+                    else:
+                        if item.has_role(affair_role):
+                            info.append("{image=paramour_token_small}")
+                        else:
+                            if item.is_family:
+                                info.append("{image=familylove_small}")
+                            else:
+                                info.append("{image=gf_token_small}")
             else:
                 if item.is_family:
-                    info.append("{image=familycircle_small}")
+                    if item.is_slave:
+                        info.append("{image=familiaslave_small}")
+                    else:
+                        info.append("{image=familycircle_small}")
+                else:
+                    if item.is_slave:
+                        info.append("{image=slave_small}")
 
             if any(not isinstance(x, Limited_Time_Action) for x in item.on_talk_event_list.enabled_actions(item) if not x.silent):
                 info.append("{image=speech_bubble_exclamation_token_small}")
@@ -109,7 +133,7 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                     info.append("{image=pinklotus_small}")
                 if item.age >35:
                     info.append("{image=bluelotus_small}")
-            if (item.hymen <= 1 or item.oral_virgin <1 or item.anal_virgin <1):
+            if item.hymen == 0:
                 info.append("{image=virgin_token_small}")
             if any((draw_insta, draw_dikdok, draw_onlyfans)):
                 if ((draw_insta and item.has_instapic_post)

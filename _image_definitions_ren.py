@@ -60,6 +60,37 @@ familypoly_image = Image(get_file_handle(modpath+"familypoly.png"))
 familypoly_small_image = im.Scale(Image(get_file_handle(modpath+"familypoly.png")), 18, 18)
 renpy.image("familypoly_small", familypoly_small_image)
 
+parapolyslave_image = Image(get_file_handle(modpath+"parapolyslave.png"))
+parapolyslave_small_image = im.Scale(Image(get_file_handle(modpath+"parapolyslave.png")), 18, 18)
+renpy.image("parapolyslave_small", parapolyslave_small_image)
+
+polyslave_image = Image(get_file_handle(modpath+"polyslave.png"))
+polyslave_small_image = im.Scale(Image(get_file_handle(modpath+"polyslave.png")), 18, 18)
+renpy.image("polyslave_small", polyslave_small_image)
+
+polyfamiliaslave_image = Image(get_file_handle(modpath+"polyfamiliaslave.png"))
+polyfamiliaslave_small_image = im.Scale(Image(get_file_handle(modpath+"polyfamiliaslave.png")), 18, 18)
+renpy.image("polyfamiliaslave_small", polyfamiliaslave_small_image)
+
+paraslave_image = Image(get_file_handle(modpath+"paraslave.png"))
+paraslave_small_image = im.Scale(Image(get_file_handle(modpath+"paraslave.png")), 18, 18)
+renpy.image("paraslave_small", paraslave_small_image)
+
+gfslave_image = Image(get_file_handle(modpath+"gfslave.png"))
+gfslave_small_image = im.Scale(Image(get_file_handle(modpath+"gfslave.png")), 18, 18)
+renpy.image("gfslave_small", gfslave_small_image)
+
+slave_image = Image(get_file_handle(modpath+"slave.png"))
+slave_small_image = im.Scale(Image(get_file_handle(modpath+"slave.png")), 18, 18)
+renpy.image("slave_small", slave_small_image)
+
+familiaslave_image = Image(get_file_handle(modpath+"familiaslave.png"))
+familiaslave_small_image = im.Scale(Image(get_file_handle(modpath+"familiaslave.png")), 18, 18)
+renpy.image("familiaslave_small", familiaslave_small_image)
+
+gffamiliaslave_image = Image(get_file_handle(modpath+"gffamiliaslave.png"))
+gffamiliaslave_small_image = im.Scale(Image(get_file_handle(modpath+"gffamiliaslave.png")), 18, 18)
+renpy.image("gffamiliaslave_small", gffamiliaslave_small_image)
 ##### Age Icons #####
 matureteen_image = Image(get_file_handle("matureteen.png"))
 matureteen_token_small_image = im.Scale(Image(get_file_handle("matureteen.png")), 18, 18)
