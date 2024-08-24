@@ -89,7 +89,7 @@ def oral_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
         if person in mc.location.people: #If you're here applying this trait in person it causes her to exclaim.
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Ugh, why am I drooling???!")
     if person.oral_virgin == 0:
-        person.restore_taboo('sucking_cock')
+        person.restore_taboo('sucking cock')
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: Throat Stimulation Ended", "float_text_pink")
 
 def clone_womb_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):

@@ -13,10 +13,10 @@ Lab Rats 2 Reformulate Virginity Tracker Mod
 🥵 Kaden's Mods - Good!
 ❗ Pregnant Content dev - no
 ❗ SerumBalanceTest - no
+🔥 Lab Rats2 Reformulate: v2024.08  Ren'Py 8.2.1
+🔥 Lab Rats2 Reformulate: v2024.09-code-beta  Ren'Py 8.2.1
 
-🔥 Lab Rats2 Reformulate: v2024.06-code-beta  Ren'Py 8.2.1
-
-🔥 lr2mods-develop - July 19, 2024 7:56 AM EDT - https://discord.com/channels/564870606382956576/571557121716387840/1263826912547966997
+🔥 lr2mods-develop - August 17, 2024 3:48 PM EDT - [https://discord.com/channels/564870606382956576/571557121716387840/1263826912547966997](https://discord.com/channels/564870606382956576/571557121716387840/1274454794576203826)
 
 💮 Vanilla files modified: none - the MOD is completely on its own in the mods folder.
 
