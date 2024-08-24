@@ -129,12 +129,12 @@ screen VTMOD_setup_ui():
                                                                     # persistent.VT_Settings[pref][pref_opt][1]=0
 
                                                     if VT_Settings[pref][pref_opt][1]==1:
-                                                         textbutton "YES" style "VTtextbuttonON_style" text_style "menu_text_title_style" text_text_align 0.5 text_xalign 0.5
-                                                         #action [persistent.VT_Settings[pref][pref_opt][1]=0]
-                                                         #action Set(VT_Settings[pref][pref_opt][1], 0 )
+                                                        textbutton "YES" style "VTtextbuttonON_style" text_style "menu_text_title_style" text_text_align 0.5 text_xalign 0.5
+                                                        #action [persistent.VT_Settings[pref][pref_opt][1]=0]
+                                                        #action Set(VT_Settings[pref][pref_opt][1], 0 )
                                                     else:
-                                                         textbutton "NO" style "VTtextbuttonOFF_style" text_style "menu_text_title_style" text_text_align 0.5 text_xalign 0.5
-                                                         #action Set( persistent.VT_Settings[pref][pref_opt][1], 1 )
+                                                        textbutton "NO" style "VTtextbuttonOFF_style" text_style "menu_text_title_style" text_text_align 0.5 text_xalign 0.5
+                                                        #action Set( persistent.VT_Settings[pref][pref_opt][1], 1 )
                                                     # $ vtoption = VT_Settings[pref][pref_opt][1]
                                                     # if vtoption == 1:
                                                         # label "YES"

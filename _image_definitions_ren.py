@@ -18,6 +18,7 @@ Cherry_background_image = Image(get_file_handle("Cherry_Background.png"))
 information_image = Image(get_file_handle("information.png"))
 question_image = Image(get_file_handle("question.png"))
 topboxVT_image = Image(get_file_handle("topboxVTMod.png"))
+multiboxVT_image = Image(get_file_handle("multiboxVTMod.png"))
 
 vtcherries_small_image = im.Scale(Image(get_file_handle("vtcherries.png")), 18, 18)
 renpy.image("vtcherries_small", vtcherries_small_image)

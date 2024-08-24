@@ -67,11 +67,7 @@ def create_tooltip_dictionary(locations: list[Room]) -> dict[str, str]:
     # only create this once for each build-up
     active_progression_scene_names = tuple(y.progression_scene_action.name for y in list_of_progression_scenes if y.progression_available)
 
-    result = {}
-    for place in locations:
-        result[place.name] = [get_location_tooltip(place)]
-        result[place.name].extend(get_location_on_enter_events(place, active_progression_scene_names))
-
+    result = {place.name: (get_location_tooltip(place), *get_location_on_enter_events(place, active_progression_scene_names)) for place in locations}
     # if debug_log_enabled: # disable log for now
     #    add_to_debug_log("Map build-up time: {total_time:.3f}", start_time)
     return result
@@ -166,7 +162,12 @@ def get_location_tooltip(location: Room) -> str:
         if person.knows_pregnant:
             info.append("{image=feeding_bottle_token_small}")
         if person.serum_effects:
-            info.append("{image=vial_token_small}")
+            if person.active_serum_count > person.serum_tolerance:
+                info.append("{image=vial3_token_small}")
+            elif person.active_serum_count == person.serum_tolerance:
+                info.append("{image=vial2_token_small}")
+            else:
+                info.append("{image=vial_token_small}")
         if person.infractions and person.is_at_office:
             info.append("{image=infraction_token_small}")
         if person.trance_training_available:
