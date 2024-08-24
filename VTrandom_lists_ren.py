@@ -10,7 +10,7 @@ T = TypeVar('T')
 """renpy
 IF FLAG_OPT_IN_ANNOTATIONS:
     rpy python annotations
-init 900 python:
+init -2 python:
 """
 #TO DO Make sliders not care about 100% totals only on its row, some rows are %, some are Months/week/turns
 
