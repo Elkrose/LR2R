@@ -55,7 +55,7 @@ label VT_exhibition_fetish_employee_intro_label(the_person):
     mc.name "... and didn't stop until I mark your body with my cum?"
     the_person "Oh god! Yes do it! Oh fuck!"
     "Still holding her hands down, you start to thrust rapidly. It's time to mark this horny slut!"
-    call fuck_person(the_person, goal="body shot" start_position = breeding_missionary, start_object = make_desk(), private = False, skip_intro = True, position_locked = True, skip_condom = True) from _VT_exhibition_fetish_employee_intro_01
+    call fuck_person(the_person, goal="body shot", start_position = breeding_missionary, start_object = make_desk(), private = False, skip_intro = True, position_locked = True, skip_condom = True) from _VT_exhibition_fetish_employee_intro_01
     # if the_person.has_creampie_cum:
         # the_person "Oh god! It's so deep! Oh thank you so much [the_person.mc_title]!"
     # else:
