@@ -55,7 +55,7 @@ label VT_exhibition_fetish_employee_intro_label(the_person):
     mc.name "... and didn't stop until I mark your body with my cum?"
     the_person "Oh god! Yes do it! Oh fuck!"
     "Still holding her hands down, you start to thrust rapidly. It's time to mark this horny slut!"
-    call fuck_person(the_person, goal="body shot", start_position = breeding_missionary, start_object = make_desk(), private = False, skip_intro = True, position_locked = True, skip_condom = True) from _VT_exhibition_fetish_employee_intro_01
+    call fuck_person(the_person, start_position = breeding_missionary, start_object = make_desk(), private = False, skip_intro = True, position_locked = True, skip_condom = True) from _VT_exhibition_fetish_employee_intro_01
     # if the_person.has_creampie_cum:
         # the_person "Oh god! It's so deep! Oh thank you so much [the_person.mc_title]!"
     # else:
@@ -263,7 +263,7 @@ label VT_exhibition_fetish_generic_intro_label(the_person):
             the_person "Mmh, I love it when I can feel it grow in my mouth."
             "[the_person.possessive_title!c] begins bobbing her head up and down eagerly, hungry for your delicious cum."
             # call fuck_person(the_person, start_position = blowjob, start_object = make_floor(), skip_intro = True, girl_in_charge = True, position_locked = True) from _call_fuck_person_SBC10B
-            call get_fucked(the_person, goal="body shot", start_position = blowjob, start_object = make_floor(), private=False, skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_generic_intro_01
+            call get_fucked(the_person, goal="get mc off", start_position = blowjob, start_object = make_floor(), private=False, skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_generic_intro_01
             $ VT_add_exhibition_fetish(the_person)
 
             "[the_person.possessive_title!c] is moaning ecstatically."
