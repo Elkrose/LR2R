@@ -26,7 +26,7 @@ label VT_exhibition_fetish_morning_shower_label():
     "As she leans forward and slides her lips over the tip of your dick, licks your cum, her eyes illuminating her intentions, as you feel a stirring deep inside."
     "She turns around and bends over and waggles her ass at you, sliding a hand between her legs and parting her pussy lips."
     the_person "Fuck me"
-    call get_fucked(the_person, the_goal = "body shot", private= False, start_position = bent_over_breeding, start_object = make_floor(), skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_morning_shower_VT2
+    call get_fucked(the_person, the_goal = "get mc off", private= False, start_position = bent_over_breeding, start_object = make_floor(), skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_morning_shower_VT2
     the_person "Oh my god, thank you [the_person.mc_title]. I needed that so bad."
     "[the_person.possessive_title!c] stands up. Her hunger for cum satisfied for now."
     $ the_person.draw_person(position = "stand4")
@@ -74,7 +74,7 @@ label VT_exhibition_fetish_employee_casual_request_label():
             ###cum Scene, standing variant###
             "As she starts sucking on you, she starts removing her clothes. Her lips never leave your cock as her clothes seem to fall off her."
             $ the_person.apply_outfit(Outfit("Nude"))
-            call get_fucked(the_person, the_goal = "body shot", sex_path = build_blowjob_path(the_person), start_object = make_floor(), skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_employee_casual_request_label
+            call get_fucked(the_person, the_goal = "get mc off", sex_path = build_blowjob_path(the_person), start_object = make_floor(), skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_employee_casual_request_label
             the_person "Oh my god, thank you [the_person.mc_title]... I wish I had time to make you cum again... but I know you're a busy man..."
             "[the_person.possessive_title!c] starts to get up. Her hunger for cum satisfied for now."
             the_person "Thanks again, [the_person.mc_title]. Don't hesitate to ask if you ever need to be... you know... serviced."
@@ -133,7 +133,7 @@ label VT_exhibition_fetish_non_employee_dosage_request_label():
                 "[the_person.possessive_title!c] pushes you inside and immediately drops down on her knees."
             $ the_person.draw_person(position = "kneeling1")
             "You consider asking her to strip down a bit, but she has already managed to pull your cock out of your pants."
-            call get_fucked(the_person, the_goal = "body shot", sex_path = build_blowjob_path(the_person), start_object = make_floor(), skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_non_employee_dosage_request_label
+            call get_fucked(the_person, the_goal = "get mc off", sex_path = build_blowjob_path(the_person), start_object = make_floor(), skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_non_employee_dosage_request_label
             the_person "Oh my god, thank you [the_person.mc_title]... I wish I had time to make you cum again... but I know you're a busy man..."
             "[the_person.possessive_title!c] starts to get up. Her hunger for cum satisfied for now."
             $ the_person.draw_person(emotion = "happy")
