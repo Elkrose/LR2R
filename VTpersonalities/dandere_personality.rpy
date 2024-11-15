@@ -167,7 +167,7 @@ label dandere_sex_responses_vaginal(the_person):
             the_person "Mmm... *whispers* your cock feels so... nice."
             "She starts to squirm and fidget, trying to get more comfortable."
         else:
-            $ play_moan_sound
+            $ play_moan_sound()
             the_person "A-ah... *whispers* I think I'm getting a little too excited..."
             "She covers her face with her hands, trying to hide her blush."
     elif the_person.arousal_perc < 75:

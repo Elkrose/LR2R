@@ -32,7 +32,6 @@ label slutty_introduction(the_person):
     mc.name "I'm [mc.name]. Nice to meet you..."
     the_person "I'm [the_person.name]. Nice to meet you too, baby. And don't worry, I'll make sure you remember my name, and my body, for a long time."
     $ the_person.change_happiness(2)
-    $ the_person.change_sluttiness(1)
     return
 
 label slutty_greetings(the_person):
