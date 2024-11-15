@@ -203,10 +203,10 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                     if item.had_sex_today:
                         info.append("{image=hadsex_token_small}")
                 if VT_Settings["Trackers"]["Stripper"][1]==1:
-                    if item.has_role(stripper_role):
+                    if item.has_role(stripper_role) and item.is_job_known:
                         info.append("{image=stripper_small}")
-                if VT_Settings["Trackers"]["Prostitute"][1]==1:
-                    if item.has_role(prostitute_role):
+                if VT_Settings["Trackers"]["Prostitute"][1]==1 :
+                    if item.has_role(prostitute_role) and item.is_job_known:
                         info.append("{image=cashpanties_small}")
                 if show_location:
                     info.append("\n{size=15}<" + Text(item.location.formal_name, substitute = True).get_all_text() + ">{/size}")
