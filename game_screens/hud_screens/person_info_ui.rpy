@@ -546,7 +546,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $VTpersonalityst = "yandere"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears sweet and innocent, with a gentle smile on her face. She studies you with big, shining eyes, her gaze filled with adoration and devotion. Her tone is soft and melodious, with a hint of shyness and vulnerability."
         elif person.personality.default_prefix == "alluring":
-            $VTpersonalityst = "pinklips2"
+            $VTpersonalityst = "pinklips"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears sophisticated and elegant, with a confident and poised demeanor. She studies you up and down, her eyes sparkling with interest and curiosity, her gaze lingering on your best features. Her tone is smooth and sultry, with a hint of playfulness and flirtation."
         elif person.personality.default_prefix == "gothic":
             $VTpersonalityst = "gothic"
@@ -564,7 +564,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             $VTpersonalityst = "cosplay"
             $VTpersonalitytt = f"{{image=vtcherries_small}} Her eyes sparkle with excitement as she strikes a pose, her confidence and charisma radiating from every angle."
         elif person.personality.default_prefix == "slutty":
-            $VTpersonalityst = "pinklips"
+            $VTpersonalityst = "openmouth"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She turns to face you with a sly smile spreading across her face. Her eyes sparkle with a hint of mischief, and her body language screams \"I'm available and ready to play\"."
         elif person.personality.default_prefix == "pornstar":
             $VTpersonalityst = "matureteen"
