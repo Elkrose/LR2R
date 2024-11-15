@@ -18,6 +18,11 @@ screen person_info_detailed(person):
     default baby_desire_string = get_baby_desire_format(person)
     default fertility_peak_day = str(person.ideal_fertile_day + 1)
     default known_days = str(day - person.event_triggers_dict.get("birth_control_known_day", 0))
+    default last_vaginal_day = person.sex_record.get("Last Vaginal Day", 0)
+    default last_oral_day = person.sex_record.get("Last Oral Day", 0)
+    default last_anal_day = person.sex_record.get("Last Anal Day", 0)
+    default last_exhibition_day = person.sex_record.get("Last Exhibition Day", 0)
+    default public_sex = person.sex_record.get("Public Sex", 0)
     default obedience_info = get_obedience_string(person.obedience)
     default personality_info = person.personality.base_personality_prefix.capitalize()
     default height_info = height_to_string(person.height)
@@ -219,11 +224,13 @@ screen person_info_detailed(person):
                                 #VTCODE HERE
                                     text f"Last Sex: {last_sex_to_string(day, value)} " style "menu_text_style"
                                 elif record == "Last Oral Day":
-                                    text f"Oral Last: {last_sex_to_string(day, value)} [person.oral_cum]" style "menu_text_style"
+                                    text f"Oral Last: {last_sex_to_string(day, last_oral_day)} " style "menu_text_style"
                                 elif record == "Last Anal Day":
-                                    text f"Anal Last: {last_sex_to_string(day, value)} [person.anal_cum]" style "menu_text_style"
+                                    text f"Anal Last: {last_sex_to_string(day, last_anal_day)} [person.anal_cum]" style "menu_text_style"
                                 elif record == "Last Vaginal Day":
-                                    text f"Vaginal Last: {last_sex_to_string(day, value)} [person.vaginal_cum]" style "menu_text_style"
+                                    text f"Vaginal Last: {last_sex_to_string(day, last_vaginal_day)} [person.vaginal_cum]" style "menu_text_style"
+                                elif record == "Last Exhibition Day":
+                                    text f"Exhibition Last: {last_sex_to_string(day, last_exhibition_day)} {public_sex}" style "menu_text_style"
                                 else:
                                     text "[record]: [value]" style "menu_text_style"
 

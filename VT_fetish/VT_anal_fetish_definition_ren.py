@@ -78,5 +78,5 @@ def VT_fetish_anal_staylate_event_requirement():
 
 def VT_add_fetish_anal_staylate_event(person: Person):
     mc.business.add_mandatory_crisis(
-        Fetish_Action("Employee stays late", VT_fetish_anal_staylate_event_requirement, "fetish_anal_staylate_event_label", args = person, priority = 10, fetish_type = "anal")
+        Fetish_Action("Employee stays 'behind'", VT_fetish_anal_staylate_event_requirement, "fetish_anal_staylate_event_label", args = person, priority = 10, fetish_type = "anal")
     )

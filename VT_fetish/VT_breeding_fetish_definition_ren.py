@@ -61,13 +61,13 @@ def update_breeding_fetish_state(person: Person):
         person.change_arousal(30)
 
 VT_breeding_fetish_high_fertility_crisis = ActionMod("Fertile breeding desperation", VT_breeding_fetish_high_fertility_crisis_requirement, "VT_breeding_fetish_high_fertility_crisis_label",
-    menu_tooltip = "You are visited by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
+    menu_tooltip = "You are visited at home by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_happy_breeder_crisis = ActionMod("Breeding fetish desperation", VT_breeding_fetish_happy_breeder_crisis_requirement, "VT_breeding_fetish_happy_breeder_crisis_label",
-    menu_tooltip = "You are visited by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
+    menu_tooltip = "You are visited at home by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_family_sleep_crisis = ActionMod("Familial nighttime breeding", VT_breeding_fetish_family_sleep_crisis_requirement, "VT_breeding_fetish_family_sleep_crisis_label",
-    menu_tooltip = "You are visited at night by a thirsty family member.", category = "VT Natural Fetish", is_crisis = True)
+    menu_tooltip = "You are visited at night by a fertile family member.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_employee_high_fertility_crisis = ActionMod("Highly fertile employee needs breeding", VT_breeding_fetish_employee_high_fertility_crisis_requirement, "VT_breeding_fetish_employee_high_fertility_crisis_label",
-    menu_tooltip = "An employee surprises you in your office", category = "VT Natural Fetish", is_crisis = True)
+    menu_tooltip = "A breedable employee surprises you in your office", category = "VT Natural Fetish", is_crisis = True)
 
 def VT_add_breeding_fetish(person: Person):
     person.add_role(breeding_fetish_role)
@@ -75,7 +75,7 @@ def VT_add_breeding_fetish(person: Person):
         person.update_sex_skill("Vaginal", 6)
     person.set_event_day("LastBreedingFetish")
     #fetish_add_collar(person, breed_collar)
-    person.change_baby_desire(500)
+    person.change_baby_desire(100)
 
 # def VT_abort_breeding_fetish_intro(person: Person): #Use this function to exit a anal fetish scene for whatever reason (something fails, MC choice, etc.)
     # person.event_triggers_dict["VT_breeding_fetish_start"] = False

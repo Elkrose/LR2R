@@ -112,8 +112,8 @@ def VT_start_anal_fetish_quest(person: NewPerson):
             or person.anal_sex_skill < 4 \
             or person.opinion.anal_sex < 2 \
             or not person.is_willing(doggy_anal) \
-            or person.sluttiness < 70 \
-            or person.anal_sex_count < 19):
+            or person.sluttiness < 60 \
+            or person.anal_sex_count < 10):
         return False
 
     if person.VT_has_started_anal_fetish:
@@ -278,8 +278,8 @@ def VT_start_breeding_fetish_quest(person: Person):
         or person.vaginal_sex_skill < 4 \
         or person.opinion.vaginal_sex < 2 \
         or person.opinion.creampies < 2 \
-        or person.sluttiness < 70 \
-        or person.vaginal_creampie_count < 19) :
+        or person.sluttiness < 60 \
+        or person.vaginal_creampie_count < 10) :
         return False
     
     if person.VT_has_started_breeding_fetish:
@@ -450,7 +450,7 @@ def VT_cum_fetish_myra_intro_requirement(person: Person):
 def VT_start_cum_fetish_quest(person: Person):
     if (not person.has_taboo(["sucking_cock", "condomless_sex"]) \
             or person.oral_sex_skill < 4 \
-            or person.sluttiness < 70 \
+            or person.sluttiness < 60 \
             or person.opinion.giving_blowjobs < 2 \
             or person.opinion.being_covered_in_cum < 2 \
             or person.cum_exposure_count >19 ):
@@ -596,7 +596,7 @@ def VT_start_exhibition_fetish_quest(person: Person):
             or person.oral_sex_skill < 4 \
             or person.vaginal_sex_skill < 4 \
             or person.anal_sex_skill < 4 \
-            or person.sluttiness < 70):
+            or person.sluttiness < 60):
         return False
 
     # when blocking the fetish gain, prevent repeat triggering for a while
