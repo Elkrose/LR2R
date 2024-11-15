@@ -48,6 +48,16 @@ init -10:
     image introvert = "[introvert_image.filename]"
     image reserved = "[reserved_image.filename]"
     image wild = "[wild_image.filename]"
+    image dandere = "[dandere_image.filename]"
+    image goudere = "[goudere_image.filename]"
+    image kuudere = "[kuudere_image.filename]"
+    image tsundere = "[tsundere_image.filename]"
+    image yandere = "[yandere_image.filename]"
+    image gothic = "[gothic_image.filename]"
+    image tomboy = "[tomboy_image.filename]"
+    image foodie = "[foodie_image.filename]"
+    image cosplay = "[cosplay_image.filename]"
+    image breeder = "[breeder_image.filename]"
 
 ##### Birthcontrol Icons / Pregnancy #####
     image birthcontrol = "[bc_image.filename]"
@@ -130,4 +140,8 @@ init -10:
     image creamcherry = "[creamcherry_image.filename]"
     image labbook = "[labbook_image.filename]"
     image bareback = "[bareback_image.filename]"
-
+    image arousal = "[arousal_image.filename]"
+    image fullstar = "[fullstar_image.filename]"
+    image infraction = "[infraction_image.filename]"
+    image cashpanties = "[cashpanties_image.filename]"
+    image stripper = "[stripper_image.filename]"

@@ -69,12 +69,8 @@ label improved_start():
             "Easy Cherries! Easy Mode + Higher Stats, everything set to just have fun."
             $ cherry_mode = True
 
-    "Finally, the game uses random generated characters, the mod offers you the ability to control the random generation."
-    "We will now open that screen for you, so you can set it to your preferences."
-
     call screen generic_preference_ui()
     call screen VTMOD_setup_ui()
-
     "That's all, the game will now initialize, this might take a moment."
 
     $ renpy.block_rollback()
@@ -112,7 +108,7 @@ label improved_start():
             mc.business.max_employee_count = 12
             # increased player stats
             mc.energy = 500
-            mc.max_energy = 500
+            mc.max_energy = 600
             mc.free_clarity += 10500
             mc.clarity_multiplier = 3.0     # gain clarity 3 times faster
             # default unlock policies
@@ -160,10 +156,10 @@ label improved_start():
             mc.max_stats = 15
             mc.max_work_skills = 15
             mc.max_sex_skills = 15
-            mc.max_energy_cap = 600
+            mc.max_energy_cap = 1000
             mc.business.supply_goal += 1000
             mc.energy = 500
-            mc.max_energy = 500
+            mc.max_energy = 600
             mc.free_clarity += 10500
             mc.clarity_multiplier = 3.0     # gain clarity 3 times faster
             # default unlock policies

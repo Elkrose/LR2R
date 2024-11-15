@@ -1,0 +1,116 @@
+<?xml version="1.0" ?>
+<Wardrobe name="Blossom_Wardrobe">
+	<FullSets>
+		<Outfit name="Blossom HR">
+			<UpperBody>
+				<Item name="Quarter_Cup_Bra" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000" pattern="Pattern_1" pred="1.00000" pgreen="1.00000" pblue="1.00000" palpha="1.00000"/>
+				<Item name="Frilly_Dress" red="0.40000" green="0.00780" blue="0.23529" alpha="0.80000"/>
+			</UpperBody>
+			<LowerBody>
+				<Item name="Crotchless_Panties" red="1.00000" green="1.00000" blue="1.00000" alpha="1.00000"/>
+			</LowerBody>
+			<Feet>
+				<Item name="Pumps" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.47800" pgreen="0.09000" pblue="0.07100" palpha="0.95000"/>
+				<Item name="Garter_and_Fishnets" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.20488" pgreen="0.00512" pblue="0.12051" palpha="0.95000"/>
+			</Feet>
+			<Accessories>
+				<Item name="Gold_Earings" red="0.88620" green="0.79215" blue="0.46270" alpha="0.95000"/>
+				<Item name="Forearm_Gloves" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000"/>
+				<Item name="Diamond_Ring" red="0.90000" green="0.80000" blue="0.05000" alpha="0.95000"/>
+				<Item name="Lipstick" red="0.40000" green="0.00780" blue="0.23529" alpha="0.75000"/>
+				<Item name="Upper_Eye_Shadow" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000"/>
+				<Item name="Collar_Breed" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000" pattern="Pattern_1" pred="1.00000" pgreen="1.00000" pblue="1.00000" palpha="1.00000"/>
+			</Accessories>
+		</Outfit>
+		<Outfit name="Blossom Marketting">
+			<UpperBody>
+				<Item name="Quarter_Cup_Bra" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000" pattern="Pattern_1" pred="1.00000" pgreen="1.00000" pblue="1.00000" palpha="1.00000"/>
+				<Item name="Two_Piece_Dress" red="0.40000" green="0.00780" blue="0.23529" alpha="0.80000"/>
+			</UpperBody>
+			<LowerBody>
+				<Item name="Crotchless_Panties" red="1.00000" green="1.00000" blue="1.00000" alpha="1.00000"/>
+			</LowerBody>
+			<Feet>
+				<Item name="Pumps" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.47800" pgreen="0.09000" pblue="0.07100" palpha="0.95000"/>
+				<Item name="Garter_and_Fishnets" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.20488" pgreen="0.00512" pblue="0.12051" palpha="0.95000"/>
+			</Feet>
+			<Accessories>
+				<Item name="Gold_Earings" red="0.88620" green="0.79215" blue="0.46270" alpha="0.95000"/>
+				<Item name="Forearm_Gloves" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000"/>
+				<Item name="Diamond_Ring" red="0.90000" green="0.80000" blue="0.05000" alpha="0.95000"/>
+				<Item name="Lipstick" red="0.40000" green="0.00780" blue="0.23529" alpha="0.75000"/>
+				<Item name="Upper_Eye_Shadow" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000"/>
+				<Item name="Collar_Breed" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000" pattern="Pattern_1" pred="1.00000" pgreen="1.00000" pblue="1.00000" palpha="1.00000"/>
+			</Accessories>
+		</Outfit>
+		<Outfit name="Blossom Production">
+			<UpperBody>
+				<Item name="Quarter_Cup_Bra" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000" pattern="Pattern_1" pred="1.00000" pgreen="1.00000" pblue="1.00000" palpha="1.00000"/>
+				<Item name="Frilly_Longsleeve_Shirt" red="0.40000" green="0.01000" blue="0.23529" alpha="0.80000"/>
+			</UpperBody>
+			<LowerBody>
+				<Item name="Crotchless_Panties" red="1.00000" green="1.00000" blue="1.00000" alpha="1.00000"/>
+				<Item name="Lace_Skirt" red="0.40000" green="0.01000" blue="0.23529" alpha="0.80000"/>
+			</LowerBody>
+			<Feet>
+				<Item name="Pumps" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.47800" pgreen="0.09000" pblue="0.07100" palpha="0.95000"/>
+				<Item name="Garter_and_Fishnets" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.20488" pgreen="0.00512" pblue="0.12051" palpha="0.95000"/>
+			</Feet>
+			<Accessories>
+				<Item name="Gold_Earings" red="0.88620" green="0.79215" blue="0.46270" alpha="0.95000"/>
+				<Item name="Forearm_Gloves" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000"/>
+				<Item name="Diamond_Ring" red="0.90000" green="0.80000" blue="0.05000" alpha="0.95000"/>
+				<Item name="Lipstick" red="0.40000" green="0.00780" blue="0.23529" alpha="0.75000"/>
+				<Item name="Upper_Eye_Shadow" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000"/>
+				<Item name="Collar_Breed" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000" pattern="Pattern_1" pred="1.00000" pgreen="1.00000" pblue="1.00000" palpha="1.00000"/>
+			</Accessories>
+		</Outfit>
+		<Outfit name="Blossom R&amp;D">
+			<UpperBody>
+				<Item name="Quarter_Cup_Bra" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000" pattern="Pattern_1" pred="1.00000" pgreen="1.00000" pblue="1.00000" palpha="1.00000"/>
+				<Item name="Belted_Top" red="0.40000" green="0.01000" blue="0.23529" alpha="0.75000"/>
+				<Item name="Lab_Coat" red="0.97000" green="0.97000" blue="1.00000" alpha="0.33000"/>
+			</UpperBody>
+			<LowerBody>
+				<Item name="Crotchless_Panties" red="1.00000" green="1.00000" blue="1.00000" alpha="1.00000"/>
+				<Item name="Lace_Skirt" red="0.40000" green="0.01000" blue="0.23529" alpha="0.80000"/>
+			</LowerBody>
+			<Feet>
+				<Item name="Pumps" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.47800" pgreen="0.09000" pblue="0.07100" palpha="0.95000"/>
+				<Item name="Garter_and_Fishnets" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.20488" pgreen="0.00512" pblue="0.12051" palpha="0.95000"/>
+			</Feet>
+			<Accessories>
+				<Item name="Gold_Earings" red="0.88620" green="0.79215" blue="0.46270" alpha="0.95000"/>
+				<Item name="Forearm_Gloves" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000"/>
+				<Item name="Diamond_Ring" red="0.90000" green="0.80000" blue="0.05000" alpha="0.95000"/>
+				<Item name="Lipstick" red="0.40000" green="0.00780" blue="0.23529" alpha="0.75000"/>
+				<Item name="Upper_Eye_Shadow" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000"/>
+				<Item name="Collar_Breed" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000"/>
+			</Accessories>
+		</Outfit>
+		<Outfit name="Blossom Supply">
+			<UpperBody>
+				<Item name="Quarter_Cup_Bra" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000" pattern="Pattern_1" pred="1.00000" pgreen="1.00000" pblue="1.00000" palpha="1.00000"/>
+				<Item name="Two_Piece_Dress" red="0.40000" green="0.00780" blue="0.23529" alpha="0.80000"/>
+				<Item name="Vest" red="0.20383" green="0.00397" blue="0.11990" alpha="0.95000"/>
+			</UpperBody>
+			<LowerBody>
+				<Item name="Crotchless_Panties" red="1.00000" green="1.00000" blue="1.00000" alpha="1.00000"/>
+			</LowerBody>
+			<Feet>
+				<Item name="Pumps" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.47800" pgreen="0.09000" pblue="0.07100" palpha="0.95000"/>
+				<Item name="Garter_and_Fishnets" red="0.97000" green="0.97000" blue="1.00000" alpha="0.95000" pattern="Pattern_1" pred="0.20488" pgreen="0.00512" pblue="0.12051" palpha="0.95000"/>
+			</Feet>
+			<Accessories>
+				<Item name="Gold_Earings" red="0.88620" green="0.79215" blue="0.46270" alpha="0.95000"/>
+				<Item name="Forearm_Gloves" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000"/>
+				<Item name="Diamond_Ring" red="0.90000" green="0.80000" blue="0.05000" alpha="0.95000"/>
+				<Item name="Lipstick" red="0.40000" green="0.00780" blue="0.23529" alpha="0.75000"/>
+				<Item name="Upper_Eye_Shadow" red="0.41000" green="0.16000" blue="0.38000" alpha="0.95000"/>
+				<Item name="Collar_Breed" red="0.40000" green="0.00780" blue="0.23529" alpha="0.95000" pattern="Pattern_1" pred="1.00000" pgreen="1.00000" pblue="1.00000" palpha="1.00000"/>
+			</Accessories>
+		</Outfit>
+	</FullSets>
+	<UnderwearSets/>
+	<OverwearSets/>
+</Wardrobe>

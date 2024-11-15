@@ -1,18 +1,19 @@
 import inspect
 import renpy
+from renpy import persistent, basestring
 from renpy.exports import write_log
 from game.helper_functions.random_generation_functions_ren import create_random_person, make_person, create_party_schedule, get_premade_character
 from game.major_game_classes.game_logic.Room_ren import Room, list_of_places, strip_club, bdsm_room, downtown_bar, downtown_hotel, downtown, hospital
 from game.main_character.MainCharacter_ren import mc
 from game.major_game_classes.character_related.StatTracker_ren import StatTracker
-from game.major_game_classes.game_logic.Person_ren import Person, list_of_people
-from game.major_game_classes.character_related._job_definitions_ren import JobDefinition
+from game.major_game_classes.game_logic.Person_ren import Person, list_of_people, mom, lily, aunt, cousin
 from helper_functions.vt_helper_functions_ren import _vt_virginity_stats, _vt_get_person_age_tag
-from renpy import persistent, basestring
 from game.major_game_classes.clothing_related.wardrobe_builder_ren import WardrobeBuilder
 from typing import Optional, Callable, Iterable
 from VTrandom_lists_ren import VT_AGE_RANGES, VT_Settings, _vt_build_weighted_list
 from game.random_lists_ren import get_random_from_weighted_list
+from game.major_game_classes.character_related.Person_ren import Person, list_of_patreon_characters, tan_images_dict
+from game.major_game_classes.character_related._job_definitions_ren import JobDefinition, university_professor_job, student_job, doctor_job, waitress_job, unemployed_job, stripper_job, stripclub_stripper_job, stripclub_bdsm_performer_job, stripclub_mistress_job, stripclub_waitress_job, stripclub_manager_job, prostitute_job, secretary_job, office_worker_job, lawyer_job, architect_job, interior_decorator_job, fashion_designer_job
 
 day: int
 #last_name: str
@@ -23,12 +24,70 @@ init 900 python:
 """
 # TODO: on release, set False?
 VIRGIN_TRACKER_DEBUG = True
-# TODO: Need to capture pros and adjust sluttiness to appropriate levels
-# TODO: NOT SURE how to hook into the _map_definitions to edit the harem name
 
 class VTPerson(Person):
+
+    _initial_age_floor = 18
+    _initial_age_ceiling = 50
+    _final_age_floor = 18
+    _final_age_ceiling = 70
+    _teen_age_ceiling = 19
+    _old_age_floor = 70
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+    @property
+    def weight(self) -> float:
+        if not hasattr(self, "_weight"):
+            check_type = self.event_triggers_dict.get("pre_preg_body", self.body_type)
+            if check_type == "thin_body":
+                self._weight = 51 * self.height
+            elif check_type == "standard_body":
+                self._weight = 58 * self.height
+            else:
+                self._weight = 67 * self.height
+        #old values 60, 75, 90
+        extra_modifier = 0
+        if self.is_pregnant:
+            extra_modifier = max(self.days_since_event("preg_start_date") - 25, 0) * .17
+        return self._weight + extra_modifier    
+
+    def change_weight(self, amount: float, chance: int) -> bool:
+        if amount == 0:
+            return False
+
+        if renpy.random.randint(0, 100) <= chance:
+            self._weight += amount
+
+        # maximum and minimum weight are dependent on height
+        max_weight = (self.height) * 100
+        min_weight = (self.height) * 50
+        switch_point_low = (self.height) * 68 #68
+        switch_point_high = (self.height) * 83
+
+        if amount > 0:
+            if self._weight > switch_point_low + 3 and self.body_type == "thin_body":
+                self.body_type = "standard_body"
+                return True
+            if self._weight > switch_point_high + 3 and self.body_type == "standard_body":
+                self.body_type = "curvy_body"
+                return True
+            if self._weight > max_weight: #Maximum weight
+                self._weight = max_weight
+            return False
+
+        if amount < 0:
+            if self._weight < min_weight:  #Minimum weight
+                self._weight = min_weight
+                return False
+            if self._weight < switch_point_low - 3 and self.body_type == "standard_body":
+                self.body_type = "thin_body"
+                return True
+            if self._weight < switch_point_high - 3 and self.body_type == "curvy_body":
+                self.body_type = "standard_body"
+                return True
+            return False
 
     @property
     def VT_has_started_anal_fetish(self) -> bool:
@@ -84,6 +143,22 @@ class VTPerson(Person):
         if self.has_role(clone_role):
             return "your cloned daughter"
         return "your family"
+
+    @property
+    def vt_sucking_cock_broken(self) -> int:
+        return self.broken_taboos.get("sucking cock", 0)
+
+    @property
+    def vt_vaginal_sex_broken(self) -> int:
+        return self.broken_taboos.get("vaginal sex", 0)
+        
+    @property
+    def vt_anal_sex_broken(self) -> int:
+        return self.broken_taboos.get("anal sex", 0)
+
+    # @property
+    # def on_birth_control(self) -> bool:
+        # return self.is_infertile or self._birth_control
 
 Person         = VTPerson
 
@@ -156,6 +231,18 @@ class VTStatTracker(StatTracker):
     def slaves_polyfamilia(self) -> int:
         return sum(1 for x in list_of_people if x.is_slave and x.is_family and x.has_role(harem_role))
 
+    @property
+    def number_of_sucking_cock_broken(self) -> int:
+        return sum(x.vt_sucking_cock_broken for x in list_of_people)
+
+    @property
+    def number_of_vaginal_sex_broken(self) -> int:
+        return sum(x.vt_vaginal_sex_broken for x in list_of_people)
+
+    @property
+    def number_of_anal_sex_broken(self) -> int:
+        return sum(x.vt_anal_sex_broken for x in list_of_people)
+
 StatTracker     = VTStatTracker
 
 def _vt_prefix_person_init(wrapped_func: Callable) -> Callable:
@@ -222,6 +309,7 @@ def _vt_postfix_restore_taboo(wrapped_func: Callable) -> Callable:
             self.vaginal_virgin = 0
             self.hymen = 0
             self.vaginal_first = None
+            #self.event_triggers_dict.pop("given_virginity", None)
 
         if the_taboo == "sucking_cock" and self.oral_virgin==0:
             #self.restore_taboo('sucking_cock')
@@ -288,7 +376,7 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
         if (not self.has_cum_fetish \
             and not self.has_taboo(["sucking_cock", "condomless_sex"]) \
             and self.oral_sex_skill >= 4 \
-            and self.sluttiness >= 70 \
+            and self.sluttiness >= 60 \
             and self.opinion.giving_blowjobs >=2 \
             and self.opinion.being_covered_in_cum < 2 \
             and self.cum_exposure_count >=19 ):
@@ -301,8 +389,8 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
                 and self.opinion.anal_sex >= 2 \
                 and self.opinion.anal_creampies >= 2 \
                 and self.is_willing(doggy_anal) \
-                and self.sluttiness >= 70 \
-                and (self.anal_sex_count >= 19 or self.anal_creampie_count >= 19)):
+                and self.sluttiness >= 60 \
+                and (self.anal_sex_count >= 10 or self.anal_creampie_count >= 10)):
             if VT_start_anal_fetish_quest(self):
                 self.event_triggers_dict["VT_anal_fetish_start"] = True
 
@@ -314,10 +402,17 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
                 and self.vaginal_sex_skill >= 4 \
                 and self.opinion.vaginal_sex >= 2 \
                 and self.opinion.creampies >= 2 \
-                and self.sluttiness >=70 \
-                and self.vaginal_creampie_count >= 19):
+                and self.sluttiness >=60 \
+                and self.vaginal_creampie_count >= 10):
             if VT_start_breeding_fetish_quest(self):
                 self.event_triggers_dict["VT_breeding_fetish_start"] = True
+
+        # if self.has_breeding_fetish:
+            # tempfertiledaystart = self.ideal_fertile_day - 3
+            # tempfertiledayend = self.ideal_fertile_day + 3
+            # if day >= tempfertiledaystart and day <= tempfertiledayend:  
+                # #high fertile 
+                # VT_breeding_fetish_recycle(self)
 
         if (not self.has_exhibition_fetish \
             and self.sex_record.get("Public Sex", 0) > 19 \
@@ -325,12 +420,18 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
             and self.oral_sex_skill >= 4 \
             and self.anal_sex_skill >= 4 \
             and self.vaginal_sex_skill >= 4 \
-            and self.sluttiness >= 70 \
+            and self.sluttiness >= 60 \
             and self.opinion.public_sex >=2 \
             and self.opinion.being_covered_in_cum >= 2 \
             and self.cum_exposure_count >=19 ):
             if VT_start_exhibition_fetish_quest(self):
                 self.event_triggers_dict["VT_exhibition_fetish_start"] = True
+        
+        #use run day 1 to set the harem mansion name
+        if day == 1:
+            harem_mansion.formal_name = str(mc.last_name) + " Mansion"
+            #harem_mansion.visible = True
+            harem_hub.formal_name = str(mc.last_name) + " Mansion"
 
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
@@ -392,11 +493,20 @@ def _vt_postfix_person_update_sex_record(wrapped_func: Callable) -> Callable:
                 if sex_class == "Vaginal":
                     # tear hymen
                     self.hymen = 1
+            
+            if sex_class == "Vaginal":
+                self.set_event_day("Last Vaginal Day")
+            if sex_class == "Oral":
+                self.set_event_day("Last Oral Day")
+            if sex_class == "Anal":
+                self.set_event_day("Last Anal Day")
             # if _virgin <= 9 (NOTE: this condition is always evaluated,
             # whether or not the previous `if _virgin == 0`` was True)
             if getattr(self, _sex_type_virgin) <= 9:
                 # increase it by one
                 setattr(self, _sex_type_virgin, getattr(self, _sex_type_virgin, 3) + 1)
+        if report_log.get("was_public", False):
+            self.set_event_day("LastExhibitionDay")
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
@@ -425,26 +535,29 @@ def _vt_create_random_person_override(wrapped_func: Callable) -> Callable:
             "anal_first",
             "anal_cum",
         )
-
-        # use sex_cap arg if passed, else get_sex_skill_ceiling to keep core balance
-        sex_cap = kwargs.get("sex_cap", Person.get_sex_skill_ceiling())
-        kwargs.pop("sex_cap", None)
-
+        # use sex_cap arg if passed, else get_sex_skill_ceiling
+        sex_cap = kwargs.pop("sex_cap", Person.get_sex_skill_ceiling())
         # grab any provided VirginTracker keyword args
-        # remove them from the kwargs dict
-        given_vt_kwargs: dict[str, int | None] = {}
+        given_vt_kwargs: dict[str, Optional[Union[int, None]]] = {}
         for arg_name in virgin_tracker_args:
             if arg_name in kwargs:
-                given_vt_kwargs[arg_name] = kwargs[arg_name]
-                kwargs.pop(arg_name, None)
-
+                given_vt_kwargs[arg_name] = kwargs.pop(arg_name, None)
+  
         # force kids=0 if hymen is sealed or recently torn
         if given_vt_kwargs.get("hymen", None) in (0, 1):
             kwargs["kids"] = 0
 
+        #try to grab the age_range
+        age_range = kwargs.get("age_range", None)
+
+        # Determine job assignment
+        # if not kwargs.get("age") and not "age_range" and type and (kwargs.get("job") == None or kwargs.get("job").age_range == None):
+            # age_range = VT_AGE_RANGES[get_random_from_weighted_list(_vt_build_weighted_list(VT_Settings["Population"]))]
         # set age_range based on VT preferences
-        if not kwargs.get("age") and not kwargs.get("age_range") and kwargs.get("type")=="random":
+        #if not kwargs.get("age") and not kwargs.get("age_range") and kwargs.get("type")=="random" and (kwargs.get("job") == None or hasattr(kwargs.get("job"), 'age_range') == None):
+        if not kwargs.get("age") and not kwargs.get("age_range") and kwargs.get("type")=="random" and (kwargs.get("job") == None or hasattr(kwargs.get("job"), 'age_range') == None):
             kwargs["age_range"] = VT_AGE_RANGES[get_random_from_weighted_list(_vt_build_weighted_list(VT_Settings["Population"]))]
+            age_range = kwargs["age_range"]
         ######################
         #### Call to core code
         ######################
@@ -457,9 +570,8 @@ def _vt_create_random_person_override(wrapped_func: Callable) -> Callable:
             setattr(person, key, value)
 
         # NOTE: then fill in the remaining stats
-        virginity_types = ["Oral", "Vaginal", "Anal"]
-        for sex_type in virginity_types:
-            # compute the values
+        for sex_type in ["Oral", "Vaginal", "Anal"]:
+        # compute the values
             # NOTE: this has side-effects; it affects the person's sex skills
             stats = _vt_virginity_stats(person, sex_type, sex_cap)
             # and apply them (if they don't already exist)
@@ -527,11 +639,19 @@ def _vt_make_person_override(wrapped_func: Callable) -> Callable:
                       height_range=None,
                       kids_range=None,
                       relationship_list=None,
+                      job: JobDefinition = None, 
+                      job_list: list[JobDefinition] = None,
                       **kwargs) -> Person:
 
-        # set age_range based on VT preferences
-        if not kwargs.get("age") and not age_range and type:
+        # Determine job assignment
+        if not kwargs.get("age") and not "age_range" and type and (kwargs.get("job") == None or kwargs.get("job").age_range == None):
             age_range = VT_AGE_RANGES[get_random_from_weighted_list(_vt_build_weighted_list(VT_Settings["Population"]))]
+
+        # if VIRGIN_TRACKER_DEBUG:
+            # if type=="random":
+                # write_log(f"make_person_override-after age chk-RANDOM: {age_range} Job: {job}")
+            # else:
+                # write_log(f"make_person_override-after age chk: {age_range} Job: {job} ")
 
         return_character = _vt_optional_get_premade(type=type, allow_premade=allow_premade,
             age_range=age_range, tits_range=tits_range,
@@ -547,6 +667,8 @@ def _vt_make_person_override(wrapped_func: Callable) -> Callable:
                                                     height_range=height_range,
                                                     kids_range=kids_range,
                                                     relationship_list=relationship_list,
+                                                    job = job,
+                                                    job_list = job_list,
                                                     **kwargs)
 
         return_character = _vt_apply_opinions_makeup_and_schedule(return_character, forced_opinions, forced_sexy_opinions)

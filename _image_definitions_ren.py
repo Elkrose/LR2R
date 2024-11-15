@@ -135,11 +135,24 @@ bimbo_small_image = im.Scale(Image(get_file_handle("bimbo.png")), 18, 18)
 renpy.image("bimbo_small", bimbo_small_image)
 
 cougar_image = Image(get_file_handle("cougar.png"))
+cougar_small_image = im.Scale(Image(get_file_handle("cougar.png")), 18, 18)
+renpy.image("cougar_small", cougar_small_image)
+
 alpha_image = Image(get_file_handle("alpha.png"))
 relaxed_image = Image(get_file_handle("relaxed.png"))
 introvert_image = Image(get_file_handle("introvert.png"))
 reserved_image = Image(get_file_handle("reserved.png"))
 wild_image = Image(get_file_handle("bitelip.png"))
+dandere_image = Image(get_file_handle("dandere.png"))
+goudere_image = Image(get_file_handle("goudere.png"))
+kuudere_image = Image(get_file_handle("kuudere.png"))
+tsundere_image = Image(get_file_handle("tsundere.png"))
+yandere_image = Image(get_file_handle("yandere.png"))
+gothic_image = Image(get_file_handle("gothic.png"))
+tomboy_image = Image(get_file_handle("tomboy.png"))
+foodie_image = Image(get_file_handle("foodie.png"))
+cosplay_image = Image(get_file_handle("cosplay.png"))
+breeder_image = Image(get_file_handle("breeder.png"))
 
 ##### Birthcontrol Icons / Pregnancy #####
 bc_image = Image(get_file_handle(modpath+"bc_token.png"))
@@ -212,6 +225,8 @@ openmouth_small_image = im.Scale(Image(get_file_handle("openmouth.png")), 18, 18
 renpy.image("openmouth_small", openmouth_small_image)
 
 pinklips_image = Image(get_file_handle("pinklips.png"))
+pinklips_small_image = im.Scale(Image(get_file_handle("pinklips.png")), 18, 18)
+renpy.image("pinklips_small", pinklips_small_image)
 
 bitelip_image = Image(get_file_handle("bitelip.png"))
 bitelip_small_image = im.Scale(Image(get_file_handle("bitelip.png")), 18, 18)
@@ -328,4 +343,25 @@ renpy.image("handprint_token_small", handprint_token_small_image)
 bareback_image = Image(get_file_handle("bareback.png"))
 bareback_small_image = im.Scale(Image(get_file_handle("bareback.png")), 18, 18)
 renpy.image("bareback_small", bareback_small_image)
+
+arousal_image = Image(get_file_handle("arousal.png"))
+arousal_small_image = im.Scale(Image(get_file_handle("arousal.png")), 18, 18)
+renpy.image("arousal_small", arousal_small_image)
+
+fullstar_image = Image(get_file_handle("fullstar.png"))
+fullstar_small_image = im.Scale(Image(get_file_handle("fullstar.png")), 18, 18)
+renpy.image("fullstar_small", fullstar_small_image)
+
+infraction_image = Image(get_file_handle("infraction.png"))
+infraction_small_image = im.Scale(Image(get_file_handle("infraction.png")), 18, 18)
+renpy.image("infraction_small", infraction_small_image)
+
+stripper_image = Image(get_file_handle("stripper.png"))
+stripper_small_image = im.Scale(Image(get_file_handle("stripper.png")), 18, 18)
+renpy.image("stripper_small", stripper_small_image)
+
+cashpanties_image = Image(get_file_handle("cashpanties.png"))
+cashpanties_small_image = im.Scale(Image(get_file_handle("cashpanties.png")), 18, 18)
+renpy.image("cashpanties_small", cashpanties_small_image)
+
 ### deleted nocream
