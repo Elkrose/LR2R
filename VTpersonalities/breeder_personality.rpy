@@ -1954,6 +1954,7 @@ label breeder_touching_body_taboo_break(the_person):
         the_person "You're so bad for me, you know that? But maybe that's exactly what I need... Someone to push me out of my comfort zone and show me what I'm capable of."
         mc.name "Well let me make up for it then. Let me show you what I can do, and what we can create together."
         the_person "Hmm, maybe I'll let you... But don't think you're getting off that easy. I'll make sure you work for it."
+    return
 
 label breeder_touching_penis_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 35:
