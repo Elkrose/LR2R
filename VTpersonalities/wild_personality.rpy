@@ -1638,6 +1638,7 @@ label vt_wild_being_watched(the_person, the_watcher, the_position):
         the_person "Hey, [title], why don't you come join us? We can make this a party and really get things going!"
         $ the_person.change_stats(arousal = 1, slut = 1, max_slut = 30)
         "[the_person.title] seems more comfortable [the_position.verbing] you with [title] around, and is enjoying the attention from both of you."
+    return
 
 label vt_wild_work_enter_greeting(the_person):
     if the_person.happiness < 80 or the_person.love < 0:
