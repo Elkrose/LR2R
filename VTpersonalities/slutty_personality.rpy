@@ -197,6 +197,7 @@ label slutty_sex_responses_vaginal(the_person):
         else:
             the_person "Hmph, I suppose I'm almost there... thanks to you, [the_person.mc_title]... you're really good at this, I have to admit."
             "[the_person.possessive_title!c] looks up at you with a mixture of surprise and pleasure, her eyes sparkling with desire."
+    return
 
 label slutty_sex_responses_anal(the_person):
     if the_person.energy < 10:
