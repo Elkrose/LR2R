@@ -2411,53 +2411,53 @@ label breeder_dual_penetration_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         the_person "Ugh, you're really going to breed me like a fertile female, aren't you? Fine, but don't expect me to go easy on you... I want to feel your cocks deep inside me, and know that I'm being used for my intended purpose."
         "She spreads her legs and invites you to take her, her eyes sparkling with excitement and anticipation."
-        mc_name "Don't worry, it'll be worth it. You'll be filled up with our seed, and know that you're being bred like a fertile female."
+        mc.name "Don't worry, it'll be worth it. You'll be filled up with our seed, and know that you're being bred like a fertile female."
         the_person "I doubt that, but whatever. Just make sure you're gentle and don't hurt me... I want to be able to take your cocks again and again."
 
     elif the_person.love >= 60:
         the_person "You're really sure about this? It's going to be a tight fit... But I have to admit, the thought of being bred by two cocks at once is kind of exciting."
-        mc_name "I'll make sure it fits perfectly. I want to feel your pussy wrapped around my cock, and know that you're being used for your intended purpose."
+        mc.name "I'll make sure it fits perfectly. I want to feel your pussy wrapped around my cock, and know that you're being used for your intended purpose."
         the_person "Ugh, just be careful not to hurt me, okay? I don't want any scars... But at the same time, I want to feel your cocks deep inside me, and know that I'm being bred like a fertile female."
 
     else:
         if the_person.has_taboo("vaginal_sex"):
             the_person "Are you sure my pussy wouldn't be tight enough for you? I mean, I've never done this before... But I have to admit, the thought of being bred by two cocks at once is kind of exciting."
-            mc_name "It's okay, I'll make it fit. Just try to relax and let us take care of you... We'll make sure you're filled up with our seed, and know that you're being bred like a fertile female."
+            mc.name "It's okay, I'll make it fit. Just try to relax and let us take care of you... We'll make sure you're filled up with our seed, and know that you're being bred like a fertile female."
             the_person "Ugh, this is so embarrassing... But at the same time, I want to feel your cocks deep inside me, and know that I'm being used for my intended purpose."
         else:
             the_person "Ugh, fine. I guess we're doing this, right? I mean, I can't back out now... But I have to admit, the thought of being bred by two cocks at once is kind of exciting."
-            mc_name "Are you sure you're ready for this? We're going to breed you like a fertile female, and fill you up with our seed."
+            mc.name "Are you sure you're ready for this? We're going to breed you like a fertile female, and fill you up with our seed."
             the_person "Yeah, whatever. Let's just get this over with... I want to feel your cocks deep inside me, and know that I'm being used for my intended purpose."
     return
 
 label breeder_sleepover_yourplace_response(the_person): #Invited her over to spend the night
     if the_person.love >= 70:
         the_person "Fine, I'll come over and let you breed me like a female in heat. But don't think this means I'm going to go easy on you... I want to feel your cock deep inside me, and know that I'm being used for my intended purpose."
-        mc_name "I wouldn't dream of it. We'll just have a good time, and maybe even make some babies."
+        mc.name "I wouldn't dream of it. We'll just have a good time, and maybe even make some babies."
         the_person "Yeah, yeah. Just don't get too close, okay? I don't like cuddling or anything... But I do like being bred and filled up with your seed."
 
     elif the_person.sluttiness >= 80:
         the_person "Oh god, I'm so ready to be bred like a fertile female! Make sure you have everything ready, so we can have a great night of breeding and making babies."
-        mc_name "I've got everything we need. I'll make sure you're filled up with my seed, and we'll have a great time doing it."
+        mc.name "I've got everything we need. I'll make sure you're filled up with my seed, and we'll have a great time doing it."
 
     else:
         the_person "I guess I could come over... But don't expect me to do anything I'm not comfortable with, okay? I'm not sure I'm ready for this level of intimacy and breeding."
-        mc_name "Don't worry, I'll be gentle and make sure you're comfortable. We'll take it slow and see where things go."
+        mc.name "Don't worry, I'll be gentle and make sure you're comfortable. We'll take it slow and see where things go."
     return
 
 label breeder_sleepover_herplace_response(the_person): #Spending the night at her place
     if the_person.love >= 70:
         the_person "Fine, come over and stay the night, but don't think this means I'm going to go easy on you... I want to feel your cock deep inside me, and know that I'm being used for my intended purpose."
-        mc_name "I wouldn't dream of it. We'll just have a good time, and maybe even make some babies."
+        mc.name "I wouldn't dream of it. We'll just have a good time, and maybe even make some babies."
         the_person "Yeah, yeah. Just don't get too close, okay? I don't like cuddling or anything... But I do like being bred and filled up with your seed."
 
     elif the_person.sluttiness >= 80:
         the_person "Oh god, I'm so ready to be bred like a fertile female! Come over and let's have a wild night of breeding and making babies."
-        mc_name "I'll be right there. I'll make sure you're filled up with my seed, and we'll have a great time doing it."
+        mc.name "I'll be right there. I'll make sure you're filled up with my seed, and we'll have a great time doing it."
 
     else:
         the_person "I guess you can come over... But don't expect me to do anything I'm not comfortable with, okay? I'm not sure I'm ready for this level of intimacy and breeding."
-        mc_name "Don't worry, I'll be gentle and make sure you're comfortable. We'll take it slow and see where things go."
+        mc.name "Don't worry, I'll be gentle and make sure you're comfortable. We'll take it slow and see where things go."
     return
 
 label breeder_sleepover_yourplace_sex_start(the_person):
@@ -2470,7 +2470,7 @@ label breeder_sleepover_yourplace_sex_start(the_person):
 label breeder_sleepover_herplace_sex_start(the_person):
     the_person "Finally, it's time to get this breeding session started! Get over here and fill me up with your seed."
     "She smirks and spreads her legs wide, her pussy glistening with anticipation and desire."
-    mc_name "Are you ready to be bred like a fertile female?"
+    mc.name "Are you ready to be bred like a fertile female?"
     the_person "Hah! Like I need to be ready for this. I was born to be bred and make babies. Just get in here and do your worst."
     "She leans back on the couch, her legs spread wide in invitation as she awaits your cock."
     the_person "Hurry up, I'm not getting any younger! I need to be bred and filled up with your seed before it's too late."
@@ -2481,7 +2481,7 @@ label breeder_sleepover_herplace_sex_start(the_person):
 label breeder_sleepover_impressed_response(the_person):  #If you've made her cum a lot
     the_person "Ugh, you're really good at breeding me... I have to admit, I'm impressed by your skills."
     "She rolls her eyes and smirks, trying to hide her true feelings of desire and satisfaction."
-    mc_name "You want more?"
+    mc.name "You want more?"
     the_person "Hmph, maybe. But don't think you've won me over or anything. I'm still a breeder, and I expect to be treated as such."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous rounds of breeding."
     the_person "I might be able to go for another round... But don't get too excited, I'm not making any promises! Just make sure you're ready to fill me up with your seed again."
@@ -2490,7 +2490,7 @@ label breeder_sleepover_impressed_response(the_person):  #If you've made her cum
 label breeder_sleepover_good_response(the_person):  #If you've made her cum
     the_person "Ugh, fine. That wasn't too terrible, I suppose. You're actually pretty good at breeding me."
     "She rolls her eyes and smirks, trying to hide her true feelings of desire and satisfaction."
-    mc_name "You want more?"
+    mc.name "You want more?"
     $ the_person.draw_person(position = "missionary")
     the_person "Hmph, maybe. But don't think you've won me over or anything. I'm still a breeder, and I expect to be treated as such."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous round of breeding."
@@ -2500,7 +2500,7 @@ label breeder_sleepover_good_response(the_person):  #If you've made her cum
 label breeder_sleepover_bored_response(the_person):  #If she hasn't cum yet
     the_person "Ugh, is that the best you can do? I was expecting more than that from you... I want to be bred like a fertile female, not just played with."
     "She crosses her arms and looks at you with a bored expression, clearly unimpressed by your breeding skills."
-    mc_name "What's wrong?"
+    mc.name "What's wrong?"
     the_person "You know, just do better. I expect more from you than this... I want to feel your cock deep inside me, and I want to be filled up with your seed."
     "She rolls her eyes and smirks, still rubbing her pussy in anticipation of being bred."
     the_person "You'd better step it up if you want to keep me interested... I'm a breeder, and I expect to be treated as such."

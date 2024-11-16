@@ -2128,30 +2128,30 @@ label cosplay_dual_penetration_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         the_person "Ugh, why do you always have to push me to do this, senpai? Fine, but don't expect me to enjoy it, especially since we're in our cosplay session..."
         "She rolls her eyes and crosses her arms, clearly annoyed but still willing to go through with it, especially since she's still in her cosplay outfit."
-        mc_name "Don't worry, it'll be worth it, [the_person.title]."
+        mc.name "Don't worry, it'll be worth it, [the_person.title]."
         the_person "I doubt that, senpai, but whatever, especially since we're in our cosplay roles."
 
     elif the_person.love >= 60:
         the_person "You're really sure about this, senpai? It's going to be a tight fit, especially since we're in our cosplay session..."
-        mc_name "I'll make sure it fits perfectly, [the_person.title]."
+        mc.name "I'll make sure it fits perfectly, [the_person.title]."
         the_person "Ugh, just be careful not to hurt me, okay, senpai? I don't want any scars, especially since we're in our cosplay roles..."
 
     else:
         if the_person.has_taboo("vaginal_sex"):
             the_person "Are you sure my pussy wouldn't be tight enough for you, senpai? I mean, I've never done this before, especially since we're in our cosplay session..."
-            mc_name "It's okay, [the_person.title], I'll make it fit. Just try to relax, especially since we're in our cosplay roles."
+            mc.name "It's okay, [the_person.title], I'll make it fit. Just try to relax, especially since we're in our cosplay roles."
             the_person "Ugh, this is so embarrassing, senpai..."
 
         else:
             the_person "Ugh, fine, senpai. I guess we're doing this, right? I mean, I can't back out now, especially since we're in our cosplay session..."
-            mc_name "Are you sure you're ready for this, [the_person.title]?"
+            mc.name "Are you sure you're ready for this, [the_person.title]?"
             the_person "Yeah, whatever, senpai. Let's just get this over with, especially since we're in our cosplay roles..."
     return
 
 label cosplay_sleepover_yourplace_response(the_person): #Invited her over to spend the night
     if the_person.love >= 70:
         the_person "Ugh, fine, senpai. I'll come over. But don't expect me to be all lovey-dovey or anything, especially since we're in our cosplay session..."
-        mc_name "I wouldn't dream of it, [the_person.title]. We'll just have a good time, especially since I love your cosplay."
+        mc.name "I wouldn't dream of it, [the_person.title]. We'll just have a good time, especially since I love your cosplay."
         the_person "Yeah, yeah, senpai. Just don't get too close, okay? I don't like cuddling or anything, especially since we're in our cosplay roles."
 
     elif the_person.sluttiness >= 80:
@@ -2164,7 +2164,7 @@ label cosplay_sleepover_yourplace_response(the_person): #Invited her over to spe
 label cosplay_sleepover_herplace_response(the_person): #Spending the night at her place
     if the_person.love >= 70:
         the_person "Ugh, fine, senpai. Come over and stay the night, but don't expect me to be all lovey-dovey or anything, especially since we're in our cosplay session..."
-        mc_name "I wouldn't dream of it, [the_person.title]. We'll just have a good time, especially since I love your cosplay."
+        mc.name "I wouldn't dream of it, [the_person.title]. We'll just have a good time, especially since I love your cosplay."
         the_person "Yeah, yeah, senpai. Just don't get too close, okay? I don't like cuddling or anything, especially since we're in our cosplay roles."
 
     elif the_person.sluttiness >= 80:
@@ -2182,7 +2182,7 @@ label cosplay_sleepover_yourplace_sex_start(the_person):
 label cosplay_sleepover_herplace_sex_start(the_person):
     the_person "Ugh, finally, senpai. Get over here already, especially since we're in our cosplay session."
     "She smirks and crosses her arms, clearly annoyed but still eager for the action to begin, especially since she's still in her cosplay outfit."
-    mc_name "Are you ready, [the_person.title]?"
+    mc.name "Are you ready, [the_person.title]?"
     the_person "Hah, senpai! Like I need to be ready for this, especially since we're in our cosplay roles. Just get in here and do your worst, especially since I love our cosplay sessions together."
     "She leans back on the couch, her legs spread wide in invitation, especially since she's still in her cosplay outfit."
     the_person "Hurry up, senpai, I'm not getting any younger, especially since we're in our cosplay session!"
@@ -2191,7 +2191,7 @@ label cosplay_sleepover_herplace_sex_start(the_person):
 label cosplay_sleepover_impressed_response(the_person):  #If you've made her cum a lot
     the_person "Ugh, senpai, you're really good at that... Don't expect me to admit it, but you're making me feel things, especially since we're in our cosplay session..."
     "She rolls her eyes and smirks, trying to hide her true feelings, especially since she's still in her cosplay outfit."
-    mc_name "You want more, [the_person.title]?"
+    mc.name "You want more, [the_person.title]?"
     the_person "Hmph, maybe, senpai. But don't think you've won me over or anything, especially since we're in our cosplay roles. I can still handle more, especially since I love our cosplay sessions together..."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous rounds, especially since she's still in her cosplay outfit."
     the_person "I might be able to go for another round, senpai... But don't get too excited, I'm not making any promises, especially since we're in our cosplay session!"
@@ -2200,7 +2200,7 @@ label cosplay_sleepover_impressed_response(the_person):  #If you've made her cum
 label cosplay_sleepover_good_response(the_person):  #If you've made her cum
     the_person "Ugh, fine, senpai. That wasn't too terrible, I suppose, especially since we're in our cosplay session."
     "She rolls her eyes and smirks, trying to hide her true feelings, especially since she's still in her cosplay outfit."
-    mc_name "You want more, senpai?"
+    mc.name "You want more, senpai?"
     $ the_person.draw_person(position = "missionary")
     the_person "Hmph, maybe, senpai. But don't think you've won me over or anything, especially since we're in our cosplay roles. I can still handle more, especially since I love our cosplay sessions together..."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous round, especially since she's still in her cosplay outfit."
@@ -2210,7 +2210,7 @@ label cosplay_sleepover_good_response(the_person):  #If you've made her cum
 label cosplay_sleepover_bored_response(the_person):  #If she hasn't cum yet
     the_person "Ugh, is that the best you can do, senpai? I was expecting more than that from you, especially since we're in our cosplay session..."
     "She crosses her arms and looks at you with a bored expression, clearly unimpressed, especially since she's still in her cosplay outfit."
-    mc_name "What's wrong, senpai?"
+    mc.name "What's wrong, senpai?"
     the_person "You know, just do better, senpai. I expect more from you than this, especially since we're in our cosplay roles..."
     "She rolls her eyes and smirks, still rubbing her pussy in anticipation, especially since she's still in her cosplay outfit."
     the_person "You'd better step it up if you want to keep me interested, senpai... especially since I love our cosplay sessions together."

@@ -2374,26 +2374,26 @@ label pornstar_dual_penetration_taboo_break(the_person):
         the_person "Ugh, you're really going to make me do this, aren't you? Fine, but don't expect me to hold back. I'm going to love every minute of it."
         "She spreads her legs wide, inviting you to penetrate her in both holes."
         "She takes a deep breath, her eyes sparkling with excitement as she prepares for the double penetration."
-        mc_name "Don't worry, it'll be worth it. I promise you'll love it."
+        mc.name "Don't worry, it'll be worth it. I promise you'll love it."
         the_person "I doubt that, but whatever. Just make sure to make it worth my while. I'm a dirty little slut who loves to get fucked, and I'm not going to settle for anything less."
 
     elif the_person.love >= 60:
         the_person "You're really sure about this? It's going to be a tight fit... But I'm willing to try. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
         "She looks up at you with a mix of excitement and nervousness, her eyes sparkling with anticipation."
-        mc_name "I'll make sure it fits perfectly. I promise you'll love it."
+        mc.name "I'll make sure it fits perfectly. I promise you'll love it."
         the_person "Ugh, just be careful not to hurt me, okay? I don't want any scars... But at the same time, I'm kind of excited. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
 
     else:
         if the_person.has_taboo("vaginal_sex"):
             the_person "Are you sure my pussy wouldn't be tight enough for you? I mean, I've never done this before... But I'm willing to try. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
             "She blushes and looks away, her face set in a shy expression."
-            mc_name "It's okay, I'll make it fit. Just try to relax. I promise you'll love it."
+            mc.name "It's okay, I'll make it fit. Just try to relax. I promise you'll love it."
             the_person "Ugh, this is so embarrassing... But at the same time, I'm kind of excited. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
 
         else:
             the_person "Ugh, fine. I guess we're doing this, right? I mean, I can't back out now... But I'm willing to try. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
             "She rolls her eyes and crosses her arms, clearly annoyed but still willing to go through with it."
-            mc_name "Are you sure you're ready for this?"
+            mc.name "Are you sure you're ready for this?"
             the_person "Yeah, whatever. Let's just get this over with... I mean, let's just get this started. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
 
     "She takes a deep breath and prepares for the double penetration, her eyes sparkling with excitement and her body trembling with anticipation."
@@ -2403,19 +2403,19 @@ label pornstar_sleepover_yourplace_response(the_person):
     if the_person.love >= 70:
         the_person "Ugh, fine, you dirty boy. I'll come over and let you ravage me all night. But don't expect me to be all sweet and innocent... I'm a dirty little slut who just wants to get fucked."
         "She gives you a sly smile, her eyes sparkling with excitement."
-        mc_name "I wouldn't dream of it, you dirty little girl. We'll just have a good time and get dirty."
+        mc.name "I wouldn't dream of it, you dirty little girl. We'll just have a good time and get dirty."
         the_person "Yeah, yeah, you dirty boy. Just don't get too close, okay? I don't like cuddling or anything... unless it's with your cock inside me, making me scream with pleasure."
 
     elif the_person.sluttiness >= 80:
         the_person "Oh god, I'm so down for a dirty night of fucking and sucking. Make sure you have everything ready, so we can have a wild and crazy night!"
         "She starts to undress, revealing her naked body and inviting you to touch her."
-        mc_name "I'll make sure to have everything ready, you dirty little girl. I promise you'll have a night to remember."
+        mc.name "I'll make sure to have everything ready, you dirty little girl. I promise you'll have a night to remember."
         the_person "I better... or I'll be very disappointed. And trust me, you don't want to disappoint me. I'll make sure to ride your cock all night long and leave you breathless."
 
     else:
         the_person "I guess I could come over... But don't expect me to do anything I'm not comfortable with, okay? Unless, of course, you can convince me to be a dirty little slut and do something naughty."
         "She gives you a teasing smile, her eyes sparkling with excitement."
-        mc_name "I'll try my best to convince you, you dirty little girl. But I promise I won't push you too hard... unless you want me to."
+        mc.name "I'll try my best to convince you, you dirty little girl. But I promise I won't push you too hard... unless you want me to."
         the_person "We'll see about that... maybe I'll surprise you and be a dirty little slut after all. Maybe I'll even let you tie me up and fuck me senseless."
     return
 
@@ -2423,19 +2423,19 @@ label pornstar_sleepover_herplace_response(the_person):
     if the_person.love >= 70:
         the_person "Ugh, fine, you dirty boy. Come over and stay the night, and we can have a dirty night of fucking and sucking. But don't expect me to be all lovey-dovey or anything... I'm a dirty little slut who just wants to get fucked."
         "She invites you to her bedroom, revealing a collection of sex toys and lingerie."
-        mc_name "I wouldn't dream of it, you dirty little girl. We'll just have a good time and get dirty."
+        mc.name "I wouldn't dream of it, you dirty little girl. We'll just have a good time and get dirty."
         the_person "Yeah, yeah, you dirty boy. Just don't get too close, okay? I don't like cuddling or anything... unless it's with your cock inside me, making me scream with pleasure."
 
     elif the_person.sluttiness >= 80:
         the_person "Oh god, I'm so down for a dirty night of fucking and sucking. Make sure you're ready for a wild and crazy night, because I'm going to ride your cock all night long!"
         "She starts to undress, revealing her naked body and inviting you to touch her."
-        mc_name "I'll make sure to be ready, you dirty little girl. I promise you'll have a night to remember."
+        mc.name "I'll make sure to be ready, you dirty little girl. I promise you'll have a night to remember."
         the_person "I better... or I'll be very disappointed. And trust me, you don't want to disappoint me. I'll make sure to leave you breathless and begging for more."
 
     else:
         the_person "I guess you can come over... But don't expect me to do anything I'm not comfortable with, okay? Unless, of course, you can convince me to be a dirty little slut and do something naughty."
         "She gives you a teasing smile, her eyes sparkling with excitement."
-        mc_name "I'll try my best to convince you, you dirty little girl. But I promise I won't push you too hard... unless you want me to."
+        mc.name "I'll try my best to convince you, you dirty little girl. But I promise I won't push you too hard... unless you want me to."
         the_person "We'll see about that... maybe I'll surprise you and be a dirty little slut after all. Maybe I'll even let you tie me up and fuck me senseless."
     return
 
@@ -2443,14 +2443,14 @@ label pornstar_sleepover_yourplace_sex_start(the_person):
     "[the_person.title] saunters over to you, her hips swaying seductively as she moves."
     the_person "Alright, let's get this party started, you dirty boy. I'm ready to get fucked and cum all over the place."
     "She drops to her knees, her hands grasping for your cock as she prepares to suck you off."
-    mc_name "I'm ready when you are, you dirty little girl."
+    mc.name "I'm ready when you are, you dirty little girl."
     the_person "Good, because I'm not going to hold back, you dirty boy. I'm going to suck your cock and make you cum, and then I'm going to ride you like a bucking bronco."
     return
 
 label pornstar_sleepover_herplace_sex_start(the_person):
     the_person "Finally, you dirty boy! Get over here and fuck me like the dirty little slut I am. I've been waiting all day for this."
     "She spreads her legs wide, inviting you to penetrate her as she lies back on the couch."
-    mc_name "Are you ready, you dirty little girl?"
+    mc.name "Are you ready, you dirty little girl?"
     the_person "I was born ready, you dirty boy. Just get in here and do your worst. I want to feel your cock inside me and cum all over the place, you dirty boy."
     "She wraps her legs around your waist, pulling you deeper into her as you start to fuck."
     return
@@ -2458,7 +2458,7 @@ label pornstar_sleepover_herplace_sex_start(the_person):
 label pornstar_sleepover_impressed_response(the_person):
     the_person "Oh my god, you dirty boy... You're really good at that. I didn't think I'd be able to cum that hard, you dirty boy."
     "She lies back on the bed, her chest heaving with excitement as she tries to catch her breath."
-    mc_name "You want more, you dirty little girl?"
+    mc.name "You want more, you dirty little girl?"
     the_person "I don't know if I can handle more, you dirty boy... But I'm willing to try. Just give me a minute to recover, and then we can do it again."
     "She smiles up at you, her eyes sparkling with excitement as she prepares for the next round."
     return
@@ -2466,7 +2466,7 @@ label pornstar_sleepover_impressed_response(the_person):
 label pornstar_sleepover_good_response(the_person):
     the_person "Mmm, that was good, you dirty boy. You actually managed to make me cum, congratulations, you dirty boy."
     "She lies back on the bed, her legs still shaking from the orgasm as she tries to catch her breath."
-    mc_name "You want more, you dirty little girl?"
+    mc.name "You want more, you dirty little girl?"
     the_person "I think I can handle more, you dirty boy... But you'll have to do better than that if you want to make me cum again, you dirty boy."
     "She smiles up at you, her eyes sparkling with excitement as she prepares for the next round."
     return
@@ -2474,7 +2474,7 @@ label pornstar_sleepover_good_response(the_person):
 label pornstar_sleepover_bored_response(the_person):
     the_person "Ugh, is that the best you can do, you dirty boy? I was expecting more than that from you... like, actually making me cum and not just poking me with your dick."
     "She crosses her arms and looks at you with a bored expression, clearly unimpressed."
-    mc_name "What's wrong, you dirty little girl?"
+    mc.name "What's wrong, you dirty little girl?"
     the_person "You know, just do better, you dirty boy. I expect more from you than this... like, actually making me feel something and not just going through the motions."
     "She rolls her eyes and smirks, still rubbing her pussy in anticipation."
     return

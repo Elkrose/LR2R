@@ -2124,27 +2124,27 @@ label tsundere_dual_penetration_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         the_person "Ugh, why do you always have to push me to do this? Fine, but don't expect me to enjoy it..."
         "She rolls her eyes and crosses her arms, clearly annoyed but still willing to go through with it."
-        mc_name "Don't worry, it'll be worth it."
+        mc.name "Don't worry, it'll be worth it."
         the_person "I doubt that, but whatever."
     elif the_person.love >= 60:
         the_person "You're really sure about this? It's going to be a tight fit..."
-        mc_name "I'll make sure it fits perfectly."
+        mc.name "I'll make sure it fits perfectly."
         the_person "Ugh, just be careful not to hurt me, okay? I don't want any scars..."
     else:
         if the_person.has_taboo("vaginal_sex"):
             the_person "Are you sure my pussy wouldn't be tight enough for you? I mean, I've never done this before..."
-            mc_name "It's okay, I'll make it fit. Just try to relax."
+            mc.name "It's okay, I'll make it fit. Just try to relax."
             the_person "Ugh, this is so embarrassing..."
         else:
             the_person "Ugh, fine. I guess we're doing this, right? I mean, I can't back out now..."
-            mc_name "Are you sure you're ready for this?"
+            mc.name "Are you sure you're ready for this?"
             the_person "Yeah, whatever. Let's just get this over with..."
     return
 
 label tsundere_sleepover_yourplace_response(the_person): #Invited her over to spend the night
     if the_person.love >= 70:
         the_person "Ugh, fine. I'll come over. But don't expect me to be all lovey-dovey or anything..."
-        mc_name "I wouldn't dream of it. We'll just have a good time."
+        mc.name "I wouldn't dream of it. We'll just have a good time."
         the_person "Yeah, yeah. Just don't get too close, okay? I don't like cuddling or anything."
     elif the_person.sluttiness >= 80:
         the_person "Oh god, I can't wait to get my hands on you. Make sure you have everything ready, so we can have a great night!"
@@ -2155,7 +2155,7 @@ label tsundere_sleepover_yourplace_response(the_person): #Invited her over to sp
 label tsundere_sleepover_herplace_response(the_person): #Spending the night at her place
     if the_person.love >= 70:
         the_person "Ugh, fine. Come over and stay the night, but don't expect me to be all lovey-dovey or anything..."
-        mc_name "I wouldn't dream of it. We'll just have a good time."
+        mc.name "I wouldn't dream of it. We'll just have a good time."
         the_person "Yeah, yeah. Just don't get too close, okay? I don't like cuddling or anything."
     elif the_person.sluttiness >= 80:
         the_person "Oh god, I can't wait to get you all to myself. Make sure you're ready for a wild night!"
@@ -2171,7 +2171,7 @@ label tsundere_sleepover_yourplace_sex_start(the_person):
 label tsundere_sleepover_herplace_sex_start(the_person):
     the_person "Ugh, finally. Get over here already."
     "She smirks and crosses her arms, clearly annoyed but still eager for the action to begin."
-    mc_name "Are you ready?"
+    mc.name "Are you ready?"
     the_person "Hah! Like I need to be ready for this. Just get in here and do your worst."
     "She leans back on the couch, her legs spread wide in invitation."
     the_person "Hurry up, I'm not getting any younger!"
@@ -2180,7 +2180,7 @@ label tsundere_sleepover_herplace_sex_start(the_person):
 label tsundere_sleepover_impressed_response(the_person):  #If you've made her cum a lot
     the_person "Ugh, you're really good at that... Don't expect me to admit it, but you're making me feel things..."
     "She rolls her eyes and smirks, trying to hide her true feelings."
-    mc_name "You want more?"
+    mc.name "You want more?"
     the_person "Hmph, maybe. But don't think you've won me over or anything. I can still handle more..."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous rounds."
     the_person "I might be able to go for another round... But don't get too excited, I'm not making any promises!"
@@ -2189,7 +2189,7 @@ label tsundere_sleepover_impressed_response(the_person):  #If you've made her cu
 label tsundere_sleepover_good_response(the_person):  #If you've made her cum
     the_person "Ugh, fine. That wasn't too terrible, I suppose."
     "She rolls her eyes and smirks, trying to hide her true feelings."
-    mc_name "You want more?"
+    mc.name "You want more?"
     $ the_person.draw_person(position = "missionary")
     the_person "Hmph, maybe. But don't think you've won me over or anything. I can still handle more..."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous round."
@@ -2199,7 +2199,7 @@ label tsundere_sleepover_good_response(the_person):  #If you've made her cum
 label tsundere_sleepover_bored_response(the_person):  #If she hasn't cum yet
     the_person "Ugh, is that the best you can do? I was expecting more than that from you..."
     "She crosses her arms and looks at you with a bored expression, clearly unimpressed."
-    mc_name "What's wrong?"
+    mc.name "What's wrong?"
     the_person "You know, just do better. I expect more from you than this..."
     "She rolls her eyes and smirks, still rubbing her pussy in anticipation."
     the_person "You'd better step it up if you want to keep me interested..."

@@ -2173,7 +2173,7 @@ label yandere_underwear_nudity_taboo_break(the_person, the_clothing):
             "She giggles and blushes."
             the_person "Oh [the_person.title], you're so wicked! Alright, let's do it!"
         else:
-            mc_name "I'm more than ready, sweetheart."
+            mc.name "I'm more than ready, sweetheart."
             the_person "Yeah, yeah, get it off then."
     return
 
