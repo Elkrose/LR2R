@@ -2214,23 +2214,23 @@ label slutty_dual_penetration_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         the_person "Ugh, why do you always have to push me to do this? Fine, but don't expect me to enjoy it... Just kidding, I'm going to love it. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
         "She rolls her eyes and crosses her arms, clearly annoyed but still willing to go through with it. Her legs spread wide, inviting you to penetrate her in both holes."
-        mc_name "Don't worry, it'll be worth it. I promise you'll love it."
+        mc.name "Don't worry, it'll be worth it. I promise you'll love it."
         the_person "I doubt that, but whatever. Just make sure to make it worth my while. I'm a dirty little slut who loves to get fucked, and I'm not going to settle for anything less."
 
     elif the_person.love >= 60:
         the_person "You're really sure about this? It's going to be a tight fit... But I'm willing to try. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
-        mc_name "I'll make sure it fits perfectly. I promise you'll love it."
+        mc.name "I'll make sure it fits perfectly. I promise you'll love it."
         the_person "Ugh, just be careful not to hurt me, okay? I don't want any scars... But at the same time, I'm kind of excited. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
 
     else:
         if the_person.has_taboo("vaginal_sex"):
             the_person "Are you sure my pussy wouldn't be tight enough for you? I mean, I've never done this before... But I'm willing to try. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
-            mc_name "It's okay, I'll make it fit. Just try to relax. I promise you'll love it."
+            mc.name "It's okay, I'll make it fit. Just try to relax. I promise you'll love it."
             the_person "Ugh, this is so embarrassing... But at the same time, I'm kind of excited. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
 
         else:
             the_person "Ugh, fine. I guess we're doing this, right? I mean, I can't back out now... But I'm willing to try. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
-            mc_name "Are you sure you're ready for this?"
+            mc.name "Are you sure you're ready for this?"
             the_person "Yeah, whatever. Let's just get this over with... I mean, let's just get this started. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
 
     return
@@ -2238,44 +2238,44 @@ label slutty_dual_penetration_taboo_break(the_person):
 label slutty_sleepover_yourplace_response(the_person): #Invited her over to spend the night
     if the_person.love >= 70:
         the_person "Ugh, fine. I'll come over and let you fuck me all night. But don't expect me to be all lovey-dovey or anything... I'm a dirty little slut who just wants to get fucked."
-        mc_name "I wouldn't dream of it. We'll just have a good time and get dirty."
+        mc.name "I wouldn't dream of it. We'll just have a good time and get dirty."
         the_person "Yeah, yeah. Just don't get too close, okay? I don't like cuddling or anything... unless it's with your cock inside me."
     elif the_person.sluttiness >= 80:
         the_person "Oh god, I'm so down for a dirty night of fucking and sucking. Make sure you have everything ready, so we can have a wild and crazy night!"
-        mc_name "I'll make sure to have everything ready. I promise you'll have a night to remember."
+        mc.name "I'll make sure to have everything ready. I promise you'll have a night to remember."
         the_person "I better... or I'll be very disappointed. And trust me, you don't want to disappoint me."
     else:
         the_person "I guess I could come over... But don't expect me to do anything I'm not comfortable with, okay? Unless, of course, you can convince me to be a dirty little slut and do something naughty."
-        mc_name "I'll try my best to convince you. But I promise I won't push you too hard... unless you want me to."
+        mc.name "I'll try my best to convince you. But I promise I won't push you too hard... unless you want me to."
         the_person "We'll see about that... maybe I'll surprise you and be a dirty little slut after all."
     return
 
 label slutty_sleepover_herplace_response(the_person): #Spending the night at her place
     if the_person.love >= 70:
         the_person "Ugh, fine. Come over and stay the night, and we can have a dirty night of fucking and sucking. But don't expect me to be all lovey-dovey or anything... I'm a dirty little slut who just wants to get fucked."
-        mc_name "I wouldn't dream of it. We'll just have a good time and get dirty."
+        mc.name "I wouldn't dream of it. We'll just have a good time and get dirty."
         the_person "Yeah, yeah. Just don't get too close, okay? I don't like cuddling or anything... unless it's with your cock inside me."
     elif the_person.sluttiness >= 80:
         the_person "Oh god, I'm so down for a dirty night of fucking and sucking. Make sure you're ready for a wild and crazy night, because I'm going to ride your cock all night long!"
-        mc_name "I'll make sure to be ready. I promise you'll have a night to remember."
+        mc.name "I'll make sure to be ready. I promise you'll have a night to remember."
         the_person "I better... or I'll be very disappointed. And trust me, you don't want to disappoint me."
     else:
         the_person "I guess you can come over... But don't expect me to do anything I'm not comfortable with, okay? Unless, of course, you can convince me to be a dirty little slut and do something naughty."
-        mc_name "I'll try my best to convince you. But I promise I won't push you too hard... unless you want me to."
+        mc.name "I'll try my best to convince you. But I promise I won't push you too hard... unless you want me to."
         the_person "We'll see about that... maybe I'll surprise you and be a dirty little slut after all."
     return
 
 label slutty_sleepover_yourplace_sex_start(the_person):
     "[the_person.title] rolls her eyes and walks over to you, her expression a mix of annoyance and desire. She's clearly a dirty little slut who wants to get fucked."
     the_person "Ugh, fine. Let's get this over with. Just don't expect me to be all lovey-dovey or anything... I just want to get fucked and cum."
-    mc_name "I wouldn't dream of it. Let's just get dirty and have a good time."
+    mc.name "I wouldn't dream of it. Let's just get dirty and have a good time."
     the_person "Yeah, yeah. Just don't get too close, okay? I don't like cuddling or anything... unless it's with your cock inside me."
     return
 
 label slutty_sleepover_herplace_sex_start(the_person):
     the_person "Ugh, finally. Get over here already and fuck me. I've been waiting all day for this."
     "She smirks and crosses her arms, clearly annoyed but still eager for the action to begin. She's a dirty little slut who just wants to get fucked."
-    mc_name "Are you ready?"
+    mc.name "Are you ready?"
     the_person "Hah! Like I need to be ready for this. Just get in here and do your worst. I want to feel your cock inside me and cum all over the place."
     "She leans back on the couch, her legs spread wide in invitation. She's a dirty little slut who just wants to get fucked and cum."
     the_person "Hurry up, I'm not getting any younger! And I need to get fucked and cum before I go crazy."
@@ -2284,7 +2284,7 @@ label slutty_sleepover_herplace_sex_start(the_person):
 label slutty_sleepover_impressed_response(the_person):  #If you've made her cum a lot
     the_person "Ugh, you're really good at that... Don't expect me to admit it, but you're making me feel things... like a dirty little slut who just wants to get fucked and cum."
     "She rolls her eyes and smirks, trying to hide her true feelings. But it's clear she's a dirty little slut who loves to get fucked and cum."
-    mc_name "You want more?"
+    mc.name "You want more?"
     the_person "Hmph, maybe. But don't think you've won me over or anything. I can still handle more... and I want to feel your cock inside me again and cum some more."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous rounds. She's a dirty little slut who just wants to get fucked and cum some more."
     the_person "I might be able to go for another round... But don't get too excited, I'm not making any promises! Unless, of course, you can convince me to be a dirty little slut and do something naughty again."
@@ -2293,7 +2293,7 @@ label slutty_sleepover_impressed_response(the_person):  #If you've made her cum 
 label slutty_sleepover_good_response(the_person):  #If you've made her cum
     the_person "Ugh, fine. That wasn't too terrible, I suppose. You actually managed to make me cum, congratulations."
     "She rolls her eyes and smirks, trying to hide her true feelings, but her legs are still shaking from the orgasm and her pussy is still dripping with cum."
-    mc_name "You want more?"
+    mc.name "You want more?"
     $ the_person.draw_person(position = "missionary")
     the_person "Hmph, maybe. But don't think you've won me over or anything. I can still handle more... and I want to feel your cock inside me again, pounding me hard and making me cum some more."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous round, her tits heaving with excitement and her pussy still throbbing with pleasure."
@@ -2303,7 +2303,7 @@ label slutty_sleepover_good_response(the_person):  #If you've made her cum
 label slutty_sleepover_bored_response(the_person):  #If she hasn't cum yet
     the_person "Ugh, is that the best you can do? I was expecting more than that from you... like, actually making me cum and not just poking me with your little dick."
     "She crosses her arms and looks at you with a bored expression, clearly unimpressed, her eyes rolling in frustration and her pussy still dry and unsatisfied."
-    mc_name "What's wrong?"
+    mc.name "What's wrong?"
     the_person "You know, just do better. I expect more from you than this... like, actually making me feel something and not just going through the motions."
     "She rolls her eyes and smirks, still rubbing her pussy in anticipation, her fingers slipping inside her wet slit and playing with her clit."
     the_person "You'd better step it up if you want to keep me interested... like, actually making me cum and not just boring me to tears with your mediocre sex skills."

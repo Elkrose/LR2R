@@ -2158,30 +2158,30 @@ label foodie_dual_penetration_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         the_person "Ugh, why do you always have to... push me to do this, like a chef who's just been given a new ingredient to work with? Fine, but don't expect me to... savor it, like a diner who's just been served a dish they didn't order..."
         "She rolls her eyes and crosses her arms, clearly... annoyed but still willing to go through with it, like a diner who's just been served a dish they didn't order."
-        mc_name "Don't worry, it'll be... worth it, like a pastry chef who's just been given a new dessert to create."
+        mc.name "Don't worry, it'll be... worth it, like a pastry chef who's just been given a new dessert to create."
         the_person "I doubt that, but... whatever, like a chef who's just been given a new ingredient to work with."
 
     elif the_person.love >= 60:
         the_person "You're really sure about this, like a chef who's just been given a new ingredient to work with? It's going to be a... tight fit, like a pastry chef who's just been given a new dessert to create..."
-        mc_name "I'll make sure it... fits perfectly, like a chef who's just been given a new ingredient to work with."
+        mc.name "I'll make sure it... fits perfectly, like a chef who's just been given a new ingredient to work with."
         the_person "Ugh, just be... careful not to hurt me, okay, like a diner who's just been served a dish they didn't order? I don't want any... scars, like a pastry chef who's just made a mistake..."
 
     else:
         if the_person.has_taboo("vaginal_sex"):
             the_person "Are you sure my... pussy wouldn't be... tight enough for you, like a pastry chef who's just been given a new dessert to create? I mean, I've never... done this before, like a diner who's just been served a dish they didn't order..."
-            mc_name "It's okay, I'll make it... fit, like a chef who's just been given a new ingredient to work with. Just try to... relax, like a diner who's just been served a soothing dish."
+            mc.name "It's okay, I'll make it... fit, like a chef who's just been given a new ingredient to work with. Just try to... relax, like a diner who's just been served a soothing dish."
             the_person "Ugh, this is so... embarrassing, like a pastry chef who's just made a mistake..."
 
         else:
             the_person "Ugh, fine, like a diner who's just been served a dish they didn't order. I guess we're... doing this, right, like a chef who's just been given a new ingredient to work with? I mean, I... can't back out now, like a pastry chef who's just been given a new dessert to create..."
-            mc_name "Are you sure you're... ready for this, like a chef who's just been given a new ingredient to work with?"
+            mc.name "Are you sure you're... ready for this, like a chef who's just been given a new ingredient to work with?"
             the_person "Yeah, whatever, like a diner who's just been served a dish they didn't order. Let's just... get this over with, like a pastry chef who's just been given a new dessert to create..."
     return
 
 label foodie_sleepover_yourplace_response(the_person): #Invited her over to spend the night
     if the_person.love >= 70:
         the_person "Ugh, fine. I'll come over and... indulge in your hospitality, like a diner who's just been served a perfect meal. But don't expect me to be all... sweet and sentimental or anything, like a pastry chef who's just made a mistake..."
-        mc_name "I wouldn't dream of it, like a chef who's just been given a new ingredient to work with. We'll just have a... delicious time, like a diner who's just been served a perfect meal."
+        mc.name "I wouldn't dream of it, like a chef who's just been given a new ingredient to work with. We'll just have a... delicious time, like a diner who's just been served a perfect meal."
         the_person "Yeah, yeah. Just don't get too... close, okay? I don't like... cuddling or anything, like a diner who's just been served a dish they didn't order."
 
     elif the_person.sluttiness >= 80:
@@ -2194,7 +2194,7 @@ label foodie_sleepover_yourplace_response(the_person): #Invited her over to spen
 label foodie_sleepover_herplace_response(the_person): #Spending the night at her place
     if the_person.love >= 70:
         the_person "Ugh, fine. Come over and... stay for dinner, like a diner who's just been served a perfect meal. But don't expect me to be all... lovey-dovey or anything, like a pastry chef who's just made a mistake..."
-        mc_name "I wouldn't dream of it, like a chef who's just been given a new ingredient to work with. We'll just have a... good time, like a diner who's just been served a perfect meal."
+        mc.name "I wouldn't dream of it, like a chef who's just been given a new ingredient to work with. We'll just have a... good time, like a diner who's just been served a perfect meal."
         the_person "Yeah, yeah. Just don't get too... close, okay? I don't like... cuddling or anything, like a diner who's just been served a dish they didn't order."
 
     elif the_person.sluttiness >= 80:
@@ -2212,7 +2212,7 @@ label foodie_sleepover_yourplace_sex_start(the_person):
 label foodie_sleepover_herplace_sex_start(the_person):
     the_person "Ugh, finally. Get over here and... serve yourself, like a diner who's just been served a perfect meal."
     "She smirks and crosses her arms, clearly... annoyed but still eager for the... action to begin, like a pastry chef who's just been given a new dessert to create."
-    mc_name "Are you... ready to be served, like a chef who's just been given a new ingredient to work with?"
+    mc.name "Are you... ready to be served, like a chef who's just been given a new ingredient to work with?"
     the_person "Hah! Like I need to be... hungry for this, like a diner who's just been served a perfect meal. Just get in here and... indulge in me, like a pastry chef who's just been given a new dessert to create."
     "She leans back on the couch, her legs spread wide in... invitation, like a diner who's just been served a perfect meal."
     the_person "Hurry up, I'm not getting any... younger, like a chef who's just been given a new ingredient to work with!"
@@ -2221,7 +2221,7 @@ label foodie_sleepover_herplace_sex_start(the_person):
 label foodie_sleepover_impressed_response(the_person):  #If you've made her cum a lot
     the_person "Ugh, you're really... cooking up something good here, like a chef who's just been given a new ingredient to work with... Don't expect me to admit it, but you're making me... savor the flavors, like a diner who's just been served a perfect meal..."
     "She rolls her eyes and smirks, trying to hide her true... appetite, like a pastry chef who's just been given a new dessert to create."
-    mc_name "You want... seconds?"
+    mc.name "You want... seconds?"
     the_person "Hmph, maybe. But don't think you've... won me over or anything, like a chef who's just been given a new ingredient to work with. I can still... handle more, like a diner who's just been served a perfect meal..."
     "[the_person.title] lies down in bed, her breathing still... ragged from the previous rounds, like a pastry chef who's just been given a new dessert to create."
     the_person "I might be able to go for... another course... But don't get too... excited, I'm not making any... promises, like a chef who's just been given a new ingredient to work with!"
@@ -2230,7 +2230,7 @@ label foodie_sleepover_impressed_response(the_person):  #If you've made her cum 
 label foodie_sleepover_good_response(the_person):  #If you've made her cum
     the_person "Ugh, fine. That wasn't too... bland, I suppose, like a diner who's just been served a dish they didn't order."
     "She rolls her eyes and smirks, trying to hide her true... flavors, like a pastry chef who's just been given a new dessert to create."
-    mc_name "You want... more?"
+    mc.name "You want... more?"
     $ the_person.draw_person(position = "missionary")
     the_person "Hmph, maybe. But don't think you've... won me over or anything, like a chef who's just been given a new ingredient to work with. I can still... handle more, like a diner who's just been served a perfect meal..."
     "[the_person.title] lies down in bed, her breathing still... ragged from the previous round, like a pastry chef who's just been given a new dessert to create."
@@ -2240,7 +2240,7 @@ label foodie_sleepover_good_response(the_person):  #If you've made her cum
 label foodie_sleepover_bored_response(the_person):  #If she hasn't cum yet
     the_person "Ugh, is that the... best dish you can serve up? I was expecting more... flavor than that from you, like a diner who's just been served a dish they didn't order..."
     "She crosses her arms and looks at you with a... bored expression, clearly unimpressed, like a pastry chef who's just made a mistake."
-    mc_name "What's... wrong with the recipe?"
+    mc.name "What's... wrong with the recipe?"
     the_person "You know, just... add more seasoning. I expect more... flavor from you than this, like a diner who's just been served a dish they didn't order..."
     "She rolls her eyes and smirks, still... rubbing her pussy in anticipation, like a pastry chef who's just been given a new dessert to create."
     the_person "You'd better... step up your game if you want to keep me... interested, like a chef who's just been given a new ingredient to work with..."

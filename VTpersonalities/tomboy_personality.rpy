@@ -2366,25 +2366,25 @@ label tomboy_dual_penetration_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         the_person "Gah, why do you always have to push me to do this stuff? Fine, but don't expect me to be all smiles and rainbows about it, okay?"
         "She rolls her eyes and crosses her arms, clearly annoyed but still willing to go through with it, a hint of a smirk on her face."
-        mc_name "Don't worry, it'll be worth it, I promise."
+        mc.name "Don't worry, it'll be worth it, I promise."
         the_person "I doubt that, but whatever. Just don't say I didn't warn you, got it?"
 
     elif the_person.love >= 60:
         the_person "You're really sure about this? It's going to be a tight fit, okay?"
-        mc_name "I'll make sure it fits perfectly, don't worry."
+        mc.name "I'll make sure it fits perfectly, don't worry."
         the_person "Ugh, just be careful not to hurt me, okay? I don't want any scars or anything, got it?"
         "She looks at you with a slightly nervous expression, a hint of uncertainty in her eyes."
 
     else:
         if the_person.has_taboo("vaginal_sex"):
             the_person "Are you sure my pussy wouldn't be tight enough for you? I mean, I've never done this before, okay?"
-            mc_name "It's okay, I'll make it fit. Just try to relax, okay?"
+            mc.name "It's okay, I'll make it fit. Just try to relax, okay?"
             the_person "Ugh, this is so embarrassing... I don't know why I'm doing this, got it?"
             "She looks at you with a slightly embarrassed expression, a hint of hesitation in her eyes."
 
         else:
             the_person "Ugh, fine. I guess we're doing this, right? I mean, I can't back out now, okay?"
-            mc_name "Are you sure you're ready for this?"
+            mc.name "Are you sure you're ready for this?"
             the_person "Yeah, whatever. Let's just get this over with, okay? I'm not exactly thrilled about this, got it?"
             "She looks at you with a slightly annoyed expression, a hint of frustration in her eyes."
 
@@ -2393,7 +2393,7 @@ label tomboy_dual_penetration_taboo_break(the_person):
 label tomboy_sleepover_yourplace_response(the_person): #Invited her over to spend the night
     if the_person.love >= 70:
         the_person "Ugh, fine. I'll come over. But don't expect me to be all lovey-dovey or anything, okay? I'm not exactly the cuddly type."
-        mc_name "I wouldn't dream of it. We'll just have a good time, okay?"
+        mc.name "I wouldn't dream of it. We'll just have a good time, okay?"
         the_person "Yeah, yeah. Just don't get too close, okay? I don't like cuddling or anything, got it?"
         "She looks at you with a slightly playful expression, a hint of amusement in her eyes."
 
@@ -2410,7 +2410,7 @@ label tomboy_sleepover_herplace_response(the_person): #Spending the night at her
     if the_person.love >= 70:
         the_person "Gah, fine. Come over and stay the night, but don't expect me to be all mushy or anything, okay?"
         "She rolls her eyes and looks at you with a slightly playful expression, a hint of amusement in her eyes."
-        mc_name "I wouldn't dream of it. We'll just have a good time, okay?"
+        mc.name "I wouldn't dream of it. We'll just have a good time, okay?"
         the_person "Yeah, yeah. Just don't get too close, okay? I don't do cuddles or anything, got it?"
 
     elif the_person.sluttiness >= 80:
@@ -2431,7 +2431,7 @@ label tomboy_sleepover_yourplace_sex_start(the_person):
 label tomboy_sleepover_herplace_sex_start(the_person):
     the_person "Gah, finally. Get over here already, okay?"
     "She smirks and crosses her arms, clearly annoyed but still eager for the action to begin, a hint of excitement in her eyes."
-    mc_name "Are you ready?"
+    mc.name "Are you ready?"
     the_person "Hah! Like I need to be ready for this. Just get in here and do your worst, okay?"
     "She leans back on the couch, her legs spread wide in invitation, a hint of a smile on her face."
     the_person "Hurry up, I'm not getting any younger, okay? And don't think this means I'm going easy on you, got it?"
@@ -2440,7 +2440,7 @@ label tomboy_sleepover_herplace_sex_start(the_person):
 label tomboy_sleepover_impressed_response(the_person):  #If you've made her cum a lot
     the_person "Gah, you're really freaking good at that... Don't expect me to admit it, but you're making me feel all sorts of crazy things, okay?"
     "She rolls her eyes and smirks, trying to hide her true feelings, a hint of a blush on her cheeks."
-    mc_name "You want more?"
+    mc.name "You want more?"
     the_person "Hmph, maybe. But don't think you've won me over or anything, got it? I can still handle more... I think."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous rounds, a hint of exhaustion in her eyes."
     the_person "I might be able to go for another round... But don't get too excited, I'm not making any promises, okay? I'm not exactly a machine or anything."
@@ -2450,7 +2450,7 @@ label tomboy_sleepover_impressed_response(the_person):  #If you've made her cum 
 label tomboy_sleepover_good_response(the_person):  #If you've made her cum
     the_person "Ugh, fine. That wasn't too terrible, I suppose, okay?"
     "She rolls her eyes and smirks, trying to hide her true feelings, a hint of a smile on her face."
-    mc_name "You want more?"
+    mc.name "You want more?"
     $ the_person.draw_person(position = "missionary")
     the_person "Hmph, maybe. But don't think you've won me over or anything, got it? I can still handle more... I think."
     "[the_person.title] lies down in bed, her breathing still ragged from the previous round, a hint of anticipation in her eyes."
@@ -2461,7 +2461,7 @@ label tomboy_sleepover_good_response(the_person):  #If you've made her cum
 label tomboy_sleepover_bored_response(the_person):  #If she hasn't cum yet
     the_person "Ugh, is that the best you can do? I was expecting more than that from you, okay? You're not exactly setting the world on fire here."
     "She crosses her arms and looks at you with a bored expression, clearly unimpressed, a hint of disappointment in her eyes."
-    mc_name "What's wrong?"
+    mc.name "What's wrong?"
     the_person "You know, just do better, okay? I expect more from you than this... mediocrity."
     "She rolls her eyes and smirks, still rubbing her pussy in anticipation, a hint of frustration in her movements."
     the_person "You'd better step it up if you want to keep me interested, got it? I'm not exactly known for my patience."

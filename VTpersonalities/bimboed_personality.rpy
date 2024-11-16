@@ -2337,25 +2337,25 @@ label bimboed_dual_penetration_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         the_person "Oh my god, like, ugh, why do you always have to push me to do this, okay? Fine, but don't, like, expect me to enjoy it, okay..."
         "She rolls her eyes and crosses her arms, clearly annoyed but still willing to go through with it, and looks up at you with big, playful eyes."
-        mc_name "Don't, like, worry, it'll be worth it, okay?"
+        mc.name "Don't, like, worry, it'll be worth it, okay?"
         the_person "I, like, doubt that, but whatever, okay?"
 
     elif the_person.love >= 60:
         the_person "You're, like, really sure about this, okay? It's, like, going to be a tight fit, okay..."
-        mc_name "I'll, like, make sure it fits perfectly, okay?"
+        mc.name "I'll, like, make sure it fits perfectly, okay?"
         the_person "Ugh, just, like, be careful not to hurt me, okay? I don't, like, want any scars, okay..."
         "She looks up at you with big, nervous eyes, still looking all cute and adorable."
 
     else:
         if the_person.has_taboo("vaginal_sex"):
             the_person "Are you, like, sure my pussy wouldn't be tight enough for you, okay? I mean, I've, like, never done this before, okay..."
-            mc_name "It's, like, okay, I'll make it fit, okay? Just, like, try to relax, okay?"
+            mc.name "It's, like, okay, I'll make it fit, okay? Just, like, try to relax, okay?"
             the_person "Ugh, this is, like, so embarrassing, okay..."
             "She looks down, blushing, and still looking all cute and adorable."
 
         else:
             the_person "Ugh, fine, okay. I guess we're, like, doing this, right, okay? I mean, I, like, can't back out now, okay..."
-            mc_name "Are you, like, sure you're ready for this, okay?"
+            mc.name "Are you, like, sure you're ready for this, okay?"
             the_person "Yeah, whatever, okay. Let's, like, just get this over with, okay..."
             "She looks up at you with big, impatient eyes, still looking all cute and adorable."
     return
@@ -2363,7 +2363,7 @@ label bimboed_dual_penetration_taboo_break(the_person):
 label bimboed_sleepover_yourplace_response(the_person): #Invited her over to spend the night
     if the_person.love >= 70:
         the_person "Oh my god, like, ugh, fine, okay? I'll, like, come over, okay? But don't, like, expect me to be all lovey-dovey or anything, okay..."
-        mc_name "I, like, wouldn't dream of it, okay? We'll, like, just have a good time, okay?"
+        mc.name "I, like, wouldn't dream of it, okay? We'll, like, just have a good time, okay?"
         the_person "Yeah, yeah, okay... Just don't, like, get too close, okay? I don't, like, like cuddling or anything, okay..."
         "She looks up at you with big, playful eyes, still looking all cute and adorable."
 
@@ -2379,7 +2379,7 @@ label bimboed_sleepover_yourplace_response(the_person): #Invited her over to spe
 label bimboed_sleepover_herplace_response(the_person): #Spending the night at her place
     if the_person.love >= 70:
         the_person "Oh my god, like, ugh, fine, okay? Come over and, like, stay the night, but don't, like, expect me to be all lovey-dovey or anything, okay..."
-        mc_name "I, like, wouldn't dream of it, okay? We'll, like, just have a good time, okay?"
+        mc.name "I, like, wouldn't dream of it, okay? We'll, like, just have a good time, okay?"
         the_person "Yeah, yeah, okay... Just don't, like, get too close, okay? I don't, like, like cuddling or anything, okay..."
         "She looks up at you with big, playful eyes, still looking all cute and adorable."
 
@@ -2401,7 +2401,7 @@ label bimboed_sleepover_yourplace_sex_start(the_person):
 label bimboed_sleepover_herplace_sex_start(the_person):
     the_person "Oh my god, like, ugh, finally, okay? Get over here already, okay?"
     "She smirks and crosses her arms, clearly annoyed but still, like, eager for the action to begin, okay?"
-    mc_name "Are you, like, ready?"
+    mc.name "Are you, like, ready?"
     the_person "Hah! Like I, like, need to be ready for this, okay? Just, like, get in here and do your worst, okay."
     "She leans back on the couch, her legs spread wide in invitation, and looks up at you with big, flirtatious eyes."
     the_person "Hurry up, I'm, like, not getting any younger, okay!"
@@ -2410,7 +2410,7 @@ label bimboed_sleepover_herplace_sex_start(the_person):
 label bimboed_sleepover_impressed_response(the_person):  #If you've made her cum a lot
     the_person "Oh my god, like, ugh, you're really good at that, okay... Don't, like, expect me to admit it, but you're, like, making me feel things, okay..."
     "She rolls her eyes and smirks, trying to, like, hide her true feelings, okay?"
-    mc_name "You, like, want more?"
+    mc.name "You, like, want more?"
     the_person "Hmph, maybe, okay. But don't, like, think you've won me over or anything, okay. I can, like, still handle more, okay..."
     "[the_person.title] lies down in bed, her breathing still, like, ragged from the previous rounds, okay."
     the_person "I might, like, be able to go for another round, okay... But don't, like, get too excited, I'm, like, not making any promises, okay!"
@@ -2419,7 +2419,7 @@ label bimboed_sleepover_impressed_response(the_person):  #If you've made her cum
 label bimboed_sleepover_good_response(the_person):  #If you've made her cum
     the_person "Oh my god, like, ugh, fine, okay. That wasn't, like, too terrible, I suppose, okay."
     "She rolls her eyes and smirks, trying to, like, hide her true feelings, okay?"
-    mc_name "You, like, want more?"
+    mc.name "You, like, want more?"
     $ the_person.draw_person(position = "missionary")
     the_person "Hmph, maybe, okay. But don't, like, think you've won me over or anything, okay. I can, like, still handle more, okay..."
     "[the_person.title] lies down in bed, her breathing still, like, ragged from the previous round, okay."
@@ -2429,7 +2429,7 @@ label bimboed_sleepover_good_response(the_person):  #If you've made her cum
 label bimboed_sleepover_bored_response(the_person):  #If she hasn't cum yet
     the_person "Oh my god, like, ugh, is that the best you can do, okay? I was, like, expecting more than that from you, okay..."
     "She crosses her arms and looks at you with a, like, bored expression, clearly unimpressed, okay?"
-    mc_name "What's, like, wrong?"
+    mc.name "What's, like, wrong?"
     the_person "You, like, know, just do better, okay. I, like, expect more from you than this, okay..."
     "She rolls her eyes and smirks, still, like, rubbing her pussy in anticipation, okay."
     the_person "You'd, like, better step it up if you want to, like, keep me interested, okay..."
