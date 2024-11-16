@@ -364,7 +364,7 @@ init 900 python:
         # based on Shouko Komi from Komi Can't Communicate
         person = make_person(name = "Shouko", last_name = "Komi", age=renpy.random.randint(Person.get_age_floor(), 21), tits="E", face_style = "Face_4", skin = "white", 
             stat_array = [8, 4, 5], skill_array = [6,5,10,5,5], sex_skill_array = [4,0,0,0], body_type = "thin_body", height = 0.978,
-            sluttiness = 25, obedience = 180, happiness = 200, love = 10, suggestibility=10,
+            sluttiness = 25, obedience = 180, happiness = 200, love = 10, suggestibility=10, relationship = "Single", kids = 0,
             hair_colour = ["purple black", [0.0, 0.0, 0.06, 0.9]], hair_style = long_hair, eyes = ["dark purple", [0.0, 0.0, 0.15, 0.9]], personality = dandere_personality,
             name_color = "#8200ae", dial_color = "#9f00ae", type="unique",
             forced_opinions = [
@@ -392,7 +392,7 @@ init 900 python:
         # add one goudere to the game (on start of game)
         # based on Albedo from Overlord
         person = make_person(name = "Albedo", last_name = "Smaragdina", age=renpy.random.randint(19, 25), tits="E", face_style = "Face_4", skin = "white", 
-            stat_array = [10, 10, 10], skill_array = [20,5,5,5,5], sex_skill_array = [4,0,0,0],
+            stat_array = [10, 10, 10], skill_array = [20,5,5,5,5], sex_skill_array = [4,0,0,0], relationship = "Single", kids = 0,
             sluttiness = 65, obedience = 200, happiness = 200, love = 10, suggestibility=20,  body_type = "curvy_body", height = 1.002,
             hair_colour = ["raven black", [0.0, 0.0, 0.0, 1]], hair_style = long_hair, eyes = ["golden", [0.95, 0.95, 0.20, 0.9]], personality = goudere_personality,
             name_color = "#fae42b", dial_color = "#dcc928", type="unique",
@@ -419,7 +419,7 @@ init 900 python:
     def create_kuudere_npc():
         # add one kuudere to the game (on start of game)Reina Aharen
         person = make_person(name = "Reina", last_name = "Aharen", age=renpy.random.randint(Person.get_age_floor(), 18), tits="B", face_style = "Face_4", skin = "white", 
-            stat_array = [5, 7, 5], skill_array = [5,5,5,5,5], sex_skill_array = [4,0,0,0],
+            stat_array = [5, 7, 5], skill_array = [5,5,5,5,5], sex_skill_array = [4,0,0,0], relationship = "Single", kids = 0,
             body_type = "thin_body", height = 0.817,
             hair_colour = ["silver", [0.92, 1.00, 1.00, 0.9]], hair_style = long_hair, eyes = ["deep blue", [0.00, 0.17, 0.56, 0.9]], personality = kuudere_personality,
             name_color = "#a2a7ae", dial_color = "#b0b4ba", type="unique",
@@ -442,7 +442,7 @@ init 900 python:
     def create_tsundere_npc():
         # add one tsundere to the game (on start of game) Asuka Langley from Neon Genesis Evangelion 
         person = make_person(name = "Asuka", last_name = "Langley", age=renpy.random.randint(19, 28), tits="B", face_style = "Face_9", skin = "white", 
-            stat_array = [7, 8, 7], skill_array = [5,5,5,5,5], sex_skill_array = [4,0,0,0],
+            stat_array = [7, 8, 7], skill_array = [5,5,5,5,5], sex_skill_array = [4,0,0,0], relationship = "Single", kids = 0,
             sluttiness = 20, obedience = 180, happiness = 200, body_type = "standard_body", height = 0.922,
             hair_colour = ["orange haze", [1, 0.42, 0.0, 1]], hair_style = twintail, eyes = ["light blue", [0.60, 0.75, 0.98, 0.9]], personality = tsundere_personality,
             name_color = "#fae42b", dial_color = "#dcc928", type="unique",
@@ -493,7 +493,7 @@ init 900 python:
             stat_array = [10, 10, 10], skill_array = [5,5,10,5,5], relationship = "Single", kids = 0,
             sluttiness = 35, suggestibility=20, body_type = "thin_body", height = 0.87,
             hair_colour = ["raven black", [0.0, 0.0, 0.0, 1]], hair_style = long_hair, eyes = ["light blue", [0.60, 0.75, 0.98, 0.9]], personality = gothic_personality,
-            name_color = "#6A0DAD", dial_color = "#A44CE6", type="unique",
+            name_color = "#6A0DAD", dial_color = "#A44CE6", type="unique", 
             forced_opinions = [
             ["the colour black", 2, False],
             ["the colour purple", 2, False],
