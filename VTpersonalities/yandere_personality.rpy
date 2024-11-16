@@ -1441,6 +1441,7 @@ label yandere_sex_watch(the_person, the_sex_person, the_position):
     "[title] watches eagerly while you and [the_sex_person.fname] [the_position.verb]."
     return True
     return
+
 label yandere_being_watched(the_person, the_watcher, the_position):
     $ title = the_watcher.fname if not the_watcher.is_stranger else "the stranger"
     if the_person.sluttiness >= the_position.slut_cap and the_watcher.sluttiness >= the_position.slut_cap:

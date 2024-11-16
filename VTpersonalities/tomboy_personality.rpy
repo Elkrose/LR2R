@@ -2040,7 +2040,6 @@ label tomboy_vaginal_sex_taboo_break(the_person):
             mc.name "We sure will. And if you're lucky, I might just make it feel even better."
             the_person "Ugh, just get on with it already! I'm not getting any younger, okay? And I'm not exactly thrilled about this either."
     return
-### DIALOGUE ###
 
 label tomboy_anal_sex_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
@@ -2071,7 +2070,6 @@ label tomboy_anal_sex_taboo_break(the_person):
             mc.name "Alright, let's get started then."
             the_person "Hurry up, I'm ready when you are. Just don't expect me to be all smiles and rainbows about it, got it?"
     return
-### DIALOGUE ###
 
 label tomboy_condomless_sex_taboo_break(the_person):
     if the_person.knows_pregnant:

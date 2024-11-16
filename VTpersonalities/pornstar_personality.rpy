@@ -1524,6 +1524,7 @@ label pornstar_date_seduction(the_person):
                 $ mc.change_locked_clarity(20)
                 the_person "Whatever. This is crazy, but would you want to have one last drink at my place?"
                 "[the_person.possessive_title!c] 'giggles, her eyes sparkling with amusement' as she looks at you with interest."
+    return
 
 label pornstar_sex_end_early(the_person):
     if the_person.sluttiness > 50:
@@ -1574,6 +1575,7 @@ label pornstar_sex_take_control(the_person):
         the_person "I'm a dirty little slut who loves to get fucked, and I always get what I want."
         "She looks up at you, her eyes sparkling with desire."
         the_person "And what I want is to get fucked hard and cum all over your cock."
+    return
 
 label pornstar_sex_beg_finish(the_person):
     the_person "Okay, fine, [mc.name], you want to play it cool? "
