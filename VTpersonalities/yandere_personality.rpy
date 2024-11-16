@@ -2363,7 +2363,7 @@ label yandere_dual_penetration_taboo_break(the_person):
             the_person "Whew, okay, [the_person.fname], let's get wild and dirty... before I lose my mind."
             mc.name "Are you ready to unleash your inner slut?"
             the_person "Yes, let's just get it over with. I don't know what's gotten into me today... but I'm loving every moment of it."
-            "She laughs seductively and looks at mc.name with a mischievous grin."
+            "She laughs seductively and looks at you with a mischievous grin."
             the_person "Well, maybe I do... You, of course."
             mc.name "That's what I'm counting on."
             the_person "Okay, then, let's get this over with before I change my mind... again!"
