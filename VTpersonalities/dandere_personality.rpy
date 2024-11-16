@@ -281,7 +281,7 @@ label dandere_climax_responses_oral(the_person):
         "She covers her face with her hands, trying to hide her blush, and looks away, mortified, her body trembling with pleasure."
         "She goes silent, then lets out a shuddering moan, her legs start to shake uncontrollably, and she starts to whisper to herself, trying to calm down."
     return
-#
+
 label dandere_climax_responses_vaginal(the_person):
     if the_person.sluttiness > 70:
         $ the_person.call_dialogue("surprised_exclaim")

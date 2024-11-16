@@ -183,7 +183,6 @@ label alluring_sex_responses_vaginal(the_person):
             the_person "Don't stop fucking me, darling! You're going to make me cum, I can feel it building... yes, yes, yes..."
     return
 
-### DIALOGUE ###
 label alluring_sex_responses_anal(the_person):
     if the_person.energy < 10:
         call low_energy_sex_responses_anal(the_person) from alluring_call_low_energy_sex_responses_anal_10
@@ -1496,7 +1495,6 @@ label alluring_talk_busy(the_person):
         "She winks, a flirtatious glint in her eye, as she takes a step closer to you, her body swaying slightly as she moves."
     return
 
-### DIALOGUE ###
 label alluring_sex_strip(the_person):
     if the_person.sluttiness < 20:
         if the_person.arousal_perc < 50:
@@ -1842,7 +1840,6 @@ label alluring_sex_beg_finish(the_person):
     "Her voice drops to a whisper, her words dripping with desire as she pleads with you to let her cum."
     return
 
-### DIALOGUE ###
 label alluring_sex_review(the_person, the_report):
     $ comment_position = the_person.pick_position_comment(the_report)
     if comment_position is None:
@@ -2044,18 +2041,6 @@ label alluring_improved_serum_unlock(the_person):
     the_person "Then we'll just need some time and some privacy for me to see what sort of effects my orgasms will have, darling... and I think I can handle that part on my own, hmm?"
     "She winks, a flirtatious glint in her eye, as she takes a step closer to you, her body swaying slightly as she moves."
     return
-
-#
-# label alluring_improved_serum_unlock(the_person):
-#     mc.name "[the_person.title], now that you've had some time in the lab there's something I wanted to talk to you about."
-#     the_person "Okay, how can I help?"
-#     mc.name "All of our research and development up until this point has been based on the limited notes I have from my university days. I'm sure there's more we could learn, and I want you to look into it for me."
-#     "[the_person.title] smiles mischievously."
-#     the_person "Well, I've got an idea in mind. It's risky, but I think it could really push our research to a new level."
-#     mc.name "Go on, I'm interested."
-#     the_person "Our testing procedures focus on human safety, which I'll admit is important, but it doesn't leave us with much information about the subjective effects of our creations."
-#     the_person "What I want to do is take a dose of our serum myself, then have you record me while you run me through some questions."
-#     return
 
 ## Taboo break dialogue ##
 label alluring_kissing_taboo_break(the_person):
@@ -2604,7 +2589,6 @@ label alluring_anal_creampie_taboo_break(the_person):
             "She smiles, a sly smile spreading across her face as she gazes up at you with a brazen, seductive intensity."
     return
 
-### DIALOGUE ###
 label alluring_dual_penetration_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         "[the_person.possessive_title!c] gazes up at you with a sultry, confident expression, her voice barely above a whisper."

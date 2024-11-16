@@ -1055,7 +1055,6 @@ label cosplay_cum_face(the_person):
             the_person "Ugh, just get that over with already, senpai. And don't think you're getting a second chance... especially not after ruining my cosplay makeup."
             "[the_person.title] wipes away your semen, looking put off."
     return
-### DIALOGUE ###
 
 label cosplay_cum_mouth(the_person):
     if the_person.has_cum_fetish or the_person.obedience > 180:
@@ -1908,7 +1907,6 @@ label cosplay_condomless_sex_taboo_break(the_person):
             "She huffs and puffs, her cosplay outfit rustling softly."
             the_person "Fine, no condom, senpai. Just remember to pull out, got it? Good, especially since we're in our cosplay session."
     return
-### DIALOGUE ###
 
 label cosplay_underwear_nudity_taboo_break(the_person, the_clothing):
     if the_person.effective_sluttiness() > 30 - (the_person.opinion.skimpy_outfits * 5):

@@ -908,7 +908,6 @@ label bimboed_flirt_response_girlfriend(the_person):
                 "She rubs her body against yours, her hips moving seductively... She looks all happy and content, and you can see the love in her eyes."
                 the_person "But don't think you're getting off that easy... I'm going to make you work for it, got it?"
     return
-### DIALOGUE ###
 
 label bimboed_flirt_response_affair(the_person):
     # Lead in: mc.name "You look so good today [the_person.title], you're making me want to do some very naughty things to you."

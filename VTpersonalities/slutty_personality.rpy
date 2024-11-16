@@ -574,6 +574,7 @@ label slutty_flirt_response(the_person):
             the_person "Whatever. You're not unattractive, I suppose. But don't think that means I'll go easy on you. You'll have to really impress me, with your cock."
             the_person "You'll have to really impress me though, I have high standards. But maybe you can meet them, if you're good enough."
     return
+
 label slutty_flirt_response_employee_uniform_low(the_person):
     if the_person.is_wearing_forced_uniform:
         the_person "Hmph, I suppose you like seeing me in this uniform... I mean, I'm practically naked and ready to be fucked!"

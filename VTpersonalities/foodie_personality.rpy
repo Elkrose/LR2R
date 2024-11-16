@@ -115,9 +115,7 @@ label foodie_sex_responses_oral(the_person):
                 the_person "Mmm, maybe I should let you serve me more often... when [the_person.so_title] isn't around to spoil the broth, of course."
         else:
             the_person "Ugh, fine, but don't think I'm going to ask for seconds... or thirds, for that matter."
-return
-
-### DIALOGUE ###
+    return
 
 label foodie_sex_responses_vaginal(the_person):
     if the_person.energy < 10:
@@ -778,7 +776,6 @@ label foodie_flirt_response_high(the_person):
                 the_person "Oh, you're not going to take advantage of me right now, are you? Fine, be that way, like a chef who's just been told to remake a dish."
                 "[the_person.title] pouts, clearly enjoying the flirtation, like a diner who's just been served a new dessert."
     return
-### DIALOGUE ###
 
 label foodie_flirt_response_low_energy(the_person):
     if the_person.sluttiness > 40:
@@ -1876,7 +1873,6 @@ label foodie_anal_sex_taboo_break(the_person):
             mc.name "Alright, let's get... started then, like a chef who's just been given a new ingredient to work with."
             the_person "Hurry up, I'm... ready when you are, like a diner who's just been served a perfect meal."
     return
-### DIALOGUE ###
 
 label foodie_condomless_sex_taboo_break(the_person):
     if the_person.knows_pregnant:

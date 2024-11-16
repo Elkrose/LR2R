@@ -1556,6 +1556,7 @@ label vt_wild_sex_strip(the_person):
         else:
             "[the_person.title] moans with frustration as she rips off her clothes, her eyes blazing with desire."
             the_person "Ugh, get this off me! I want to feel your skin against mine, now!"
+    return
 
 label vt_wild_sex_watch(the_person, the_sex_person, the_position):
     $ title = the_person.title if not the_person.is_stranger else "The stranger"
