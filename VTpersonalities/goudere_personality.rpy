@@ -645,7 +645,7 @@ label goudere_flirt_response_high(the_person):
     if mc.location.person_count > 1 and the_person.effective_sluttiness() < (25 - (5*the_person.opinion.public_sex)): # There are other people here, if she's not slutty she asks if you want to find somewhere quiet
         the_person "... to have me? Oh my dear [mc.name], I must say that your boldness is quite... appealing. *smirks*"
         the_person "But, as much as I would love to indulge in such desires with you, we must be mindful of our surroundings."
-        th_person "Perhaps we could find a more private location where we can truly let our passions run wild?"
+        the_person "Perhaps we could find a more private location where we can truly let our passions run wild?"
         "She winks then glances around before smiling mischievously."
         the_person "What do you say, my sweet [mc.name]?"
         menu:
