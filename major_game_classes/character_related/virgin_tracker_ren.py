@@ -212,7 +212,7 @@ class VTStatTracker(StatTracker):
     #### total girlfriend slaves
     @property
     def slaves_girlfriends(self) -> int:
-        return sum(1 for x in list_of_people if x.is_slave and x.is_girlfriend and not x.is_family and not x.is_affair)
+        return sum(1 for x in list_of_people if x.is_slave and x.is_girlfriend and not x.is_family and not x.is_affair and not x.has_role(harem_role))
     #### total paramour slaves
     @property
     def slaves_paramour(self) -> int:
@@ -229,7 +229,7 @@ class VTStatTracker(StatTracker):
     #### famila poly slaves
     @property
     def slaves_polyfamilia(self) -> int:
-        return sum(1 for x in list_of_people if x.is_slave and x.is_family and x.has_role(harem_role))
+        return sum(1 for x in list_of_people if x.is_slave and x.has_role(harem_role))
 
     @property
     def number_of_sucking_cock_broken(self) -> int:
