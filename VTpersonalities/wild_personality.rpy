@@ -2430,7 +2430,7 @@ label vt_wild_bare_pussy_taboo_break(the_person, the_clothing):
             the_person "You're such a charmer. Of course you can... but don't think this means I'm going to let you do whatever you want."
         else:
             mc.name "Yep, I am. I've already felt your pussy up, I want to get a look at it now."
-            "[the_person.title] rolls her eyes, her expression playful.]"
+            "[the_person.title] rolls her eyes, her expression playful."
             the_person "Oh you're such a charmer. Alright then, what are you waiting for? Get to it, and don't disappoint me."
     return
 
@@ -2506,7 +2506,7 @@ label vt_wild_creampie_taboo_break(the_person):
         elif the_person.has_significant_other:
             "[the_person.title] looks up at you with a stern expression, her eyes flashing with anger."
             the_person "Did you really just creampie me after I told you to pull out? God, I'm such a terrible [the_person.so_girl_title]... and you're not much better."
-            "[She sighs unhappily, her body language screaming 'I'm not happy about this'.]"
+            "She sighs unhappily, her body language screaming 'I'm not happy about this'."
             the_person "Maybe next time I'll make you wear a condom as punishment... and maybe next time you'll actually listen to me."
 
         elif the_person.opinion.creampies < 0:
@@ -2516,7 +2516,7 @@ label vt_wild_creampie_taboo_break(the_person):
         else:
             "[the_person.title] looks up at you with a frustrated expression, her eyes flashing with irritation."
             the_person "Hey, I said to pull out! What's wrong with you, can't you even follow simple instructions?"
-            "[She sighs unhappily, her body language screaming 'I'm not happy about this'.]"
+            "She sighs unhappily, her body language screaming 'I'm not happy about this'."
             the_person "Whatever, can you at least try to pull out next time? I don't want to have to deal with this again... and I don't think you do either."
     return
 
