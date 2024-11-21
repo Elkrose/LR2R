@@ -124,15 +124,15 @@ screen VTMOD_setup_ui():
                                                 xsize 50
                                                 ysize 50
                                                 text VTSettingsicon style "VTtextbutton_icon_style"
-                                            vbox:
-                                                xsize 50
-                                                ysize 50
-                                                text (str(getattr(persistent, str(VT_Settings[pref][pref_opt][1]), "1"))) style "VTtextbutton_text_style"
-                                            vbox:
-                                                xsize 60
-                                                ysize 50
-                                                yoffset 5
-                                                text (str(getattr(persistent, str(VT_Settings[pref][pref_opt][0]), '1'))) style "VTmenu_text_style" xsize 100
+                                            # vbox:
+                                                # xsize 50
+                                                # ysize 50
+                                                # text (str(getattr(persistent, str(VT_Settings[pref][pref_opt][1]), "1"))) style "VTtextbutton_text_style"
+                                            # vbox:
+                                                # xsize 60
+                                                # ysize 50
+                                                # yoffset 5
+                                                # text (str(getattr(persistent, str(VT_Settings[pref][pref_opt][0]), '1'))) style "VTmenu_text_style" xsize 100
                                             vbox:
                                                 xsize 300
                                                 ysize 50

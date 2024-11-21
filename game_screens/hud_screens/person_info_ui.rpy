@@ -1620,17 +1620,27 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         else:
             if person.sexy_opinions.get("vaginal sex")[1]==True:
                 if person.has_breeding_fetish:
-                    
-                    if person.days_since_event("LastBreedingFetish") > 10 and not person.is_pregnant and person.vaginal_cum == 0:
-                        $ VTbreedfetishtt = f"{{image=triskelion_token_small}} MMmmMm going to need another \nyummy creampie filling soon!"
+                    if person.days_since_event("LastBreedingFetish") > 10 and not person.is_pregnant:
+                        if person.vaginal_cum == 0:
+                            $ VTbreedfetishtt = f"{{image=triskelion_token_small}} MMmmMm going to need another \nyummy creampie filling soon!"
+                        else:
+                            $ VTbreedfetishtt = f"{{image=triskelion_token_small}} MMmmMm feeling your seed inside me, might get pregnant!"
                     else:
-                        if person.is_pregnant or person.vaginal_cum > 0:
+                        if person.is_pregnant:
                             $ VTbreedfetishst = "creamcherry"
                             $ VTbreedfetishtt = "*fetish 'full'filled*"
                             $ VTbreedfetishtt += f"\n{{image=creamcherry_small}} MMmmMmmm my womb is happy."
                         else:
-                            $ VTbreedfetishst = "vtcherries"
-                            $ VTbreedfetishtt = "Breed me! Fill my baby room full of your cum!"
+                            if person.vaginal_cum > 0:
+                                $ VTbreedfetishst = "creamcherry"
+                                $ VTbreedfetishtt = "*fetish 'full'filled*"
+                                $ VTbreedfetishtt += f"\n{{image=creamcherry_small}} MMmmMmmm give me more!"
+                            else:
+                                $ VTbreedfetishst = "vtcherries"
+                            if not person.is_pregnant:
+                                $ VTbreedfetishtt += f"\n{{image=creamcherry_small}} Breed me! Flood my womb full of your cum!"
+                            else:
+                                $ VTbreedfetishtt += f"\n{{image=creamcherry_small}} Flood my womb full of your cum!"
                 else:
                     if person.vaginal_sex_skill >= 5 and person.opinion.vaginal_sex >= 2  and person.opinion.creampies >= 2 and person.known_opinion("creampies"):
                         $ VTbreedfetishst = "openvag"
@@ -1703,19 +1713,19 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if person.vaginal_cum == 1:
                     if person.hymen <=1:
                         $ VTbreedfetishst = "vaghymen"
-                        $ VTbreedfetishtt = f"{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh"+VTbreedfertile+VTpro+" womb with your seed."
+                        $ VTbreedfetishtt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} You marked her fresh"+VTbreedfertile+VTpro+" womb with your seed."
                     else:
-                        $ VTbreedfetishtt = f"{{image=beezee_token_small}} Your seed is in her"+VTbreedfertile+VTpro+" womb."
+                        $ VTbreedfetishtt += f"\n{{image=beezee_token_small}} Your seed is in her"+VTbreedfertile+VTpro+" womb."
                 else:
                     if person.hymen <=1:
                         $ VTbreedfetishst = "vaghymen"
-                        $ VTbreedfetishtt = f"{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh"+VTbreedfertile+VTpro+" womb with "+str(person.vaginal_cum)+ " doses of your seed."
+                        $ VTbreedfetishtt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh"+VTbreedfertile+VTpro+" womb with "+str(person.vaginal_cum)+ " doses of your seed."
                     else:
                         if person.vaginal_cum <3:
                             $ VTbreedfetishst = "openvag"
                         else:
                             $ VTbreedfetishst = "ahegaovag"
-                        $ VTbreedfetishtt = f"{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her"+VTbreedfertile+VTpro+" womb."+daysince
+                        $ VTbreedfetishtt += f"\n{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her"+VTbreedfertile+VTpro+" womb."+daysince
             imagebutton:
                 pos(829, 166)
                 idle VTbreedfetishst
