@@ -708,7 +708,7 @@ label breeder_flirt_response_employee_uniform_mid(the_person):
 label breeder_flirt_response_low(the_person):
     #She's in her own outfit.
     the_person "Hmph, I suppose this outfit doesn't make me look like a complete breeding failure."
-    $ the_person.draw_person(position = "striking_a_pose")
+    $ the_person.draw_person(position = "back_peek")
     $ mc.change_locked_clarity(5)
     "She strikes a pose, showing off her curves and gives you a sly smile as she bats her eyelashes at you."
     the_person "I mean, I guess it's not too bad for a breeding machine like me, right?"
