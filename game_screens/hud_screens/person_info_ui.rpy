@@ -1,4 +1,4 @@
-# Override default person_info_ui screen by VREN to show extra information about character
+# Override default person_info_ui screen by Elkrose to show extra information about character
 init 900 python in vt_store:
     DEBUG = True
 
@@ -964,7 +964,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ VTvaginalst = "spreadvag"
                         $ VTvaginalcondom = " bare "
                         if mc.condom == True:
-                           $ VTvaginalcondom = " wrapped "
+                            $ VTvaginalcondom = " wrapped "
                         $ VTvaginaltt = f"{{image=spreadvag_small}} You fuck her juicy"+VTbreedfertile+VTpro+" pussy with your"+VTvaginalcondom+"cock."
                 else:
                     $ VTvaginalat ="sexualized"
@@ -1421,7 +1421,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ VTcumfetishst = "openmouth"
                         $ VTcumfetishtt = f"{{image=progress_token_small}} Likes your cum! EVERYWHERE!"
                         if person.cum_exposure_count>=19:
-                             $ VTcumfetishtt += f"\n{{image=creamcherry_small}} Natural Oral fetish event will trigger soon!"
+                            $ VTcumfetishtt += f"\n{{image=creamcherry_small}} Natural Oral fetish event will trigger soon!"
                         else:
                             $ VTcumfetishtt += f"\n{{image=triskelion_token_small}} Feed her, spray her, or fill her\n with your cum "+ str(19 - person.cum_exposure_count)+" more times!"
                     else:
@@ -1823,17 +1823,17 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 $ VTcreampiett += f"\n{{image=dislike_small}} She hates anal creampies!"
                             else:
                                 if person.opinion.anal_creampies == 0:
-                                     $ VTcreampiett += f"\n{{image=knowpeach_small}} She is indifferent to anal creampies!"
+                                    $ VTcreampiett += f"\n{{image=knowpeach_small}} She is indifferent to anal creampies!"
                                 else:
-                                     $ VTcreampiett += f"\n{{image=dislike_small}} She doesn't like anal creampies!"
+                                    $ VTcreampiett += f"\n{{image=dislike_small}} She doesn't like anal creampies!"
                         if (person.known_opinion("creampies") and person.opinion.creampies <1):
                             if person.opinion.creampies ==-2:
                                 $ VTcreampiett += f"\n{{image=dislike_small}} She hates vaginal creampies!"
                             else:
                                 if person.opinion.creampies == 0:
-                                     $ VTcreampiett += f"\n{{image=knowpeach_small}} She is indifferent to vaginal creampies!"
+                                    $ VTcreampiett += f"\n{{image=knowpeach_small}} She is indifferent to vaginal creampies!"
                                 else:
-                                     $ VTcreampiett += f"\n{{image=dislike_small}} She doesn't like vaginal creampies!"
+                                    $ VTcreampiett += f"\n{{image=dislike_small}} She doesn't like vaginal creampies!"
                 else:
                     $ VTcreampiest = "knowpeach"
                     $ VTcreampiett = f"{{image=question_mark_small}} Does she like creampies?"

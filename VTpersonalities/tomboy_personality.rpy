@@ -1256,7 +1256,7 @@ label tomboy_cum_vagina(the_person):
             "She rolls her eyes and looks at you with a slightly playful expression."
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Well, well, well... Look at you go! I guess it's a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.so_name] that it was someone else's... Ugh, why do you have to be so frustrating, okay?"
+                the_person "Well, well, well... Look at you go! I guess it's a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.SO_name] that it was someone else's... Ugh, why do you have to be so frustrating, okay?"
                 "She throws up her hands and looks at you with a slightly exasperated expression."
             else:
                 if the_person.knows_pregnant:
@@ -1275,7 +1275,7 @@ label tomboy_cum_vagina(the_person):
                 "She looks at you with a slightly playful expression, her eyes sparkling with amusement."
         else:
             if the_person.has_significant_other:
-                the_person "You really know how to make a girl feel special, don't you? But let's keep this between us, okay? I don't think [the_person.so_name] would understand... or care, for that matter."
+                the_person "You really know how to make a girl feel special, don't you? But let's keep this between us, okay? I don't think [the_person.SO_name] would understand... or care, for that matter."
                 "She looks at you with a slightly serious expression, her eyes narrowed slightly."
             else:
                 the_person "Wow... I guess I didn't expect that from you. But I have to admit, it was kind of nice... Just don't get any ideas, okay? I'm not ready for anything serious or anything."
@@ -1286,7 +1286,7 @@ label tomboy_cum_vagina(the_person):
             "She throws up her hands and looks at you with a slightly exasperated expression."
         elif not the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Oh, great. Just what I needed. You forgot to pull out, and now I'm going to have to deal with [the_person.so_name]'s anger... again, probably."
+                the_person "Oh, great. Just what I needed. You forgot to pull out, and now I'm going to have to deal with [the_person.SO_name]'s anger... again, probably."
                 "She rolls her eyes and looks at you with a slightly annoyed expression."
             else:
                 the_person "Oh fuck, I said to pull out! I'm not on the pill [the_person.mc_title], what happens if I get pregnant, huh?"
@@ -1297,7 +1297,7 @@ label tomboy_cum_vagina(the_person):
             the_person "Unbelievable! I told you to pull out, and now you've gone and made a mess... What a pain in the ass, okay?"
             "She throws up her hands and looks at you with a slightly exasperated expression."
         elif the_person.has_significant_other:
-            the_person "You're really going to make me tell [the_person.so_name] about this, aren't you? Fine, I'll deal with it. Just be more careful next time, okay?"
+            the_person "You're really going to make me tell [the_person.SO_name] about this, aren't you? Fine, I'll deal with it. Just be more careful next time, okay?"
             $ the_person.update_birth_control_knowledge()
             the_person "I don't want to have to make you wear a condom, so be a little more careful next time, got it?"
             "She looks at you with a slightly serious expression, her eyes narrowed slightly."
@@ -2264,7 +2264,7 @@ label tomboy_creampie_taboo_break(the_person):
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
                 the_person "Oh my god, I'm such a horrible [the_person.so_girl_title]! But I needed this so badly, okay?"
-                the_person "Maybe if we're lucky, my [the_person.so_name] won't find out and freak out on me."
+                the_person "Maybe if we're lucky, my [the_person.SO_name] won't find out and freak out on me."
                 "She looks at you with a mischievous grin, a hint of excitement in her eyes."
             else:
                 the_person "Oh my god, I needed this so badly! Ah... I guess I'll just have to deal with the consequences, huh?"
@@ -2272,7 +2272,7 @@ label tomboy_creampie_taboo_break(the_person):
         elif the_person.effective_sluttiness() > 75 or the_person.opinion.creampies > 0:
             if the_person.has_significant_other:
                 the_person "You want to get me pregnant? Fine, I suppose it's about time someone knocked me up, okay?"
-                the_person "Maybe my [the_person.so_name] will finally notice how unhappy I am and do something about it, huh?"
+                the_person "Maybe my [the_person.SO_name] will finally notice how unhappy I am and do something about it, huh?"
 
             else:
                 the_person "You want to get me pregnant? Fine, I suppose it's about time someone knocked me up, okay?"

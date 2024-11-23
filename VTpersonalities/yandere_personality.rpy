@@ -444,7 +444,7 @@ label yandere_sex_angry_reject(the_person):
     if the_person.has_significant_other:
         the_person "What? I have a [the_person.so_title], so you can forget about doing anything like that. Ever."
         "Her eyes flash with a dangerous intensity, and she takes a step closer to you."
-        mc.name "I'll make sure you never touch another man, especially not [the_person.so_name]."
+        mc.name "I'll make sure you never touch another man, especially not [the_person.SO_name]."
         "She leans in close, a cold smile spreading across her face."
         the_person "You should be grateful I'm even talking to you."
         "[the_person.title] glares at you, then walks away."

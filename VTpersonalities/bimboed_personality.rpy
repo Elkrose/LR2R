@@ -1240,7 +1240,7 @@ label bimboed_cum_vagina(the_person):
 
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Well, well, well... Look at you go! I guess it's, like, a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.so_name] that it was, like, someone else's... Ugh, why do you have to be so frustrating, okay?"
+                the_person "Well, well, well... Look at you go! I guess it's, like, a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.SO_name] that it was, like, someone else's... Ugh, why do you have to be so frustrating, okay?"
                 "She looks up at you with big, playful eyes, still looking all cute and adorable."
 
             else:
@@ -1264,7 +1264,7 @@ label bimboed_cum_vagina(the_person):
 
         else:
             if the_person.has_significant_other:
-                the_person "You really know how to, like, make a girl feel special, don't you? But let's, like, keep this between us, okay? I don't think [the_person.so_name] would, like, understand or anything, okay?"
+                the_person "You really know how to, like, make a girl feel special, don't you? But let's, like, keep this between us, okay? I don't think [the_person.SO_name] would, like, understand or anything, okay?"
                 "She looks up at you with big, worried eyes, still looking all cute and adorable."
 
             else:
@@ -1278,7 +1278,7 @@ label bimboed_cum_vagina(the_person):
 
         elif not the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Oh, great... Just what I needed... You forgot to pull out, and now I'm going to have to, like, deal with [the_person.so_name]'s anger, okay?"
+                the_person "Oh, great... Just what I needed... You forgot to pull out, and now I'm going to have to, like, deal with [the_person.SO_name]'s anger, okay?"
                 if the_person.kids > 0:
                     the_person "... Again, okay?"
                 "She looks up at you with big, worried eyes, still looking all cute and adorable."
@@ -1294,7 +1294,7 @@ label bimboed_cum_vagina(the_person):
             "She rolls her eyes and looks away, still looking all cute and playful."
 
         elif the_person.has_significant_other:
-            the_person "You're, like, really going to make me tell [the_person.so_name] about this, aren't you? Fine, I'll deal with it... Just be more careful next time, okay?"
+            the_person "You're, like, really going to make me tell [the_person.SO_name] about this, aren't you? Fine, I'll deal with it... Just be more careful next time, okay?"
             $ the_person.update_birth_control_knowledge()
             the_person "I don't want to have to, like, make you wear a condom or anything... So be a little more careful next time, got it?"
             "She looks up at you with big, serious eyes, still looking all cute and adorable."
@@ -2240,7 +2240,7 @@ label bimboed_creampie_taboo_break(the_person):
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
                 the_person "Oh my god, like, I'm such a horrible [the_person.so_girl_title], okay? But I, like, needed this so badly, okay?"
-                the_person "Maybe if we're, like, lucky, my [the_person.so_name] won't find out, okay?"
+                the_person "Maybe if we're, like, lucky, my [the_person.SO_name] won't find out, okay?"
                 "She looks at you with a mischievous grin, still looking all cute and adorable."
             else:
                 the_person "Oh my god, like, I needed this so badly, okay! Ah... I guess I'll, like, just have to deal with the consequences, okay?"
@@ -2248,7 +2248,7 @@ label bimboed_creampie_taboo_break(the_person):
         elif the_person.effective_sluttiness() > 75 or the_person.opinion.creampies > 0:
             if the_person.has_significant_other:
                 the_person "You, like, want to get me pregnant, okay? Fine, I suppose it's, like, about time someone knocked me up, okay?"
-                the_person "Maybe my [the_person.so_name] will, like, finally notice how unhappy I am and do something about it, okay?"
+                the_person "Maybe my [the_person.SO_name] will, like, finally notice how unhappy I am and do something about it, okay?"
 
             else:
                 the_person "You, like, want to get me pregnant, okay? Fine, I suppose it's, like, about time someone knocked me up, okay?"
