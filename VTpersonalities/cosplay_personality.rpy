@@ -1147,7 +1147,7 @@ label cosplay_cum_vagina(the_person):
             the_person "Oh, stop being so dramatic, senpai! Of course you're not going to get me pregnant, I'm infertile, remember? But seriously, your cum is pretty great... just don't expect me to admit it to anyone else, especially not in the cosplay community."
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Well, well, well... Look at you go, senpai! I guess it's a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.so_name] that it was someone else's... Ugh, why do you have to be so frustrating, especially when we're in cosplay?"
+                the_person "Well, well, well... Look at you go, senpai! I guess it's a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.SO_name] that it was someone else's... Ugh, why do you have to be so frustrating, especially when we're in cosplay?"
             else:
                 if the_person.knows_pregnant:
                     the_person "Oh fuck that's a lot of cum, senpai. Good thing I'm already pregnant, because I don't think you're firing blanks... and I love the way you look at me when I'm in cosplay."
@@ -1163,7 +1163,7 @@ label cosplay_cum_vagina(the_person):
                 the_person "Ugh, fine... I'll admit it, senpai, you're pretty amazing when you're like this... But don't think this means I'm going to start begging for more! I just need to... process this, okay, especially when it comes to our cosplay relationship."
         else:
             if the_person.has_significant_other:
-                the_person "You really know how to make a girl feel special, don't you, senpai? But let's keep this between us, okay? I don't think [the_person.so_name] would understand, especially when it comes to our cosplay activities."
+                the_person "You really know how to make a girl feel special, don't you, senpai? But let's keep this between us, okay? I don't think [the_person.SO_name] would understand, especially when it comes to our cosplay activities."
             else:
                 the_person "Wow... I guess I didn't expect that from you, senpai. But I have to admit, it was kind of nice... Just don't get any ideas, okay? I'm not ready for anything serious, especially when it comes to cosplay."
     else: #She's angry
@@ -1171,7 +1171,7 @@ label cosplay_cum_vagina(the_person):
             the_person "Ugh, what is wrong with you, senpai? I specifically told you not to do that! Oh well, since I'm already pregnant... I guess we'll just have to deal with it, especially in the cosplay community."
         elif not the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Oh, great. Just what I needed, senpai. You forgot to pull out, and now I'm going to have to deal with [the_person.so_name]'s anger... and the fallout in the cosplay community."
+                the_person "Oh, great. Just what I needed, senpai. You forgot to pull out, and now I'm going to have to deal with [the_person.SO_name]'s anger... and the fallout in the cosplay community."
                 if the_person.kids > 0:
                     the_person "... Again, senpai."
             else:
@@ -1181,7 +1181,7 @@ label cosplay_cum_vagina(the_person):
         elif the_person.is_infertile:
             the_person "Unbelievable, senpai! I told you to pull out, and now you've gone and made a mess... What a pain in the ass, especially when we're in cosplay."
         elif the_person.has_significant_other:
-            the_person "You're really going to make me tell [the_person.so_name] about this, aren't you, senpai? Fine, I'll deal with it. Just be more careful next time, especially during cosplay."
+            the_person "You're really going to make me tell [the_person.SO_name] about this, aren't you, senpai? Fine, I'll deal with it. Just be more careful next time, especially during cosplay."
             $ the_person.update_birth_control_knowledge()
             the_person "I don't want to have to make you wear a condom, senpai, so be a little more careful next time... especially during our cosplay activities."
         elif the_person.opinion.creampies < 0:
@@ -2027,7 +2027,7 @@ label cosplay_creampie_taboo_break(the_person):
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
                 the_person "Oh my god, I'm such a horrible [the_person.so_girl_title], senpai! But I needed this so badly, especially since we're in our cosplay roles."
-                the_person "Maybe if we're lucky, my [the_person.so_name] won't find out, especially since we're keeping this a secret from our cosplay friends."
+                the_person "Maybe if we're lucky, my [the_person.SO_name] won't find out, especially since we're keeping this a secret from our cosplay friends."
                 "She looks at you with a mischievous grin, her cosplay outfit rustling softly."
             else:
                 the_person "Oh my god, I needed this so badly, senpai! Ah... I guess I'll just have to deal with the consequences, especially since we're in our cosplay session."
@@ -2035,7 +2035,7 @@ label cosplay_creampie_taboo_break(the_person):
         elif the_person.effective_sluttiness() > 75 or the_person.opinion.creampies > 0:
             if the_person.has_significant_other:
                 the_person "You want to get me pregnant, senpai? Fine, I suppose it's about time someone knocked me up, especially since we're in our cosplay roles."
-                the_person "Maybe my [the_person.so_name] will finally notice how unhappy I am and do something about it, especially since we're in our cosplay session."
+                the_person "Maybe my [the_person.SO_name] will finally notice how unhappy I am and do something about it, especially since we're in our cosplay session."
 
             else:
                 the_person "You want to get me pregnant, senpai? Fine, I suppose it's about time someone knocked me up, especially since we're in our cosplay session."

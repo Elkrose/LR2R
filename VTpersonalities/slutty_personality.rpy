@@ -1205,7 +1205,7 @@ label slutty_cum_vagina(the_person):
             the_person "Oh, stop being so dramatic! Of course you're not going to get me pregnant, I'm infertile, remember? But seriously, your cum is pretty great... just don't expect me to admit it to anyone else, you dirty little slut!"
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Well, well, well... Look at you go! I guess it's a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.so_name] that it was someone else's... Ugh, why do you have to be so frustrating, you dirty little tease?"
+                the_person "Well, well, well... Look at you go! I guess it's a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.SO_name] that it was someone else's... Ugh, why do you have to be so frustrating, you dirty little tease?"
             else:
                 if the_person.knows_pregnant:
                     the_person "Oh fuck that's a lot of cum. Good thing I'm already pregnant, because I don't think you're firing blanks... and I love every minute of it, you dirty little animal!"
@@ -1221,7 +1221,7 @@ label slutty_cum_vagina(the_person):
                 the_person "Ugh, fine... I'll admit it, you're pretty amazing when you're like this... But don't think this means I'm going to start begging for more! I just need to... process this, okay, you dirty little animal?"
         else:
             if the_person.has_significant_other:
-                the_person "You really know how to make a girl feel special, don't you? But let's keep this between us, okay? I don't think [the_person.so_name] would understand... but maybe I wish they did, you dirty little tease!"
+                the_person "You really know how to make a girl feel special, don't you? But let's keep this between us, okay? I don't think [the_person.SO_name] would understand... but maybe I wish they did, you dirty little tease!"
             else:
                 the_person "Wow... I guess I didn't expect that from you. But I have to admit, it was kind of nice... Just don't get any ideas, okay? I'm not ready for anything serious, but maybe I'm ready for something dirty and slutty!"
     else:
@@ -1229,7 +1229,7 @@ label slutty_cum_vagina(the_person):
             the_person "Ugh, what is wrong with you? I specifically told you not to do that! Oh well, since I'm already pregnant... I guess I'll just have to deal with it, you dirty little fucker!"
         elif not the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Oh, great. Just what I needed. You forgot to pull out, and now I'm going to have to deal with [the_person.so_name]'s anger... and maybe even my own anger, you dirty little slut!"
+                the_person "Oh, great. Just what I needed. You forgot to pull out, and now I'm going to have to deal with [the_person.SO_name]'s anger... and maybe even my own anger, you dirty little slut!"
                 if the_person.kids > 0:
                     the_person "... Again, you dirty little repeat offender!"
             else:
@@ -1239,7 +1239,7 @@ label slutty_cum_vagina(the_person):
         elif the_person.is_infertile:
             the_person "Unbelievable! I told you to pull out, and now you've gone and made a mess... What a pain in the ass, you dirty little slut!"
         elif the_person.has_significant_other:
-            the_person "You're really going to make me tell [the_person.so_name] about this, aren't you? Fine, I'll deal with it. Just be more careful next time, you dirty little tease!"
+            the_person "You're really going to make me tell [the_person.SO_name] about this, aren't you? Fine, I'll deal with it. Just be more careful next time, you dirty little tease!"
             $ the_person.update_birth_control_knowledge()
             the_person "I don't want to have to make you wear a condom, so be a little more careful next time, you dirty little fucker!"
         elif the_person.opinion.creampies < 0:
@@ -2113,7 +2113,7 @@ label slutty_creampie_taboo_break(the_person):
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
                 the_person "Oh my god, I'm such a horrible [the_person.so_girl_title]! But I needed this so badly. I needed to feel your cum inside me, and I needed to feel like a dirty little slut."
-                the_person "Maybe if we're lucky, my [the_person.so_name] won't find out. But even if they do, I don't care. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
+                the_person "Maybe if we're lucky, my [the_person.SO_name] won't find out. But even if they do, I don't care. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
                 "She looks at you with a mischievous grin, her eyes sparkling with excitement."
 
             else:
@@ -2123,7 +2123,7 @@ label slutty_creampie_taboo_break(the_person):
         elif the_person.effective_sluttiness() > 75 or the_person.opinion.creampies > 0:
             if the_person.has_significant_other:
                 the_person "You want to get me pregnant? Fine, I suppose it's about time someone knocked me up. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
-                the_person "Maybe my [the_person.so_name] will finally notice how unhappy I am and do something about it. But even if they don't, I don't care. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
+                the_person "Maybe my [the_person.SO_name] will finally notice how unhappy I am and do something about it. But even if they don't, I don't care. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."
 
             else:
                 the_person "You want to get me pregnant? Fine, I suppose it's about time someone knocked me up. I'm a dirty little slut who loves to get fucked, and I'm not going to apologize for it."

@@ -1313,7 +1313,7 @@ label breeder_cum_vagina(the_person):
             "She spreads her legs wide, exposing her glistening pussy as she invites you to admire your handiwork."
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Well, well, well... Look at you go! I guess it's a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.so_name] that it was someone else's... Ugh, why do you have to be so frustrating?"
+                the_person "Well, well, well... Look at you go! I guess it's a good thing I'm on the pill, huh? Or maybe I'll just tell [the_person.SO_name] that it was someone else's... Ugh, why do you have to be so frustrating?"
                 "She rolls her eyes, a sly smile spreading across her face as she teases you about your virility."
             else:
                 the_person "Oh my, that's quite a load you've deposited inside me... I can feel it dripping out of my pussy, a constant reminder of our breeding session."
@@ -1331,7 +1331,7 @@ label breeder_cum_vagina(the_person):
             "She rolls her eyes, a scowl spreading across her face as she chastises you for your lack of self-control."
         elif not the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Oh, great. Just what I needed. You forgot to pull out, and now I'm going to have to deal with [the_person.so_name]'s anger."
+                the_person "Oh, great. Just what I needed. You forgot to pull out, and now I'm going to have to deal with [the_person.SO_name]'s anger."
                 if the_person.kids > 0:
                     the_person "... Again."
                 "She sighs, a frustrated expression spreading across her face as she contemplates the consequences of your actions."
@@ -1344,7 +1344,7 @@ label breeder_cum_vagina(the_person):
             the_person "Unbelievable! I told you to pull out, and now you've gone and made a mess... What a pain in the ass..."
             "She scowls, a frustrated expression spreading across her face as she contemplates the inconvenience of your actions."
         elif the_person.has_significant_other:
-            the_person "You're really going to make me tell [the_person.so_name] about this, aren't you? Fine, I'll deal with it. Just be more careful next time."
+            the_person "You're really going to make me tell [the_person.SO_name] about this, aren't you? Fine, I'll deal with it. Just be more careful next time."
             $ the_person.update_birth_control_knowledge()
             the_person "I don't want to have to make you wear a condom, so be a little more careful next time."
             "She raises an eyebrow, a warning expression spreading across her face as she cautions you against future mistakes."

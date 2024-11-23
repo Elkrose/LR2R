@@ -1158,7 +1158,7 @@ label foodie_cum_vagina(the_person):
             the_person "Oh, stop being so dramatic! Of course you're not going to get me... pregnant, I'm... barren, remember? But seriously, your... sauce is pretty great... just don't expect me to admit it to anyone else, like a chef who's just been given a new ingredient to work with!"
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Well, well, well... Look at you go! I guess it's a good thing I'm on the... pill, huh? Or maybe I'll just tell [the_person.so_name] that it was someone else's... Ugh, why do you have to be so... frustrating, like a chef who's just been told to remake a dish?"
+                the_person "Well, well, well... Look at you go! I guess it's a good thing I'm on the... pill, huh? Or maybe I'll just tell [the_person.SO_name] that it was someone else's... Ugh, why do you have to be so... frustrating, like a chef who's just been told to remake a dish?"
             else:
                 if the_person.knows_pregnant:
                     the_person "Oh mon dieu that's a lot of... sauce. Good thing I'm already... pregnant, because I don't think you're firing blanks, like a chef who's just been given a new ingredient to work with."
@@ -1174,7 +1174,7 @@ label foodie_cum_vagina(the_person):
                 the_person "Ugh, fine... I'll admit it, you're pretty... amazing when you're like this... But don't think this means I'm going to start begging for more! I just need to... savor this moment, okay, like a diner who's just been served a perfect meal?"
         else:
             if the_person.has_significant_other:
-                the_person "You really know how to make a girl feel... special, don't you? But let's keep this between us, okay? I don't think [the_person.so_name] would understand, like a chef who's just been told to keep a secret ingredient secret."
+                the_person "You really know how to make a girl feel... special, don't you? But let's keep this between us, okay? I don't think [the_person.SO_name] would understand, like a chef who's just been told to keep a secret ingredient secret."
             else:
                 the_person "Wow... I guess I didn't expect that from you. But I have to admit, it was kind of... nice... Just don't get any ideas, okay? I'm not ready for anything... serious, like a diner who's just been served a dish they didn't order."
     else: #She's angry
@@ -1182,7 +1182,7 @@ label foodie_cum_vagina(the_person):
             the_person "Ugh, what is wrong with you? I specifically told you not to do that! Oh well, since I'm already... pregnant, like a chef who's just been given a new ingredient to work with..."
         elif not the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Oh mon dieu, just what I needed. You forgot to... pull out, and now I'm going to have to deal with [the_person.so_name]'s... anger, like a chef who's just been told to remake a dish."
+                the_person "Oh mon dieu, just what I needed. You forgot to... pull out, and now I'm going to have to deal with [the_person.SO_name]'s... anger, like a chef who's just been told to remake a dish."
                 if the_person.kids > 0:
                     the_person "... Again, like a diner who's just been served a dish they've had before."
             else:
@@ -1192,7 +1192,7 @@ label foodie_cum_vagina(the_person):
         elif the_person.is_infertile:
             the_person "Unbelievable! I told you to... pull out, and now you've gone and made a... mess, like a pastry chef who's just made a mistake... What a pain in the... kitchen!"
         elif the_person.has_significant_other:
-            the_person "You're really going to make me tell [the_person.so_name] about this, aren't you? Fine, I'll deal with it. Just be more... careful next time, like a chef who's just been told to follow a recipe."
+            the_person "You're really going to make me tell [the_person.SO_name] about this, aren't you? Fine, I'll deal with it. Just be more... careful next time, like a chef who's just been told to follow a recipe."
             $ the_person.update_birth_control_knowledge()
             the_person "I don't want to have to make you wear a... condiment, so be a little more... careful next time, like a chef who's just been given a new ingredient to work with."
         elif the_person.opinion.creampies < 0:
@@ -2057,7 +2057,7 @@ label foodie_creampie_taboo_break(the_person):
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
                 the_person "Oh my god, I'm such a... naughty [the_person.so_girl_title]! But I needed this so... badly, like a diner who's just been served a perfect meal."
-                the_person "Maybe if we're lucky, my [the_person.so_name] won't... taste the difference, like a chef who's just been given a new ingredient to work with."
+                the_person "Maybe if we're lucky, my [the_person.SO_name] won't... taste the difference, like a chef who's just been given a new ingredient to work with."
                 "She looks at you with a... mischievous grin, like a pastry chef who's just been given a new dessert to create."
             else:
                 the_person "Oh my god, I needed this so... badly! Ah... I guess I'll just have to... savor the consequences, like a diner who's just been served a dish they didn't order."
@@ -2065,7 +2065,7 @@ label foodie_creampie_taboo_break(the_person):
         elif the_person.effective_sluttiness() > 75 or the_person.opinion.creampies > 0:
             if the_person.has_significant_other:
                 the_person "You want to... season me with your seed? Fine, I suppose it's about time someone... knocked me up, like a pastry chef who's just been given a new dessert to create."
-                the_person "Maybe my [the_person.so_name] will finally... taste the difference and do something about it, like a chef who's just been given a new ingredient to work with."
+                the_person "Maybe my [the_person.SO_name] will finally... taste the difference and do something about it, like a chef who's just been given a new ingredient to work with."
 
             else:
                 the_person "You want to... season me with your seed? Fine, I suppose it's about time someone... knocked me up, like a pastry chef who's just been given a new dessert to create."
