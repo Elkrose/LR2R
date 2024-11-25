@@ -492,7 +492,7 @@ label bimboed_compliment_response(the_person):
     else:
         the_person "Well, like, I did put in a bit of extra effort today... You're just the first one to notice, I guess. But thanks, like, I appreciate it or whatever."
         "She looks up at you with a smile, still looking kinda pleased with herself."
-    "You try to press for more information, but [the_person.possessive_title] just smiles coyly and changes the subject, leaving you wondering what's going on... She's, like, totally mysterious and stuff."
+    "You try to press for more information, but [the_person.possessive_title!c] just smiles coyly and changes the subject, leaving you wondering what's going on... She's, like, totally mysterious and stuff."
     return
 
 label bimboed_compliment_response_girlfriend(the_person):
@@ -512,7 +512,7 @@ label bimboed_compliment_response_girlfriend(the_person):
         mc.name "Oh come on, don't be like that. You know you look, like, totally amazing."
         the_person "Aww, like, stop it, [the_person.mc_title]... You're making me blush, and like, annoyed at the same time. But, like, in a good way, I guess."
         "She giggles and looks up at you with a smile, still looking kinda flustered."
-    "You chat with [the_person.possessive_title] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you... She's, like, totally sweet and adorable."
+    "You chat with [the_person.possessive_title!c] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you... She's, like, totally sweet and adorable."
     return
 
 label bimboed_compliment_response_affair(the_person):
@@ -531,7 +531,7 @@ label bimboed_compliment_response_affair(the_person):
         mc.name "Oh come on, don't be like that. You know you look, like, totally gorgeous."
         the_person "Aww, like, stop it, [the_person.mc_title]... You're making me blush, and like, a little annoyed... But, like, in a good way, I guess."
         "She giggles and looks up at you with a smile, still looking kinda flustered and adorable."
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments... She's, like, totally charmed by your attentiveness and stuff."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments... She's, like, totally charmed by your attentiveness and stuff."
     return
 
 label bimboed_flirt_response(the_person):
@@ -798,12 +798,12 @@ label bimboed_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close... She looks up at you with big, sparkling eyes, and you can see the desire in her face."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close... She looks up at you with big, sparkling eyes, and you can see the desire in her face."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "She responds with a passionate kiss, her arms wrapping around your neck, and you can feel her heart beating fast."
                 else:
-                    "You pull [the_person.possessive_title!] close and kiss her... She looks all happy and excited, and you can see the desire in her eyes."
+                    "You pull [the_person.possessive_title!c] close and kiss her... She looks all happy and excited, and you can see the desire in her eyes."
                     "She responds with a passionate kiss, her arms wrapping around your neck, and you can feel her heart beating fast."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_bimboed_flirt_response_high
@@ -843,7 +843,7 @@ label bimboed_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait? Come on, I'm sure we can find somewhere quiet... Just, like, us two, okay?"
                     the_person "You're always so eager, aren't you? Alright, let's go... But, like, don't think you're getting lucky or anything, got it?"
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot... She looks all excited and playful, and you can see the anticipation in her eyes."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot... She looks all excited and playful, and you can see the anticipation in her eyes."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_bimboed_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_bimboed_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -859,7 +859,7 @@ label bimboed_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so beautiful, then why are you just standing there? Come on, kiss me... Like, now, okay?"
             "You put your arm around her waist and pull her close, kissing her deeply... She looks all happy and excited, and you can see the love in her eyes."
-            "When you break the kiss, [the_person.possessive_title] sighs and leans against you... She looks all content and happy, and you can see the satisfaction in her eyes."
+            "When you break the kiss, [the_person.possessive_title!c] sighs and leans against you... She looks all content and happy, and you can see the satisfaction in her eyes."
             the_person "You're not so bad yourself... But, like, don't think you're getting off that easy, got it?"
             menu:
                 "Make out":
@@ -893,7 +893,7 @@ label bimboed_flirt_response_girlfriend(the_person):
                 if the_person.has_taboo("kissing"):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass... She looks all excited and playful, and you can see the anticipation in her eyes."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass... She looks all excited and playful, and you can see the anticipation in her eyes."
                 "You pull her close and kiss her sensually... She looks all happy and content, and you can see the love in her eyes."
                 "She responds by pressing her body against you and grinding her hips against your thigh... She looks all excited and playful, and you can see the anticipation in her eyes."
                 "You grab her hips and pull her closer, your crotches pressed together... She looks all happy and content, and you can see the love in her eyes."
@@ -954,7 +954,7 @@ label bimboed_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, do you want to share what all of these naughty things are? You have my attention, okay?"
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, feeling her warmth and closeness... She looks all happy and content, and you can see the love in her eyes."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, feeling her warmth and closeness... She looks all happy and content, and you can see the love in her eyes."
                 mc.name "You know, I've been waiting for this moment for, like, a while now... And I'm, like, totally excited, okay?"
                 "You massage her butt, and she blushes and pushes you away lightly, looking all cute and playful."
                 the_person "Hey, no need to be so forward! What's gotten into you, huh?"
@@ -966,7 +966,7 @@ label bimboed_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, feeling her warmth and closeness... She looks all happy and content, and you can see the love in her eyes."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, feeling her warmth and closeness... She looks all happy and content, and you can see the love in her eyes."
                 mc.name "I, like, wish I had the time... You'll have to wait until later, okay?"
                 "You massage her butt, and she sighs happily and leans her weight against you, looking all cute and adorable."
                 the_person "Aww, are you sure? I was, like, really hoping we could, you know... Do something, okay?"
@@ -1165,7 +1165,7 @@ label bimboed_cum_pullout(the_person):
                     $ use_condom = False  # prevent putting on a new condom next sex loop
 
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s request and keep the condom in place... She looks all disappointed and stuff, but still kinda cute and playful."
+                    "You ignore [the_person.possessive_title!c]'s request and keep the condom in place... She looks all disappointed and stuff, but still kinda cute and playful."
         else:
             the_person "Fuck yeah, I'm going to make you cum... That's, like, so hot, okay?"
             "She looks up at you with big, eager eyes, still looking all cute and adorable."

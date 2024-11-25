@@ -278,7 +278,7 @@ label kuudere_compliment_response(the_person):
         elif the_person.is_at_job(prostitute_job):
             the_person "Hmm, fun? I suppose we could find something to do. But don't get any wrong ideas."
     the_person "Oh, stop it. I'm fine, thank you."
-    "You chat with [the_person.possessive_title] for a while and she appreciates your concern."
+    "You chat with [the_person.possessive_title!c] for a while and she appreciates your concern."
     return
 
 label kuudere_compliment_response_girlfriend(the_person):
@@ -293,7 +293,7 @@ label kuudere_compliment_response_girlfriend(the_person):
             the_person "Ah, really? Thanks, [the_person.mc_title]. You're not looking too bad yourself."
     else:
         the_person "Aww, thank you, I'm fine. You look quite... put-together yourself..."
-    "You continue the conversation with [the_person.possessive_title], making subtle, aloof comments. She seems to appreciate your understated flattery."
+    "You continue the conversation with [the_person.possessive_title!c], making subtle, aloof comments. She seems to appreciate your understated flattery."
     return
 
 label kuudere_compliment_response_affair(the_person):
@@ -307,7 +307,7 @@ label kuudere_compliment_response_affair(the_person):
             the_person "Shh, [the_person.mc_title]... You find my work attire appealing? Perhaps we could discuss it over a quiet dinner..."
     else:
         the_person "You like this? Let's have a drink and see where the evening takes us..."
-    "You continue the conversation with [the_person.possessive_title], subtly emphasizing her attractiveness. She seems to appreciate your understated interest."
+    "You continue the conversation with [the_person.possessive_title!c], subtly emphasizing her attractiveness. She seems to appreciate your understated interest."
     return
 
 label kuudere_flirt_response(the_person):
@@ -522,12 +522,12 @@ label kuudere_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "You kiss her. She returns the kiss and presses her body against you."
                 else:
-                    "You put your arm around [the_person.possessive_title] and pull her close, leaning in to kiss her."
+                    "You put your arm around [the_person.possessive_title!c] and pull her close, leaning in to kiss her."
                     "She responds immediately, pressing her body against yours and kissing you back."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_kuudere_flirt_response_high
@@ -562,7 +562,7 @@ label kuudere_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait? Come on, I'm sure we can find somewhere quiet."
                     the_person "That eager, huh? Alright, let's go!"
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_kuudere_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_kuudere_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -570,7 +570,7 @@ label kuudere_flirt_response_girlfriend(the_person):
 
                 "Just flirt":
                     $ mc.change_locked_clarity(10)
-                    "You reach behind [the_person.possessive_title] and grab her ass, giving it a firm squeeze."
+                    "You reach behind [the_person.possessive_title!c] and grab her ass, giving it a firm squeeze."
                     mc.name "Alright, I'll be patient. This ass is worth waiting for."
                     "She wiggles her hips back against your hand."
                     the_person "Damn right it is."
@@ -578,7 +578,7 @@ label kuudere_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so beautiful then hurry up and kiss me, hot stuff."
             "You put your arm around her waist and lean close, kissing her on her lips."
-            "When you break the kiss [the_person.possessive_title] sighs happily and leans her head against your shoulder."
+            "When you break the kiss [the_person.possessive_title!c] sighs happily and leans her head against your shoulder."
             the_person "Why did you stop? I was having such a good time..."
             menu:
                 "Make out":
@@ -606,7 +606,7 @@ label kuudere_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
                 "She responds by pressing her body against you and grinding her hips against your thigh."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from _vt_kuudere_call_fuck_person_78
                 $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -664,7 +664,7 @@ label kuudere_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, do you want to share what all of these naughty things are? You have my attention."
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass."
                 mc.name "Well, first I want to get my hands all over your beautiful body."
                 "You massage her butt. She sighs happily and leans against your body."
                 the_person "What next? What do you want to do to me?"
@@ -676,7 +676,7 @@ label kuudere_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass."
                 mc.name "I wish I had the time. You'll have to wait until later."
                 "You massage her butt. She sighs happily and leans her weight against you."
                 the_person "Aww, are you sure?"
@@ -833,7 +833,7 @@ label kuudere_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False  # prevent putting on a new condom next sex loop
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s request and continue to thrust inside her."
+                    "You ignore [the_person.possessive_title!c]'s request and continue to thrust inside her."
         else:
             the_person "I'm going to make you cum... hard."
     else:

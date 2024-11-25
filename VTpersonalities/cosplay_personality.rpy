@@ -451,7 +451,7 @@ label cosplay_compliment_response(the_person):
             the_person "Oh, stop it, you're making me blush. There's no special occasion, I just felt like dressing up today... and trying out a new cosplay character."
     else:
         the_person "Well, I did put in a bit of extra effort today. You're just the first one to notice. But thanks, I guess... I'm just trying to get into character for my next cosplay project."
-    "You try to press for more information, but [the_person.possessive_title] just smiles coyly and changes the subject, leaving you wondering what's going on... and what her next cosplay project is."
+    "You try to press for more information, but [the_person.possessive_title!c] just smiles coyly and changes the subject, leaving you wondering what's going on... and what her next cosplay project is."
     return
 
 label cosplay_compliment_response_girlfriend(the_person):
@@ -468,7 +468,7 @@ label cosplay_compliment_response_girlfriend(the_person):
         the_person "Ugh, don't be ridiculous. It's just a normal day... but thanks, I guess. I'm just trying to get into character for my next cosplay project."
         mc.name "Oh come on, don't be like that. You know you look great... and your cosplay skills are amazing."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and a little annoyed at the same time. Can't you see I'm trying to focus on my cosplay?"
-    "You chat with [the_person.possessive_title] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you... and your appreciation for her cosplay skills."
+    "You chat with [the_person.possessive_title!c] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you... and your appreciation for her cosplay skills."
     return
 
 label cosplay_compliment_response_affair(the_person):
@@ -484,7 +484,7 @@ label cosplay_compliment_response_affair(the_person):
         the_person "Ugh, don't be silly. It's just a normal day... but thanks, I suppose. I'm just trying to get into character for my next cosplay project."
         mc.name "Oh come on, don't be like that. You know you look great... and your cosplay skills are amazing."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and a little annoyed. Can't you see I'm trying to focus on my cosplay?"
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments. She is quite charmed by your attentiveness... and your appreciation for her cosplay skills."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments. She is quite charmed by your attentiveness... and your appreciation for her cosplay skills."
     return
 
 label cosplay_flirt_response(the_person):
@@ -750,12 +750,12 @@ label cosplay_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close, your lips brushing against her cosplay makeup."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close, your lips brushing against her cosplay makeup."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "She responds with a passionate kiss, her arms wrapping around your neck, her cosplay outfit rustling softly."
                 else:
-                    "You pull [the_person.possessive_title!] close and kiss her, your lips brushing against her cosplay makeup."
+                    "You pull [the_person.possessive_title!c] close and kiss her, your lips brushing against her cosplay makeup."
                     "She responds with a passionate kiss, her arms wrapping around your neck, her cosplay outfit rustling softly."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_cosplay_flirt_response_high
@@ -793,7 +793,7 @@ label cosplay_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait, [the_person.fname]? Come on, I'm sure we can find somewhere quiet... and maybe even plan a cosplay photoshoot together."
                     the_person "You're always so eager, aren't you, senpai? Alright, let's go! But don't think this means I'm going to start doing 'requests' for you anytime soon."
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot to continue your cosplay adventure."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot to continue your cosplay adventure."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_cosplay_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_cosplay_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -809,7 +809,7 @@ label cosplay_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so beautiful, then why are you just standing there, senpai? Come on, kiss me... and appreciate my cosplay skills."
             "You put your arm around her waist and pull her close, kissing her deeply and appreciating her cosplay outfit."
-            "When you break the kiss, [the_person.possessive_title] sighs and leans against you, her cosplay outfit rustling softly."
+            "When you break the kiss, [the_person.possessive_title!c] sighs and leans against you, her cosplay outfit rustling softly."
             the_person "You're not so bad yourself, senpai... especially when it comes to appreciating cosplay."
             menu:
                 "Make out":
@@ -843,7 +843,7 @@ label cosplay_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, appreciating her cosplay outfit. You pull her close and kiss her sensually."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, appreciating her cosplay outfit. You pull her close and kiss her sensually."
                 "She responds by pressing her body against you and grinding her hips against your thigh, her cosplay outfit rustling softly."
                 "You grab her hips and pull her closer, your crotches pressed together, appreciating her cosplay skills."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from _vt_cosplay_call_fuck_person_78
@@ -906,7 +906,7 @@ label cosplay_flirt_response_affair(the_person):
         the_person "Oh yeah, senpai? Well then, do you want to share what all of these naughty things are? You have my attention... and I have to admit, I'm intrigued by your cosplay skills."
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, appreciating her cosplay outfit."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, appreciating her cosplay outfit."
                 mc.name "You know, I've been waiting for this moment for a while now, [the_person.fname]. You're really talented when it comes to cosplay."
                 "You massage her butt. She blushes and pushes you away lightly, her cosplay outfit rustling softly."
                 the_person "Hey, no need to be so forward, senpai! What's gotten into you?"
@@ -918,7 +918,7 @@ label cosplay_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, appreciating her cosplay outfit."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, appreciating her cosplay outfit."
                 mc.name "I wish I had the time, [the_person.fname]. You'll have to wait until later... but I promise it'll be worth it, especially when it comes to cosplay."
                 "You massage her butt. She sighs happily and leans her weight against you, her cosplay outfit rustling softly."
                 the_person "Aww, are you sure, senpai?"
@@ -1094,7 +1094,7 @@ label cosplay_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False  # prevent putting on a new condom next sex loop
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s request and keep the condom in place, your mind focused on the cosplay experience."
+                    "You ignore [the_person.possessive_title!c]'s request and keep the condom in place, your mind focused on the cosplay experience."
         else:
             the_person "Fuck yeah, senpai, I'm going to make you cum and make our cosplay experience even more intense!"
     else:

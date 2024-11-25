@@ -588,7 +588,7 @@ label alluring_compliment_response(the_person):
     else:
         "[the_person.possessive_title!c] smiles, a warm, inviting smile spreading across her face as she gazes up at you with a happy, relaxed expression."
         the_person "Aww, thank you for noticing, darling... I'm doing well. It's nice to have someone to talk to."
-        "You chat with [the_person.possessive_title] for a while and slip in a compliment when you can. She is enjoying all the attention, and her body language shows it, her hips swaying slightly as she moves, her eyes locked on yours with a hungry, sultry intensity."
+        "You chat with [the_person.possessive_title!c] for a while and slip in a compliment when you can. She is enjoying all the attention, and her body language shows it, her hips swaying slightly as she moves, her eyes locked on yours with a hungry, sultry intensity."
     return
 
 label alluring_compliment_response_girlfriend(the_person):
@@ -609,7 +609,7 @@ label alluring_compliment_response_girlfriend(the_person):
         "[the_person.possessive_title!c] smiles, a warm, inviting smile spreading across her face as she gazes up at you with a happy, relaxed expression."
         the_person "Aww, thank you, darling... I'm good. You are looking quite hot yourself... maybe we can do something about that, hmm?"
         "She raises an eyebrow, a flirtatious glint in her eye as she takes a step closer to you, her body swaying slightly as she moves, her eyes locked on yours with a hungry, sultry intensity."
-    "You chat with [the_person.possessive_title] for a while, making sexy references where you can. She is quite charmed by your efforts, and her body language shows it, her hips swaying slightly as she moves, her eyes locked on yours with a hungry, sultry intensity."
+    "You chat with [the_person.possessive_title!c] for a while, making sexy references where you can. She is quite charmed by your efforts, and her body language shows it, her hips swaying slightly as she moves, her eyes locked on yours with a hungry, sultry intensity."
     return
 
 label alluring_compliment_response_affair(the_person):
@@ -629,7 +629,7 @@ label alluring_compliment_response_affair(the_person):
         "[the_person.possessive_title!c] smiles, a warm, inviting smile spreading across her face as she gazes up at you with a happy, relaxed expression."
         the_person "You like this, darling? Take me to dinner, and we can explore other parts... of the city, maybe. Or maybe just explore each other, hmm?"
         "She raises an eyebrow, a flirtatious glint in her eye as she takes a step closer to you, her body swaying slightly as she moves, her eyes locked on yours with a hungry, sultry intensity."
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments. She is quite enamoured by your attentiveness, and her body language shows it, her hips swaying slightly as she moves, her eyes locked on yours with a hungry, sultry intensity."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments. She is quite enamoured by your attentiveness, and her body language shows it, her hips swaying slightly as she moves, her eyes locked on yours with a hungry, sultry intensity."
     return
 
 label alluring_flirt_response(the_person):
@@ -921,12 +921,12 @@ label alluring_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close, your lips inches from hers."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close, your lips inches from hers."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "You kiss her. She returns the kiss and presses her body against you, her tongue dancing with yours."
                 else:
-                    "You put your arm around [the_person.possessive_title] and pull her close, leaning in to kiss her, your lips meeting in a passionate kiss."
+                    "You put your arm around [the_person.possessive_title!c] and pull her close, leaning in to kiss her, your lips meeting in a passionate kiss."
                     "She responds immediately, pressing her body against yours and kissing you back, her tongue tracing the curves of your mouth."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_alluring_flirt_response_high
@@ -971,7 +971,7 @@ label alluring_flirt_response_girlfriend(the_person):
                     mc.name "Why wait, darling? Come on, I'm sure we can find somewhere quiet... and private."
                     "[the_person.possessive_title!c] raises an eyebrow, a sly smile spreading across her face as she gazes up at you with a brazen, seductive intensity."
                     the_person "That eager, huh? Alright, let's go, darling! I'm ready to get a little naughty with you."
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot, your hands entwined as you walk."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot, your hands entwined as you walk."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_alluring_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from vt_allure_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -979,7 +979,7 @@ label alluring_flirt_response_girlfriend(the_person):
 
                 "Just flirt":
                     $ mc.change_locked_clarity(10)
-                    "You reach behind [the_person.possessive_title] and grab her ass, giving it a firm squeeze, your fingers tracing the curves of her body."
+                    "You reach behind [the_person.possessive_title!c] and grab her ass, giving it a firm squeeze, your fingers tracing the curves of her body."
                     mc.name "Alright, I'll be patient, darling... this ass is worth waiting for, and I'm going to make sure it's worth the wait."
                     "She wiggles her hips back against your hand, her eyes sparkling with amusement."
                     the_person "Damn right it is, darling... and I'm going to make sure you know it."
@@ -988,7 +988,7 @@ label alluring_flirt_response_girlfriend(the_person):
             "[the_person.possessive_title!c] gazes up at you with a sultry, confident expression, her voice barely above a whisper."
             the_person "Well, if I'm so beautiful, then hurry up and kiss me, hot stuff... I'm ready to get a little naughty with you."
             "You put your arm around her waist and lean close, kissing her on her lips, your tongues dancing together in a sensual rhythm."
-            "When you break the kiss [the_person.possessive_title] sighs happily and leans her head against your shoulder, her eyes sparkling with amusement."
+            "When you break the kiss [the_person.possessive_title!c] sighs happily and leans her head against your shoulder, her eyes sparkling with amusement."
             the_person "Why did you stop, darling? I was having such a good time... and I'm not ready to stop yet."
             menu:
                 "Make out":
@@ -1018,7 +1018,7 @@ label alluring_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, pulling her close and kissing her sensually, your lips burning with passion."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, pulling her close and kissing her sensually, your lips burning with passion."
                 "She responds by pressing her body against you and grinding her hips against your thigh, her eyes locked on yours with a hungry, sultry intensity."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from vt_allure_call_fuck_person_78
                 $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -1076,7 +1076,7 @@ label alluring_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, darling... do you want to share what all of these naughty things are? You have my attention, and I'm dying to know what you have in mind."
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, your fingers tracing the curves of her body."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, your fingers tracing the curves of her body."
                 mc.name "Well, first I want to get my hands all over your beautiful body, darling. I want to feel every inch of you."
                 "You massage her butt, and she sighs happily, leaning against your body, her eyes locked on yours with a hungry, sultry intensity."
                 the_person "What next, darling? What do you want to do to me? I'm all yours."
@@ -1088,7 +1088,7 @@ label alluring_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, your fingers tracing the curves of her body."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, your fingers tracing the curves of her body."
                 mc.name "I wish I had the time, darling... you'll have to wait until later. But I promise it'll be worth the wait."
                 "You massage her butt, and she sighs happily, leaning her weight against you, her eyes locked on yours with a hungry, sultry intensity."
                 the_person "Aww, are you sure, darling? I was really looking forward to it."
@@ -1321,7 +1321,7 @@ label alluring_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False  # prevent putting on a new condom next sex loop
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s cum-drunk offer and keep the condom in place, darling."
+                    "You ignore [the_person.possessive_title!c]'s cum-drunk offer and keep the condom in place, darling."
 
         else:
             "[the_person.possessive_title!c] gazes up at you with a sultry, confident expression, her voice barely above a whisper."

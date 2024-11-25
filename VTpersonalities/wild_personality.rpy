@@ -18,28 +18,28 @@ label vt_wild_introduction(the_person):
 
 label vt_wild_greetings(the_person):
     if the_person.love < 0:
-        "[the_person.possessive_title] looks up at you with a scowl, her voice dripping with annoyance."
+        "[the_person.possessive_title!c] looks up at you with a scowl, her voice dripping with annoyance."
         the_person "Ugh, what now? Can't you see I'm busy?"
 
     elif the_person.happiness < 90:
-        "[the_person.possessive_title] sighs and looks up at you with a hint of frustration."
+        "[the_person.possessive_title!c] sighs and looks up at you with a hint of frustration."
         the_person "Hey, handsome. Just peachy. Just what I needed, another distraction from my crappy day."
 
     else:
         if the_person.sluttiness > 60:
             if the_person.obedience > 180:
-                "[the_person.possessive_title] gives you a sultry smile, her voice dripping with seduction."
+                "[the_person.possessive_title!c] gives you a sultry smile, her voice dripping with seduction."
                 the_person "Hello there, [the_person.mc_title]. I hope you're here to give me a good time... I've been feeling a little restless lately."
             else:
-                "[the_person.possessive_title] winks at you, her voice playful and flirtatious."
+                "[the_person.possessive_title!c] winks at you, her voice playful and flirtatious."
                 the_person "Hey there, [the_person.mc_title]! I hope you're here for some fun... I'm feeling a little wild today."
 
         else:
             if the_person.obedience > 180:
-                "[the_person.possessive_title] gives you a polite smile, her voice friendly but reserved."
+                "[the_person.possessive_title!c] gives you a polite smile, her voice friendly but reserved."
                 the_person "Hello, [the_person.mc_title]. It's nice to see you."
             else:
-                "[the_person.possessive_title] grins at you, her voice casual and laid-back."
+                "[the_person.possessive_title!c] grins at you, her voice casual and laid-back."
                 the_person "Hey, what's up? Just hanging out, having a good time."
     return
 
@@ -594,7 +594,7 @@ label vt_wild_compliment_response(the_person):
         "[the_person.possessive_title!c] smiles, a warm, friendly smile spreading across her face."
         the_person "Aww, thank you for noticing, [the_person.mc_title]. I'm doing well, just enjoying my day and trying to stay out of trouble, hmm?"
         "She laughs, a playful, carefree sound, her eyes sparkling with amusement as she chats with you."
-    "You chat with [the_person.possessive_title] for a while and slip in a compliment when you can. She is enjoying all the attention, her body language screaming with confidence and pleasure."
+    "You chat with [the_person.possessive_title!c] for a while and slip in a compliment when you can. She is enjoying all the attention, her body language screaming with confidence and pleasure."
     return
 
 label vt_wild_compliment_response_girlfriend(the_person):
@@ -615,7 +615,7 @@ label vt_wild_compliment_response_girlfriend(the_person):
         "[the_person.possessive_title!c] smiles, a warm, flirtatious smile spreading across her face."
         the_person "Aww, thank you, [the_person.mc_title]... I'm good. You are looking quite hot yourself, hmm? Maybe we can do something about that later."
         "She winks at you, her eyes sparkling with teasing as she invites you to join her for a little fun and games."
-    "You chat with [the_person.possessive_title] for a while, making sexy references where you can. She is quite charmed by your efforts, her body language screaming with confidence and pleasure."
+    "You chat with [the_person.possessive_title!c] for a while, making sexy references where you can. She is quite charmed by your efforts, her body language screaming with confidence and pleasure."
     return
 
 label vt_wild_compliment_response_affair(the_person):
@@ -635,7 +635,7 @@ label vt_wild_compliment_response_affair(the_person):
         "[the_person.possessive_title!c] smiles, a warm, flirtatious smile spreading across her face."
         the_person "You like this, [the_person.mc_title]? Take me to dinner and we can explore other parts... of the city, hmm?"
         "She winks at you, her eyes sparkling with teasing as she invites you to join her for a night out on the town, her body language screaming with confidence and seduction."
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments. She is quite enamoured by your attentiveness, her body language screaming with pleasure and desire."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments. She is quite enamoured by your attentiveness, her body language screaming with pleasure and desire."
     return
 
 label vt_wild_flirt_response(the_person):
@@ -945,12 +945,12 @@ label vt_wild_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "You kiss her. She returns the kiss and presses her body against you."
                 else:
-                    "You put your arm around [the_person.possessive_title] and pull her close, leaning in to kiss her."
+                    "You put your arm around [the_person.possessive_title!c] and pull her close, leaning in to kiss her."
                     "She responds immediately, pressing her body against yours and kissing you back."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_vt_wild_flirt_response_high
@@ -997,7 +997,7 @@ label vt_wild_flirt_response_girlfriend(the_person):
                     mc.name "Why wait? Come on, I'm sure we can find somewhere quiet."
                     "[the_person.possessive_title!c] laughs, a playful, flirtatious sound, her voice husky and seductive."
                     the_person "That eager, huh? Alright, let's go, hot stuff!"
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot, your hands still wrapped around each other's waists."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot, your hands still wrapped around each other's waists."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_vt_wild_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from vt_wild_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -1005,7 +1005,7 @@ label vt_wild_flirt_response_girlfriend(the_person):
 
                 "Just flirt":
                     $ mc.change_locked_clarity(10)
-                    "You reach behind [the_person.possessive_title] and grab her ass, giving it a firm squeeze, your fingers digging into her flesh."
+                    "You reach behind [the_person.possessive_title!c] and grab her ass, giving it a firm squeeze, your fingers digging into her flesh."
                     mc.name "Alright, I'll be patient, [the_person.title]. This ass is worth waiting for, hmm?"
                     "She wiggles her hips back against your hand, her eyes sparkling with mischief."
                     the_person "Damn right it is, [the_person.mc_title]... you're going to have to wait a bit longer to get your hands on it, though."
@@ -1014,7 +1014,7 @@ label vt_wild_flirt_response_girlfriend(the_person):
             "[the_person.possessive_title!c] smiles, a sly, flirtatious smile spreading across her face."
             the_person "Well if I'm so beautiful then hurry up and kiss me, hot stuff, hmm?"
             "You put your arm around her waist and lean close, kissing her on her lips, your bodies pressed together in a passionate embrace."
-            "When you break the kiss [the_person.possessive_title] sighs happily and leans her head against your shoulder, her eyes sparkling with pleasure."
+            "When you break the kiss [the_person.possessive_title!c] sighs happily and leans her head against your shoulder, her eyes sparkling with pleasure."
             the_person "Why did you stop, [the_person.mc_title]? I was having such a good time, hmm?"
             menu:
                 "Make out":
@@ -1044,7 +1044,7 @@ label vt_wild_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass. You pull her close and kiss her sensually, your lips exploring hers with a fierce passion."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass. You pull her close and kiss her sensually, your lips exploring hers with a fierce passion."
                 "She responds by pressing her body against you and grinding her hips against your thigh, her eyes sparkling with desire."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from vt_wild_call_fuck_person_78
                 $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -1104,7 +1104,7 @@ label vt_wild_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, do you want to share what all of these naughty things are, [the_person.mc_title]? You have my attention, hmm?"
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, your fingers digging into her flesh."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, your fingers digging into her flesh."
                 mc.name "Well, first I want to get my hands all over your beautiful body, [the_person.title]."
                 "You massage her butt, your hands moving in slow, sensual circles as you tease her."
                 "She sighs happily and leans against your body, her eyes sparkling with pleasure as she relaxes into your touch."
@@ -1117,7 +1117,7 @@ label vt_wild_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, your fingers digging into her flesh."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, your fingers digging into her flesh."
                 mc.name "I wish I had the time, [the_person.title]. You'll have to wait until later, hmm?"
                 "You massage her butt, your hands moving in slow, sensual circles as you tease her."
                 "She sighs happily and leans her weight against you, her eyes sparkling with pleasure as she relaxes into your touch."
@@ -1347,7 +1347,7 @@ label vt_wild_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False  # prevent putting on a new condom next sex loop
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s cum-drunk offer and keep the condom in place."
+                    "You ignore [the_person.possessive_title!c]'s cum-drunk offer and keep the condom in place."
         else:
             "[the_person.possessive_title!c] looks up at you with a sly, flirtatious smile, her voice husky and seductive."
             the_person "Fuck yeah, I'm going to make you cum, [the_person.mc_title]! Let it all out and show me what you're working with, hmm?"

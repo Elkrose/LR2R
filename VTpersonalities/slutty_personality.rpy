@@ -510,7 +510,7 @@ label slutty_compliment_response(the_person):
             the_person "Oh, stop it, you're making me blush. There's no special occasion, I just felt like dressing up today and showing off my tits."
     else:
         the_person "Well, I did put in a bit of extra effort today. You're just the first one to notice. But thanks, I guess. Maybe you can reward me with a fuck?"
-    "You try to press for more information, but [the_person.possessive_title] just smiles coyly and changes the subject, leaving you wondering what's going on. But you can see the desire in her eyes, and you know she's just playing hard to get."
+    "You try to press for more information, but [the_person.possessive_title!c] just smiles coyly and changes the subject, leaving you wondering what's going on. But you can see the desire in her eyes, and you know she's just playing hard to get."
     return
 
 label slutty_compliment_response_girlfriend(the_person):
@@ -528,7 +528,7 @@ label slutty_compliment_response_girlfriend(the_person):
         the_person "Ugh, don't be ridiculous. It's just a normal day... but thanks, I guess. Maybe you can make it a little more interesting, though."
         mc.name "Oh come on, don't be like that. You know you look great. And I know you're a great fuck, too."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and horny. Maybe we can do something about that later."
-    "You chat with [the_person.possessive_title] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you. And maybe even gets a little turned on."
+    "You chat with [the_person.possessive_title!c] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you. And maybe even gets a little turned on."
     return
 
 label slutty_compliment_response_affair(the_person):
@@ -545,7 +545,7 @@ label slutty_compliment_response_affair(the_person):
         the_person "Ugh, don't be silly. It's just a normal day... but thanks, I suppose. Maybe you can make it a little more interesting, though."
         mc.name "Oh come on, don't be like that. You know you look great. And I know you're a great fuck, too."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and a little annoyed. But maybe also a little turned on."
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments. She is quite charmed by your attentiveness, and maybe even gets a little horny."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments. She is quite charmed by your attentiveness, and maybe even gets a little horny."
     return
 
 label slutty_flirt_response(the_person):
@@ -806,12 +806,12 @@ label slutty_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close... and maybe even get a little more... passionate."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close... and maybe even get a little more... passionate."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "She responds with a passionate kiss, her arms wrapping around your neck and her tongue in your mouth."
                 else:
-                    "You pull [the_person.possessive_title!] close and kiss her... and maybe even get a little more... intimate."
+                    "You pull [the_person.possessive_title!c] close and kiss her... and maybe even get a little more... intimate."
                     "She responds with a passionate kiss, her arms wrapping around your neck and her hands all over your body."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_slutty_flirt_response_high
@@ -849,7 +849,7 @@ label slutty_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait? Come on, I'm sure we can find somewhere quiet... and private."
                     the_person "You're always so eager, aren't you? Alright, let's go and get a little more... naughty."
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot to get a little more... intimate."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot to get a little more... intimate."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_slutty_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_slutty_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -865,7 +865,7 @@ label slutty_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so beautiful, then why are you just standing there? Come on, kiss me like you mean it!"
             "You put your arm around her waist and pull her close, kissing her deeply and passionately, your tongues entwining."
-            "When you break the kiss, [the_person.possessive_title] sighs and leans against you, her body trembling with desire."
+            "When you break the kiss, [the_person.possessive_title!c] sighs and leans against you, her body trembling with desire."
             the_person "You're not so bad yourself... and you're definitely making me wet."
             menu:
                 "Make out":
@@ -900,7 +900,7 @@ label slutty_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass. You pull her close and kiss her sensually, with a little more... tongue."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass. You pull her close and kiss her sensually, with a little more... tongue."
                 "She responds by pressing her body against you and grinding her hips against your thigh, making you even harder."
                 "You grab her hips and pull her closer, your crotches pressed together, and your bodies trembling with desire."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from _vt_slutty_call_fuck_person_78
@@ -963,7 +963,7 @@ label slutty_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, do you want to share what all of these naughty things are? You have my attention... and also my body, if you want it."
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, squeezing it gently."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, squeezing it gently."
                 mc.name "You know, I've been waiting for this moment for a while now... and I'm not going to waste it."
                 "You massage her butt, and she blushes and pushes you away lightly, but also a little bit playfully."
                 the_person "Hey, no need to be so forward! What's gotten into you... or should I say, what's gotten into me?"
@@ -975,7 +975,7 @@ label slutty_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, squeezing it gently."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, squeezing it gently."
                 mc.name "I wish I had the time. You'll have to wait until later... but maybe not too much later, if you keep looking at me like that."
                 "You massage her butt, and she sighs happily and leans her weight against you, her body pressing against yours."
                 the_person "Aww, are you sure? I was hoping we could get a little more... intimate, right now."
@@ -1151,7 +1151,7 @@ label slutty_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s request and keep the condom in place, like a dirty little tease."
+                    "You ignore [the_person.possessive_title!c]'s request and keep the condom in place, like a dirty little tease."
         else:
             the_person "Fuck yeah, I'm going to make you cum like a dirty little slut!"
     else:
@@ -1312,7 +1312,7 @@ label slutty_sex_watch(the_person, the_sex_person, the_position):
     $ title = the_person.title if not the_person.is_stranger else "The dirty little stranger"
     if the_person.sluttiness < the_position.slut_requirement - 20:
         $ the_person.draw_person(emotion = "angry", display_transform = character_left_flipped)
-        the_person "Ugh, seriously? Can you two keep it down? I'm trying to [the_person.possessive_pronoun] concentrate on my own dirty little fantasies."
+        the_person "Ugh, seriously? Can you two keep it down? I'm trying to concentrate on my own dirty little fantasies."
         $ the_person.change_stats(obedience = -2, happiness = -1)
         "[title] rolls her eyes and tries to ignore you and [the_sex_person.fname] [the_position.verb], but can't help sneaking a peek."
         return False

@@ -457,7 +457,7 @@ label foodie_compliment_response(the_person):
             the_person "Oh, stop it, you're making me blush like a ripe tomato. There's no special occasion, I just felt like dressing up with a sprinkle of flair today."
     else:
         the_person "Well, I did add a dash of extra effort to my recipe today. You're just the first one to notice the subtle flavors. But thanks, I suppose."
-    "[the_person.possessive_title] smiles coyly, like a chef hiding a secret ingredient, and changes the subject, leaving you wondering what's simmering beneath the surface."
+    "[the_person.possessive_title!c] smiles coyly, like a chef hiding a secret ingredient, and changes the subject, leaving you wondering what's simmering beneath the surface."
     return
 
 label foodie_compliment_response_girlfriend(the_person):
@@ -474,7 +474,7 @@ label foodie_compliment_response_girlfriend(the_person):
         the_person "Ugh, don't be ridiculous. It's just a normal day, like a plain cracker... but thanks, I suppose."
         mc.name "Oh come on, don't be like that. You know you look like a stunning, one-of-a-kind culinary masterpiece."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush like a ripe strawberry... and a little annoyed, like a soufflé that's fallen flat."
-    "You chat with [the_person.possessive_title] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you like a perfectly toasted baguette."
+    "You chat with [the_person.possessive_title!c] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you like a perfectly toasted baguette."
     return
 
 label foodie_compliment_response_affair(the_person):
@@ -490,7 +490,7 @@ label foodie_compliment_response_affair(the_person):
         the_person "Ugh, don't be silly. It's just a normal day, like a plain cookie... but thanks, I suppose."
         mc.name "Oh come on, don't be like that. You know you look stunning, like a masterpiece of culinary art."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush like a ripe peach... and a little annoyed, like a dessert that's been overcooked."
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments like a chef adding secret ingredients to a dish. She is quite charmed by your attentiveness, like a diner who's just discovered a new favorite restaurant."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments like a chef adding secret ingredients to a dish. She is quite charmed by your attentiveness, like a diner who's just discovered a new favorite restaurant."
     return
 
 label foodie_flirt_response(the_person):
@@ -757,12 +757,12 @@ label foodie_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close, like a chef adding the final touches to a dish."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close, like a chef adding the final touches to a dish."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "She responds with a passionate kiss, her arms wrapping around your neck like a perfectly crafted sauce."
                 else:
-                    "You pull [the_person.possessive_title!] close and kiss her, like a chef presenting a new dish."
+                    "You pull [the_person.possessive_title!c] close and kiss her, like a chef presenting a new dish."
                     "She responds with a passionate kiss, her arms wrapping around your neck like a perfectly balanced flavor profile."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_foodie_flirt_response_high
@@ -800,7 +800,7 @@ label foodie_flirt_response_girlfriend(the_person):
                 "Find somewhere more... intimate\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait? Come on, I'm sure we can find somewhere... quiet, like a secluded dining area."
                     the_person "You're always so... eager, aren't you? Alright, let's go, like a chef rushing to prepare a new dish!"
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot, like a food critic searching for the perfect restaurant."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot, like a food critic searching for the perfect restaurant."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_foodie_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_foodie_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -816,7 +816,7 @@ label foodie_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so... delectable, then why are you just standing there? Come on, kiss me, like a chef presenting a new dish!"
             "You put your arm around her waist and pull her close, kissing her deeply, like a perfectly balanced sauce."
-            "When you break the kiss, [the_person.possessive_title] sighs and leans against you, like a diner who's just been served a perfect meal."
+            "When you break the kiss, [the_person.possessive_title!c] sighs and leans against you, like a diner who's just been served a perfect meal."
             the_person "You're not so bad yourself, like a perfectly crafted side dish..."
             menu:
                 "Make out":
@@ -851,7 +851,7 @@ label foodie_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, like a chef who's just been given a new ingredient to work with. You pull her close and kiss her sensually, like a perfectly crafted sauce."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, like a chef who's just been given a new ingredient to work with. You pull her close and kiss her sensually, like a perfectly crafted sauce."
                 "She responds by pressing her body against you and grinding her hips against your thigh, like a perfectly balanced flavor profile."
                 "You grab her hips and pull her closer, your crotches pressed together, like a perfectly crafted dessert."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from _vt_foodie_call_fuck_person_78
@@ -914,7 +914,7 @@ label foodie_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, do you want to share what all of these... naughty things are, like a chef who's just discovered a new flavor combination? You have my attention, like a diner who's just been served a new dish."
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, like a chef who's just been given a new ingredient to work with."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, like a chef who's just been given a new ingredient to work with."
                 mc.name "You know, I've been waiting for this moment for a while now, like a chef who's just been given a new kitchen to run."
                 "You massage her butt, like a pastry chef kneading dough. She blushes and pushes you away lightly, like a diner who's just been served a dish they didn't order."
                 the_person "Hey, no need to be so... forward, like a chef who's just been told to remake a dish! What's gotten into you, like a diner who's just discovered a new favorite restaurant?"
@@ -926,7 +926,7 @@ label foodie_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, like a chef who's just been given a new ingredient to work with."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, like a chef who's just been given a new ingredient to work with."
                 mc.name "I wish I had the time, like a chef who's just been told to close up the kitchen. You'll have to wait until later, like a diner who's just been told to come back tomorrow."
                 "You massage her butt, like a pastry chef kneading dough. She sighs happily and leans her weight against you, like a diner who's just been served a perfect meal."
                 the_person "Aww, are you sure, like a chef who's just been told to remake a dish?"
@@ -1105,7 +1105,7 @@ label foodie_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False  # prevent putting on a new... wrapper next sex loop
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s request and keep the... wrapper in place, like a chef who's just been told to follow a recipe."
+                    "You ignore [the_person.possessive_title!c]'s request and keep the... wrapper in place, like a chef who's just been told to follow a recipe."
         else:
             the_person "Fuck yeah, I'm going to make you... cum, like a chef who's just been given a new ingredient to work with!"
     else:
