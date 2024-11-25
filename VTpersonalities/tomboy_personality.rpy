@@ -529,7 +529,7 @@ label tomboy_compliment_response(the_person):
     else:
         the_person "Well, I did put in a bit of extra effort today, I guess. You're just the first one to notice, so thanks for that, I suppose."
         "She shrugs and looks away, her expression neutral but slightly pleased with herself."
-    "You try to press for more information, but [the_person.possessive_title] just smiles coyly and changes the subject, leaving you wondering what's going on and looking slightly amused."
+    "You try to press for more information, but [the_person.possessive_title!c] just smiles coyly and changes the subject, leaving you wondering what's going on and looking slightly amused."
     return
 
 label tomboy_compliment_response_girlfriend(the_person):
@@ -549,7 +549,7 @@ label tomboy_compliment_response_girlfriend(the_person):
         mc.name "Oh come on, don't be like that. You know you look great."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and annoyed at the same time. Just stop, okay?"
         "She rolls her eyes and looks away, her expression annoyed but slightly amused."
-    "You chat with [the_person.possessive_title] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you and seems slightly more receptive to your advances."
+    "You chat with [the_person.possessive_title!c] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you and seems slightly more receptive to your advances."
     return
 
 label tomboy_compliment_response_affair(the_person):
@@ -568,7 +568,7 @@ label tomboy_compliment_response_affair(the_person):
         mc.name "Oh come on, don't be like that. You know you look great."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and a little annoyed, okay? Just stop, already."
         "She rolls her eyes and looks away, her expression annoyed but slightly amused, and seems slightly more receptive to your advances."
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments and trying to charm her with your words. She seems quite charmed by your attentiveness and starts to open up to you."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments and trying to charm her with your words. She seems quite charmed by your attentiveness and starts to open up to you."
     return
 
 label tomboy_flirt_response(the_person):
@@ -829,12 +829,12 @@ label tomboy_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close, looking slightly hesitant but also slightly eager."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close, looking slightly hesitant but also slightly eager."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "She responds with a passionate kiss, her arms wrapping around your neck and her eyes closing."
                 else:
-                    "You pull [the_person.possessive_title!] close and kiss her, looking slightly eager and slightly playful."
+                    "You pull [the_person.possessive_title!c] close and kiss her, looking slightly eager and slightly playful."
                     "She responds with a passionate kiss, her arms wrapping around your neck and her eyes closing."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_tomboy_flirt_response_high
@@ -874,7 +874,7 @@ label tomboy_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait? Come on, I'm sure we can find somewhere quiet, okay?"
                     the_person "You're always so eager, aren't you? Alright, let's go, but don't think this means I'm going to start making out with you in public or anything."
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot and looking slightly annoyed but also slightly amused."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot and looking slightly annoyed but also slightly amused."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_tomboy_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_tomboy_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -890,7 +890,7 @@ label tomboy_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so beautiful, then why are you just standing there, huh? Come on, kiss me already!"
             "You put your arm around her waist and pull her close, kissing her deeply and passionately."
-            "When you break the kiss, [the_person.possessive_title] sighs and leans against you, looking slightly pleased but also slightly annoyed."
+            "When you break the kiss, [the_person.possessive_title!c] sighs and leans against you, looking slightly pleased but also slightly annoyed."
             the_person "You're not so bad yourself, I guess... but don't think this means I'm going to start making out with you all the time or anything."
             menu:
                 "Make out":
@@ -925,7 +925,7 @@ label tomboy_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, pulling her close and kissing her sensually."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, pulling her close and kissing her sensually."
                 "She responds by pressing her body against you and grinding her hips against your thigh, looking slightly pleased but also slightly annoyed."
                 "You grab her hips and pull her closer, your crotches pressed together and your bodies entwined."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from _vt_tomboy_call_fuck_person_78
@@ -987,7 +987,7 @@ label tomboy_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, do you want to share what all of these naughty things are, huh? You have my attention, I guess."
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, looking slightly eager and slightly playful."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, looking slightly eager and slightly playful."
                 mc.name "You know, I've been waiting for this moment for a while now, okay?"
                 "You massage her butt, and she blushes and pushes you away lightly, looking slightly annoyed but also slightly amused."
                 the_person "Hey, no need to be so forward, okay? What's gotten into you?"
@@ -999,7 +999,7 @@ label tomboy_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, looking slightly playful and slightly flirtatious."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, looking slightly playful and slightly flirtatious."
                 mc.name "I wish I had the time, okay? You'll have to wait until later, I guess."
                 "You massage her butt, and she sighs happily and leans her weight against you, looking slightly pleased and slightly relaxed."
                 the_person "Aww, are you sure, okay? I was kind of hoping we could... you know, take things a little further or something."
@@ -1197,7 +1197,7 @@ label tomboy_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False  # prevent putting on a new condom next sex loop
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s request and keep the condom in place, looking slightly annoyed but also slightly amused."
+                    "You ignore [the_person.possessive_title!c]'s request and keep the condom in place, looking slightly annoyed but also slightly amused."
         else:
             the_person "Hell yeah, I'm going to make you cum, [the_person.mc_title]! Get ready for it, okay?"
     else:
@@ -1390,7 +1390,7 @@ label tomboy_sex_watch(the_person, the_sex_person, the_position):
     $ title = the_person.title if not the_person.is_stranger else "The stranger"
     if the_person.sluttiness < the_position.slut_requirement - 20:
         $ the_person.draw_person(emotion = "angry", display_transform = character_left_flipped)
-        the_person "Gah, seriously? Can you two keep it down? I'm trying to [the_person.possessive_pronoun] focus on something else here."
+        the_person "Gah, seriously? Can you two keep it down? I'm trying to focus on something else here."
         "She rolls her eyes and shakes her head, looking slightly annoyed."
         $ the_person.change_stats(obedience = -2, happiness = -1)
         "[title] tries to ignore you and [the_sex_person.fname] [the_position.verb], but can't help sneaking a peek."

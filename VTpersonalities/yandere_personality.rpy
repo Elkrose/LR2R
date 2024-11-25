@@ -567,7 +567,7 @@ label yandere_compliment_response(the_person):
         the_person "Aww, thank you for noticing. I'm doing well."
         "Her eyes light up with a sinister glow."
         the_person "You know, I'm always up for a little fun. Maybe we can have a date sometime?"
-    "You chat with [the_person.possessive_title] for a while and slip in a compliment when you can. She is enjoying all the attention."
+    "You chat with [the_person.possessive_title!c] for a while and slip in a compliment when you can. She is enjoying all the attention."
     return
 
 label yandere_compliment_response_girlfriend(the_person):
@@ -587,7 +587,7 @@ label yandere_compliment_response_girlfriend(the_person):
         the_person "Aww, thank you, I'm good. You are looking quite hot yourself..."
         "Her eyes flicker with a sinister glow."
         the_person "You know, I'm always up for a little fun. Maybe we can have a little... adventure together?"
-    "You chat with [the_person.possessive_title] for a while, making sexy references where you can. She is quite charmed by your efforts."
+    "You chat with [the_person.possessive_title!c] for a while, making sexy references where you can. She is quite charmed by your efforts."
     return
 
 label yandere_compliment_response_affair(the_person):
@@ -607,7 +607,7 @@ label yandere_compliment_response_affair(the_person):
         the_person "You like this? Take me to dinner and we can explore other parts..."
         "She smiles, her eyes flashing with a sinister glow."
         the_person "I have a feeling you'll find something you like."
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments. She is quite enamoured by your attentiveness."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments. She is quite enamoured by your attentiveness."
     return
 
 label yandere_flirt_response(the_person):
@@ -884,12 +884,12 @@ label yandere_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You pull [the_person.possessive_title] close and press your lips against hers."
+                    "You pull [the_person.possessive_title!c] close and press your lips against hers."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "She responds with a fierce kiss, her nails digging into your back."
                 else:
-                    "You pull [the_person.possessive_title] close and press your lips against hers, your tongues entwining."
+                    "You pull [the_person.possessive_title!c] close and press your lips against hers, your tongues entwining."
                     "She responds with a passionate kiss, her body pressed against yours."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_yandere_flirt_response_high
@@ -930,7 +930,7 @@ label yandere_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Let's go, I want to be alone with you."
                     the_person "Good boy. Let's get out of here before I do something we might regret."
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_yandere_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_yandere_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -938,7 +938,7 @@ label yandere_flirt_response_girlfriend(the_person):
 
                 "Just flirt":
                     $ mc.change_locked_clarity(10)
-                    "You reach behind [the_person.possessive_title] and grab her ass, giving it a firm squeeze."
+                    "You reach behind [the_person.possessive_title!c] and grab her ass, giving it a firm squeeze."
                     mc.name "You're mine, and I'll never let you go."
                     "She wiggles her hips back against your hand, a mischievous glint in her eye."
                     the_person "Oh, I'm counting on it."
@@ -946,7 +946,7 @@ label yandere_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so beautiful then hurry up and kiss me, hot stuff."
             "You put your arm around her waist and lean close, kissing her on her lips."
-            "When you break the kiss [the_person.possessive_title] sighs happily and leans her head against your shoulder."
+            "When you break the kiss [the_person.possessive_title!c] sighs happily and leans her head against your shoulder."
             the_person "Why did you stop? I was having such a good time..."
             menu:
                 "Make out":
@@ -974,7 +974,7 @@ label yandere_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
                 "She responds by pressing her body against you and grinding her hips against your thigh."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from _vt_yandere_call_fuck_person_78
                 $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -1032,7 +1032,7 @@ label yandere_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, do you want to share what all of these naughty things are? You have my attention."
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass."
                 mc.name "Well, first I want to get my hands all over your beautiful body."
                 "You massage her butt. She sighs happily and leans against your body."
                 the_person "What next? What do you want to do to me?"
@@ -1044,7 +1044,7 @@ label yandere_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass."
                 mc.name "I wish I had the time. You'll have to wait until later."
                 "You massage her butt. She sighs happily and leans her weight against you."
                 the_person "Aww, are you sure?"
@@ -1243,7 +1243,7 @@ label yandere_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False  # prevent putting on a new condom next sex loop
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s cum-drunk offer and keep the condom in place."
+                    "You ignore [the_person.possessive_title!c]'s cum-drunk offer and keep the condom in place."
         else:
             the_person "Fuck yeah, I'm going to make you cum!"
 
@@ -2249,7 +2249,7 @@ label yandere_creampie_taboo_break(the_person):
     if the_person.wants_creampie:
         if the_person.knows_pregnant:
             the_person "Ah, yes, please shoot your hot load deep inside me, my precious."
-            mc.name "I love how you say that, [the_person.possessive_title]."
+            mc.name "I love how you say that, [the_person.possessive_title!c]."
             "She blushes and smiles, her eyes filled with excitement."
 
         elif the_person.on_birth_control:

@@ -437,7 +437,7 @@ label tsundere_compliment_response(the_person):
             the_person "Oh, stop it, you're making me blush. There's no special occasion, I just felt like dressing up today."
     else:
         the_person "Well, I did put in a bit of extra effort today. You're just the first one to notice. But thanks, I guess."
-    "You try to press for more information, but [the_person.possessive_title] just smiles coyly and changes the subject, leaving you wondering what's going on."
+    "You try to press for more information, but [the_person.possessive_title!c] just smiles coyly and changes the subject, leaving you wondering what's going on."
     return
 
 label tsundere_compliment_response_girlfriend(the_person):
@@ -454,7 +454,7 @@ label tsundere_compliment_response_girlfriend(the_person):
         the_person "Ugh, don't be ridiculous. It's just a normal day... but thanks, I guess."
         mc.name "Oh come on, don't be like that. You know you look great."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and annoyed at the same time."
-    "You chat with [the_person.possessive_title] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you."
+    "You chat with [the_person.possessive_title!c] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you."
     return
 
 label tsundere_compliment_response_affair(the_person):
@@ -470,7 +470,7 @@ label tsundere_compliment_response_affair(the_person):
         the_person "Ugh, don't be silly. It's just a normal day... but thanks, I suppose."
         mc.name "Oh come on, don't be like that. You know you look great."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and a little annoyed."
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments. She is quite charmed by your attentiveness."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments. She is quite charmed by your attentiveness."
     return
 
 label tsundere_flirt_response(the_person):
@@ -641,7 +641,7 @@ label tsundere_flirt_response_mid(the_person):
         $ mc.change_locked_clarity(10)
         the_person "Good, right?"
         mc.name "Fantastic. I wish I could get an even better look at it."
-        "[the_person.possessive_title!c] smiles and turns back to face you."
+        "[the_person.possessive_title!c!c] smiles and turns back to face you."
         $ the_person.draw_person()
         the_person "I'm sure you do. Take me out for a drink and maybe we can work something out."
     return
@@ -732,12 +732,12 @@ label tsundere_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "She responds with a passionate kiss, her arms wrapping around your neck."
                 else:
-                    "You pull [the_person.possessive_title!] close and kiss her."
+                    "You pull [the_person.possessive_title!c] close and kiss her."
                     "She responds with a passionate kiss, her arms wrapping around your neck."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_tsundere_flirt_response_high
@@ -775,7 +775,7 @@ label tsundere_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait? Come on, I'm sure we can find somewhere quiet."
                     the_person "You're always so eager, aren't you? Alright, let's go!"
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_tsundere_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_tsundere_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -791,7 +791,7 @@ label tsundere_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so beautiful, then why are you just standing there? Come on, kiss me!"
             "You put your arm around her waist and pull her close, kissing her deeply."
-            "When you break the kiss, [the_person.possessive_title] sighs and leans against you."
+            "When you break the kiss, [the_person.possessive_title!c] sighs and leans against you."
             the_person "You're not so bad yourself..."
             menu:
                 "Make out":
@@ -825,7 +825,7 @@ label tsundere_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
                 "She responds by pressing her body against you and grinding her hips against your thigh."
                 "You grab her hips and pull her closer, your crotches pressed together."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from _vt_tsundere_call_fuck_person_78
@@ -887,7 +887,7 @@ label tsundere_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, do you want to share what all of these naughty things are? You have my attention."
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass."
                 mc.name "You know, I've been waiting for this moment for a while now."
                 "You massage her butt. She blushes and pushes you away lightly."
                 the_person "Hey, no need to be so forward! What's gotten into you?"
@@ -899,7 +899,7 @@ label tsundere_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass."
                 mc.name "I wish I had the time. You'll have to wait until later."
                 "You massage her butt. She sighs happily and leans her weight against you."
                 the_person "Aww, are you sure?"
@@ -1076,7 +1076,7 @@ label tsundere_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False  # prevent putting on a new condom next sex loop
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s request and keep the condom in place."
+                    "You ignore [the_person.possessive_title!c]'s request and keep the condom in place."
         else:
             the_person "Fuck yeah, I'm going to make you cum!"
     else:

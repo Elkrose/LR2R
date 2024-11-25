@@ -56,42 +56,42 @@ label dandere_greetings(the_person):
 label dandere_sex_responses_foreplay(the_person):
     if arousal_perc < 45:
         if sluttiness > 50:
-            "[the_person.possessive_title] lets out a small squeak, her eyes widening in surprise."
+            "[the_person.possessive_title!c] lets out a small squeak, her eyes widening in surprise."
             the_person "O-oh... I didn't expect it to feel so... good."
         else:
-            "[the_person.possessive_title] blushes deeply and looks away, her voice barely above a whisper."
+            "[the_person.possessive_title!c] blushes deeply and looks away, her voice barely above a whisper."
             the_person "I-I think I like this..."
     elif arousal_perc < 60:
         if sluttiness > 50:
             the_person "Mmm... your touch is so gentle... I love it."
             "She leans in closer, her eyes locked on yours."
         else:
-            "[the_person.possessive_title] blushes deeply and whispers softly, her eyes darting around the room."
+            "[the_person.possessive_title!c] blushes deeply and whispers softly, her eyes darting around the room."
             the_person "I-I feel a little... embarrassed, but it feels so good..."
     elif arousal_perc < 75:
         if sluttiness > 50:
-            "[the_person.possessive_title] lets out a small moan, her eyes locked on yours as she pants softly."
+            "[the_person.possessive_title!c] lets out a small moan, her eyes locked on yours as she pants softly."
             the_person "You're so good at this... I feel like I'm melting in your hands."
         else:
-            "[the_person.possessive_title] blushes deeply and looks away shyly, her voice barely above a whisper."
+            "[the_person.possessive_title!c] blushes deeply and looks away shyly, her voice barely above a whisper."
             the_person "I-I think I might be getting a little too excited... *giggles nervously*"
     elif arousal_perc < 90:
         if sluttiness > 50:
-            "[the_person.possessive_title] moans seductively, her eyes locked on yours as she pants heavily."
+            "[the_person.possessive_title!c] moans seductively, her eyes locked on yours as she pants heavily."
             the_person "T-touch me all over... I want to feel your hands everywhere."
         else:
-            "[the_person.possessive_title] blushes deeply and looks away shyly, her voice barely above a whisper."
+            "[the_person.possessive_title!c] blushes deeply and looks away shyly, her voice barely above a whisper."
             the_person "I-I think I'm going to... *gulps*... you know, if you keep touching me like that..."
     else:
         if sluttiness > 50:
             if not the_person.has_significant_other:
-                "[the_person.possessive_title] moans softly, her eyes locked on yours as she pants slightly."
+                "[the_person.possessive_title!c] moans softly, her eyes locked on yours as she pants slightly."
                 the_person "O-oh no... I think I'm going to cum soon... *bites lip*"
             else:
-                "[the_person.possessive_title] blushes deeply and looks away shyly."
+                "[the_person.possessive_title!c] blushes deeply and looks away shyly."
                 the_person "I-I feel so guilty, but your touch is just so... different from my [the_person.so_title]'s."
         else:
-            "[the_person.possessive_title] moans softly, her eyes locked on yours as she pants slightly."
+            "[the_person.possessive_title!c] moans softly, her eyes locked on yours as she pants slightly."
             the_person "D-don't stop... please don't stop... *whimpers*"
     return
 
@@ -580,7 +580,7 @@ label dandere_compliment_response(the_person):
     else:
         the_person "O-oh, um... *whispers* I don't know... *gulps*"
         "She looks away, trying to hide her nervousness, and her voice barely above a whisper."
-        "You chat with [the_person.possessive_title] and try to give her compliments when it feels natural. She seems really shy about receiving them, but you can tell she's secretly happy."
+        "You chat with [the_person.possessive_title!c] and try to give her compliments when it feels natural. She seems really shy about receiving them, but you can tell she's secretly happy."
         the_person "T-thank you... *whispers* for saying that..."
         "She smiles slightly, still looking away, and her face still flushed with embarrassment."
     return
@@ -598,7 +598,7 @@ label dandere_compliment_response_girlfriend(the_person):
             the_person "O-oh, r-really? *gulps* thank you for noticing..."
             "She smiles slightly, looking away, and her face still flushed with embarrassment."
     else:
-        "You chat with [the_person.possessive_title] for a while, making subtle sexual references and compliments when possible. She seems to appreciate your sly attempts at flirtation, but gets flustered and looks away whenever you catch her eye."
+        "You chat with [the_person.possessive_title!c] for a while, making subtle sexual references and compliments when possible. She seems to appreciate your sly attempts at flirtation, but gets flustered and looks away whenever you catch her eye."
         the_person "T-thank you... *whispers* for making me feel special..."
         "She looks up at you with a shy expression, her eyes sparkling with happiness, and her face still flushed with embarrassment."
     return
@@ -620,7 +620,7 @@ label dandere_compliment_response_affair(the_person):
         the_person "R-really? *whispers* you think I'm stunning?"
         "She looks up at you with a shy expression, her eyes sparkling with happiness, and her face still flushed with embarrassment."
         the_person "I-if we were somewhere more... *gulps* intimate... I could show you more..."
-        "As you continue complimenting [the_person.possessive_title], she seems to grow increasingly flustered and intrigued by your attention, but tries to hide it behind a mask of shyness."
+        "As you continue complimenting [the_person.possessive_title!c], she seems to grow increasingly flustered and intrigued by your attention, but tries to hide it behind a mask of shyness."
     return
 
 label dandere_flirt_response(the_person):
@@ -873,12 +873,12 @@ label dandere_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "You kiss her. She returns the kiss and presses her body against you."
                 else:
-                    "You put your arm around [the_person.possessive_title] and pull her close, leaning in to kiss her."
+                    "You put your arm around [the_person.possessive_title!c] and pull her close, leaning in to kiss her."
                     "She responds immediately, pressing her body against yours and kissing you back."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_dandere_flirt_response_high
@@ -917,7 +917,7 @@ label dandere_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait? Come on, I'm sure we can find somewhere quiet."
                     the_person "O-oh, um... *whispers* okay..."
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_dandere_flirt_response_girlfriend_VT2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _call_dandere_fuck_person_VT76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -925,7 +925,7 @@ label dandere_flirt_response_girlfriend(the_person):
 
                 "Just flirt":
                     $ mc.change_locked_clarity(10)
-                    "You reach behind [the_person.possessive_title] and gently touch her waist, making her blush."
+                    "You reach behind [the_person.possessive_title!c] and gently touch her waist, making her blush."
                     mc.name "Alright, I'll be patient. I just want to see how turned on you get."
                     "She looks down, her face flushing with embarrassment, and her voice barely above a whisper."
                     the_person "I-I think I'm already... *whispers* pretty turned on..."
@@ -934,7 +934,7 @@ label dandere_flirt_response_girlfriend(the_person):
         else:
             the_person "W-well... *whispers* if you think I'm beautiful, then... *gulps* kiss me..."
             "You put your arm around her waist and lean close, kissing her on her lips."
-            "When you break the kiss [the_person.possessive_title] sighs happily and leans her head against your shoulder."
+            "When you break the kiss [the_person.possessive_title!c] sighs happily and leans her head against your shoulder."
             the_person "W-why did you stop? *whispers* I was having such a good time..."
             menu:
                 "Make out":
@@ -1007,7 +1007,7 @@ label dandere_flirt_response_affair(the_person):
                     "You give her a reassuring smile and a gentle squeeze on the hip."
                     mc.name "It won't be too long, I promise."
         else: #She's shy or nervous about being discovered
-            "[the_person.possessive_title] blushes deeply, looking away from your gaze."
+            "[the_person.possessive_title!c] blushes deeply, looking away from your gaze."
             the_person "Um... I-I appreciate it, but we should probably not do anything too... public..."
             "[the_person.possessive_title!c] laughs nervously, then shakes her head and glances around."
             the_person "You're looking pretty... *whispers* attractive too, but we need to be more subtle."
@@ -1022,7 +1022,7 @@ label dandere_flirt_response_affair(the_person):
         the_person "O-oh yeah? *whispers* well then, what do you want to do to me?"
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her hips, trying to be gentle."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her hips, trying to be gentle."
                 mc.name "Well, first I want to get my hands all over your... *whispers* beautiful body..."
                 "You massage her hips, trying to be subtle. She sighs happily and leans against your body."
                 the_person "W-what next? *whispers* what do you want to do to me?"
@@ -1033,7 +1033,7 @@ label dandere_flirt_response_affair(the_person):
                 $ the_person.review_outfit()
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her hips, trying to be subtle."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her hips, trying to be subtle."
                 mc.name "I wish I had the time... *whispers* you'll have to wait until later..."
                 "You massage her hips, trying to be gentle. She sighs happily and leans her weight against you."
                 the_person "A-aww, are you sure? *whispers* I was really looking forward to it..."
@@ -1241,7 +1241,7 @@ label dandere_cum_pullout(the_person):
                     $ mc.condom = False
                     $ use_condom = False  
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s cum-drunk offer and keep the condom in place."
+                    "You ignore [the_person.possessive_title!c]'s cum-drunk offer and keep the condom in place."
         else:
             the_person "I-I'm going to... *whispers* make you cum..."
     else:

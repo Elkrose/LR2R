@@ -539,7 +539,7 @@ label breeder_compliment_response(the_person):
             the_person "Oh, stop it, you're making me blush. There's no special occasion, I just felt like dressing up today to attract a potential mate."
     else:
         the_person "Well, I did put in a bit of extra effort today. You're just the first one to notice. But thanks, I guess. Maybe it'll help me find a good breeding partner."
-    "You try to press for more information, but [the_person.possessive_title] just smiles coyly and changes the subject, leaving you wondering what's going on."
+    "You try to press for more information, but [the_person.possessive_title!c] just smiles coyly and changes the subject, leaving you wondering what's going on."
     return
 
 label breeder_compliment_response_girlfriend(the_person):
@@ -556,7 +556,7 @@ label breeder_compliment_response_girlfriend(the_person):
         the_person "Ugh, don't be ridiculous. It's just a normal day... but thanks, I guess. You're always so sweet to me, maybe that's why I love breeding with you."
         mc.name "Oh come on, don't be like that. You know you look great, and I love making babies with you."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and annoyed at the same time. But I have to admit, I love the way you make me feel when we're breeding."
-    "You chat with [the_person.possessive_title] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you and gets in the mood for breeding."
+    "You chat with [the_person.possessive_title!c] for a while, and although she's initially annoyed by your compliments, she starts to warm up to you and gets in the mood for breeding."
     return
 
 label breeder_compliment_response_affair(the_person):
@@ -572,7 +572,7 @@ label breeder_compliment_response_affair(the_person):
         the_person "Ugh, don't be silly. It's just a normal day... but thanks, I suppose. You always know how to make me feel special, and I love the way you breed with me."
         mc.name "Oh come on, don't be like that. You know you look great, and I love making babies with you in secret."
         the_person "Aww, stop it, [the_person.mc_title]. You're making me blush... and a little annoyed. But I have to admit, I love the thrill of our secret breeding sessions."
-    "You keep chatting with [the_person.possessive_title] for a while, slipping in a few more compliments. She is quite charmed by your attentiveness and gets in the mood for a secret breeding session."
+    "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments. She is quite charmed by your attentiveness and gets in the mood for a secret breeding session."
     return
 
 label breeder_flirt_response(the_person):
@@ -848,12 +848,12 @@ label breeder_flirt_response_high(the_person):
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
                 if the_person.has_taboo("kissing"):
-                    "You put your arm around [the_person.possessive_title] and lean in close, your lips brushing against hers."
+                    "You put your arm around [the_person.possessive_title!c] and lean in close, your lips brushing against hers."
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
                     "She responds with a passionate kiss, her arms wrapping around your neck and pulling you in for a deeper kiss."
                 else:
-                    "You pull [the_person.possessive_title!] close and kiss her, your tongues touching and exploring each other's mouths."
+                    "You pull [the_person.possessive_title!c] close and kiss her, your tongues touching and exploring each other's mouths."
                     "She responds with a passionate kiss, her arms wrapping around your neck and pulling you in for a deeper kiss."
 
                 call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_breeder_flirt_response_high
@@ -893,7 +893,7 @@ label breeder_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait? Come on, I'm sure we can find somewhere quiet and private to breed."
                     the_person "You're always so eager, aren't you? Alright, let's go and make some babies!"
-                    "You and [the_person.possessive_title] hurry off, searching for a private spot to breed."
+                    "You and [the_person.possessive_title!c]] hurry off, searching for a private spot to breed."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_breeder_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_breeder_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -909,7 +909,7 @@ label breeder_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so beautiful, then why are you just standing there? Come on, kiss me and breed with me!"
             "You put your arm around her waist and pull her close, kissing her deeply and grinding against her."
-            "When you break the kiss, [the_person.possessive_title] sighs and leans against you, her body aching for more breeding."
+            "When you break the kiss, [the_person.possessive_title!c]] sighs and leans against you, her body aching for more breeding."
             the_person "You're not so bad yourself... But I think you could be better, with a little more practice breeding with me."
             menu:
                 "Make out":
@@ -944,7 +944,7 @@ label breeder_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
+                "You put your arms around [the_person.possessive_title!c]]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
                 "She responds by pressing her body against you and grinding her hips against your thigh, her body aching for more ."
                 "You grab her hips and pull her closer, your crotches pressed together as you imagine breeding with her."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from _vt_breeder_call_fuck_person_78
@@ -1007,7 +1007,7 @@ label breeder_flirt_response_affair(the_person):
         the_person "Oh yeah? Well then, do you want to share what all of these naughty things are? You have my attention... and you have my breeding interest."
         menu:
             "Feel her up":
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, massaging it gently and inviting her to breed with you."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, massaging it gently and inviting her to breed with you."
                 mc.name "You know, I've been waiting for this moment for a while now... and I've been waiting to breed with you for even longer."
                 "You squeeze her butt and pull her close, your crotches pressed together as you imagine impreginating her."
                 the_person "Hey, no need to be so 'forward'! What's gotten into you... and what's making you so 'horny' for breeding?"
@@ -1019,7 +1019,7 @@ label breeder_flirt_response_affair(the_person):
 
             "Just flirt":
                 $ mc.change_locked_clarity(10)
-                "You put your arms around [the_person.possessive_title]'s waist and rest your hands on her ass, massaging it gently and inviting her to breed with you."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass, massaging it gently and inviting her to breed with you."
                 mc.name "I wish I had the time... to breed with you all day and make babies with you."
                 "You massage her butt and pull her close, your crotches pressed together as you imagine breeding with her."
                 the_person "Aww, are you sure? I was really looking forward to breeding with you... and I was really looking forward to making babies with you."
@@ -1238,7 +1238,7 @@ label breeder_cum_pullout(the_person):
                     $ use_condom = False
                     "You feel a surge of excitement as you prepare to cum inside her, her eyes locked on yours with anticipation."
                 "Leave it on":
-                    "You ignore [the_person.possessive_title]'s pleas and keep the condom firmly in place, teasing her with denial."
+                    "You ignore [the_person.possessive_title!c]'s pleas and keep the condom firmly in place, teasing her with denial."
                     "She pouts, her face twisted in frustration as she realizes she won't get the creampie she desires."
         else:
             the_person "I'll make you cum so hard, you'll be begging for mercy... and then I'll take your seed inside me!"
