@@ -2028,7 +2028,7 @@ label tsundere_creampie_taboo_break(the_person):
 
         elif the_person.on_birth_control:
             if the_person.has_significant_other:
-                the_person "Oh my god, I'm such a horrible [the_person.so_title]! But I needed this so badly."
+                the_person "Oh my god, I'm such a horrible [the_person.so_girl_title]! But I needed this so badly."
                 the_person "Maybe if we're lucky, my [the_person.so_title] won't find out."
                 "She looks at you with a mischievous grin."
             else:
@@ -2049,7 +2049,7 @@ label tsundere_creampie_taboo_break(the_person):
 
         else:
             if the_person.has_significant_other:
-                the_person "Oh fuck... I'm such a terrible [the_person.so_title]!"
+                the_person "Oh fuck... I'm such a terrible [the_person.so_girl_title]!"
                 "She sighs happily, but with a hint of guilt."
                 the_person "But that felt so good..."
             else:
@@ -2066,7 +2066,7 @@ label tsundere_creampie_taboo_break(the_person):
             the_person "Seriously? You didn't even use protection? What if I get pregnant?"
 
             if the_person.has_significant_other:
-                the_person "What if you just got me pregnant? I would be the worst [the_person.so_title] of all time!"
+                the_person "What if you just got me pregnant? I would be the worst [the_person.so_girl_title] of all time!"
 
             else:
                 the_person "What if I get pregnant? I'm not ready for that kind of responsibility!"
@@ -2076,7 +2076,7 @@ label tsundere_creampie_taboo_break(the_person):
         elif the_person.has_significant_other:
             the_person "Did you really just creampie me after I told you to pull out?"
             "She sighs unhappily."
-            the_person "God, I'm such a terrible [the_person.so_title]. Maybe next time I'll make you wear a condom as punishment."
+            the_person "God, I'm such a terrible [the_person.so_girl_title]. Maybe next time I'll make you wear a condom as punishment."
 
         elif the_person.opinion.creampies < 0:
             the_person "Ugh, this is so unpleasant. Couldn't you have at least made it worth my while?"

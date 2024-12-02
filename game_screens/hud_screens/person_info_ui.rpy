@@ -1662,7 +1662,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             $ VTbreedfetishtt = f"{{image=progress_token_small}} Train her vaginal sex skills!"
                             if person.vaginal_sex_skill <5:
                                 $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Train her vaginal sex skill "+ str(5 - person.vaginal_sex_skill)+" more"
-                                if (2 - person.vaginal_sex_skill) == 1:
+                                if (5 - person.vaginal_sex_skill) == 1:
                                     $ VTbreedfetishtt += " time!"
                                 else:
                                     $ VTbreedfetishtt += " times!"
@@ -1672,9 +1672,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             $ VTbreedfetishst = "vagclosed"
                             $ VTbreedfetishtt = f"{{image=progress_token_small}} Train her into your Breeding Stock!"
                             if (person.opinion.creampies >= 1 and person.known_opinion("creampies")) or person.opinion.vaginal_sex >= 1:
-                                if person.vaginal_sex_skill <2:
-                                    $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Train her vaginal sex skill "+ str(2 - person.vaginal_sex_skill)+" more"
-                                    if (2 - person.vaginal_sex_skill) == 1:
+                                if person.vaginal_sex_skill <5:
+                                    $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Train her vaginal sex skill "+ str(5 - person.vaginal_sex_skill)+" more"
+                                    if (5 - person.vaginal_sex_skill) == 1:
                                         $ VTbreedfetishtt += " time!"
                                     else:
                                         $ VTbreedfetishtt += " times!"
