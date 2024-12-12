@@ -37,7 +37,10 @@ def VT_anal_fetish_employee_intro_requirement():
     return time_of_day == 3 and mc.business.is_open_for_business and mc.is_at_office
 
 def VT_anal_fetish_family_intro_requirement(person: Person):
-    return person.is_home and person.location.person_count == 1
+    if person.home == harem_mansion:
+        return person.is_available
+    else:
+        return person.is_home and person.location.person_count == 1
 
 def VT_anal_fetish_generic_intro_requirement(person: Person):
     return person.location != person.home and person.is_available
@@ -194,6 +197,7 @@ def VT_start_anal_fetish_quest(person: NewPerson):
             Fetish_Action("Generic Anal Fetish Intro", VT_anal_fetish_generic_intro_requirement, "VT_anal_fetish_generic_intro_label", fetish_type = "anal")
         )
         return True
+    return False
 
 def VT_breeding_fetish_employee_intro_requirement():
     if time_of_day == 3 and mc.business.is_open_for_business and mc.is_at_office:
@@ -206,8 +210,12 @@ def VT_breeding_fetish_generic_intro_requirement(person: Person):
     return False
 
 def VT_breeding_fetish_family_intro_requirement(person: Person):
-    if person.is_home and person.location.person_count == 1 and time_of_day >= 3: #She is alone in her bedroom
-        return True
+    if person.home == harem_mansion:
+        if person.location == person.home and person.is_available and time_of_day >= 3:
+            return True
+    else:
+        if person.is_home and person.location.person_count == 1 and time_of_day >= 3 and person.is_available: #She is alone in her bedroom
+            return True
     return False
 
 def VT_breeding_fetish_mom_intro_requirement(): #TODO this should be a morning mandatory crisis event.
@@ -377,7 +385,10 @@ def VT_cum_fetish_employee_intro_requirement():
     return time_of_day == 3 and mc.business.is_open_for_business and mc.is_at_office
 
 def VT_cum_fetish_family_intro_requirement(person: Person):
-    return person.is_home and person.location.person_count == 1
+    if person.home == harem_mansion:
+        return person.location == person.home and person.is_available
+    else:
+        return person.is_home and person.location.person_count == 1 and person.is_available
 
 def cum_fetish_generic_intro_requirement():
     return mc.is_in_bed and mc.energy > 70
@@ -523,13 +534,14 @@ def VT_start_cum_fetish_quest(person: Person):
         )
         return True
 
-
 def VT_exhibition_fetish_employee_intro_requirement():
     return time_of_day == 2 and mc.business.is_open_for_business and mc.is_at_office
 
 def VT_exhibition_fetish_family_intro_requirement(person: Person):
-    #return person.location == mall and person.energy >= 80 and mc.energy >= 80 and person.is_available
-    return time_of_day == 3 and person.is_home and person.location.person_count == 1 #She is alone in her bedroom
+    if person.home == harem_mansion:
+        return time_of_day == 3 and person.location == person.home and person.is_available
+    else:
+        return time_of_day == 3 and person.location == person.home and person.location.person_count == 1 #She is alone in her bedroom
 
 def VT_exhibition_fetish_generic_intro_requirement(person: Person):
     return person.location == mall and mc.is_at_office and time_of_day == 3
