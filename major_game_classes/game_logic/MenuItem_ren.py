@@ -125,34 +125,36 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
 
             info.append(format_titles(item))
 
-            if item.has_cum_fetish and (item.has_breeding_fetish or item.has_anal_fetish) and item.has_exhibition_fetish and item.opinion.polyamory>1:
-                if VT_Settings["Trackers"]["Lotus - Gold"][1]==1:
-                    info.append("{image=goldlotus_small}")
-            else:
-                if VT_Settings["Trackers"]["Lotus - White"][1]==1:
-                    if item.age <= 19:
-                        info.append("{image=whitelotus_small}")
-                if VT_Settings["Trackers"]["Lotus - Red"][1]==1:
-                    if item.age >19 and item.age <=29:
-                        info.append("{image=redlotus_small}")
-                if VT_Settings["Trackers"]["Lotus - Pink"][1]==1:
-                    if item.age >29 and item.age <=31:
-                        info.append("{image=pinklotus_small}")
-                if VT_Settings["Trackers"]["Lotus - Blue"][1]==1:
-                    if item.age >31:
-                        if item.sluttiness>30:
-                            info.append("{image=cougar_small}")
-                        else:
-                            info.append("{image=bluelotus_small}")
-            if VT_Settings["Trackers"]["Virgin - Vaginal"][1]==1:
-                if item.hymen == 0:
-                    info.append("{image=virgin_token_small}")
-            if VT_Settings["Trackers"]["Virgin - Anal"][1]==1:
-                if item.anal_virgin == 0:
-                    info.append("{image=virgin_token_small}")
-            if VT_Settings["Trackers"]["Virgin - Oral"][1]==1:
-                if item.oral_virgin == 0:
-                    info.append("{image=virgin_token_small}")
+            if not item.is_stranger:
+                if item.has_cum_fetish and (item.has_breeding_fetish or item.has_anal_fetish) and item.has_exhibition_fetish and item.opinion.polyamory>1:
+                    if VT_Settings["Trackers"]["Lotus - Gold"][1]==1:
+                        info.append("{image=goldlotus_small}")
+                else:
+                    if VT_Settings["Trackers"]["Lotus - White"][1]==1:
+                        if item.age <= 19:
+                            info.append("{image=whitelotus_small}")
+                    if VT_Settings["Trackers"]["Lotus - Red"][1]==1:
+                        if item.age >19 and item.age <=29:
+                            info.append("{image=redlotus_small}")
+                    if VT_Settings["Trackers"]["Lotus - Pink"][1]==1:
+                        if item.age >29 and item.age <=31:
+                            info.append("{image=pinklotus_small}")
+                    if VT_Settings["Trackers"]["Lotus - Blue"][1]==1:
+                        if item.age >31:
+                            if item.sluttiness>30:
+                                info.append("{image=cougar_small}")
+                            else:
+                                info.append("{image=bluelotus_small}")
+            if not item.is_stranger:
+                if VT_Settings["Trackers"]["Virgin - Vaginal"][1]==1:
+                    if item.hymen == 0:
+                        info.append("{image=virgin_token_small}")
+                if VT_Settings["Trackers"]["Virgin - Anal"][1]==1:
+                    if item.anal_virgin == 0:
+                        info.append("{image=virgin_token_small}")
+                if VT_Settings["Trackers"]["Virgin - Oral"][1]==1:
+                    if item.oral_virgin == 0:
+                        info.append("{image=virgin_token_small}")
             if any((draw_insta, draw_dikdok, draw_onlyfans)):
                 if ((draw_insta and item.has_instapic_post)
                         or (draw_dikdok and item.has_dikdok_post)
