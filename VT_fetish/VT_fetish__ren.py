@@ -225,10 +225,10 @@ def VT_breeding_fetish_lily_intro_requirement(person: Person):
     return lily.location == lily.home and lily_bedroom.person_count == 1
 
 def VT_breeding_fetish_rebecca_intro_requirement():
-    return False
+    return aunt.location == aunt.home and aunt.is_available
 
 def VT_breeding_fetish_gabrielle_intro_requirement():
-    return False
+    return cousin.location == cousin.home and cousin.is_available
 
 def VT_breeding_fetish_stephanie_intro_requirement():
     if mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25:
@@ -309,10 +309,16 @@ def VT_start_breeding_fetish_quest(person: Person):
             Fetish_Action("Lily breeding fetish intro", VT_breeding_fetish_lily_intro_requirement, "VT_breeding_fetish_lily_intro_label", fetish_type = "breeding", priority = 30)
         )
         return True
-    # if person == aunt:
-    #     Fetish_Action("Rebecca breeding fetish intro", breeding_fetish_rebecca_intro_requirement, "breeding_fetish_rebecca_intro_label", fetish_type = "breeding")
-    # elif person == cousin:
-    #     Fetish_Action("Gabrielle breeding fetish intro", breeding_fetish_gabrielle_intro_requirement, "breeding_fetish_gabrielle_intro_label", fetish_type = "breeding")
+    if person == aunt:
+        aunt.add_unique_on_room_enter_event(
+            Fetish_Action("Rebecca breeding fetish intro", VT_breeding_fetish_rebecca_intro_requirement, "VT_breeding_fetish_rebecca_intro_label", fetish_type = "breeding", priority = 30)
+        )
+        return True
+    if person == cousin:
+        cousin.add_unique_on_room_enter_event(
+            Fetish_Action("Gabrielle breeding fetish intro", VT_breeding_fetish_gabrielle_intro_requirement, "VT_breeding_fetish_gabrielle_intro_label", fetish_type = "breeding", priority = 30)
+        )
+        return True
     if person == stephanie:
         mc.business.add_mandatory_morning_crisis(
             Fetish_Action("Stephanie breeding fetish intro", VT_breeding_fetish_stephanie_intro_requirement, "VT_breeding_fetish_stephanie_intro_label", fetish_type = "breeding")

@@ -1,4 +1,4 @@
-# Override default person_info_ui screen by Elkrose to show extra information about character
+# Override default person_info_ui screen by VREN to show extra information about character
 init 900 python in vt_store:
     DEBUG = True
 
@@ -1256,12 +1256,20 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         else:
             if person.sexy_opinions.get("public sex")[1]==True:
                 if person.has_exhibition_fetish:
-                    $ VTexhibitfetishst = "vtcherries"
-                    $ VTexhibitfetishtt = f"{{image=vtcherries_small}} My body deserves to be seen!"
-                    if person.event_triggers_dict.get("exhibition_fetish_locked",0)<day:
-                        $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Ugh my skin is itchy I need\nmy skin free soon!"
+                    if person.days_since_event("LastExhibitionFetish") > 10:
+                        $ VTexhibitfetishst = "vtcherries"
+                        $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Ugh my skin is itchy I need\na pearl necklace soon!"
                     else:
+                        $ VTexhibitfetishst = "creamcherry"
+                        $ VTexhibitfetishtt = "*fetish 'a'salted complete*"
                         $ VTexhibitfetishtt += f"\n{{image=creamcherry_small}} MMmmMm my skin feels good."
+                    
+                    # $ VTexhibitfetishst = "vtcherries"
+                    # $ VTexhibitfetishtt = f"{{image=vtcherries_small}} My body deserves to be seen!"
+                    # if person.event_triggers_dict.get("exhibition_fetish_locked",0)<day:
+                        # $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Ugh my skin is itchy I need\nmy skin free soon!"
+                    # else:
+                        # $ VTexhibitfetishtt += f"\n{{image=creamcherry_small}} MMmmMm my skin feels good."
                 else:
                     if person.opinion.public_sex >=2 and person.opinion.not_wearing_underwear >= 2 and person.opinion.not_wearing_anything >= 2  and person.known_opinion("not wearing underwear") and person.known_opinion("not wearing anything") and person.opinion.showing_her_ass >= 2 and person.opinion.showing_her_tits >= 2  and person.known_opinion("showing her ass") and person.known_opinion("showing her tits") and person.opinion.skimpy_outfits >= 2 and person.opinion.skimpy_uniforms >= 2 and person.known_opinion("skimpy outfits") and person.known_opinion("skimpy uniforms"):
                         $ VTexhibitfetishst = "nudebody"

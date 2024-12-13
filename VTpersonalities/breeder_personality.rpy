@@ -2506,9 +2506,3 @@ label breeder_sleepover_bored_response(the_person):  #If she hasn't cum yet
     the_person "You'd better step it up if you want to keep me interested... I'm a breeder, and I expect to be treated as such."
     return
 
-
-# this doesn't read properly, don't use repetitive wording, use different words, and movements. Update all the following the_person and movements with breeding personality. Use Hitomi Takami from Ane Haramix or Momoko Kuzuryu from Sumomomo, Momomo: The Strongest Bride on Earth, for ideas, keep to the structure. Movements in double quotes and newline:```
-
-# this doesn't read properly, don't use repetitive wording, use different words, and movements. Update all the following the_person and movements with breeder personality. Use Hitomi Takami from Ane Haramix or Momoko Kuzuryu from Sumomomo, Momomo: The Strongest Bride on Earth, for ideas, keep to the structure. More breeder personality and sexually explicit movements.
-### DIALOGUE ###
-
