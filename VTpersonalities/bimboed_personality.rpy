@@ -352,7 +352,7 @@ label bimboed_sex_accept(the_person, the_position):
                 "She giggles and looks up at you with big, sparkling eyes."
             elif the_position.skill_tag == "Oral":
                 if "getting head" in the_position.opinion_tags:
-                    the_person "Ugh, like, I'm soooo ready for this! Suck my [pussy/clit] already, please!"
+                    the_person "Ugh, like, I'm soooo ready for this! Suck my pussy already, please!"
                     "She squirms and looks up at you with a pleading expression."
                 else:
                     the_person "You're, like, going down on me right now, and you're going to make me cum, 'kay?"
