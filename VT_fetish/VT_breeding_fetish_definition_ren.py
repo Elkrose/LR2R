@@ -63,7 +63,7 @@ def update_breeding_fetish_state(person: Person):
 VT_breeding_fetish_high_fertility_crisis = ActionMod("Fertile breeding desperation", VT_breeding_fetish_high_fertility_crisis_requirement, "VT_breeding_fetish_high_fertility_crisis_label",
     menu_tooltip = "You are visited at home by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_happy_breeder_crisis = ActionMod("Breeding fetish desperation", VT_breeding_fetish_happy_breeder_crisis_requirement, "VT_breeding_fetish_happy_breeder_crisis_label",
-    menu_tooltip = "You are visited at home by a highly fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
+    menu_tooltip = "You are visited at home by a fertile breeder.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_family_sleep_crisis = ActionMod("Familial nighttime breeding", VT_breeding_fetish_family_sleep_crisis_requirement, "VT_breeding_fetish_family_sleep_crisis_label",
     menu_tooltip = "You are visited at night by a fertile family member.", category = "VT Natural Fetish", is_crisis = True)
 VT_breeding_fetish_employee_high_fertility_crisis = ActionMod("Highly fertile employee needs breeding", VT_breeding_fetish_employee_high_fertility_crisis_requirement, "VT_breeding_fetish_employee_high_fertility_crisis_label",
