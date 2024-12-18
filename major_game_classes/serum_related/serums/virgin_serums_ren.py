@@ -704,7 +704,7 @@ def init_Virginal_Serum():
 
     SerumTraitMod(name = "R053 G4RD3N5",
         desc = "Company secret Rose Blossom formula, specially brewed to promote a healthy speedy, spectacular pregnancy! With Sparkles!",
-        positive_slug = "7 durations, increases in Int/Focus/Charisma, suggest, happiness, sluttiness, arousal, obedience and love.",
+        positive_slug = "7 durations, increases in happiness, and speedy pregnancy.",
         negative_slug = "One dose lasts 7 durations",
         research_added = 2000,
         base_side_effect_chance = 75,
