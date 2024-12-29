@@ -138,7 +138,7 @@ label VT_breeding_fetish_happy_breeder_crisis_label():
             "You put your hands on her hips, feeling her soft skin... then you line yourself up and gently push your cock inside her."
             $ the_person.break_taboo("condomless_sex")
             $ the_person.break_taboo("vaginal_sex")
-            call fuck_person(the_person, start_position = facing_window, start_object = make_window(), skip_intro = True, skip_condom = True) from _call_fuck_VT_breeding_fetish_happy_breeder_crisis_01
+            call fuck_person(the_person, start_position = facing_wall, start_object = make_window(), skip_intro = True, skip_condom = True) from _call_fuck_VT_breeding_fetish_happy_breeder_crisis_01
             "[the_person.possessive_title!c] walks over to your bed and lays down on her back and takes off any remaining clothing."
             $ the_person.strip_outfit(exclude_feet = False, position = "missionary")
             $ the_person.draw_person(position = "missionary")
