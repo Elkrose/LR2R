@@ -509,67 +509,73 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 ### Personalities 
         $ VTpersonalityst = "knowpeach"
         $ VTpersonalitytt = f"{{image=question_mark_small}} What is her personality?"
-        if person.personality.default_prefix == "bimbo":
+        $ VTpersonality = "relaxed"
+        if person.type in ["story", "unique"]:
+            $ VTpersonality = person.personality.default_prefix
+        else:
+            $ VTpersonality = person.personality.personality_type_prefix
+
+        if VTpersonality == "bimbo":
             $VTpersonalityst = "bimbo"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears bubbly and enthusiastic, with a bright smile plastered on her face. She studies you up and down, her eyes widening with excitement as she takes in your appearance. Her tone is sugary sweet and overly friendly, with a hint of airheadedness. Her brain is with NASA, in space."
-        elif person.personality.default_prefix == "cougar":
+        elif VTpersonality == "cougar":
             $VTpersonalityst = "cougar"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears sultry and seductive, with a confident and flirtatious smile. She studies you with a piercing gaze, her eyes seeming to sparkle with a knowing glint. Her tone is low and husky, with a hint of a purr, as if she is savoring every word."
-        elif person.personality.default_prefix == "alpha":
+        elif VTpersonality == "alpha":
             $VTpersonalityst = "alpha"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears confident and assertive, with a strong and commanding presence. She studies you with a direct and piercing gaze, her eyes seeming to bore into your very soul. Her tone is firm and authoritative, with a hint of a growl, as if she is daring you to challenge her."
-        elif person.personality.default_prefix == "relaxed":
+        elif VTpersonality == "relaxed":
             $VTpersonalityst = "relaxed"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears calm and serene, with a warm and gentle smile on her face. She studies you with a soft and peaceful gaze, her eyes crinkling at the corners as she smiles. Her tone is low and soothing, with a hint of a drawl, as if she is savoring every word."
-        elif person.personality.default_prefix == "introvert":
+        elif VTpersonality == "introvert":
             $VTpersonalityst = "introvert"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears quiet and introspective, with a subtle hint of nervousness in her demeanor. She studies you with a gentle gaze, her eyes soft and thoughtful. Her tone is soft and measured, with a hint of hesitation and reserve."
-        elif person.personality.default_prefix == "reserved":
+        elif VTpersonality == "reserved":
             $VTpersonalityst = "reserved"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears calm and composed, with a subtle hint of shyness in her demeanor. She studies you with a gentle gaze, her eyes soft and introspective. Her tone is quiet and measured, with a hint of reserve and caution."
-        elif person.personality.default_prefix == "wild":
+        elif VTpersonality == "wild":
             $VTpersonalityst = "wild"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears excited and energetic, with a huge smile on her face. She studies you with a sparkling gaze, her eyes shining with a love of fun and adventure. Her tone is loud and boisterous, with a hint of infectious enthusiasm."
-        elif person.personality.default_prefix == "dandere":
+        elif VTpersonality == "dandere":
             $VTpersonalityst = "dandere"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears distracted and preoccupied, with a far-off look in her eyes. She studies you with a slightly vacant expression, as if they were gazing right through you. Her tone is flat and monotone, with a hint of disinterest and detachment."
-        elif person.personality.default_prefix == "goudere":
+        elif VTpersonality == "goudere":
             $VTpersonalityst = "goudere"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears to be smiling and enthusiastic, with a radiant glow in her eyes. She studies you with a warm and inviting expression, her face lighting up with excitement. Her tone is bright and cheerful, with a hint of playfulness and mischief."
-        elif person.personality.default_prefix == "kuudere":
+        elif VTpersonality == "kuudere":
             $VTpersonalityst = "kuudere"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears quiet and reserved, with a subtle hint of sadness in her eyes. She studies you with a gentle, almost imperceptible smile, her expression soft and melancholic. Her tone is low and soothing, with a hint of wistfulness and longing."
-        elif person.personality.default_prefix == "tsundere":
+        elif VTpersonality == "tsundere":
             $VTpersonalityst = "tsundere"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears irritated and annoyed, with a scowl on her face. She studies you with a mixture of disdain and disinterest, her eyes flashing with a hint of anger. Her tone is sharp and curt, with a hint of sarcasm and mockery."
-        elif person.personality.default_prefix == "yandere":
+        elif VTpersonality == "yandere":
             $VTpersonalityst = "yandere"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears sweet and innocent, with a gentle smile on her face. She studies you with big, shining eyes, her gaze filled with adoration and devotion. Her tone is soft and melodious, with a hint of shyness and vulnerability."
-        elif person.personality.default_prefix == "alluring":
+        elif VTpersonality == "alluring":
             $VTpersonalityst = "pinklips"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears sophisticated and elegant, with a confident and poised demeanor. She studies you up and down, her eyes sparkling with interest and curiosity, her gaze lingering on your best features. Her tone is smooth and sultry, with a hint of playfulness and flirtation."
-        elif person.personality.default_prefix == "gothic":
+        elif VTpersonality == "gothic":
             $VTpersonalityst = "gothic"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears dark and introspective, with a hint of mystery and intrigue. She studies you up and down, her eyes narrowing slightly as she takes in your appearance, her gaze lingering on any perceived flaws or imperfections. Her tone is low and melancholic, with a hint of sarcasm and dry wit."
-        elif person.personality.default_prefix == "bimboed":
+        elif VTpersonality == "bimboed":
             $VTpersonalityst = "bimbo"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears bubbly and enthusiastic, with a bright smile plastered on her face. She studies you up and down, her eyes widening with excitement as she takes in your appearance. Her tone is sugary sweet and overly friendly, with a hint of airheadedness. Her brain is with NASA, in space."
-        elif person.personality.default_prefix == "tomboy":
+        elif VTpersonality == "tomboy":
             $VTpersonalityst = "tomboy"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears relaxed and casual, with a hint of a smirk on her face. She studies you with a slightly raised eyebrow, her expression a mix of curiosity and amusement. Her tone is laid-back and friendly, with a hint of teasing and playfulness."
-        elif person.personality.default_prefix == "foodie":
+        elif VTpersonality == "foodie":
             $VTpersonalityst = "foodie"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She appears to be savoring the moment, her eyes lingering on you like a rich, decadent sauce on a perfectly cooked dish. She raises an eyebrow, and a hint of a smile plays on her lips, as if she's anticipating the first bite of a long-awaited meal."
-        elif person.personality.default_prefix == "cosplay":
+        elif VTpersonality == "cosplay":
             $VTpersonalityst = "cosplay"
             $VTpersonalitytt = f"{{image=vtcherries_small}} Her eyes sparkle with excitement as she strikes a pose, her confidence and charisma radiating from every angle."
-        elif person.personality.default_prefix == "slutty":
+        elif VTpersonality == "slutty":
             $VTpersonalityst = "openmouth"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She turns to face you with a sly smile spreading across her face. Her eyes sparkle with a hint of mischief, and her body language screams \"I'm available and ready to play\"."
-        elif person.personality.default_prefix == "pornstar":
+        elif VTpersonality == "pornstar":
             $VTpersonalityst = "matureteen"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She saunters into view, her hips swaying seductively as she moves. Her eyes sparkle with a naughty glint, and her full lips curve into a sultry smile. She looks you up and down, her gaze lingering on your crotch before meeting your eyes with a flirtatious wink."
-        elif person.personality.default_prefix == "breeder":
+        elif VTpersonality == "breeder":
             $VTpersonalityst = "breeder"
             $VTpersonalitytt = f"{{image=vtcherries_small}} She walks into view with a confident stride, her hips swaying gently as she moves. Her eyes shine with a warm, nurturing light, and her full lips curve into a soft, inviting smile. She looks you up and down with a discerning gaze, her eyes lingering on your face before meeting your eyes with a gentle, encouraging smile."
         else:
@@ -1258,7 +1264,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if person.has_exhibition_fetish:
                     if person.days_since_event("LastExhibitionFetish") > 10:
                         $ VTexhibitfetishst = "vtcherries"
-                        $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Ugh my skin is itchy I need\na pearl necklace soon!"
+                        $ VTexhibitfetishtt = f"{{image=progress_token_small}} Ugh my skin is itchy I need\na pearl necklace soon!"
                     else:
                         $ VTexhibitfetishst = "creamcherry"
                         $ VTexhibitfetishtt = "*fetish 'a'salted complete*"
@@ -1419,7 +1425,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if person.has_cum_fetish:
                     if person.days_since_event("LastCumFetish") > 10:
                         $ VTcumfetishst = "vtcherries"
-                        $ VTcumfetishtt += f"\n{{image=triskelion_token_small}} MMmmMm going to need your yummy\nlollipop in my mouth in soon!"
+                        $ VTcumfetishtt = f"{{image=progress_token_small}} MMmmMm going to need your yummy\nlollipop in my mouth in soon!"
                     else:
                         $ VTcumfetishst = "creamcherry"
                         $ VTcumfetishtt = "*fetish 'a'salted complete*"
@@ -1535,7 +1541,12 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ VTanalfetishst = "vtcherries"
                     $ VTanalfetishtt = f"\n{{image=triskelion_token_small}} mmmm stick your cock in my ass!"
                     if person.days_since_event("LastAnalFetish") > 10:
-                        $ VTanalfetishtt = f"{{image=triskelion_token_small}} MMmmMm going to need your yummy\ncock in my ass soon!"
+                        if person.anal_cum == 0:
+                            $ VTanalfetishst = "vtcherries"
+                            $ VTanalfetishtt = f"{{image=progress_token_small}} MMmmMm going to need your yummy\ncock in my ass soon!"
+                        else:
+                            $ VTanalfetishst = "creamcherry"
+                            $ VTanalfetishtt = f"{{image=triskelion_token_small}} MMmmMm still feel your juice in my ass!"
                     else:
                         $ VTanalfetishst = "creamcherry"
                         $ VTanalfetishtt = "*fetish 'ass'salted complete*"
@@ -1621,7 +1632,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 ###### Breeding Fetish
         $ VTbreedfetishat = "talking"
         $ VTbreedfetishst = "knowpeach"
-        $ VTbreedfetishtt = f"{{image=question_mark_small}} Her thoughts on vaginal sex?"
+        $ VTbreedfetishtt = ""
         if person.sexy_opinions.get("vaginal sex")==None:
             $ VTbreedfetishst = "knowpeach"
             $ VTbreedfetishtt = f"{{image=question_mark_small}} Her thoughts on vaginal sex?"
@@ -1630,8 +1641,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if person.has_breeding_fetish:
                     if person.days_since_event("LastBreedingFetish") > 10 and not person.is_pregnant:
                         if person.vaginal_cum == 0:
-                            $ VTbreedfetishtt = f"{{image=triskelion_token_small}} MMmmMm going to need another \nyummy creampie filling soon!"
+                            $ VTbreedfetishst = "vtcherries"
+                            $ VTbreedfetishtt = f"{{image=progress_token_small}} MMmmMm going to need another \nyummy creampie filling soon!"
                         else:
+                            $ VTbreedfetishst = "creamcherry"
                             $ VTbreedfetishtt = f"{{image=triskelion_token_small}} MMmmMm feeling your seed inside me, might get pregnant!"
                     else:
                         if person.is_pregnant:
@@ -1642,13 +1655,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             if person.vaginal_cum > 0:
                                 $ VTbreedfetishst = "creamcherry"
                                 $ VTbreedfetishtt = "*fetish 'full'filled*"
-                                $ VTbreedfetishtt += f"\n{{image=creamcherry_small}} MMmmMmmm give me more!"
+                                $ VTbreedfetishtt = f"\n{{image=creamcherry_small}} MMmmMmmm give me more!"
                             else:
                                 $ VTbreedfetishst = "vtcherries"
-                            if not person.is_pregnant:
-                                $ VTbreedfetishtt += f"\n{{image=creamcherry_small}} Breed me! Flood my womb full of your cum!"
-                            else:
-                                $ VTbreedfetishtt += f"\n{{image=creamcherry_small}} Flood my womb full of your cum!"
+                                $ VTbreedfetishtt = f"{{image=creamcherry_small}} Breed me! Flood my womb full of your cum!"
                 else:
                     if person.vaginal_sex_skill >= 5 and person.opinion.vaginal_sex >= 2  and person.opinion.creampies >= 2 and person.known_opinion("creampies"):
                         $ VTbreedfetishst = "openvag"
@@ -1666,11 +1676,12 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Have vaginal sex with her to break taboo!"
                     else:
                         if person.opinion.vaginal_sex >= 2 and person.vaginal_sex_skill >=2  and (person.opinion.creampies >= 2 and person.known_opinion("creampies")):
-                            $ VTbreedfetishst = "spreadvag"
+                            $ VTbreedfetishst = "vagclosed"
                             $ VTbreedfetishtt = f"{{image=progress_token_small}} Train her vaginal sex skills!"
                             if person.vaginal_sex_skill <5:
                                 $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Train her vaginal sex skill "+ str(5 - person.vaginal_sex_skill)+" more"
                                 if (5 - person.vaginal_sex_skill) == 1:
+                                    $ VTbreedfetishst = "spreadvag"
                                     $ VTbreedfetishtt += " time!"
                                 else:
                                     $ VTbreedfetishtt += " times!"
@@ -1683,6 +1694,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 if person.vaginal_sex_skill <5:
                                     $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Train her vaginal sex skill "+ str(5 - person.vaginal_sex_skill)+" more"
                                     if (5 - person.vaginal_sex_skill) == 1:
+                                        $ VTbreedfetishst = "spreadvag"
                                         $ VTbreedfetishtt += " time!"
                                     else:
                                         $ VTbreedfetishtt += " times!"
@@ -1801,7 +1813,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 $ VTcreampiest = "creamcherry"
             else:
                 $ VTcreampiest = "vtcherries"
-                $ VTcreampiett  += f"\n{{image=triskelion_token_small}} She needs her cream!"
+                $ VTcreampiett  += f"\n{{image=progress_token_small}} She needs her cream!"
         else:
             if (person.opinion.anal_creampies >= 1 and person.known_opinion("anal creampies")) or (person.opinion.creampies >= 1 and person.known_opinion("creampies")):
                 $ VTcreampiest = "openpeach"

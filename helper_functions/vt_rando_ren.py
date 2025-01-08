@@ -21,7 +21,7 @@ def _vt_create_hooker_override(wrapped_func):
         hooker = make_person( sluttiness = renpy.random.randint(35, 80), age = renpy.random.randint(32, 39),
             sex_skill_array = [renpy.random.randint(4,8),renpy.random.randint(3,8),renpy.random.randint(2,8),renpy.random.randint(2,8)],
             job = prostitute_job,
-            type="unique",
+            #type="unique",
             forced_opinions = [
                 ["flirting", 2, False],
                 ["high heels", 2, False],
@@ -54,7 +54,7 @@ def _vt_create_stripper_override(wrapped_func):
             age = renpy.random.randint(18, 37),
             sex_skill_array = [renpy.random.randint(4,8),renpy.random.randint(0,8),renpy.random.randint(0,8),renpy.random.randint(0,8)],
             job = stripper_job,
-            type="unique",
+            #type="unique",
             forced_opinions = [
                 ["small talk", 1, False],
                 ["conservative outfits", -2, False],
