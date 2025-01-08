@@ -641,7 +641,7 @@ label tsundere_flirt_response_mid(the_person):
         $ mc.change_locked_clarity(10)
         the_person "Good, right?"
         mc.name "Fantastic. I wish I could get an even better look at it."
-        "[the_person.possessive_title!c!c] smiles and turns back to face you."
+        "[the_person.possessive_title!c] smiles and turns back to face you."
         $ the_person.draw_person()
         the_person "I'm sure you do. Take me out for a drink and maybe we can work something out."
     return
