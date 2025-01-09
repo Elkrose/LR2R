@@ -1510,7 +1510,7 @@ label yandere_date_seduction(the_person):
         "[the_person.possessive_title!c] grabs your hand and pulls you around to look at her."
         the_person "Hey, that was such a great time. So I was thinking..."
         $ mc.change_locked_clarity(30)
-        the_person "You know what I really want, {mc.name}? I want to be closer to you. Like, really close."
+        the_person "You know what I really want, [mc.name]? I want to be closer to you. Like, really close."
         the_person "I want to feel you inside me all the time, and I want to be with you all the time too."
         the_person "So, are you ready to make us one? Let's go back to my place and make sure we can't be apart anymore."
         if the_person.effective_sluttiness(["vaginal_sex", "condomless_sex"]) > 60 and the_person.wants_creampie and the_person.effective_sluttiness() > the_person.get_no_condom_threshold() and the_person.opinion.bareback_sex >= 0 and the_person.opinion.creampies >= 0 and not the_person.on_birth_control and not the_person.knows_pregnant:
