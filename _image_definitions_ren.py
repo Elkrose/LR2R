@@ -45,10 +45,6 @@ dontknow_image = Image(get_file_handle("dontknow.png"))
 dontknow_token_small_image = im.Scale(Image(get_file_handle(modpath+"dontknow.png")), 18, 18)
 renpy.image("dontknow_token_small", dontknow_token_small_image)
 
-virgin_image = Image(get_file_handle(modpath+"virgin_token.png"))
-virgin_token_small_image = im.Scale(Image(get_file_handle(modpath+"virgin.png")), 18, 18)
-renpy.image("virgin_token_small", virgin_token_small_image)
-
 familycircle_image = Image(get_file_handle(modpath+"familycircle.png"))
 familycircle_small_image = im.Scale(Image(get_file_handle(modpath+"familycircle.png")), 18, 18)
 renpy.image("familycircle_small", familycircle_small_image)
@@ -92,6 +88,7 @@ renpy.image("familiaslave_small", familiaslave_small_image)
 gffamiliaslave_image = Image(get_file_handle(modpath+"gffamiliaslave.png"))
 gffamiliaslave_small_image = im.Scale(Image(get_file_handle(modpath+"gffamiliaslave.png")), 18, 18)
 renpy.image("gffamiliaslave_small", gffamiliaslave_small_image)
+
 ##### Age Icons #####
 matureteen_image = Image(get_file_handle("matureteen.png"))
 matureteen_token_small_image = im.Scale(Image(get_file_handle("matureteen.png")), 18, 18)
@@ -207,7 +204,19 @@ donetrain_token_small_image = im.Scale(Image(get_file_handle("donetrain.png")), 
 renpy.image("donetrain_token_small", donetrain_token_small_image)
 
 notrance_image = Image(get_file_handle("notrance.png"))
+
+### VIRGINS
+virgin_image = Image(get_file_handle(modpath+"virgin_token.png"))
+virgin_token_small_image = im.Scale(Image(get_file_handle(modpath+"virgin.png")), 18, 18)
+renpy.image("virgin_token_small", virgin_token_small_image)
+
+
 ### Oral Virgin Flag
+virgin_oral_image = Image(get_file_handle(modpath+"virgin_oral.png"))
+
+virgin_oral_small_image = im.Scale(Image(get_file_handle(modpath+"virgin_oral.png")), 18, 18)
+renpy.image("virgin_oral_small", virgin_oral_small_image)
+
 truevirgin_image = Image(get_file_handle(modpath+"virgin.png"))
 
 knowlips_image = Image(get_file_handle("knowlips.png"))
@@ -233,6 +242,10 @@ bitelip_small_image = im.Scale(Image(get_file_handle("bitelip.png")), 18, 18)
 renpy.image("bitelip_small", bitelip_small_image)
 
 ### Vaginal Virgin Flag
+virgin_vaginal_image = Image(get_file_handle(modpath+"virgin_vaginal.png"))
+virgin_vaginal_small_image = im.Scale(Image(get_file_handle(modpath+"virgin_vaginal.png")), 18, 18)
+renpy.image("virgin_vaginal_small", virgin_vaginal_small_image)
+
 claimedvag_image = Image(get_file_handle("claimedvag.png"))
 
 vaghymen_image = Image(get_file_handle("vaghymen.png"))
@@ -256,6 +269,10 @@ renpy.image("vagclosed_small", vagclosed_small_image)
 knowvag_image = Image(get_file_handle("knowvag.png"))
 
 ### Anal Virgin Flag
+virgin_anal_image = Image(get_file_handle(modpath+"virgin_anal.png"))
+virgin_anal_small_image = im.Scale(Image(get_file_handle(modpath+"virgin_anal.png")), 18, 18)
+renpy.image("virgin_anal_small", virgin_anal_small_image)
+
 claimedass_image = Image(get_file_handle("claimedass.png"))
 
 handass_image = Image(get_file_handle("handass.png"))
@@ -308,14 +325,6 @@ bodypanties_image = Image(get_file_handle("bodypanties.png"))
 
 bodybra_image = Image(get_file_handle("bodybra.png"))
 
-###### Cum Fetish ##############
-
-###### Anal Fetish ##############
-
-###### Breeding Fetish ##############
-
-###### Creampie Filling ##############
-
 openpeach_image = Image(get_file_handle("openpeach.png"))
 
 ##### overtop Icons #####
@@ -338,7 +347,6 @@ creamcherry_image = Image(get_file_handle("creamcherry.png"))
 
 handprint_token_small_image = im.Scale(Image(get_file_handle("handprint.png")), 18, 18)
 renpy.image("handprint_token_small", handprint_token_small_image)
-
 
 bareback_image = Image(get_file_handle("bareback.png"))
 bareback_small_image = im.Scale(Image(get_file_handle("bareback.png")), 18, 18)
@@ -363,5 +371,3 @@ renpy.image("stripper_small", stripper_small_image)
 cashpanties_image = Image(get_file_handle("cashpanties.png"))
 cashpanties_small_image = im.Scale(Image(get_file_handle("cashpanties.png")), 18, 18)
 renpy.image("cashpanties_small", cashpanties_small_image)
-
-### deleted nocream

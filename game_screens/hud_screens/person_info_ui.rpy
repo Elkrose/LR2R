@@ -869,7 +869,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     else:
                         $ VToralst = "bitelip"
                         if person.oral_virgin == 0:
-                            $ VToraltt = f"{{image=virgin_token_small}} She plays with her innocent hungry fresh pussy.\nShe bites her lip coyly."
+                            $ VToraltt = f"{{image=virgin_oral_small}} She plays with her innocent hungry fresh pussy.\nShe bites her lip coyly."
                         else:
                             if person.oral_first == mc.name:
                                 $ VToraltt = f"{{image=handprint_token_small}} She locks eyes with you and bite her lip sexily."
@@ -890,7 +890,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if person.oral_cum ==0:
                     $ VToralst = "ahegaoface"
                     if person.oral_virgin == 0:
-                        $ VToraltt = f"{{image=virgin_token_small}} She looks at you with lust \n in her innocent hungry eyes."
+                        $ VToraltt = f"{{image=virgin_oral_small}} She looks at you with lust \n in her innocent hungry eyes."
                     else:
                         if person.oral_first == mc.name:
                             $ VToraltt = f"{{image=handprint_token_small}} She starts to drool \n and undress you with her eyes."
@@ -910,8 +910,8 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ VToraltt += f"\n{{image=ahegaomouth_small}} "+ str(person.oral_cum) +" doses of your cum \n swimming in her belly."
             else:
                 if person.oral_virgin == 0: #morevisual with virgin
-                    $ VToralst = "truevirgin"
-                    $ VToraltt = f"{{image=virgin_token_small}} Her lips look sweet and inexperienced."
+                    $ VToralst = "virgin_oral"
+                    $ VToraltt = f"{{image=virgin_oral_small}} Her lips look sweet and inexperienced."
                 if person.oral_first == mc.name:
                     $ VToralst = "claimedmouth"
                     $ VToraltt = f"{{image=handprint_token_small}} You Claimed this Pie Hole!"
@@ -1006,7 +1006,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     else:
                         $ VTvaginalst = "spreadvag"
                         if person.vaginal_virgin == 0:
-                            $ VTvaginaltt = f"{{image=virgin_token_small}} She plays with her fresh innocent hungry pussy."
+                            $ VTvaginaltt = f"{{image=virgin_vaginal_small}} She plays with her fresh innocent hungry pussy."
                         else:
                             if person.vaginal_first == mc.name:
                                 $ VTvaginaltt = f"{{image=handprint_token_small}} She locks eyes with you and licks her lips \n and plays with her pussy."
@@ -1036,8 +1036,8 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     tooltip VTvaginaltt
         if VTvaginalat=="talking":
             if person.hymen == 0 and person.vaginal_virgin <=1: #morevisual with virgin
-                $ VTvaginalst = "truevirgin"
-                $ VTvaginaltt = f"{{image=virgin_token_small}} She looks so innocent and inexperienced."
+                $ VTvaginalst = "virgin_vaginal"
+                $ VTvaginaltt = f"{{image=virgin_vaginal_small}} She looks so innocent and inexperienced."
             if person.vaginal_first == mc.name:
                 $ VTvaginalst = "claimedvag"
                 $ VTvaginaltt = f"{{image=handprint_token_small}} You Claimed this Pussy!"
@@ -1048,9 +1048,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             if person.arousal_perc >= 59 and person.vaginal_cum<=0:
                 $ VTvaginalst = "spreadvag"
                 if person.vaginal_virgin <= 1:
-                    $ VTvaginaltt += f"\n{{image=virgin_token_small}} Her fresh pussy is dripping for you.\n*You can really smell her arousal*"
+                    $ VTvaginaltt += f"\n{{image=virgin_vaginal_small}} Her fresh pussy is dripping for you.\n*You can really smell her arousal*"
                     if person.hymen ==0:
-                        $ VTvaginaltt += f"\n{{image=virgin_token_small}} She is more than ready to be fucked."
+                        $ VTvaginaltt += f"\n{{image=virgin_vaginal_small}} She is more than ready to be fucked."
                 else:
                     if person.vaginal_first == mc.name:
                         $ VTvaginaltt += f"\n{{image=handprint_token_small}} Her pussy is dripping for you.\n*You can really smell her arousal*\nCome take me!"
@@ -1156,7 +1156,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     else:
                         $ VTanalst = "yespeach"
                         if person.anal_virgin == 0:
-                            $ VTanaltt = f"{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking!"
+                            $ VTanaltt = f"{{image=virgin_anal_small}} Her ass sways so ripely, ready for the taking!"
                         else:
                             if person.anal_first == mc.name:
                                 $ VTanaltt = f"{{image=handprint_token_small}} Her ass sways, hypnotizing you..\nThen she slaps it!"
@@ -1175,13 +1175,13 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
         if VTanalat=="talking":
             if person.anal_virgin == 0:
-                $ VTanalst = "truevirgin"
-                $ VTanaltt = f"{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking"
+                $ VTanalst = "virgin_anal"
+                $ VTanaltt = f"{{image=virgin_anal_small}} Her ass sways so ripely, ready for the taking"
             if person.arousal_perc >= 59:
                 if person.anal_cum ==0:
                     $ VTanalst = "yespeach"
                     if person.anal_virgin == 0:
-                        $ VTanaltt = f"{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking!"
+                        $ VTanaltt = f"{{image=virgin_anal_small}} Her ass sways so ripely, ready for the taking!"
                     else:
                         if person.anal_first == mc.name:
                             $ VTanaltt = f"{{image=handprint_token_small}} Her ass sways, hypnotizing you while \nshe rubs it!"
