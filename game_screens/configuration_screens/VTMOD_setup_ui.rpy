@@ -41,17 +41,6 @@ init 10 python:
         cs.scope["current_total"] = total
         return
 
-    def set_vt_tracker(vtracker, vtpref, vtpref_opt):
-        if vtracker ==1:
-            vtracker=0
-        else:
-            vtracker = 1
-        VT_Settings[str(vtpref)][str(vtpref_opt)][1] = vtracker
-        #VT_Settings[str(vtpref)][str(vtpref_opt)][0] = vtracker
-        #setattr(persistent, VT_Settings[str(vtpref)][str(vtpref_opt)][1], vtracker)
-        #setattr(VT_Settings, str(VT_Settings[str(vtpref)][str(vtpref_opt)][1]), vtracker)
-        return
-
 screen VTMOD_setup_ui():
 
     add Cherry_background_image
@@ -119,20 +108,22 @@ screen VTMOD_setup_ui():
                                             vbox:
                                                 xsize 50
                                                 ysize 50
-                                                use vt_tracker_button(vtracker = VT_Settings[pref][pref_opt][1], vtpref = pref, vtpref_opt = pref_opt, is_sensitive = True)
+                                                imagebutton:
+                                                    if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1:
+                                                        idle "gui/extra_images/check_mark.png"
+                                                    else:
+                                                        idle "gui/extra_images/uncheck_mark.png"
+                                                    background ("#449044" if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1 else "#904444" )
+                                                    hover_background ("#66a066" if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1 else "#a06666")
+                                                    sensitive True
+                                                    action  [ToggleField(persistent, str(VT_Settings[pref][pref_opt][0]), 1, 0)]
+                                                    xysize (50, 40)
+                                                    padding (9, 4)
+                                                    yanchor 0.5 yalign 0.5
                                             vbox:
                                                 xsize 50
                                                 ysize 50
                                                 text VTSettingsicon style "VTtextbutton_icon_style"
-                                            # vbox:
-                                                # xsize 50
-                                                # ysize 50
-                                                # text (str(getattr(persistent, str(VT_Settings[pref][pref_opt][1]), "1"))) style "VTtextbutton_text_style"
-                                            # vbox:
-                                                # xsize 60
-                                                # ysize 50
-                                                # yoffset 5
-                                                # text (str(getattr(persistent, str(VT_Settings[pref][pref_opt][0]), '1'))) style "VTmenu_text_style" xsize 100
                                             vbox:
                                                 xsize 300
                                                 ysize 50
@@ -234,17 +225,3 @@ style VTcheckbox_button:
     insensitive_background Solid("#d3d3d3") # Disabled (May not be required, I usually use im.Sepia() for images)
     selected_idle_background Solid("#00ff00") # Checked
     selected_hover_background Solid("#00ff11") # Checked Hovered
-
-screen vt_tracker_button(vtracker, vtpref, vtpref_opt, is_sensitive):
-    imagebutton:
-        if vtracker==1:
-            idle "gui/extra_images/check_mark.png"
-        else:
-            idle "gui/extra_images/uncheck_mark.png"
-        background ("#449044" if vtracker==1 else "#904444" if is_sensitive else "#00000088")
-        hover_background ("#66a066" if vtracker==1 else "#a06666" if is_sensitive else "#00000088")
-        sensitive is_sensitive
-        action  [Notify(_("You changed "+str(vtpref_opt)+".")), Function(set_vt_tracker, vtracker, vtpref, vtpref_opt)]
-        xysize (50, 40)
-        padding (9, 4)
-        yanchor 0.5 yalign 0.5

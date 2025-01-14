@@ -12,7 +12,6 @@ init -10:
     image paramour = "[paramour_image.filename]"
     image polyamorous = "[polyamorous_image.filename]"
     image parapoly = "[parapoly_image.filename]"
-    image virgin_image_marker = "[virgin_image.filename]"
     image norelations = "[dontknow_image.filename]"
     image familycircle = "[familycircle_image.filename]"
     image familylove = "[familylove_image.filename]"
@@ -79,8 +78,12 @@ init -10:
     image donetrain = "[donetrain_image.filename]"
     image notrance = "[notrance_image.filename]"
 
-### Oral Virgin Flag
+### Virgin Flags
+    image virgin_image_marker = "[virgin_image.filename]"
     image truevirgin = "[truevirgin_image.filename]"   
+
+### Oral Virgin Flag
+    image virgin_oral = "[virgin_oral_image.filename]"
     image knowlips = "[knowlips_image.filename]"
     image claimedmouth = "[claimedmouth_image.filename]"   
     image ahegaomouth = "[ahegaomouth_image.filename]"
@@ -90,6 +93,7 @@ init -10:
     image bitelip = "[bitelip_image.filename]"
 
 ### Vaginal Virgin Flag
+    image virgin_vaginal = "[virgin_vaginal_image.filename]"
     image vaghymen = "[vaghymen_image.filename]"
     image openvag = "[openvag_image.filename]"
     image ahegaovag = "[ahegaovag_image.filename]"
@@ -99,6 +103,7 @@ init -10:
     image knowvag = "[knowvag_image.filename]"
 
 ### Anal Virgin Flag
+    image virgin_anal = "[virgin_anal_image.filename]"
     image handass = "[handass_image.filename]"
     image ahegaopeach = "[ahegaopeach_image.filename]"
     image yesanal = "[yesanal_image.filename]"
