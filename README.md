@@ -1,19 +1,18 @@
 # LR2R-VTMod
-🍒🍒🍒🍒    LR2R-VTMod 3.0    🍒🍒🍒🍒 
+🍒🍒🍒🍒    LR2R-VTMod 3.0.2    🍒🍒🍒🍒 
 Lab Rats 2 Reformulate Virginity Tracker Mod
-
+- the VT Trackers now are persistent through saves.
 💮 Adds a visual HUD for those with the virgin/preggo/dom kinks. More visuals, more text, more fun.
 💮 Category: Visual, QoL, serums, virginity 💮 Dependencies: None 
 
-
 💮 Compatibility
 	🥵 Moresomes_2.1 - Good!
-	🥵 Real Porn Mod 0.62 - Good!
+	🥵 Real Porn Mod 0.63 - Good!
 	🥵 KiNA's Mods - Good!
 	🥵 Kaden's Mods - Good!
 	🔥 Lab Rats2 Reformulate: v2024.08  Ren'Py 8.2.1
 	🔥 Lab Rats2 Reformulate: v2024.09-code-beta  Ren'Py 8.2.1
-	🔥 lr2mods-develop - August 19, 2024 3:48 PM EDT - [https://discord.com/channels/564870606382956576/571557121716387840/1275265802215624748](https://discord.com/channels/564870606382956576/571557121716387840/1275265802215624748) 
+	🔥 lr2mods-develop - Jan 12, 2025 3:55 AM EDT - [https://discord.com/channels/564870606382956576/571557121716387840/1327923969143214142](https://discord.com/channels/564870606382956576/571557121716387840/1327923969143214142) 
 
 💮 Vanilla files modified: none - the MOD is completely on its own in the mods folder.
 💮 Image Files added: 60+ images to gui
@@ -86,7 +85,6 @@ Lab Rats 2 Reformulate Virginity Tracker Mod
 - Random NPCs spawned with Fetishes already enabled! o.O watch out!
 - Random NPC The Golden Lotus created
 - Gotta ~~BANG~~ Catch them all!!
-
 
 🔥 Install Instructions: 🔥
 Place in the game/mods folder. Launch game.
