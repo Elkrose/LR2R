@@ -341,7 +341,7 @@ label cosplay_sex_accept(the_person, the_position):
                 the_person "Oh, I've been wanting you to do that for a while now. Just thinking about it makes me wet... and it's perfect for the cosplay scenario."
             elif the_position.skill_tag == "Oral":
                 if "getting head" in the_position.opinion_tags:
-                    the_person "Ugh, I need this so badly. Suck my [pussy/clit] already, senpai!"
+                    the_person "Ugh, I need this so badly. Suck my pussy already, senpai!"
                 else:
                     the_person "You're going down on me right now, and you're going to make me cum... just like in the anime."
             else:
