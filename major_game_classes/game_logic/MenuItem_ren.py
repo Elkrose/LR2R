@@ -163,13 +163,9 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                             or (draw_dikdok and item.has_dikdok_post)
                             or (draw_onlyfans and item.has_onlyfan_post)):
                         info.append("{image=phone_token_small}")
-            else:
                 if getattr(persistent, "dna_sequence")==1:
                     if item.is_clone:
                         info.append("{image=dna_token_small}")
-                if getattr(persistent, "feeding_bottle")==1:
-                    if item.knows_pregnant:
-                        info.append("{image=feeding_bottle_token_small}")
                 if item.is_free_use:
                     if item.has_role(employee_freeuse_role):
                         info.append("{image=doggy_style_token_small}")
@@ -183,6 +179,9 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                             info.append("{image=vial2_token_small}")
                         else:
                             info.append("{image=vial_token_small}")
+                if getattr(persistent, "feeding_bottle")==1:
+                    if item.knows_pregnant and item.is_mc_father:
+                        info.append("{image=feeding_bottle_token_small}")
                 if getattr(persistent, "infraction")==1:
                     if item.infractions and item.is_at_office:    # only when at work
                         info.append("{image=infraction_token_small}")

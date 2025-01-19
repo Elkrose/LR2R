@@ -187,7 +187,7 @@ def get_location_tooltip(location: Room) -> str:
             if person.is_clone:
                 info.append("{image=dna_token_small}")
         if getattr(persistent, "feeding_bottle")==1:
-            if person.knows_pregnant:
+            if person.knows_pregnant and person.is_mc_father:
                 info.append("{image=feeding_bottle_token_small}")
         if getattr(persistent, "serum_vial")==1:
             if person.serum_effects:
@@ -384,7 +384,7 @@ def build_tile_information(known_people: list[Person], total_people: int, locati
 
     #Pregnant
     if getattr(persistent, "feeding_bottle")==1:
-        if any(x for x in known_people if x.knows_pregnant):
+        if any(x for x in known_people if x.knows_pregnant and x.is_mc_father):
             extra_info.append("{image=feeding_bottle_token_small}")
 
     #Trance - Very Heavy
