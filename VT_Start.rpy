@@ -267,7 +267,7 @@ init -1 python:
 
     def KiNA_enabled():
         try:
-            return KiNA_MOD
+            return KiNA_MOD is not None
         except NameError:
             return False
 
@@ -279,7 +279,7 @@ init -1 python:
 
     def Kaden_enabled():
         try:
-            return kaden_mod
+            return kaden_mod is not None
         except NameError:
             return False
 
@@ -289,32 +289,44 @@ init -1 python:
         except NameError:
             return False 
 
+    def kina_update_game_speed(speed):
+        global GAME_SPEED, TIER_1_TIME_DELAY, TIER_2_TIME_DELAY, TIER_3_TIME_DELAY
+
+        GAME_SPEED = speed
+        if speed == 0:
+            #TIER_0_TIME_DELAY = -1
+            TIER_1_TIME_DELAY = 1
+            TIER_2_TIME_DELAY = 3
+            TIER_3_TIME_DELAY = 5
+        elif speed == 1:
+            #TIER_0_TIME_DELAY = 1
+            TIER_1_TIME_DELAY = 3
+            TIER_2_TIME_DELAY = 7
+            TIER_3_TIME_DELAY = 10
+        elif speed == 2:
+            #TIER_0_TIME_DELAY = 1
+            TIER_1_TIME_DELAY = 5
+            TIER_2_TIME_DELAY = 11
+            TIER_3_TIME_DELAY = 15
+        elif speed ==3:
+            #TIER_0_TIME_DELAY = 2
+            TIER_1_TIME_DELAY = 7
+            TIER_2_TIME_DELAY = 15
+            TIER_3_TIME_DELAY = 20
+        else:
+            GAME_SPEED = 3
+            #TIER_0_TIME_DELAY = -1
+            TIER_1_TIME_DELAY = 1
+            TIER_2_TIME_DELAY = 3
+            TIER_3_TIME_DELAY = 5
+
+        return
+
+
+
 init 15 python:
     config.label_overrides["start"] = "VT_start"
 
-label VTMOD_notification:
-    "🍒VT🍒 Mod [VT_MOD] Detected!"
-
-label KiNA_notification:
-    "🍒KiNA🍒 Mod [KiNA_MOD] Detected!"
-    return
-
-label Kaden_notification:
-    "🍒Kaden🍒 Mod [kaden_mod] Detected!"
-    return
-
-label ZenPak_notification:
-    "🍒ZenPak🍒 Mod [noncest_version] Detected!"
-    return
-
-label RealPorn_notification:
-    "🍒RealPorn🍒 Mod Detected!"
-    return
-
-label Moresomes_notification:
-    "🍒Moresomes🍒 Mod Detected!"
-    return
-    
 label VT_start():
     scene bg paper_menu_background with fade
     "Lab Rats 2 contains adult content. If you are not over 18 or your country's equivalent age you should not view this content."
@@ -327,18 +339,26 @@ label VT_start():
 
     "[config.version] represents an early iteration of Lab Rats 2. Expect to run into limited content, unexplained features, and unbalanced game mechanics."
 
+    $ modsinstalled = []
+
     if vt_enabled():
-        call VTMOD_notification
+        $ modsinstalled.append("VT Mod")
     if KiNA_enabled():
-        call KiNA_notification
+        $ modsinstalled.append("KiNA Mod")
     if Kaden_enabled():
-        call Kaden_notification
+        $ modsinstalled.append("Kaden Mod")
     if ZenPak_enabled():
-        call ZenPak_notification
+        $ modsinstalled.append("ZenPak Mod")
     if RealPorn_enabled():
-        call RealPorn_notification
+        $ modsinstalled.append("RealPorn Mod")
     if Moresomes_enabled():
-        call Moresomes_notification
+        $ modsinstalled.append("Moresomes Mod")
+
+    if modsinstalled == []:
+        "No mods are installed."
+    else:
+        $ mod_message = "🍒The following mods are installed: \n " + ", ".join(modsinstalled)
+        "[mod_message]"
 
     "Lab Rats 2 contains content related to impregnation and pregnancy. These settings may be changed in the menu at any time."
 
@@ -358,13 +378,15 @@ label VT_start():
     "How quickly would you like stories from the game to play out? This will affect spacing between story events."
     menu:
         "Quick":
-            $ update_game_speed(0)
+            $ kina_update_game_speed(0)
         "Standard":
-            $ update_game_speed(1)
+            $ kina_update_game_speed(1)
         "Epic":
-            $ update_game_speed(2)
+            $ kina_update_game_speed(2)
         "Marathon":
-            $ update_game_speed(3)
+            $ kina_update_game_speed(3)
+        "KiNA Mode (Quick but Reduced Interaction)":
+            $ kina_update_game_speed(4)
 
     $ easy_mode = False
     $ kina_mode = False
@@ -435,11 +457,9 @@ label VT_start():
             mc.business.supply_goal = 1000
             mc.business.effectiveness_cap = 110
             mc.business.marketability = 100
-            mc.business.max_employee_count = 12
             # increased player stats
-            mc.energy = 500
-            mc.max_energy = 600
-            mc.free_clarity += 10500
+            mc.max_energy = 120
+            mc.free_clarity += 500
             mc.clarity_multiplier = 3.0     # gain clarity 3 times faster
             # default unlock policies
             purchase_policy(mandatory_paid_serum_testing_policy, ignore_cost = True)
