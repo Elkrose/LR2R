@@ -357,7 +357,7 @@ label VT_start():
 
     "How quickly would you like stories from the game to play out? This will affect spacing between story events."
     menu:
-        "🍒Quick🍒":
+        "Quick":
             $ update_game_speed(0)
         "Standard":
             $ update_game_speed(1)
