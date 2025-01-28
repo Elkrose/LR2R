@@ -606,6 +606,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     elif VTpersonality == "wild":
                         $VTpersonalityst = "wild"
                         $VTpersonalitytt = f"{{image=vtcherries_small}} She appears excited and energetic, with a huge smile on her face. She studies you with a sparkling gaze, her eyes shining with a love of fun and adventure. Her tone is loud and boisterous, with a hint of infectious enthusiasm."
+                    elif VTpersonality == "wilder":
+                        $VTpersonalityst = "wild"
+                        $VTpersonalitytt = f"{{image=vtcherries_small}} She appears excited and energetic, with a huge smile on her face. She studies you with a sparkling gaze, her eyes shining with a love of fun and adventure. Her tone is loud and boisterous, with a hint of infectious enthusiasm."
                     elif VTpersonality == "dandere":
                         $VTpersonalityst = "dandere"
                         $VTpersonalitytt = f"{{image=vtcherries_small}} She appears distracted and preoccupied, with a far-off look in her eyes. She studies you with a slightly vacant expression, as if they were gazing right through you. Her tone is flat and monotone, with a hint of disinterest and detachment."
