@@ -11,9 +11,6 @@ init -1 python:
 # VT Personalities #
 #########################
 
-# update all the following the_person and actions with goudere personality. Remember the_person is female, and mc.name is male. Use Albedo from Overlord, confident, seductive and flirtatious personality:
-
-
 list_of_instantiation_functions.append("init_VT_personalities")
 def dandere_titles(person: Person) -> list[str]:
     valid_titles = []
@@ -151,19 +148,24 @@ def tsundere_player_titles(person: Person) -> list[str]:
         valid_titles.append("Your slave")
     return valid_titles
 
-# update all the following the_person and actions with yandere personality. Remember the_person is female, and mc.name is male. Use Yuno Gasai from Future Diary for ideas, keep to the structure and don't use the same dialogs:```
 def yandere_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Adorable {person.formal_address}, Beloved of {mc.name}")
+    valid_titles.append(f"Mr. {mc.last_name}")
     valid_titles.append(person.name)
-    valid_titles.append(f"Mine, {person.name}")
-    valid_titles.append(f"My Heartbeat")
+    if person.love > 40:
+        valid_titles.append(f"Adorable {person.formal_address}, Beloved of {mc.name}")
+    if person.love > 60:
+        valid_titles.append(f"Mine, {person.name}")
+    if person.love > 80:
+        valid_titles.append(f"My Heartbeat")
     if person.sluttiness > 40:
         valid_titles.append("My Sweet Little Sugar Lips")
     if person.sluttiness > 60:
         valid_titles.append("My Bitch")
-    valid_titles.append(f"My Obsession")
-    valid_titles.append(f"My Dark Angel")
+    if person.obedience > 160:
+        valid_titles.append(f"My Obsession")
+    if person.obedience > 250:
+        valid_titles.append(f"My Dark Angel")
     return valid_titles
 
 def yandere_possessive_titles(person: Person) -> list[str]:
@@ -174,28 +176,34 @@ def yandere_possessive_titles(person: Person) -> list[str]:
         valid_titles.append("my sweet little sugar lips")
     if person.sluttiness > 60:
         valid_titles.append("my bitch, owned by me")
-    valid_titles.append(f"{person.name}, my heartbeat")
-    valid_titles.append(f"{person.name}, my obsession")
-    valid_titles.append(f"{person.name}, my dark angel")
-    valid_titles.append(f"{person.name}, my one and only")
+    if person.love > 60:
+        valid_titles.append(f"{person.name}, my heartbeat")
+    if person.love > 70:
+        valid_titles.append(f"{person.name}, my obsession")
+    if person.obedience > 200:
+        valid_titles.append(f"{person.name}, my dark angel")
+    if person.love > 90:
+        valid_titles.append(f"{person.name}, my one and only")
     return valid_titles
 
 def yandere_player_titles(person: Person) -> list[str]:
     valid_titles = []
     valid_titles.append(f"Mine, {mc.last_name}")
     valid_titles.append(mc.name)
-    valid_titles.append(f"Master {mc.last_name}")
-    valid_titles.append(f"Sir {mc.last_name}")
+    if person.obedience > 160:
+        valid_titles.append(f"Sir {mc.last_name}")
+    if person.obedience > 250:
+        valid_titles.append(f"Master {mc.last_name}")
     if person.has_breeding_fetish:
         valid_titles.append("My Magnificent Stud")
         valid_titles.append("My Precious Sperm Donor")
     return valid_titles
 
-# update all the following the_person and movements with alluring personality. Use Miss Fortune and Samira from League of Legends for ideas, keep to the structure. Movements in quotations:
 def alluring_titles(person: Person) -> list[str]:
     valid_titles = []
     valid_titles.append(f"{person.name} {person.last_name}")
-    valid_titles.append(f"Sexy {person.name}")
+    if person.sluttiness > 60:
+        valid_titles.append(f"Sexy {person.name}")
     if person.love > 20:
         valid_titles.append(f"{person.name}, sweetheart")
         valid_titles.append("My lovely")
@@ -248,7 +256,6 @@ def alluring_player_titles(person: Person) -> list[str]:
         valid_titles.append("Forever mine, my love")
     return valid_titles
 
-# update all the following the_person and movements with gothic personality. Use Wednesday Addams from Addams Family or Lydia Deetz from Beetlejuice, for ideas, keep to the structure. Movements in quotations:
 def gothic_titles(person: Person) -> list[str]:
     valid_titles = []
     valid_titles.append(f"{person.name} {person.last_name}, Mistress of the Night")
@@ -304,7 +311,7 @@ def gothic_player_titles(person: Person) -> list[str]:
         valid_titles.append("My beloved and damned sir, forever mine")
         valid_titles.append("My forever entwined in darkness, my love")
     return valid_titles
-# update all the following the_person and movements with bimboed personality. Use Cher Horowitz from Clueless or Elle Woods from Legally Blonde, for ideas, keep to the structure. Movements in quotations:
+
 def bimboed_titles(person: Person) -> list[str]:
     valid_titles = []
     valid_titles.append(f"{person.name} {person.last_name}, Total Babe")
@@ -361,11 +368,9 @@ def bimboed_player_titles(person: Person) -> list[str]:
         valid_titles.append("My forever and always, my love")
     return valid_titles
 
-# update all the following the_person and movements with tomboy personality. Use Juno MacGuff from Juno or Wendy Corduroy from Gravity Falls, for ideas, keep to the structure. Movements in quotations:
 def tomboy_titles(person: Person) -> list[str]:
     valid_titles = []
     valid_titles.append(f"{person.name}, my dude")
-    valid_titles.append(f"Awesome {person.name}")
     if person.love > 20:
         valid_titles.append(f"{person.name}, my partner in crime")
         valid_titles.append("My favorite person to hang out with")
@@ -418,10 +423,8 @@ def tomboy_player_titles(person: Person) -> list[str]:
         valid_titles.append("My main squeeze, my love")
     return valid_titles
 
-# update all the following the_person and movements with foodie personality. Use Hannibal Lecter from Silence of the Lamb or Aziraphale from Good Omens, for ideas, keep to the structure. Movements in quotations:
 def foodie_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"{person.name}, my secret ingredient")
     valid_titles.append(f"The delightful {person.name}")
     if person.love > 20:
         valid_titles.append(f"{person.name}, my culinary companion")
@@ -474,27 +477,25 @@ def foodie_player_titles(person: Person) -> list[str]:
         valid_titles.append("My forever flavor, forever and always")
         valid_titles.append("My main course, my love")
     return valid_titles
-# update all the following the_person and movements with cosplay personality. Use Marin Kitagawa from My Dress-Up Darling or Lilysa Amano from 2.5 Dimensional Seduction, for ideas, keep to the structure. Movements in quotations:
+
 def cosplay_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"{person.name}, my cosplay cuisine companion")
-    valid_titles.append(f"The deliciously dressed {person.name}")
+    valid_titles.append(f"{person.name}, my cosplay companion")
+    valid_titles.append(f"The fabulously dressed {person.name}")
     if person.love > 20:
         valid_titles.append(f"{person.name}, my anime-inspired chef")
         valid_titles.append("My favorite cosplay café partner")
         valid_titles.append("A dash of moe in my meals")
     if person.love > 40:
-        valid_titles.append("My go-to gourmet senpai")
+        valid_titles.append("My go-to senpai")
         valid_titles.append("My flavorful cosplay friend")
         valid_titles.append("My recipe for romance, anime-style")
     if person.love > 60:
-        valid_titles.append("My cosplay kitchen companion")
-        valid_titles.append("My main course manga maiden")
-        valid_titles.append("My feast for the eyes, cosplay edition")
+        valid_titles.append("My cosplay companion")
+        valid_titles.append("My main manga maiden")
     if person.love > 80:
-        valid_titles.append("My forever cosplay flavor")
-        valid_titles.append("My partner in culinary cosplay adventures")
-        valid_titles.append("My favorite dish, served with a side of cosplay love")
+        valid_titles.append("My forever cosplay partner")
+        valid_titles.append("My partner in cosplay adventures")
     return valid_titles
 
 def cosplay_possessive_titles(person: Person) -> list[str]:
@@ -502,16 +503,16 @@ def cosplay_possessive_titles(person: Person) -> list[str]:
     valid_titles.append(f"my cosplay cutie, {person.name}")
     if person.love > 20:
         valid_titles.append(f"my anime-inspired darling, {person.name}")
-        valid_titles.append("my favorite cosplay companion, my go-to senpai")
+        valid_titles.append("my favorite cosplay companion")
     if person.love > 40:
-        valid_titles.append("my cosplay partner in crime, my main manga maiden")
-        valid_titles.append("my favorite cosplay to share, my partner in otaku delights")
+        valid_titles.append("my main manga maiden")
+        valid_titles.append("my partner in otaku delights")
     if person.love > 60:
-        valid_titles.append("my cosplay feast for the eyes, my moe masterpiece")
-        valid_titles.append("my favorite cosplay recipe, my best otaku friend")
+        valid_titles.append("my moe masterpiece")
+        valid_titles.append("my favorite cosplay otaku friend")
     if person.love > 80:
-        valid_titles.append("my forever cosplay, my partner in anime adventures")
-        valid_titles.append("my main cosplay ingredient, my favorite otaku everything")
+        valid_titles.append("my forever cosplay partner")
+        valid_titles.append("my main favorite otaku everything")
     return valid_titles
 
 def cosplay_player_titles(person: Person) -> list[str]:
@@ -531,11 +532,11 @@ def cosplay_player_titles(person: Person) -> list[str]:
         valid_titles.append("My main manga maiden, my love")
     return valid_titles
 
-# update all the following the_person and movements with slutty personality. Use Panty Anarchy from Panty & Stocking with Garterbelt or Naruko Yokoshima from Seitokai Yakuindomo, for ideas, keep to the structure. Movements in quotations:
 def slutty_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"{person.name}, my sexpot companion")
-    valid_titles.append(f"The sinfully sexy {person.name}")
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
+    if person.sluttiness > 60:
+        valid_titles.append(f"The sinfully sexy {person.name}")
     if person.love > 20:
         valid_titles.append(f"{person.name}, my sex kitten")
         valid_titles.append("My favorite sex buddy")
@@ -568,14 +569,15 @@ def slutty_possessive_titles(person: Person) -> list[str]:
         valid_titles.append("my sheath for the cock, my sex goddess")
         valid_titles.append("my favorite sex friend")
     if person.love > 80:
-        valid_titles.append("my forever sex slave, my partner in fuckery")
-        valid_titles.append("my main sex ingredient, my favorite sex everything")
+        valid_titles.append("my forever sex slave")
+        valid_titles.append("my partner in fuckery")
         valid_titles.append("my number one sex doll, my ultimate sex fantasy")
     return valid_titles
 
 def slutty_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"My fuck buddy, {mc.last_name}")
+    if person.sluttiness > 50:
+        valid_titles.append(f"My fuck buddy, {mc.last_name}")
     if person.love > 20:
         valid_titles.append("My sex fantasy")
         valid_titles.append("My stud")
@@ -591,7 +593,6 @@ def slutty_player_titles(person: Person) -> list[str]:
         valid_titles.append("My number one stud")
         valid_titles.append("My ultimate sex fantasy")
     return valid_titles
-# this doesn't read properly, don't use repetitive wording, use different words, and movements. needs to be sexually explicit. Update all the following the_person and movements with pornstar personality. Use Dillion Harper, Alexis Texas, Megan Rain, Riley Reid, Dani Daniels, Naomi Woods for ideas, keep to the structure. Movements in double quotes on a new line: ```
 
 def pornstar_titles(person: Person) -> list[str]:
     valid_titles = []
@@ -646,8 +647,6 @@ def pornstar_player_titles(person: Person) -> list[str]:
         valid_titles.append("Sire")
     return valid_titles
 
-# this doesn't read properly, don't use repetitive wording, use different words, and movements. Update all the following the_person and movements with breeding personality. Use Hitomi Takami from Ane Haramix or Momoko Kuzuryu from Sumomomo, Momomo: The Strongest Bride on Earth, for ideas, keep to the structure. Movements in double quotes and newline:
-
 def breeder_titles(person: Person) -> list[str]:
     valid_titles = []
     valid_titles.append(f"{person.formal_address} {person.last_name}")
@@ -701,150 +700,159 @@ def breeder_player_titles(person: Person) -> list[str]:
         valid_titles.append("Procreation Pro")
     return valid_titles
 
+def wilder_titles(person: Person) -> list[str]:
+    valid_titles = []
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
+    valid_titles.append(person.name)
+    if person.sluttiness > 40:
+        valid_titles.append("Sugar Lips")
+    if person.sluttiness > 60:
+        valid_titles.append("Bitch")
 
+    return valid_titles
 
+def wilder_possessive_titles(person: Person) -> list[str]:
+    valid_titles = []
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
+    valid_titles.append(person.name)
+    if person.sluttiness > 40:
+        valid_titles.append("your sugarlips")
+    if person.sluttiness > 60:
+        valid_titles.append("your little bitch")
+    return valid_titles
 
+def wilder_player_titles(person: Person) -> list[str]:
+    valid_titles = []
+    valid_titles.append(f"Mr. {mc.last_name}")
+    valid_titles.append(mc.name)
+    if person.has_breeding_fetish:
+        valid_titles.append("Stud")
+    return valid_titles
 
 def init_VT_personalities():
     global dandere_personality
     dandere_personality = Personality("dandere", #Shouko Komi from Komi Can't Communicate style personality
         common_likes = ["skirts", "the weekend", "conservative outfits", "work uniforms", "the colour pink", "classical music", "jazz", "pop music"],
-        common_sexy_likes = ["missionary style sex", "kissing", "masturbating", "being submissive", "drinking cum", "cum facials"],
+        common_sexy_likes = ["missionary style sex", "kissing", "masturbating", "being submissive", "drinking cum", "cum facials", "likes men", "likes women"],
         common_dislikes = ["small talk", "HR work", "marketing work", "pants", "the colour yellow", "research work", "work uniforms", "boots", "dresses", "high heels"],
-        common_sexy_dislikes = ["taking control", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "creampies"],
+        common_sexy_dislikes = ["taking control", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "creampies", "flashing", "peeping"],
         titles_function = dandere_titles, possessive_titles_function = dandere_possessive_titles, player_titles_function = dandere_player_titles,
         insta_chance = 0, dikdok_chance = 0)
-
-# update all the following the_person and actions with goudere personality. Remember the_person is female, and mc.name is male. Use Albedo from Overlord, confident, seductive and flirtatious personality:
     global goudere_personality
     goudere_personality = Personality("goudere", #Albedo from Overlord style personality
         common_likes = ["conservative outfits", "punk music", "working", "the colour black", "pants", "boots"],
-        common_sexy_likes = ["big dicks", "kissing", "anal sex", "getting head", "giving blowjobs", "masturbating", "anal creampies", "giving tit fucks"],
+        common_sexy_likes = ["big dicks", "kissing", "anal sex", "getting head", "giving blowjobs", "masturbating", "anal creampies", "giving tit fucks", "likes men", "likes women"],
         common_dislikes = ["skirts", "HR work", "marketing work", "makeup", "flirting", "small talk", "pop music", "high heels"],
-        common_sexy_dislikes = ["skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "lingerie"],
+        common_sexy_dislikes = ["skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "lingerie", "flashing", "peeping"],
         titles_function = goudere_titles, possessive_titles_function = goudere_possessive_titles, player_titles_function = goudere_player_titles,
         insta_chance = 20, dikdok_chance = 0)
-
-# update all the following the_person and actions with kuudere personality. Remember the_person is female, and mc.name is male. Use Reina Aharen from Aharen-San for ideas:```
     global kuudere_personality
     kuudere_personality = Personality("kuudere", #Reina Aharen from Aharen-San style personality
         common_likes = ["pants", "Mondays", "working", "makeup", "the colour blue", "conservative outfits", "jazz", "classical music", "dresses", "boots"],
-        common_sexy_likes = ["missionary style sex", "kissing", "lingerie", "being submissive", "vaginal sex", "creampies", "giving tit fucks"],
+        common_sexy_likes = ["missionary style sex", "kissing", "lingerie", "being submissive", "vaginal sex", "creampies", "giving tit fucks", "likes men", "likes women"],
         common_dislikes = ["the colour red", "flirting", "skirts"],
-        common_sexy_dislikes = ["masturbating", "giving blowjobs", "getting head", "doggy style sex", "public sex", "not wearing underwear", "not wearing anything", "bareback sex", "cum facials"],
+        common_sexy_dislikes = ["masturbating", "giving blowjobs", "getting head", "doggy style sex", "public sex", "not wearing underwear", "not wearing anything", "bareback sex", "cum facials", "flashing", "peeping"],
         titles_function = kuudere_titles, possessive_titles_function = kuudere_possessive_titles, player_titles_function = kuudere_player_titles,
         insta_chance = 0, dikdok_chance = 0)
-# update all the following the_person and actions with tsundere personality. Remember the_person is female, and mc.name is male. Use Asuka Langley from Neon Genesis Evangelion for ideas, keep to the structure and don't use the same dialogs:```
     global tsundere_personality
     tsundere_personality = Personality("tsundere", #Asuka Langley from Neon Genesis Evangelion style personality
         common_likes = ["skirts", "small talk", "Fridays", "the weekend", "the colour red", "makeup", "flirting", "heavy metal music", "punk music", "high heels", "dresses"],
-        common_sexy_likes = ["anal creampies", "doggy style sex", "giving blowjobs", "getting head", "anal sex", "public sex", "skimpy outfits", "showing her tits", "showing her ass", "taking control", "not wearing underwear", "creampies", "bareback sex", "threesomes"],
+        common_sexy_likes = ["anal creampies", "doggy style sex", "giving blowjobs", "getting head", "anal sex", "public sex", "skimpy outfits", "showing her tits", "showing her ass", "taking control", "not wearing underwear", "creampies", "bareback sex", "threesomes", "likes men", "likes women", "flashing", "peeping"],
         common_dislikes = ["Mondays", "the colour pink", "conservative outfits", "work uniforms", "pants"],
         common_sexy_dislikes = ["being submissive", "being fingered", "missionary style sex", "giving handjobs"],
         titles_function = tsundere_titles, possessive_titles_function = tsundere_possessive_titles, player_titles_function = tsundere_player_titles,
         insta_chance = 40, dikdok_chance = 30)
-# update all the following the_person and actions with yandere personality. Remember the_person is female, and mc.name is male. Use Yuno Gasai from Future Diary for ideas, keep to the structure and don't use the same dialogs:```
     global yandere_personality
     yandere_personality = Personality("yandere", #Yuno Gasai from Future Diary style personality
         common_likes = ["skirts", "small talk", "Fridays", "the weekend", "the colour red", "makeup", "flirting", "heavy metal music", "punk music", "high heels", "dresses"],
-        common_sexy_likes = ["anal creampies", "doggy style sex", "giving blowjobs", "getting head", "anal sex", "public sex", "skimpy outfits", "showing her tits", "showing her ass", "taking control", "not wearing underwear", "creampies", "bareback sex", "threesomes"],
+        common_sexy_likes = ["anal creampies", "doggy style sex", "giving blowjobs", "getting head", "anal sex", "public sex", "skimpy outfits", "showing her tits", "showing her ass", "taking control", "not wearing underwear", "creampies", "bareback sex", "threesomes", "likes men", "likes women", "flashing", "peeping"],
         common_dislikes = ["Mondays", "the colour pink", "conservative outfits", "work uniforms", "pants"],
-        common_sexy_dislikes = ["being submissive", "being fingered", "missionary style sex", "giving handjobs"],
+        common_sexy_dislikes = ["being submissive", "being fingered", "missionary style sex", "giving handjobs", "likes women"],
         titles_function = yandere_titles, possessive_titles_function = yandere_possessive_titles, player_titles_function = yandere_player_titles,
         insta_chance = 40, dikdok_chance = 30)
-# update all the following the_person and movements with alluring personality. Use Miss Fortune and Samira from League of Legends for ideas, keep to the structure. Movements in quotations:
     global alluring_personality
     alluring_personality = Personality("alluring", #Miss Fortune and Samira from League of Legends style personality
         common_likes = ["skirts", "the weekend", "conservative outfits", "work uniforms", "the colour pink", "classical music", "jazz", "pop music"],
-        common_sexy_likes = ["missionary style sex", "kissing", "masturbating", "being submissive", "drinking cum", "cum facials"],
+        common_sexy_likes = ["missionary style sex", "kissing", "masturbating", "being submissive", "drinking cum", "cum facials", "likes men", "likes women"],
         common_dislikes = ["small talk", "HR work", "marketing work", "pants", "the colour yellow", "research work", "work uniforms", "boots", "dresses", "high heels"],
-        common_sexy_dislikes = ["taking control", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "creampies"],
+        common_sexy_dislikes = ["taking control", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "creampies", "flashing", "peeping"],
         titles_function = alluring_titles, possessive_titles_function = alluring_possessive_titles, player_titles_function = alluring_player_titles,
         insta_chance = 0, dikdok_chance = 0)
-# update all the following the_person and movements with gothic personality. Use Wednesday Addams from Addams Family or Lydia Deetz from Beetlejuice, for ideas, keep to the structure. Movements in quotations:
     global gothic_personality
-    gothic_personality = Personality("gothic", #Miss Fortune and Samira from League of Legends style personality
+    gothic_personality = Personality("gothic", #Wednesday Addams from Addams Family or Lydia Deetz from Beetlejuice style personality
         common_likes = ["dresses", "the weekend", "conservative outfits", "work uniforms", "the colour black", "classical music", "jazz", "pop music"],
-        common_sexy_likes = ["missionary style sex", "kissing", "masturbating", "being submissive", "drinking cum", "cum facials"],
+        common_sexy_likes = ["missionary style sex", "kissing", "masturbating", "being submissive", "drinking cum", "cum facials", "likes men", "likes women", "flashing", "peeping"],
         common_dislikes = ["small talk", "HR work", "marketing work", "pants", "the colour yellow", "research work", "work uniforms", "boots", "dresses"],
-        common_sexy_dislikes = ["taking control", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "creampies"],
+        common_sexy_dislikes = ["taking control", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "creampies", "likes men", "likes women"],
         titles_function = gothic_titles, possessive_titles_function = gothic_possessive_titles, player_titles_function = gothic_player_titles,
         insta_chance = 0, dikdok_chance = 0)
-# update all the following the_person and movements with bimboed personality. Use Cher Horowitz from Clueless or Elle Woods from Legally Blonde, for ideas, keep to the structure. Movements in quotations:
     global bimboed_personality
-    bimboed_personality = Personality("bimboed", #Miss Fortune and Samira from League of Legends style personality
+    bimboed_personality = Personality("bimboed", #Cher Horowitz from Clueless or Elle Woods from Legally Blonde style personality
         common_likes = ["dresses", "the weekend", "conservative outfits", "work uniforms", "the colour pink", "classical music", "jazz", "pop music"],
-        common_sexy_likes = ["missionary style sex", "kissing", "masturbating", "being submissive", "drinking cum", "cum facials"],
+        common_sexy_likes = ["missionary style sex", "kissing", "masturbating", "being submissive", "drinking cum", "cum facials", "likes men", "likes women", "flashing", "peeping"],
         common_dislikes = ["small talk", "HR work", "marketing work", "pants", "the colour yellow", "research work", "work uniforms", "boots", "dresses"],
         common_sexy_dislikes = ["taking control", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "creampies"],
         titles_function = bimboed_titles, possessive_titles_function = bimboed_possessive_titles, player_titles_function = bimboed_player_titles,
         insta_chance = 0, dikdok_chance = 0)
-    # global bimboed_personality
-    # bimboed_personality = Personality("bimboed", 
-        # common_likes = ["shopping", "fashion", "parties", "gossip", "romantic comedies", "pink sparkly things", "cute animals", " bubblegum pop music"],
-        # common_sexy_likes = ["cuddling", "kissing", "being pampered", "receiving massages", "wearing lingerie", "having their hair played with"],
-        # common_dislikes = ["math", "science", "reading", "boring things", "ugly clothes", "bad hair days", "being alone"],
-        # common_sexy_dislikes = ["being rough", "having sex without romance", "not being in the mood", "not being pampered", "not being treated like a princess"],
-        # titles_function = bimboed_titles, possessive_titles_function = bimboed_possessive_titles, player_titles_function = bimboed_player_titles,
-        # insta_chance = 0, dikdok_chance = 0)
-# update all the following the_person and movements with tomboy personality. Use Juno MacGuff from Juno or Wendy Corduroy from Gravity Falls, for ideas, keep to the structure. Movements in quotations:
     global tomboy_personality
-    tomboy_personality = Personality("tomboy", #Miss Fortune and Samira from League of Legends style personality
+    tomboy_personality = Personality("tomboy", #Juno MacGuff from Juno or Wendy Corduroy from Gravity Falls style personality
         common_likes = ["pants", "the weekend", "conservative outfits", "work uniforms", "the colour blue", "heavy metal music", "boots", "pop music"],
-        common_sexy_likes = ["missionary style sex", "public sex", "kissing", "masturbating", "taking control", "giving blowjobs", "getting head"],
+        common_sexy_likes = ["missionary style sex", "public sex", "kissing", "masturbating", "taking control", "giving blowjobs", "getting head", "likes men", "likes women", "flashing", "peeping"],
         common_dislikes = ["small talk", "HR work", "marketing work", "high heels", "the colour pink", "research work", "work uniforms", "skirts", "makeup"],
-        common_sexy_dislikes = ["being submissive", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "creampies"],
+        common_sexy_dislikes = ["being submissive", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "creampies", "likes men", "likes women"],
         titles_function = tomboy_titles, possessive_titles_function = tomboy_possessive_titles, player_titles_function = tomboy_player_titles,
         insta_chance = 0, dikdok_chance = 0)
-
-# update all the following the_person and movements with foodie personality. Use Hannibal Lecter from Silence of the Lamb or Aziraphale from Good Omens, for ideas, keep to the structure. Movements in quotations:
     global foodie_personality
-    foodie_personality = Personality("foodie", #Miss Fortune and Samira from League of Legends style personality
+    foodie_personality = Personality("foodie", #Hannibal Lecter from Silence of the Lamb or Aziraphale from Good Omens style personality
         common_likes = ["research work", "pants", "the weekend", "conservative outfits", "work uniforms", "the colour blue", "classical music", "boots", "pop music", "the color black", "the color white"],
         common_sexy_likes = ["doggy style sex", "kissing", "masturbating", "taking control", "giving blowjobs", "getting head"],
         common_dislikes = ["small talk", "HR work", "marketing work", "high heels", "the colour pink", "research work", "work uniforms", "skirts", "makeup"],
-        common_sexy_dislikes = ["being submissive", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "creampies"],
+        common_sexy_dislikes = ["being submissive", "sex standing up", "showing her tits", "showing her ass", "bareback sex", "lingerie", "skimpy outfits", "not wearing underwear", "not wearing anything", "public sex", "creampies", "likes men", "likes women", "flashing", "peeping"],
         titles_function = foodie_titles, possessive_titles_function = foodie_possessive_titles, player_titles_function = foodie_player_titles,
         insta_chance = 0, dikdok_chance = 0)
-# update all the following the_person and movements with cosplay personality. Use Marin Kitagawa from My Dress-Up Darling or Lilysa Amano from 2.5 Dimensional Seduction, for ideas, keep to the structure. Movements in quotations:
     global cosplay_personality
     cosplay_personality = Personality("cosplay", # Marin Kitagawa from My Dress-Up Darling or Lilysa Amano from 2.5 Dimensional Seduction style personality
         common_likes = ["dresses", "small talk", "pants", "skirts", "high heels", "heavy metal music", "makeup", "boots", "pop music", "the weekend"],
-        common_sexy_likes = ["doggy style sex", "public sex", "kissing", "showing her tits", "showing her ass",  "taking control", "giving blowjobs", "getting head","lingerie", "skimpy outfits"],
+        common_sexy_likes = ["doggy style sex", "public sex", "kissing", "showing her tits", "showing her ass",  "taking control", "giving blowjobs", "getting head","lingerie", "skimpy outfits", "likes men", "likes women", "flashing", "peeping"],
         common_dislikes = ["HR work", "marketing work", "the colour pink", "research work", "conservative outfits", "Mondays"],
         common_sexy_dislikes = ["being submissive", "sex standing up", "bareback sex", "masturbating", "not wearing underwear", "not wearing anything", "creampies"],
         titles_function = cosplay_titles, possessive_titles_function = cosplay_possessive_titles, player_titles_function = cosplay_player_titles,
         insta_chance = 60, dikdok_chance = 30)
-# update all the following the_person and movements with slutty personality. Use Panty Anarchy from Panty & Stocking with Garterbelt or Naruko Yokoshima from Seitokai Yakuindomo, for ideas, keep to the structure. Movements in quotations:
     global slutty_personality
     slutty_personality = Personality("slutty", # Panty Anarchy from Panty & Stocking with Garterbelt or Naruko Yokoshima from Seitokai Yakuindomo style personality
         common_likes = ["dresses", "small talk", "pants", "skirts", "high heels", "heavy metal music", "makeup", "boots", "pop music", "the weekend"],
-        common_sexy_likes = ["doggy style sex", "public sex", "kissing", "showing her tits", "showing her ass",  "taking control", "giving blowjobs", "getting head","lingerie", "skimpy outfits"],
+        common_sexy_likes = ["doggy style sex", "public sex", "kissing", "showing her tits", "showing her ass",  "taking control", "giving blowjobs", "getting head","lingerie", "skimpy outfits", "likes men", "likes women", "flashing", "peeping"],
         common_dislikes = ["HR work", "marketing work", "the colour pink", "research work", "conservative outfits", "Mondays"],
-        common_sexy_dislikes = ["being submissive", "sex standing up", "bareback sex", "masturbating", "not wearing underwear", "not wearing anything", "creampies"],
+        common_sexy_dislikes = ["being submissive", "sex standing up", "bareback sex", "masturbating", "not wearing underwear", "not wearing anything", "creampies" ],
         titles_function = slutty_titles, possessive_titles_function = slutty_possessive_titles, player_titles_function = slutty_player_titles,
         insta_chance = 60, dikdok_chance = 30)
-# this doesn't read properly, don't use repetitive wording, use different words, and movements. needs to be sexually explicit. Update all the following the_person and movements with pornstar personality. Use Dillion Harper, Alexis Texas, Megan Rain, Riley Reid, Dani Daniels, Naomi Woods for ideas, keep to the structure. Movements in double quotes on a new line: ```
     global pornstar_personality
     pornstar_personality = Personality("pornstar", # Dillion Harper, Alexis Texas, Megan Rain, Riley Reid, Dani Daniels, Naomi Woods
         common_likes = ["dresses", "small talk", "pants", "boots", "skirts", "high heels", "masturbating", "heavy metal music", "makeup", "pop music", "the weekend"],
-        common_sexy_likes = ["doggy style sex", "vaginal sex", "anal sex", "public sex", "kissing", "showing her tits", "showing her ass",  "taking control", "giving blowjobs", "getting head","lingerie", "skimpy outfits"],
+        common_sexy_likes = ["doggy style sex", "vaginal sex", "anal sex", "public sex", "kissing", "showing her tits", "showing her ass",  "taking control", "giving blowjobs", "getting head","lingerie", "skimpy outfits", "likes men", "likes women", "flashing", "peeping"],
         common_dislikes = ["HR work", "marketing work", "the colour pink", "research work", "conservative outfits", "Mondays"],
         common_sexy_dislikes = ["being submissive", "sex standing up", "bareback sex", "not wearing underwear", "not wearing anything", "creampies"],
         titles_function = pornstar_titles, possessive_titles_function = pornstar_possessive_titles, player_titles_function = pornstar_player_titles,
         insta_chance = 60, dikdok_chance = 30)
-# this doesn't read properly, don't use repetitive wording, use different words, and movements. Update all the following the_person and movements with breeding personality. Use Hitomi Takami from Ane Haramix or Momoko Kuzuryu from Sumomomo, Momomo: The Strongest Bride on Earth, for ideas, keep to the structure. Movements in double quotes and newline:
     global breeder_personality
     breeder_personality = Personality("breeder", # Hitomi Takami from Ane Haramix or Momoko Kuzuryu from Sumomomo, Momomo: The Strongest Bride on Earth
         common_likes = ["dresses", "small talk", "pants", "boots", "skirts", "high heels", "masturbating", "heavy metal music", "makeup", "pop music", "the weekend"],
-        common_sexy_likes = ["doggy style sex", "vaginal sex", "creampies", "public sex", "kissing", "showing her tits", "bareback sex", "being submissive", "getting head","lingerie", "skimpy outfits"],
+        common_sexy_likes = ["doggy style sex", "vaginal sex", "creampies", "public sex", "kissing", "showing her tits", "bareback sex", "being submissive", "getting head","lingerie", "skimpy outfits", "likes men"],
         common_dislikes = ["HR work", "marketing work", "the colour pink", "research work", "conservative outfits", "Mondays"],
-        common_sexy_dislikes = ["anal sex", "taking control", "sex standing up", "skimpy outfits", "not wearing underwear", "not wearing anything", "creampies"],
+        common_sexy_dislikes = ["anal sex", "taking control", "sex standing up", "skimpy outfits", "not wearing underwear", "not wearing anything", "likes women", "flashing", "peeping"],
         titles_function = breeder_titles, possessive_titles_function = breeder_possessive_titles, player_titles_function = breeder_player_titles,
         insta_chance = 0, dikdok_chance = 0)
+    global wilder_personality
+    wilder_personality = Personality("wilder", #Stephanie style personality
+        common_likes = ["skirts", "small talk", "Fridays", "the weekend", "the colour red", "makeup", "flirting", "heavy metal music", "punk music", "high heels", "dresses"],
+        common_sexy_likes = ["anal creampies", "doggy style sex", "giving blowjobs", "getting head", "anal sex", "public sex", "skimpy outfits", "showing her tits", "showing her ass", "taking control", "not wearing underwear", "creampies", "bareback sex", "threesomes", "likes men", "likes women", "flashing", "peeping", "open relationships"],
+        common_dislikes = ["Mondays", "the colour pink", "conservative outfits", "work uniforms", "pants"],
+        common_sexy_dislikes = ["being submissive", "being fingered", "missionary style sex", "giving handjobs"],
+        titles_function = wilder_titles, possessive_titles_function = wilder_possessive_titles, player_titles_function = wilder_player_titles,
+        insta_chance = 40, dikdok_chance = 30)
 
 
-
+#foodie_personality,
     list_of_personalities.extend((
         dandere_personality,
         goudere_personality,
@@ -855,13 +863,9 @@ def init_VT_personalities():
         gothic_personality,
         bimboed_personality,
         tomboy_personality,
-        foodie_personality,
         cosplay_personality,
         slutty_personality,
         pornstar_personality,
         breeder_personality,
+        wilder_personality,
     ))
-
-
-#different words and sexier and  more dangerous yandere personality
-#add more dangerous yandere personality, use different words, and movements on a new line in quotations.

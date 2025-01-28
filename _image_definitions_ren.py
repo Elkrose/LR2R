@@ -15,6 +15,11 @@ def get_file_handle(file_name: str) -> str | None:
 
 #### Background / LR2R Replaced
 Cherry_background_image = Image(get_file_handle("Cherry_Background.png"))
+park_afternoon_background_image = Image(get_file_handle("Park_Afternoon_Background.png"))
+park_morning_background_image = Image(get_file_handle("Park_Morning_Background.png"))
+park_evening_background_image = Image(get_file_handle("Park_Evening_Background.png"))
+park_early_morning_background_image = Image(get_file_handle("Park_Early_Morning_Background.png"))
+park_bushes_background_image = Image(get_file_handle("Park_Bushes_Background.png"))
 information_image = Image(get_file_handle("information.png"))
 question_image = Image(get_file_handle("question.png"))
 topboxVT_image = Image(get_file_handle("topboxVTMod.png"))
@@ -241,6 +246,10 @@ bitelip_image = Image(get_file_handle("bitelip.png"))
 bitelip_small_image = im.Scale(Image(get_file_handle("bitelip.png")), 18, 18)
 renpy.image("bitelip_small", bitelip_small_image)
 
+oralclaimed_image = Image(get_file_handle("oralclaimed.png"))
+oralclaimed_small_image = im.Scale(Image(oralclaimed_image), 18, 18)
+renpy.image("oralclaimed_small", oralclaimed_small_image)
+
 ### Vaginal Virgin Flag
 virgin_vaginal_image = Image(get_file_handle(modpath+"virgin_vaginal.png"))
 virgin_vaginal_small_image = im.Scale(Image(get_file_handle(modpath+"virgin_vaginal.png")), 18, 18)
@@ -268,6 +277,10 @@ renpy.image("vagclosed_small", vagclosed_small_image)
 
 knowvag_image = Image(get_file_handle("knowvag.png"))
 
+vaginalclaimed_image = Image(get_file_handle("vaginalclaimed.png"))
+vaginalclaimed_small_image = im.Scale(Image(vaginalclaimed_image), 18, 18)
+renpy.image("vaginalclaimed_small", vaginalclaimed_small_image)
+
 ### Anal Virgin Flag
 virgin_anal_image = Image(get_file_handle(modpath+"virgin_anal.png"))
 virgin_anal_small_image = im.Scale(Image(get_file_handle(modpath+"virgin_anal.png")), 18, 18)
@@ -279,8 +292,8 @@ handass_image = Image(get_file_handle("handass.png"))
 handass_small_image = im.Scale(Image(get_file_handle("handass.png")), 18, 18)
 renpy.image("handass_small", handass_small_image)
 
-ahegaopeach_image = Image(get_file_handle("ahegaoanal.png"))
-ahegaoanal_small_image = im.Scale(Image(get_file_handle("ahegaoanal.png")), 18, 18)
+ahegaopeach_image = Image(get_file_handle(modpath+"ahegaoanal.png"))
+ahegaoanal_small_image = im.Scale(ahegaopeach_image, 18, 18)
 renpy.image("ahegaoanal_small", ahegaoanal_small_image)
 
 yesanal_image = Image(get_file_handle("yesanal.png"))
@@ -294,6 +307,10 @@ renpy.image("yespeach_small", yespeach_small_image)
 knowpeach_image = Image(get_file_handle("knowpeach.png"))
 knowpeach_small_image = im.Scale(Image(get_file_handle("knowpeach.png")), 18, 18)
 renpy.image("knowpeach_small", knowpeach_small_image)
+
+analclaimed_image = Image(get_file_handle("analclaimed.png"))
+analclaimed_small_image = im.Scale(Image(analclaimed_image), 18, 18)
+renpy.image("analclaimed_small", analclaimed_small_image)
 
 #### Had sex today
 hadsextoday_image = Image(get_file_handle(modpath+"sex.png"))
@@ -309,7 +326,9 @@ tempnormal_image = Image(get_file_handle("tempnormal.png"))
 tempblank_image = Image(get_file_handle("tempblank.png"))
 
 ######## Exhibitionist Fetish
-knowbody_image = Image(get_file_handle("knowbody.png"))
+knowbody_image = Image(get_file_handle(modpath+"knowbody.png"))
+knowbody_small_image = im.Scale(Image(knowbody_image), 18, 18)
+renpy.image("knowbody_small", knowbody_small_image)
 
 ahegaoex_image = Image(get_file_handle("ahegaoex.png"))
 
@@ -371,3 +390,27 @@ renpy.image("stripper_small", stripper_small_image)
 cashpanties_image = Image(get_file_handle("cashpanties.png"))
 cashpanties_small_image = im.Scale(Image(get_file_handle("cashpanties.png")), 18, 18)
 renpy.image("cashpanties_small", cashpanties_small_image)
+
+cherries01_hover_image = Image(get_file_handle(modpath+"cherries01_hover.png"))
+cherries01_hover_small_image = im.Scale(cherries01_hover_image, 40, 40)
+renpy.image("cherries01_hover", cherries01_hover_small_image)
+
+cherries01_idle_image = Image(get_file_handle(modpath+"cherries01_idle.png"))
+cherries01_idle_small_image = im.Scale(cherries01_idle_image, 40, 40)
+renpy.image("cherries01_idle", cherries01_idle_small_image)
+
+HUDVT_image = Image(get_file_handle(modpath+"HUDVT.png"))
+HUDVT_small_image = im.Scale(HUDVT_image, 40, 40)
+renpy.image("HUDVT_small", HUDVT_small_image)
+
+employee_image = Image(get_file_handle(modpath+"employee.png"))
+employee_small_image = im.Scale(employee_image, 18, 18)
+renpy.image("employee_small", employee_small_image)
+
+intern_image = Image(get_file_handle(modpath+"intern.png"))
+intern_small_image = im.Scale(intern_image, 18, 18)
+renpy.image("intern_small", intern_small_image)
+
+redlabbook_image = Image(get_file_handle(modpath+"redlabbook.png"))
+
+#LEGEND###

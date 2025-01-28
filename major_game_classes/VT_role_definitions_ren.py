@@ -22,6 +22,17 @@ init -1 python:
 ################
 # Fetish Roles #
 ################
+def fetish_vaginal_staylate_requirement(person: Person):
+    if mc.is_at_office and mc.business.is_open_for_business and person.is_employee:
+        return True
+    return False
+
+def get_vaginal_fetish_role_actions():
+    fetish_vaginal_staylate = Action("See me after work", fetish_vaginal_staylate_requirement, "fetish_vaginal_staylate_label",
+        menu_tooltip = "Ask her to stay late after work day is over.", priority = 10)
+
+    return [fetish_vaginal_staylate]
+
 def fetish_anal_staylate_requirement(person: Person):
     if mc.is_at_office and mc.business.is_open_for_business and person.is_employee:
         return True

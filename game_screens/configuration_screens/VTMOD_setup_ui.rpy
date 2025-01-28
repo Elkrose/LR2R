@@ -75,85 +75,128 @@ screen VTMOD_setup_ui():
                             Function(vt_switch_preference, pref)
                         ]
             viewport id "vtvp":
-                mousewheel True
-                scrollbars "vertical"
-                for pref in sorted(VT_Settings):
-                    if pref == pref_selected:
-                        vbox:
-                            for pref_opt in (x[0] for x in sorted(VT_Settings[pref].items(), key = lambda x: x[1][2])):
-                                if pref_selected in ["Population", "Virgin Stats"]:
-                                    if not pref_opt in ["Teen","Teen - Oral", "Teen - Anal", "Teen - Vaginal","Preteen","Preteen - Oral", "Preteen - Anal", "Preteen - Vaginal"]:
-                                        hbox:
-                                            spacing 5
-                                            vbox:
-                                                xsize 300
-                                                ysize 50
-                                                yoffset 5
-                                                text pref_opt style "VTvirgins_text_style" xalign 1.0
-                                            vbox:
-                                                xsize 600
-                                                ysize 50
-                                                bar value FieldValue(persistent, VT_Settings[pref][pref_opt][0], 100, step = 1, style = "slider", action = [ Function(vt_preference_value_changed, pref_selected) ]) xsize 600 ysize 45
-                                            
-                                            vbox:
-                                                xsize 60
-                                                ysize 50
-                                                yoffset 5
-                                                text (str(getattr(persistent, VT_Settings[pref][pref_opt][0])) + "%" if getattr(persistent, VT_Settings[pref][pref_opt][0]) > 0 else "None") style "VTmenu_text_style" xsize 100
-                                else:
-                                    if pref_selected == "Trackers":
-                                        $ VTSettingsicon = f"{{image="+str(VT_Settings[pref][pref_opt][0])+"}"
-                                        hbox:
-                                            spacing 5
-                                            vbox:
-                                                xsize 50
-                                                ysize 50
-                                                imagebutton:
-                                                    if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1:
-                                                        idle "gui/extra_images/check_mark.png"
-                                                    else:
-                                                        idle "gui/extra_images/uncheck_mark.png"
-                                                    background ("#449044" if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1 else "#904444" )
-                                                    hover_background ("#66a066" if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1 else "#a06666")
-                                                    sensitive True
-                                                    action  [ToggleField(persistent, str(VT_Settings[pref][pref_opt][0]), 1, 0)]
-                                                    xysize (50, 40)
-                                                    padding (9, 4)
-                                                    yanchor 0.5 yalign 0.5
-                                            vbox:
-                                                xsize 50
-                                                ysize 50
-                                                text VTSettingsicon style "VTtextbutton_icon_style"
-                                            vbox:
-                                                xsize 300
-                                                ysize 50
-                                                yoffset 5
-                                                text pref_opt style "VTtextbutton_text_style"
-                                    else:
-                                        hbox:
-                                            spacing 5
-                                            vbox:
-                                                xsize 300
-                                                ysize 50
-                                                yoffset 5
-                                                text pref_opt style "VTtextbutton_text_style"
-                                            vbox:
-                                                xsize 50
-                                                ysize 50
-                                                text (str(VT_Settings[pref][pref_opt][1])) style "VTtextbutton_text_style"
-            vbar value YScrollValue("vtvp")
+                    mousewheel True
+                    scrollbars "vertical"
+                    hbox:
+                        for pref in sorted(VT_Settings):
+                            if pref == pref_selected:
+                                vbox:
+                                    for pref_opt in (x[0] for x in sorted(VT_Settings[pref].items(), key = lambda x: x[1][2])):
+                                        if pref_selected in ["Population", "Virgin Stats"] and not pref_opt in ["Teen","Teen - Oral", "Teen - Anal", "Teen - Vaginal","Preteen","Preteen - Oral", "Preteen - Anal", "Preteen - Vaginal"]:
+                                            python:
+                                                if persistent.VT_highlight_row == pref_opt:
+                                                    row_style = "selected_row"
+                                                else:
+                                                    row_style = "hover_row"
+                                            frame:
+                                                style row_style
+                                                $ VTSettingsicon = f"{{image="+str(VT_Settings[pref][pref_opt][0])+"}"
+                                                hbox:
+                                                    xfill True
+                                                    ysize 55
+                                                    spacing 5
+                                                    vbox:
+                                                        xsize 300
+                                                        ysize 50
+                                                        yoffset 5
+                                                        text pref_opt style "VTvirgins_text_style" xalign 1.0
+                                                    vbox:
+                                                        xsize 600
+                                                        ysize 50
+                                                        bar value FieldValue(persistent, VT_Settings[pref][pref_opt][0], 100, step = 1, style = "slider", action = [ 
+                                                            Function(vt_preference_value_changed, pref_selected), 
+                                                            SetField(persistent, "VT_highlight_row", pref_opt) 
+                                                        ]) xsize 600 ysize 50
+                                                    vbox:
+                                                        xsize 60
+                                                        ysize 50
+                                                        yoffset 5
+                                                        text (str(getattr(persistent, VT_Settings[pref][pref_opt][0])) + "%" if getattr(persistent, VT_Settings[pref][pref_opt][0]) > 0 else "None") style "VTmenu_text_style" xsize 100
+                                        if pref_selected == "Trackers":
+                                            $ VTSettingsicon = f"{{image="+str(VT_Settings[pref][pref_opt][0])+"}"
+                                            hbox:
+                                                spacing 5
+                                                vbox:
+                                                    xsize 50
+                                                    ysize 50
+                                                    imagebutton:
+                                                        if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1:
+                                                            idle "gui/extra_images/check_mark.png"
+                                                        else:
+                                                            idle "gui/extra_images/uncheck_mark.png"
+                                                        background ("#449044" if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1 else "#904444" )
+                                                        hover_background ("#66a066" if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1 else "#a06666")
+                                                        sensitive True
+                                                        action  [ToggleField(persistent, str(VT_Settings[pref][pref_opt][0]), 1, 0)]
+                                                        xysize (50, 40)
+                                                        padding (9, 4)
+                                                        yanchor 0.5 yalign 0.5
+                                                vbox:
+                                                    xsize 50
+                                                    ysize 50
+                                                    text VTSettingsicon style "VTtextbutton_icon_style"
+                                                vbox:
+                                                    xsize 300
+                                                    ysize 50
+                                                    yoffset 5
+                                                    text pref_opt style "VTtextbutton_text_style"
+                                        if pref_selected == "VT HUD":
+                                            $ VTSettingsicon = f"{{image="+str(VT_Settings[pref][pref_opt][0])+"}"
+                                            hbox:
+                                                spacing 5
+                                                vbox:
+                                                    xsize 50
+                                                    ysize 50
+                                                    imagebutton:
+                                                        if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1:
+                                                            idle "gui/extra_images/check_mark.png"
+                                                        else:
+                                                            idle "gui/extra_images/uncheck_mark.png"
+                                                        background ("#449044" if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1 else "#904444" )
+                                                        hover_background ("#66a066" if getattr(persistent, str(VT_Settings[pref][pref_opt][0]))==1 else "#a06666")
+                                                        sensitive True
+                                                        action  [ToggleField(persistent, str(VT_Settings[pref][pref_opt][0]), 1, 0)]
+                                                        xysize (50, 40)
+                                                        padding (9, 4)
+                                                        yanchor 0.5 yalign 0.5
+                                                vbox:
+                                                    xsize 50
+                                                    ysize 50
+                                                    text VTSettingsicon style "VTtextbutton_icon_style"
+                                                vbox:
+                                                    xsize 300
+                                                    ysize 50
+                                                    yoffset 5
+                                                    text pref_opt style "VTtextbutton_text_style"
+
+            if pref_selected == "VT HUD":
+                hbox:
+                    align (0.5, 0.5)
+                    xsize 1000
+                    text "{size=22} 🍒🍒🍒 You can Enable/Disable the VT HUD! 🍒🍒🍒" style "warning_text"
+
+            if pref_selected == "Trackers":
+                hbox:
+                    align (0.5, 0.5)
+                    xsize 1000
+                    text "{size=22} 🍒🍒🍒Trackers work great!🍒🍒🍒" style "warning_text"
 
             if pref_selected in ["Population"]:
                 hbox:
                     text f"Total: {current_total}%":
                         xalign 1.0
                         style "VTmenu_text_style"
-            hbox:
-                xsize 800
-                text "{size=22}You may adjust these anytime." style "warning_text"
+
+            if pref_selected in ["Virgin Stats"]:
+                hbox:
+                    xsize 1000
+                    text "🍒 Virginal bleeding averages 15-30%. Set to 0% to disable or 100% to always enable.." xalign 1.0 style "VTmenu_text_style"
+
+            vbar value YScrollValue("vtvp")
+
             hbox:
                 xalign 0.5
-                textbutton "Close" action [Return()] style "VTtextbutton_style" text_style "menu_text_title_style" text_text_align 0.5 text_xalign 0.5 xysize (155,60)
+                textbutton "Close" action [Hide("VTMOD_setup_ui"), Return()] style "VTtextbutton_style" text_style "menu_text_title_style" text_text_align 0.5 text_xalign 0.5 xysize (155,60)
 
 style warning_text:
     color "#FFFFFF"
@@ -225,3 +268,14 @@ style VTcheckbox_button:
     insensitive_background Solid("#d3d3d3") # Disabled (May not be required, I usually use im.Sepia() for images)
     selected_idle_background Solid("#00ff00") # Checked
     selected_hover_background Solid("#00ff11") # Checked Hovered
+
+style VT_selected_row:
+    background "#000000"
+
+style unselected_row:
+    background "#4B0303"
+
+style hover_row:
+    background "#4B0303"
+    hover_background "#710505"
+    xfill True

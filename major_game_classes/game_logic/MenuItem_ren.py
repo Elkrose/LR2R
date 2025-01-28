@@ -146,16 +146,16 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                             else:
                                 info.append("{image=bluelotus_small}")
             if not item.is_stranger:
-                if  getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1 and item.hymen==0 and item.anal_virgin==0 and item.oral_virgin==0:
+                if  getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1 and item.hymen==0 and item.anal_virgin==0 and item.oral_virgin==0 and  perk_system.has_ability_perk("Oral Virgin Perception") and  perk_system.has_ability_perk("Anal Virgin Perception") and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
                     info.append("{image=virgin_token_small}")
                 else:
-                    if getattr(persistent, "virgin_vaginal")==1:
+                    if getattr(persistent, "virgin_vaginal")==1 and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
                         if item.hymen == 0:
                             info.append("{image=virgin_vaginal_small}")
-                    if getattr(persistent, "virgin_anal")==1:
+                    if getattr(persistent, "virgin_anal")==1 and  perk_system.has_ability_perk("Anal Virgin Perception"):
                         if item.anal_virgin == 0:
                             info.append("{image=virgin_anal_small}")
-                    if getattr(persistent, "virgin_oral")==1:
+                    if getattr(persistent, "virgin_oral")==1 and  perk_system.has_ability_perk("Oral Virgin Perception"):
                         if item.oral_virgin == 0:
                             info.append("{image=virgin_oral_small}")
                 if any((draw_insta, draw_dikdok, draw_onlyfans)):
@@ -212,6 +212,12 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                 if getattr(persistent, "cashpanties")==1 :
                     if item.has_role(prostitute_role) and item.is_job_known:
                         info.append("{image=cashpanties_small}")
+                if getattr(persistent, "employee")==1:
+                    if item.is_employee:
+                        info.append("{image=employee_small}")
+                if getattr(persistent, "intern")==1:
+                    if item.is_intern:
+                        info.append("{image=intern_small}")
                 if show_location:
                     info.append("\n{size=15}<" + Text(item.location.formal_name, substitute = True).get_all_text() + ">{/size}")
                 if draw_hearts_for_people:

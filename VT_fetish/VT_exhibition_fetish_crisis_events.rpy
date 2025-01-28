@@ -133,7 +133,7 @@ label VT_exhibition_fetish_non_employee_dosage_request_label():
                 "[the_person.possessive_title!c] pushes you inside and immediately drops down on her knees."
             $ the_person.draw_person(position = "kneeling1")
             "You consider asking her to strip down a bit, but she has already managed to pull your cock out of your pants."
-            call get_fucked(the_person, the_goal = "get mc off", sex_path = build_blowjob_path(the_person), start_object = make_floor(), skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_non_employee_dosage_request_label
+            call get_fucked(the_person, the_goal = "titfuck", sex_path = build_blowjob_path(the_person), start_object = make_floor(), skip_intro = True, allow_continue = False) from _call_get_fucked_VT_exhibition_fetish_non_employee_dosage_request_label
             the_person "Oh my god, thank you [the_person.mc_title]... I wish I had time to make you cum again... but I know you're a busy man..."
             "[the_person.possessive_title!c] starts to get up. Her hunger for cum satisfied for now."
             $ the_person.draw_person(emotion = "happy")

@@ -84,11 +84,11 @@ def VT_get_fetish_cum_dosage_non_employee():
     return get_random_from_list([x for x in known_people_in_the_game(excluded_people = mc.business.employee_list + [mom, lily]) if x.has_exhibition_fetish and x.days_since_event("LastExhibitionFetish") > 10])
 
 
-VT_exhibition_fetish_morning_shower_crisis = ActionMod("Morning shower with company", VT_exhibition_fetish_morning_shower_requirement, "VT_exhibition_fetish_morning_shower_label",
+VT_exhibition_fetish_morning_shower_crisis = ActionMod("Exhib Fetish: Morning shower", VT_exhibition_fetish_morning_shower_requirement, "VT_exhibition_fetish_morning_shower_label",
     menu_tooltip = "You are taking a shower when a family member joins you.", category = "VT Natural Fetish", is_crisis = True)
-VT_exhibition_fetish_employee_dosage_request_crisis = ActionMod("Employee Casually asks for cum", VT_exhibition_fetish_employee_dosage_request_requirement, "VT_exhibition_fetish_employee_casual_request_label",
+VT_exhibition_fetish_employee_dosage_request_crisis = ActionMod("Exhib Fetish: Employee", VT_exhibition_fetish_employee_dosage_request_requirement, "VT_exhibition_fetish_employee_casual_request_label",
     menu_tooltip = "An employee is thirsty for cum.", category = "VT Natural Fetish", is_crisis = True)
-VT_exhibition_fetish_non_employee_dosage_request_crisis = ActionMod("Someone asks for cum", VT_exhibition_fetish_non_employee_dosage_request_requirement, "VT_exhibition_fetish_non_employee_dosage_request_label",
+VT_exhibition_fetish_non_employee_dosage_request_crisis = ActionMod("Exhib Fetish: Someone", VT_exhibition_fetish_non_employee_dosage_request_requirement, "VT_exhibition_fetish_non_employee_dosage_request_label",
     menu_tooltip = "Someone calls and asks for a favour.", category = "VT Natural Fetish", is_crisis = True)
 
 
