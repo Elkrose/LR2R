@@ -44,13 +44,13 @@ def VT_get_needy_anal_fetish_non_employee():
 def VT_get_anal_fetish_family():
     return get_random_from_list([x for x in known_people_in_the_game() if x.is_family and x.has_anal_fetish])
 
-VT_aggressive_anal_fetish_employee = ActionMod("Employee wants anal", VT_aggressive_anal_employee_requirement, "VT_aggressive_anal_fetish_employee_label",
+VT_aggressive_anal_fetish_employee = ActionMod("Anal Fetish: Employee", VT_aggressive_anal_employee_requirement, "VT_aggressive_anal_fetish_employee_label",
     menu_tooltip = "An employee needs her anal fetish fulfilled", category = "VT Natural Fetish", is_crisis = True)
 
-VT_aggressive_anal_fetish_non_employee = ActionMod("Someone wants anal", VT_aggressive_anal_fetish_non_employee_requirement, "VT_aggressive_anal_fetish_non_employee_label",
+VT_aggressive_anal_fetish_non_employee = ActionMod("Anal Fetish: Someone", VT_aggressive_anal_fetish_non_employee_requirement, "VT_aggressive_anal_fetish_non_employee_label",
     menu_tooltip = "Someone needs her anal fetish fulfilled", category = "VT Natural Fetish", is_crisis = True)
 
-VT_anal_fetish_employee_evening_approach = ActionMod("Employee evening anal request", VT_anal_fetish_employee_evening_approach_requirement, "VT_anal_fetish_employee_evening_approach_label",
+VT_anal_fetish_employee_evening_approach = ActionMod("Anal Fetish: Employee evening", VT_anal_fetish_employee_evening_approach_requirement, "VT_anal_fetish_employee_evening_approach_label",
     menu_tooltip = "An employee asks for anal after the office closes", category = "VT Natural Fetish", is_crisis = True)
 
 #TODO - anal fetish family, generic non employee, mom, lily, starbuck and stephanie

@@ -3,7 +3,7 @@
 # update all the following the_person and movements with wild personality. Use Rangiku Matsumoto from Bleach or Nami from One Piece, for ideas, keep to the structure. Movements in quotations:
 
 ### DIALOGUE ###
-label vt_wild_introduction(the_person):
+label vt_wilder_introduction(the_person):
     mc.name "Hey, gorgeous! Mind if I join you for a sec?"
     "She turns around and looks you up and down, a hint of amusement in her eyes."
     the_person "Hmm, what's the plan here, handsome? Trying to pick me up with a cheesy line?"
@@ -16,7 +16,7 @@ label vt_wild_introduction(the_person):
     "She raises an eyebrow, her eyes sparkling with curiosity."
     return
 
-label vt_wild_greetings(the_person):
+label vt_wilder_greetings(the_person):
     if the_person.love < 0:
         "[the_person.possessive_title!c] looks up at you with a scowl, her voice dripping with annoyance."
         the_person "Ugh, what now? Can't you see I'm busy?"
@@ -43,7 +43,7 @@ label vt_wild_greetings(the_person):
                 the_person "Hey, what's up? Just hanging out, having a good time."
     return
 
-label vt_wild_sex_responses_foreplay(the_person):
+label vt_wilder_sex_responses_foreplay(the_person):
     if the_person.arousal_perc < 45:
         if the_person.sluttiness > 50:
             "[the_person.possessive_title!c] moans enthusiastically, clearly enjoying herself already, her body writhing with pleasure."
@@ -80,7 +80,7 @@ label vt_wild_sex_responses_foreplay(the_person):
             the_person "Don't stop, [the_person.mc_title]! You're going to make me cum—don't you dare stop, I'm so close, I can feel it, oh fuck, yes, yes, yes!"
     return
 
-label vt_wild_sex_responses_oral(the_person):
+label vt_wilder_sex_responses_oral(the_person):
     if the_person.arousal_perc < 45:
         if the_person.sluttiness > 50:
             "[the_person.possessive_title!c] giggles with excitement, her eyes sparkling with mischief."
@@ -118,9 +118,9 @@ label vt_wild_sex_responses_oral(the_person):
             the_person "Don't stop, [the_person.mc_title]! You're going to make me cum, don't you dare stop... I'm so close, I can feel it!"
     return
 
-label vt_wild_sex_responses_vaginal(the_person):
+label vt_wilder_sex_responses_vaginal(the_person):
     if the_person.energy < 10:
-        call low_energy_sex_responses_vaginal(the_person) from _vt_wild_call_low_energy_sex_responses_vaginal_10
+        call low_energy_sex_responses_vaginal(the_person) from _vt_wilder_call_low_energy_sex_responses_vaginal_10
         return
 
     if the_person.arousal_perc < 45:
@@ -161,9 +161,9 @@ label vt_wild_sex_responses_vaginal(the_person):
             the_person "Don't stop fucking me, [the_person.mc_title]! You're going to make me cum, I can feel it, don't stop, please don't stop!"
     return
 
-label vt_wild_sex_responses_anal(the_person):
+label vt_wilder_sex_responses_anal(the_person):
     if the_person.energy < 10:
-        call low_energy_sex_responses_anal(the_person) from vt_wild_call_low_energy_sex_responses_anal_10
+        call low_energy_sex_responses_anal(the_person) from vt_wilder_call_low_energy_sex_responses_anal_10
         return
 
     if the_person.arousal_perc < 45:
@@ -224,7 +224,7 @@ label vt_wild_sex_responses_anal(the_person):
             the_person "I think I'm going to cum soon, [the_person.mc_title]... this is amazing, hmm?"
     return
 
-label vt_wild_climax_responses_foreplay(the_person):
+label vt_wilder_climax_responses_foreplay(the_person):
     if the_person.sluttiness > 50:
         "[the_person.possessive_title!c] screams with pleasure, her voice echoing through the room."
         the_person "Oh fuck yes, I'm going to cum, [the_person.mc_title]! I'm cumming, hmm?!"
@@ -238,7 +238,7 @@ label vt_wild_climax_responses_foreplay(the_person):
         "[the_person.possessive_title!c] shakes and trembles, her body wracked with pleasure as she cums, her voice echoing through the room."
     return
 
-label vt_wild_climax_responses_oral(the_person):
+label vt_wilder_climax_responses_oral(the_person):
     if the_person.sluttiness > 70:
         "[the_person.possessive_title!c] screams with pleasure, her voice echoing through the room."
         the_person "Fuck yes, I'm going to cum, [the_person.mc_title]! Make me cum, hmm?!"
@@ -251,7 +251,7 @@ label vt_wild_climax_responses_oral(the_person):
         "[the_person.possessive_title!c] lets out a shuddering moan, her body wracked with pleasure as she cums, her voice echoing through the room."
     return
 
-label vt_wild_climax_responses_vaginal(the_person):
+label vt_wilder_climax_responses_vaginal(the_person):
     if the_person.sluttiness > 70:
         if the_person.arousal_perc > 120:
             "[the_person.possessive_title!c] screams with pleasure, her voice echoing through the room."
@@ -270,7 +270,7 @@ label vt_wild_climax_responses_vaginal(the_person):
         "[the_person.possessive_title!c] lets out a shuddering moan, her body wracked with pleasure as she cums, her voice echoing through the room."
     return
 
-label vt_wild_climax_responses_anal(the_person):
+label vt_wilder_climax_responses_anal(the_person):
     if the_person.sluttiness > 70:
         if the_person.arousal_perc > 120:
             "[the_person.possessive_title!c] screams with pleasure, her voice echoing through the room."
@@ -291,7 +291,7 @@ label vt_wild_climax_responses_anal(the_person):
         "She lets out a shuddering moan, her body wracked with pleasure as she cums, her voice echoing through the room."
     return
 
-label vt_wild_clothing_accept(the_person):
+label vt_wilder_clothing_accept(the_person):
     if the_person.obedience > 180:
         "[the_person.possessive_title!c] gives you a sultry smile, her voice barely above a whisper."
         the_person "You think it will look good on me, [the_person.mc_title]? I guess that's all I need to hear then, hmm?"
@@ -304,7 +304,7 @@ label vt_wild_clothing_accept(the_person):
     return
 
 ### DIALOGUE ###
-label vt_wild_clothing_reject(the_person):
+label vt_wilder_clothing_reject(the_person):
     if the_person.should_wear_uniform:
         "[the_person.possessive_title!c] rolls her eyes, a playful smile spreading across her face."
         the_person "Hey, I guess I should get my uniform sorted out, right? One second, [the_person.mc_title]."
@@ -328,7 +328,7 @@ label vt_wild_clothing_reject(the_person):
             "She looks up at you with a shy expression, her eyes sparkling with uncertainty."
     return
 
-label vt_wild_clothing_review(the_person):
+label vt_wilder_clothing_review(the_person):
     if the_person.outfit.cum_covered:
         if (the_person.sluttiness > 40 and the_person.opinion.being_covered_in_cum >=0) or the_person.opinion.being_covered_in_cum > 0:
             "[the_person.possessive_title!c] giggles, a playful, teasing sound."
@@ -359,7 +359,7 @@ label vt_wild_clothing_review(the_person):
     $ the_person.apply_planned_outfit(show_dress_sequence = True)
     return
 
-label vt_wild_strip_reject(the_person, the_clothing, strip_type = "Full"):
+label vt_wilder_strip_reject(the_person, the_clothing, strip_type = "Full"):
     if the_person.obedience > 180:
         "[the_person.possessive_title!c] looks up at you with a sultry, seductive expression, her voice barely above a whisper."
         the_person "Could we leave my [the_clothing.display_name] on for now, please, [the_person.mc_title]? I want to savor the moment, hmm?"
@@ -376,7 +376,7 @@ label vt_wild_strip_reject(the_person, the_clothing, strip_type = "Full"):
         "She winks at you, her eyes sparkling with mischief as she invites you to play along."
     return
 
-label vt_wild_strip_obedience_accept(the_person, the_clothing, strip_type = "Full"):
+label vt_wilder_strip_obedience_accept(the_person, the_clothing, strip_type = "Full"):
     "[the_person.possessive_title!c] laughs nervously as you start to slide her [the_clothing.display_name] away, her eyes sparkling with a mix of excitement and hesitation."
     if the_person.obedience > 180:
         "[the_person.possessive_title!c] looks up at you with a sultry, seductive expression, her voice barely above a whisper."
@@ -389,7 +389,7 @@ label vt_wild_strip_obedience_accept(the_person, the_clothing, strip_type = "Ful
         "She smiles, a sly, mischievous smile spreading across her face as she invites you to play along, her body language daring you to take the next step."
     return
 
-label vt_wild_grope_body_reject(the_person):
+label vt_wilder_grope_body_reject(the_person):
     if the_person.effective_sluttiness("touching_body") < 5: #Fail point for touching shoulder
         "[the_person.possessive_title!c] lets out a startled yelp as you touch her, then laughs awkwardly, her eyes sparkling with surprise."
         the_person "Ah, [the_person.mc_title]! You scared me, hmm?"
@@ -411,7 +411,7 @@ label vt_wild_grope_body_reject(the_person):
         "She winks at you, her eyes sparkling with teasing as she asserts her dominance."
     return
 
-label vt_wild_sex_accept(the_person, the_position):
+label vt_wilder_sex_accept(the_person, the_position):
     if the_person.sluttiness > 70:
         if the_person.obedience < 70:
             "[the_person.possessive_title!c] gives you a sultry, seductive smile, her eyes sparkling with mischief."
@@ -438,7 +438,7 @@ label vt_wild_sex_accept(the_person, the_position):
         "She opens her arms, inviting you to take her, her body language screaming with desire."
     return
 
-label vt_wild_sex_obedience_accept(the_person):
+label vt_wilder_sex_obedience_accept(the_person):
     if the_person.sluttiness > 70:
         "[the_person.possessive_title!c] looks up at you with a sultry, seductive expression, her voice barely above a whisper."
         the_person "God, what have you done to me, [the_person.mc_title]? I should say no, but... I just want you to use me however you want, hmm?"
@@ -454,7 +454,7 @@ label vt_wild_sex_obedience_accept(the_person):
             "She winks at you, her eyes sparkling with mischief as she invites you to take control, her body language daring you to try something new."
     return
 
-label vt_wild_sex_gentle_reject(the_person):
+label vt_wilder_sex_gentle_reject(the_person):
     if the_person.sluttiness > 50:
         "[the_person.possessive_title!c] looks up at you with a sultry, seductive expression, her voice barely above a whisper."
         the_person "Not yet, [the_person.mc_title]... get me warmed up first, hmm? I want to feel the heat, the passion, the excitement..."
@@ -467,7 +467,7 @@ label vt_wild_sex_gentle_reject(the_person):
         the_person "Let's just take it slow, okay? I want to have fun, but I don't want to rush into anything, hmm?"
     return
 
-label vt_wild_sex_angry_reject(the_person):
+label vt_wilder_sex_angry_reject(the_person):
     if the_person.has_significant_other:
         "[the_person.possessive_title!c] looks up at you with a fierce, angry expression, her voice firm and commanding."
         the_person "What? I have a [the_person.so_title], so you can forget about doing anything like that, [the_person.mc_title]. Ever, hmm?"
@@ -482,7 +482,7 @@ label vt_wild_sex_angry_reject(the_person):
         "[the_person.possessive_title!c] glares at you, her eyes flashing with anger and disgust, then steps back, her body language screaming with rejection and disgust."
     return
 
-label vt_wild_seduction_response(the_person):
+label vt_wilder_seduction_response(the_person):
     if the_person.obedience > 180:
         if the_person.sluttiness > 50:
             "[the_person.possessive_title!c] gives you a sultry, seductive smile, her voice barely above a whisper."
@@ -505,7 +505,7 @@ label vt_wild_seduction_response(the_person):
             the_person "[mc.name], I know what you mean... Okay, I can spare a few minutes, hmm? But don't expect me to go all out, I'm not in the mood for games."
     return
 
-label vt_wild_seduction_accept_crowded(the_person):
+label vt_wilder_seduction_accept_crowded(the_person):
     if not the_person.has_significant_other:
         if the_person.sluttiness < 20:
             "[the_person.possessive_title!c] looks around nervously, her voice barely above a whisper."
@@ -531,7 +531,7 @@ label vt_wild_seduction_accept_crowded(the_person):
             "She glances around the room, her eyes darting towards the exit as she searches for a way to escape the crowd, her body language screaming with guilt and anxiety."
     return
 
-label vt_wild_seduction_accept_alone(the_person):
+label vt_wilder_seduction_accept_alone(the_person):
     if not the_person.has_significant_other:
         if the_person.sluttiness < 20:
             "[the_person.possessive_title!c] smiles, a sly, mischievous smile spreading across her face."
@@ -556,7 +556,7 @@ label vt_wild_seduction_accept_alone(the_person):
             "She bites her lip, her eyes sparkling with desire and guilt as she struggles with her feelings, her body language screaming with tension and anxiety."
     return
 
-label vt_wild_seduction_refuse(the_person):
+label vt_wilder_seduction_refuse(the_person):
     if the_person.sluttiness < 20:
         "[the_person.possessive_title!c] looks up at you with a dismissive, uninterested expression, her voice firm and unyielding."
         the_person "Sorry [the_person.mc_title], I'm not really in the mood to flirt or fool around, hmm? Don't take it personally."
@@ -573,11 +573,11 @@ label vt_wild_seduction_refuse(the_person):
         "She blows you a kiss, her eyes sparkling with teasing as she turns away from you, her body language screaming with confidence and seduction."
     return
 
-label vt_wild_compliment_response(the_person):
+label vt_wilder_compliment_response(the_person):
     mc.name "Hey [the_person.fname]. How are you? You're looking quite perky today."
     if the_person.is_at_work:
         if (the_person.is_employee or the_person.is_strip_club_employee) and the_person.is_wearing_uniform:
-            call vt_wild_flirt_response_employee_uniform_low(the_person) from _call_vt_wild_flirt_response_employee_uniform_low_compliment_response
+            call vt_wilder_flirt_response_employee_uniform_low(the_person) from _call_vt_wilder_flirt_response_employee_uniform_low_compliment_response
         elif the_person.is_at_job(prostitute_job):
             "[the_person.possessive_title!c] gives you a sultry, seductive smile, her voice husky and inviting."
             the_person "I'm good babe, how about you and me have some fun together, hmm? I'm always up for a good time."
@@ -597,11 +597,11 @@ label vt_wild_compliment_response(the_person):
     "You chat with [the_person.possessive_title!c] for a while and slip in a compliment when you can. She is enjoying all the attention, her body language screaming with confidence and pleasure."
     return
 
-label vt_wild_compliment_response_girlfriend(the_person):
+label vt_wilder_compliment_response_girlfriend(the_person):
     mc.name "Hey [the_person.title]. You're looking very sexy this [StringInfo.time_of_day_string]."
     if the_person.is_at_work:
         if (the_person.is_employee or the_person.is_strip_club_employee) and the_person.is_wearing_uniform:
-            call vt_wild_flirt_response_employee_uniform_mid(the_person) from _call_vt_wild_flirt_response_employee_uniform_mid_compliment_response_girlfriend
+            call vt_wilder_flirt_response_employee_uniform_mid(the_person) from _call_vt_wilder_flirt_response_employee_uniform_mid_compliment_response_girlfriend
             $ the_person.call_dialogue("flirt_response_employee_uniform_mid")
         elif the_person.sluttiness > 50:
             "[the_person.possessive_title!c] gives you a sultry, seductive smile, her voice husky and inviting."
@@ -618,11 +618,11 @@ label vt_wild_compliment_response_girlfriend(the_person):
     "You chat with [the_person.possessive_title!c] for a while, making sexy references where you can. She is quite charmed by your efforts, her body language screaming with confidence and pleasure."
     return
 
-label vt_wild_compliment_response_affair(the_person):
+label vt_wilder_compliment_response_affair(the_person):
     mc.name "Hey [the_person.title]. You're looking absolutely gorgeous this [StringInfo.time_of_day_string]."
     if the_person.is_at_work:
         if (the_person.is_employee or the_person.is_strip_club_employee) and the_person.is_wearing_uniform:
-            call vt_wild_flirt_response_employee_uniform_mid(the_person) from _call_vt_wild_flirt_response_employee_uniform_mid_compliment_response_affair
+            call vt_wilder_flirt_response_employee_uniform_mid(the_person) from _call_vt_wilder_flirt_response_employee_uniform_mid_compliment_response_affair
         elif the_person.sluttiness > 50:
             "[the_person.possessive_title!c] gives you a sultry, seductive smile, her voice husky and inviting."
             the_person "Mmmm, thank you [the_person.mc_title]... wanna go somewhere a little more private, so you can make me feel how gorgeous I am, hmm?"
@@ -638,7 +638,7 @@ label vt_wild_compliment_response_affair(the_person):
     "You keep chatting with [the_person.possessive_title!c] for a while, slipping in a few more compliments. She is quite enamoured by your attentiveness, her body language screaming with pleasure and desire."
     return
 
-label vt_wild_flirt_response(the_person):
+label vt_wilder_flirt_response(the_person):
     if the_person.obedience > 180:
         if the_person.sluttiness > 50:
             "[the_person.possessive_title!c] gives you a sultry, seductive smile, her voice husky and inviting."
@@ -671,7 +671,7 @@ label vt_wild_flirt_response(the_person):
             "She smiles, a sly, flirtatious smile, as she invites you to try and win her over."
     return
 
-label vt_wild_flirt_response_employee_uniform_low(the_person):
+label vt_wilder_flirt_response_employee_uniform_low(the_person):
     if the_person.is_wearing_forced_uniform:
         "[the_person.possessive_title!c] looks up at you with a hint of annoyance, her voice husky and seductive."
         the_person "I'm sure you like it, [the_person.mc_title]... I'm practically naked, hmm?"
@@ -723,7 +723,7 @@ label vt_wild_flirt_response_employee_uniform_low(the_person):
             "She smiles and gives you a quick turn to either side, showing off her body for you, her body language screaming with confidence and seduction."
     return
 
-label vt_wild_flirt_response_employee_uniform_mid(the_person):
+label vt_wilder_flirt_response_employee_uniform_mid(the_person):
     if the_person.is_wearing_forced_uniform:
         $ mc.change_locked_clarity(10)
         if the_person.vagina_visible:
@@ -782,7 +782,7 @@ label vt_wild_flirt_response_employee_uniform_mid(the_person):
         "She winks at you, her eyes sparkling with teasing as she invites you to enjoy the view."
     return
 
-label vt_wild_flirt_response_low(the_person):
+label vt_wilder_flirt_response_low(the_person):
     #She's in her own outfit.
     "[the_person.possessive_title!c] beams with pride, her voice bubbly and enthusiastic."
     the_person "Thanks, [the_person.mc_title]! It's really cute, right? I just got it yesterday and I couldn't wait to wear it out."
@@ -794,7 +794,7 @@ label vt_wild_flirt_response_low(the_person):
     the_person "So, what do you think? Does it make me look good, hmm?"
     return
 
-label vt_wild_flirt_response_low1(the_person):
+label vt_wilder_flirt_response_low1(the_person):
     if the_person.has_significant_other:
         "[the_person.possessive_title!c] looks up at you with a warning expression, her voice firm and cautionary."
         the_person "You're playing with fire, [the_person.mc_title]... I've got a [the_person.so_title], and I don't think he'd appreciate you flirting with me, hmm?"
@@ -812,7 +812,7 @@ label vt_wild_flirt_response_low1(the_person):
     $ mc.change_locked_clarity(5)
     return
 
-label vt_wild_flirt_response_mid(the_person):
+label vt_wilder_flirt_response_mid(the_person):
     if mc.location.person_count > 1 and the_person.effective_sluttiness("kissing") < (25 - (5*the_person.opinion.public_sex)):
         $ mc.change_locked_clarity(10)
         if the_person.tits_visible:
@@ -846,7 +846,7 @@ label vt_wild_flirt_response_mid(the_person):
         "She winks at you, her eyes sparkling with teasing as she invites you to take her out on a date."
     return
 
-label vt_wild_flirt_response_mid1(the_person):
+label vt_wilder_flirt_response_mid1(the_person):
     $ mc.change_locked_clarity(10)
     "[the_person.possessive_title!c] beams with pride, her voice bubbly and enthusiastic."
     the_person "Thanks, [the_person.mc_title]... I do look amazing in this outfit, hmm?"
@@ -870,7 +870,7 @@ label vt_wild_flirt_response_mid1(the_person):
     "She winks at you, her eyes sparkling with teasing as she invites you to take her out on a date."
     return
 
-label vt_wild_flirt_response_high(the_person):
+label vt_wilder_flirt_response_high(the_person):
     if mc.location.person_count > 1 and the_person.effective_sluttiness() < (25 - (5*the_person.opinion.public_sex)): # There are other people here, if she's not slutty she asks if you want to find somewhere quiet
         "[the_person.possessive_title!c] smiles mischievously, her voice husky and seductive."
         the_person "Driving you crazy, huh? Well..."
@@ -881,7 +881,7 @@ label vt_wild_flirt_response_high(the_person):
                 mc.name "Then let's find somewhere that isn't here."
                 "[the_person.possessive_title!c] laughs, a playful, flirtatious sound, her voice husky and seductive."
                 the_person "Eager, huh? Alright, let's go find somewhere, hmm?"
-                call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_vt_wild_flirt_response_high_2
+                call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_vt_wilder_flirt_response_high_2
                 "[the_person.possessive_title!c] looks up at you with a sly, flirtatious smile, her voice barely above a whisper."
                 the_person "So... Now what's your plan, hmm?"
 
@@ -895,7 +895,7 @@ label vt_wild_flirt_response_high(the_person):
                     else:
                         "You step close to [the_person.title] and put your arm around her waist, pulling her close and kissing her."
                         "She responds immediately and eagerly presses her body against yours."
-                    call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from vt_wild_call_fuck_person_49
+                    call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from vt_wilder_call_fuck_person_49
                 else:
                     if the_person.has_taboo("touching_body"):
                         $ the_person.call_dialogue("touching_body_taboo_break")
@@ -903,10 +903,10 @@ label vt_wild_flirt_response_high(the_person):
                         "You take her hand and pull her close against you. She looks into your eyes."
                     else:
                         "You answer by pulling her close against you."
-                    call fuck_person(the_person, private = True, start_position = standing_grope, skip_intro = True) from _call_fuck_person_vt_wild_flirt_grope
+                    call fuck_person(the_person, private = True, start_position = standing_grope, skip_intro = True) from _call_fuck_person_vt_wilder_flirt_grope
 
                 $ the_person.call_dialogue("sex_review", the_report = _return)
-                call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wild_flirt_response_high_2
+                call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wilder_flirt_response_high_2
 
             "Just flirt":
                 mc.name "Not here, huh? How about back at your place then?"
@@ -940,7 +940,7 @@ label vt_wild_flirt_response_high(the_person):
                     $ the_person.call_dialogue("touching_body_taboo_break")
                     $ the_person.break_taboo("touching_body")
 
-                call fuck_person(the_person, start_position = standing_grope, private = False) from _call_fuck_person_flirt_response_vt_wild_touching
+                call fuck_person(the_person, start_position = standing_grope, private = False) from _call_fuck_person_flirt_response_vt_wilder_touching
 
             "Kiss her" if the_person.is_willing(kissing):
                 $ the_person.draw_person()
@@ -953,10 +953,10 @@ label vt_wild_flirt_response_high(the_person):
                     "You put your arm around [the_person.possessive_title!c] and pull her close, leaning in to kiss her."
                     "She responds immediately, pressing her body against yours and kissing you back."
 
-                call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_vt_wild_flirt_response_high
-                call fuck_person(the_person, start_position = kissing, private = _return, skip_intro = True) from vt_wild_call_fuck_person_50
+                call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_vt_wilder_flirt_response_high
+                call fuck_person(the_person, start_position = kissing, private = _return, skip_intro = True) from vt_wilder_call_fuck_person_50
                 $ the_person.call_dialogue("sex_review", the_report = _return)
-                call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wild_flirt_response_high
+                call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wilder_flirt_response_high
 
             "Just flirt":
                 $ the_person.draw_person()
@@ -966,7 +966,7 @@ label vt_wild_flirt_response_high(the_person):
                 "She winks at you, her eyes sparkling with mischief as she invites you to take her out on a date."
     return
 
-label vt_wild_flirt_response_low_energy(the_person):
+label vt_wilder_flirt_response_low_energy(the_person):
     if the_person.sluttiness > 40:
         "[the_person.possessive_title!c] smiles, a sly, flirtatious smile spreading across her face, despite her exhaustion."
         the_person "Oh, thank you, darling... now I wish I wasn't so exhausted, hmm?"
@@ -978,7 +978,7 @@ label vt_wild_flirt_response_low_energy(the_person):
         "She yawns, covering her mouth with her hand, her eyes sparkling with mischief even in her exhaustion."
     return
 
-label vt_wild_flirt_response_girlfriend(the_person):
+label vt_wilder_flirt_response_girlfriend(the_person):
     # Lead in: mc.name "You're so beautiful [the_person.title], I'm so lucky to have a woman like you in my life."
     if mc.location.person_count > 1:
         # There are other people around, so she'll only start making out with you if she's slutty.
@@ -998,10 +998,10 @@ label vt_wild_flirt_response_girlfriend(the_person):
                     "[the_person.possessive_title!c] laughs, a playful, flirtatious sound, her voice husky and seductive."
                     the_person "That eager, huh? Alright, let's go, hot stuff!"
                     "You and [the_person.possessive_title!c] hurry off, searching for a private spot, your hands still wrapped around each other's waists."
-                    call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_vt_wild_flirt_response_girlfriend_2
-                    call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from vt_wild_call_fuck_person_76
+                    call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_vt_wilder_flirt_response_girlfriend_2
+                    call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from vt_wilder_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
-                    call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wild_flirt_response_girlfriend_2
+                    call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wilder_flirt_response_girlfriend_2
 
                 "Just flirt":
                     $ mc.change_locked_clarity(10)
@@ -1021,10 +1021,10 @@ label vt_wild_flirt_response_girlfriend(the_person):
                     "You don't say a word as you lean back and kiss her again, slowly and sensually this time, your lips exploring hers with a fierce passion."
                     "[the_person.title] presses her body against you in response, grinding her hips against your thigh, her eyes sparkling with desire."
 
-                    call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_vt_wild_flirt_response_girlfriend
-                    call fuck_person(the_person, start_position = kissing, private = _return, skip_intro = True) from vt_wild_call_fuck_person_77
+                    call mc_move_to_private_location(the_person) from  _call_mc_move_to_private_location_vt_wilder_flirt_response_girlfriend
+                    call fuck_person(the_person, start_position = kissing, private = _return, skip_intro = True) from vt_wilder_call_fuck_person_77
                     $ the_person.call_dialogue("sex_review", the_report = _return)
-                    call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wild_flirt_response_girlfriend
+                    call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wilder_flirt_response_girlfriend
 
                 "Just flirt":
                     mc.name "I just like to tease you, [the_person.title]."
@@ -1046,7 +1046,7 @@ label vt_wild_flirt_response_girlfriend(the_person):
 
                 "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass. You pull her close and kiss her sensually, your lips exploring hers with a fierce passion."
                 "She responds by pressing her body against you and grinding her hips against your thigh, her eyes sparkling with desire."
-                call fuck_person(the_person, start_position = kissing, skip_intro = True) from vt_wild_call_fuck_person_78
+                call fuck_person(the_person, start_position = kissing, skip_intro = True) from vt_wilder_call_fuck_person_78
                 $ the_person.call_dialogue("sex_review", the_report = _return)
                 $ the_person.review_outfit()
 
@@ -1057,7 +1057,7 @@ label vt_wild_flirt_response_girlfriend(the_person):
                 the_person "Ugh, you're the worst, [the_person.mc_title]. I was already getting so turned on, hmm?"
     return
 
-label vt_wild_flirt_response_affair(the_person):
+label vt_wilder_flirt_response_affair(the_person):
     # Lead in: mc.name "You look so good today [the_person.title], you're making me want to do some very naughty things to you."
     if mc.location.person_count > 1: #There are other people around, she's nervous about people finding out what you're doing.
         if (the_person.opinion.cheating_on_men *15) + the_person.effective_sluttiness() > 50: #SHe's turned on by flirting in public or doesn't think anything is wrong with it
@@ -1067,15 +1067,15 @@ label vt_wild_flirt_response_affair(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Alright, let's go."
                     "You and [the_person.title] hurry off to find a quiet spot, your hands wrapped around each other's waists as you move through the crowd."
-                    call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_vt_wild_flirt_response_affair
+                    call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_vt_wilder_flirt_response_affair
                     $ the_person.draw_person(position = "kissing", special_modifier = "kissing")
                     "As soon as you're alone she pulls you into a deep and passionate kiss, her lips pressing against yours with a fierce hunger."
                     $ the_person.draw_person(position = "kissing")
                     the_person "Ah... You aren't the only one having dirty thoughts, [the_person.mc_title]. You get me so fucking horny!"
                     "You wrap your arms around her waist and kiss her back, your bodies pressed together in a passionate embrace."
-                    call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from vt_wild_call_fuck_person_79
+                    call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from vt_wilder_call_fuck_person_79
                     $ the_person.call_dialogue("sex_review", the_report = _return)
-                    call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wild_flirt_response_affair
+                    call mc_restore_original_location(the_person) from _call_mc_restore_original_location_vt_wilder_flirt_response_affair
 
                 "Just flirt":
                     "You slide your arm around [the_person.title]'s waist and rest your hand on her ass, rubbing it gently, your fingers digging into her flesh."
@@ -1111,7 +1111,7 @@ label vt_wild_flirt_response_affair(the_person):
                 the_person "What next, [the_person.mc_title]? What do you want to do to me, hmm?"
                 "You spin her around and shift your hands to her breasts, squeezing them gently, your fingers tracing the curves of her body."
                 mc.name "No need to rush things, [the_person.title]. Just relax and enjoy for now, hmm?"
-                call fuck_person(the_person, private = True, start_position = standing_grope, skip_intro = True) from vt_wild_call_fuck_person_80
+                call fuck_person(the_person, private = True, start_position = standing_grope, skip_intro = True) from vt_wilder_call_fuck_person_80
                 $ the_person.call_dialogue("sex_review", the_report = _return)
                 $ the_person.review_outfit()
 
@@ -1128,7 +1128,7 @@ label vt_wild_flirt_response_affair(the_person):
                 mc.name "I won't make you wait long, I promise."
     return
 
-label vt_wild_flirt_response_text(the_person):
+label vt_wilder_flirt_response_text(the_person):
     mc.name "Hey [the_person.title], what's up. I'm bored and figured we could chat."
     "There's a brief pause, then she texts back, her words popping up on the screen with a playful, flirtatious tone."
     if the_person.is_affair:
@@ -1159,7 +1159,7 @@ label vt_wild_flirt_response_text(the_person):
             the_person "Alright, let's chat then. What's up with you, hmm?"
     return
 
-label vt_wild_condom_demand(the_person):
+label vt_wilder_condom_demand(the_person):
     if the_person.wants_creampie:
         "[the_person.possessive_title!c] looks up at you with a hint of concern, her voice husky and seductive."
         the_person "Oh shit, [the_person.mc_title]... you need to put on a condom before we do anything, hmm?"
@@ -1173,7 +1173,7 @@ label vt_wild_condom_demand(the_person):
         "She raises an eyebrow, a hint of teasing in her voice as she invites you to hurry up and get ready for sex."
     return
 
-label vt_wild_condom_ask(the_person):
+label vt_wilder_condom_ask(the_person):
     if the_person.on_birth_control:
         "[the_person.possessive_title!c] looks up at you with a sly, flirtatious smile, her voice husky and seductive."
         the_person "Want a condom, [the_person.mc_title]? I'm on the pill, but I guess it's still possible something goes wrong, hmm?"
@@ -1194,7 +1194,7 @@ label vt_wild_condom_ask(the_person):
         "She looks up at you with a sly, flirtatious smile, her eyes sparkling with desire as she invites you to take the risk."
     return
 
-label vt_wild_condom_bareback_ask(the_person):
+label vt_wilder_condom_bareback_ask(the_person):
     if the_person.wants_creampie:
         if the_person.is_infertile:
             "[the_person.possessive_title!c] looks up at you with a sly, flirtatious smile, her voice husky and seductive."
@@ -1224,7 +1224,7 @@ label vt_wild_condom_bareback_ask(the_person):
         "She smiles, a sly, flirtatious smile spreading across her face as she invites you to take her raw."
     return
 
-label vt_wild_condom_bareback_demand(the_person):
+label vt_wilder_condom_bareback_demand(the_person):
     if the_person.has_breeding_fetish: #Actively looking to get knocked up.
         if the_person.knows_pregnant:
             "[the_person.possessive_title!c] looks up at you with a fierce, hungry gaze, her voice husky and seductive."
@@ -1274,7 +1274,7 @@ label vt_wild_condom_bareback_demand(the_person):
             "She reaches out and grabs your hips, pulling you towards her with a fierce passion."
     return
 
-label vt_wild_cum_face(the_person):
+label vt_wilder_cum_face(the_person):
     if the_person.has_cum_fetish or the_person.obedience > 180:
         if the_person.has_cum_fetish or the_person.effective_sluttiness() > 60 or the_person.opinion.cum_facials > 0:
             "[the_person.possessive_title!c] looks up at you with a sly, flirtatious smile, her voice husky and seductive."
@@ -1298,7 +1298,7 @@ label vt_wild_cum_face(the_person):
             "She rolls her eyes, a playful, flirtatious smile spreading across her face as she teases you with her words."
     return
 
-label vt_wild_cum_mouth(the_person):
+label vt_wilder_cum_mouth(the_person):
     if the_person.has_cum_fetish or the_person.obedience > 180:
         if the_person.has_cum_fetish or the_person.effective_sluttiness() > 60 or the_person.opinion.drinking_cum > 0:
             "[the_person.possessive_title!c] looks up at you with a sly, flirtatious smile, her voice husky and seductive."
@@ -1320,7 +1320,7 @@ label vt_wild_cum_mouth(the_person):
             "She laughs, a playful, flirtatious sound, her eyes sparkling with mischief as she teases you with her words."
     return
 
-label vt_wild_cum_pullout(the_person):
+label vt_wilder_cum_pullout(the_person):
     # Lead in: "I'm going to cum!"
     if mc.condom:
         if the_person.wants_creampie and not the_person.has_taboo("condomless_sex"): #TODO: FIgure out we want any more requirements for this to fire.
@@ -1399,7 +1399,7 @@ label vt_wild_cum_pullout(the_person):
                 "She winks at you, her eyes sparkling with mischief as she invites you to cum all over her."
     return
 
-label vt_wild_cum_condom(the_person):
+label vt_wilder_cum_condom(the_person):
     if the_person.effective_sluttiness() > 75 or the_person.opinion.creampies > 0:
         "[the_person.possessive_title!c] looks up at you with a sly, flirtatious smile, her voice husky and seductive."
         the_person "Oh god, it's so warm... If your condom broke, it would all be inside me, hmm?"
@@ -1412,7 +1412,7 @@ label vt_wild_cum_condom(the_person):
         "She winks at you, her eyes sparkling with mischief as she teases you with the possibility of getting her pregnant."
     return
 
-label vt_wild_cum_vagina(the_person):
+label vt_wilder_cum_vagina(the_person):
     if the_person.has_taboo("creampie"):
         $ the_person.call_dialogue("creampie_taboo_break")
         $ the_person.break_taboo("creampie")
@@ -1501,7 +1501,7 @@ label vt_wild_cum_vagina(the_person):
 
     return
 
-label vt_wild_cum_anal(the_person):
+label vt_wilder_cum_anal(the_person):
     if the_person.has_taboo("anal creampie"):
         $ the_person.call_dialogue("anal_creampie_taboo_break")
         $ the_person.break_taboo("anal creampie")
@@ -1518,14 +1518,14 @@ label vt_wild_cum_anal(the_person):
         the_person "Oh my god, yes! Fill me up! I want to feel that hot cum inside me, making me whole!"
     return
 
-label vt_wild_surprised_exclaim(the_person):
+label vt_wilder_surprised_exclaim(the_person):
     $rando = renpy.random.choice(["Ahh, yessss!","Oh my god!","Fuck yeah!","Shit, yeah!","Whoa, baby!","Holy fuck!","Fucking hell, yeah!", "God damn, that's good!", "Son of a...!", "Mother...!", "What the...!", "Fucking... wow!"])
     "[the_person.title] throws her head back, her eyes wide with surprise and excitement."
     the_person "[rando]"
     "[the_person.title] takes a deep breath, her chest heaving with anticipation."
     return
 
-label vt_wild_talk_busy(the_person):
+label vt_wilder_talk_busy(the_person):
     if the_person.obedience > 120:
         "[the_person.title] flashes you a flirtatious smile as she rushes by, her hair flying behind her."
         the_person "Sorry, sweetie, I'm slammed right now! Maybe we can catch up later, hmm?"
@@ -1534,7 +1534,7 @@ label vt_wild_talk_busy(the_person):
         the_person "Hey, lover! I'd love to chat, but I'm up to my eyeballs in work right now. Rain check, okay?"
     return
 
-label vt_wild_sex_strip(the_person):
+label vt_wilder_sex_strip(the_person):
     if the_person.sluttiness < 20:
         if the_person.arousal_perc < 50:
             "[the_person.title] gives you a sly smile as she reaches for the hem of her clothes."
@@ -1558,7 +1558,7 @@ label vt_wild_sex_strip(the_person):
             the_person "Ugh, get this off me! I want to feel your skin against mine, now!"
     return
 
-label vt_wild_sex_watch(the_person, the_sex_person, the_position):
+label vt_wilder_sex_watch(the_person, the_sex_person, the_position):
     $ title = the_person.title if not the_person.is_stranger else "The stranger"
     if the_person.sluttiness < the_position.slut_requirement - 20:
         $ the_person.draw_person(emotion = "angry", display_transform = character_left_flipped)
@@ -1599,11 +1599,11 @@ label vt_wild_sex_watch(the_person, the_sex_person, the_position):
         "[title] cheers you on, her voice husky with desire."
         the_person "That's it, [the_person.mc_title]! Give it to her good! Make her scream!"
     else:
-        call watcher_position_comment(the_person, the_sex_person, the_position) from _call_watcher_position_comment_vt_wild_sex_watch
+        call watcher_position_comment(the_person, the_sex_person, the_position) from _call_watcher_position_comment_vt_wilder_sex_watch
     "[title] watches with unbridled enthusiasm as you and [the_sex_person.fname] [the_position.verb]."
     return True
 
-label vt_wild_being_watched(the_person, the_watcher, the_position):
+label vt_wilder_being_watched(the_person, the_watcher, the_position):
     $ title = the_watcher.fname if not the_watcher.is_stranger else "the stranger"
     if the_person.sluttiness >= the_position.slut_cap and the_watcher.sluttiness >= the_position.slut_cap:
         #They agree you should give it to her harder
@@ -1641,7 +1641,7 @@ label vt_wild_being_watched(the_person, the_watcher, the_position):
         "[the_person.title] seems more comfortable [the_position.verbing] you with [title] around, and is enjoying the attention from both of you."
     return
 
-label vt_wild_work_enter_greeting(the_person):
+label vt_wilder_work_enter_greeting(the_person):
     if the_person.happiness < 80 or the_person.love < 0:
         "[the_person.title] barely acknowledges your presence, her eyes flashing with annoyance as she mutters under her breath."
         the_person "Great, just what I needed. Another distraction."
@@ -1664,7 +1664,7 @@ label vt_wild_work_enter_greeting(the_person):
             the_person "Hey, [the_person.mc_title]! Need anything? I'm all ears... or whatever else you might need."
     return
 
-label vt_wild_date_seduction(the_person):
+label vt_wilder_date_seduction(the_person):
     if the_person.is_girlfriend:
         "[the_person.possessive_title!c] grabs your hand and pulls you around to look at her, a mischievous glint in her eye."
         the_person "Hey, that was such a great time. So I was thinking... why don't we take things to the next level?"
@@ -1772,7 +1772,7 @@ label vt_wild_date_seduction(the_person):
                 "She looks up at you, her eyes sparkling with excitement."
     return
 
-label vt_wild_sex_end_early(the_person):
+label vt_wilder_sex_end_early(the_person):
     if the_person.sluttiness > 50:
         if the_person.love > 40:
             if the_person.arousal_perc > 60:
@@ -1805,7 +1805,7 @@ label vt_wild_sex_end_early(the_person):
                 the_person "Done? Good, nice and quick. Just what I needed."
     return
 
-label vt_wild_sex_take_control(the_person):
+label vt_wilder_sex_take_control(the_person):
     if the_person.arousal_perc > 60:
         "[the_person.title] grabs your arm, her eyes blazing with desire as she pulls you back into the action."
         the_person "Oh hell no, you can't just get me wet and then walk away! Finish what you started, damn it!"
@@ -1814,13 +1814,13 @@ label vt_wild_sex_take_control(the_person):
         the_person "Are you getting bored already? Get back here, we aren't done yet! I'm just getting started!"
     return
 
-label vt_wild_sex_beg_finish(the_person):
+label vt_wilder_sex_beg_finish(the_person):
     "[the_person.title] looks up at you with pleading eyes, her voice husky with desire as she wraps her legs around you."
     the_person "Oh, [the_person.mc_title], please... don't stop now! I'm so close... I'll do anything, just let me cum!"
     "[the_person.title] arches her back, her body trembling with anticipation as she begs for release."
     return
 
-label vt_wild_sex_review(the_person, the_report):
+label vt_wilder_sex_review(the_person, the_report):
     $ comment_position = the_person.pick_position_comment(the_report)
     if comment_position is None:
         return #You didn't actually do anything, no need to comment.
@@ -1872,7 +1872,7 @@ label vt_wild_sex_review(the_person, the_report):
             "She seems dazed by her orgasm as she tries to form coherent sentences."
             the_person "You really... know how to give a girl a good time... just gimme a second, I need to catch my breath."
 
-        call sex_review_trance(the_person) from _call_sex_review_trance_vt_wild_sex_review
+        call sex_review_trance(the_person) from _call_sex_review_trance_vt_wilder_sex_review
 
     #No special conditions, just respond based on how orgasmed and how slutty the position was.
     elif the_report.get("girl orgasms", 0) > 0 and the_report.get("guy orgasms", 0) > 0: #You both came
@@ -1980,7 +1980,7 @@ label vt_wild_sex_review(the_person, the_report):
     return
 
 ## Role Specific Section ##
-label vt_wild_improved_serum_unlock(the_person):
+label vt_wilder_improved_serum_unlock(the_person):
     mc.name "[the_person.title], now that you've had some time to get used to the lab there is something I want to talk to you about."
     "[the_person.title] looks up from her work, a curious expression on her face."
     the_person "Ooh, what's on your mind? Something juicy, I hope?"
@@ -2003,20 +2003,8 @@ label vt_wild_improved_serum_unlock(the_person):
     the_person "Then we'll just need some time and some privacy for me to see what sort of effects my orgasms will have. And maybe, just maybe, we'll stumble upon something amazing."
     return
 
-#
-# label vt_wild_improved_serum_unlock(the_person):
-#     mc.name "[the_person.title], now that you've had some time in the lab there's something I wanted to talk to you about."
-#     the_person "Okay, how can I help?"
-#     mc.name "All of our research and development up until this point has been based on the limited notes I have from my university days. I'm sure there's more we could learn, and I want you to look into it for me."
-#     "[the_person.title] smiles mischievously."
-#     the_person "Well, I've got an idea in mind. It's risky, but I think it could really push our research to a new level."
-#     mc.name "Go on, I'm interested."
-#     the_person "Our testing procedures focus on human safety, which I'll admit is important, but it doesn't leave us with much information about the subjective effects of our creations."
-#     the_person "What I want to do is take a dose of our serum myself, then have you record me while you run me through some questions."
-#     return
-
 ## Taboo break dialogue ##
-label vt_wild_kissing_taboo_break(the_person):
+label vt_wilder_kissing_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 30:
         "[the_person.title] looks up at you with a flirtatious smile, her eyes sparkling with excitement."
         the_person "Come on then, we both know where this is going. You've always wanted to kiss me, right? And I've always wanted you to."
@@ -2039,7 +2027,7 @@ label vt_wild_kissing_taboo_break(the_person):
         "[the_person.title] nods, her eyes locked on yours as she waits for you to make a move."
     return
 
-label vt_wild_touching_body_taboo_break(the_person):
+label vt_wilder_touching_body_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 30:
         "[the_person.title] looks up at you with a sly smile, her eyes sparkling with mischief."
         the_person "Are you sure about this? I don't want you to chicken out on me... I'm ready to take things to the next level."
@@ -2070,7 +2058,7 @@ label vt_wild_touching_body_taboo_break(the_person):
         "[the_person.title] nods, her face lighting up with excitement."
     return
 
-label vt_wild_touching_penis_taboo_break(the_person):
+label vt_wilder_touching_penis_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 35:
         "[the_person.title] looks down at your crotch, her eyes widening with excitement."
         the_person "Mmm, you're really turned on too, right? Look how big you are... I can already imagine what it would be like to have that inside me."
@@ -2093,7 +2081,7 @@ label vt_wild_touching_penis_taboo_break(the_person):
         "[the_person.title] looks down at your crotch, her eyes fixed on your cock as she considers your request."
     return
 
-label vt_wild_touching_vagina_taboo_break(the_person):
+label vt_wilder_touching_vagina_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 35:
         "[the_person.title] looks up at you with a daring smile, her eyes sparkling with excitement."
         the_person "Don't chicken out on me now, you've got your chance to touch my pussy... and I'm not going to let you get away that easily."
@@ -2115,7 +2103,7 @@ label vt_wild_touching_vagina_taboo_break(the_person):
         the_person "Okay... but if I don't like it, I'm blaming you."
     return
 
-label vt_wild_sucking_cock_taboo_break(the_person):
+label vt_wilder_sucking_cock_taboo_break(the_person):
     mc.name "I want you to do something for me."
     "[the_person.title] looks up at you with a sly smile, her eyes sparkling with curiosity."
     the_person "Oh yeah? What do you want me to do to you? Something naughty, I hope?"
@@ -2145,7 +2133,7 @@ label vt_wild_sucking_cock_taboo_break(the_person):
         the_person "Alright, let's do this. I'll try anything once... or twice... or maybe more."
     return
 
-label vt_wild_licking_pussy_taboo_break(the_person):
+label vt_wilder_licking_pussy_taboo_break(the_person):
     mc.name "I want to taste your pussy [the_person.title]. Are you ready?"
     if the_person.effective_sluttiness() >= 45:
         "[the_person.title] grins, her eyes flashing with excitement."
@@ -2172,7 +2160,7 @@ label vt_wild_licking_pussy_taboo_break(the_person):
             the_person "Alright then, get to it! Show me what you're working with, and don't disappoint me."
     return
 
-label vt_wild_vaginal_sex_taboo_break(the_person):
+label vt_wilder_vaginal_sex_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 60:
         "[the_person.title] looks up at you with a fierce expression, her eyes blazing with desire."
         the_person "It's about time we did this. Come on then, get that cock inside me and fuck me like you mean it! I'm ready to take it all in."
@@ -2198,7 +2186,7 @@ label vt_wild_vaginal_sex_taboo_break(the_person):
             "She spreads her legs wide, inviting you to enter her."
     return
 
-label vt_wild_anal_sex_taboo_break(the_person):
+label vt_wilder_anal_sex_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         "[the_person.title] looks down at your cock, her eyes widening with a mix of excitement and anticipation."
         the_person "Oh god, it always surprises me how big your cock is! You're going to tear my ass in half with that monster... and I'm going to love every minute of it!"
@@ -2234,7 +2222,7 @@ label vt_wild_anal_sex_taboo_break(the_person):
             the_person "No time like the present then. Do it, before I chicken out! I'm ready for you."
     return
 
-label vt_wild_condomless_sex_taboo_break(the_person):
+label vt_wilder_condomless_sex_taboo_break(the_person):
     if the_person.knows_pregnant:
         "[the_person.title] smiles slyly, her eyes sparkling with mischief."
         the_person "You want to fuck me raw? That's pretty hot... and I'm already pregnant, so what's the worst that could happen?"
@@ -2321,7 +2309,7 @@ label vt_wild_condomless_sex_taboo_break(the_person):
             the_person "Fine, you don't need to put anything on. Just be fucking sure to pull out, understand? Good... because I don't think I'm ready for a baby just yet."
     return
 
-label vt_wild_underwear_nudity_taboo_break(the_person, the_clothing):
+label vt_wilder_underwear_nudity_taboo_break(the_person, the_clothing):
     if the_person.effective_sluttiness() > 30 - (the_person.opinion.skimpy_outfits * 5):
         "[the_person.title] looks up at you with a sly smile, her eyes sparkling with mischief."
         the_person "You want to see me in my underwear, huh? It's about time you asked... I was starting to think you were too shy."
@@ -2360,7 +2348,7 @@ label vt_wild_underwear_nudity_taboo_break(the_person, the_clothing):
             the_person "Whatever, I guess you're right. Come on, let's get it off... and see what kind of trouble we can get into."
     return
 
-label vt_wild_bare_tits_taboo_break(the_person, the_clothing):
+label vt_wilder_bare_tits_taboo_break(the_person, the_clothing):
     if the_person.effective_sluttiness() > (40 - the_person.opinion.showing_her_tits * 5):
         "[the_person.title] looks up at you with a sly smile, her eyes sparkling with mischief."
         the_person "You finally want a look at my tits [the_person.mc_title], huh? It's about time, I was starting to think you were too shy."
@@ -2400,7 +2388,7 @@ label vt_wild_bare_tits_taboo_break(the_person, the_clothing):
         the_person "Oh man, what are you getting me into [the_person.mc_title]? Fine, let's do it... and see where things go."
     return
 
-label vt_wild_bare_pussy_taboo_break(the_person, the_clothing):
+label vt_wilder_bare_pussy_taboo_break(the_person, the_clothing):
     if the_person.effective_sluttiness() > (50 - the_person.opinion.showing_her_ass * 5):
         "[the_person.title] looks up at you with a sly smile, her eyes sparkling with mischief."
         the_person "It's about time you got me out of my [the_clothing.display_name]! I've been waiting for this moment for a while now."
@@ -2434,19 +2422,19 @@ label vt_wild_bare_pussy_taboo_break(the_person, the_clothing):
             the_person "Oh you're such a charmer. Alright then, what are you waiting for? Get to it, and don't disappoint me."
     return
 
-# label vt_wild_facial_cum_taboo_break(the_person):
+# label vt_wilder_facial_cum_taboo_break(the_person):
 
 #     return
 
-# label vt_wild_mouth_cum_taboo_break(the_person):
+# label vt_wilder_mouth_cum_taboo_break(the_person):
 
 #     return
 
-# label vt_wild_body_cum_taboo_break(the_person):
+# label vt_wilder_body_cum_taboo_break(the_person):
 
 #     return
 
-label vt_wild_creampie_taboo_break(the_person):
+label vt_wilder_creampie_taboo_break(the_person):
     if the_person.wants_creampie:
         if the_person.knows_pregnant:
             "[the_person.title] looks up at you with a radiant smile, her eyes sparkling with joy."
@@ -2520,7 +2508,7 @@ label vt_wild_creampie_taboo_break(the_person):
             the_person "Whatever, can you at least try to pull out next time? I don't want to have to deal with this again... and I don't think you do either."
     return
 
-label vt_wild_anal_creampie_taboo_break(the_person):
+label vt_wilder_anal_creampie_taboo_break(the_person):
     if the_person.opinion.anal_creampies > 0:
         if the_person.effective_sluttiness() > 75 or the_person.opinion.anal_creampies > 1:
             if the_person.has_significant_other:
@@ -2563,7 +2551,7 @@ label vt_wild_anal_creampie_taboo_break(the_person):
             "She winks at you, her expression flirtatious."
     return
 
-label vt_wild_dual_penetration_taboo_break(the_person):
+label vt_wilder_dual_penetration_taboo_break(the_person):
     if the_person.effective_sluttiness() >= 75:
         "[the_person.title] looks up at you with a wild expression, her eyes blazing with desire."
         the_person "Oh god, it always surprises me how big your cock is! You're going to tear my ass in half with that monster... and I'm going to love every minute of it!"
@@ -2599,7 +2587,7 @@ label vt_wild_dual_penetration_taboo_break(the_person):
             the_person "No time like the present then. Do it, before I chicken out... and let's see where things go."
     return
 
-label vt_wild_sleepover_yourplace_response(the_person): #Invited her over to spend the night
+label vt_wilder_sleepover_yourplace_response(the_person): #Invited her over to spend the night
     if the_person.sluttiness < 80:
         "[the_person.title] squeals with excitement, her eyes sparkling with anticipation."
         the_person "Oh god, yes of course! We can have a great night together! I'll bring my favorite PJs... or maybe not, who needs those anyway?"
@@ -2612,7 +2600,7 @@ label vt_wild_sleepover_yourplace_response(the_person): #Invited her over to spe
         the_person "I'm ready to be ravished, and I know you're the man to do it."
     return
 
-label vt_wild_sleepover_herplace_response(the_person): #Spending the night at her place
+label vt_wilder_sleepover_herplace_response(the_person): #Spending the night at her place
     if the_person.sluttiness < 80:
         "[the_person.title] smiles sweetly, her eyes sparkling with excitement as she bounces up and down."
         the_person "I would love it when you come over, you can spend the night and make me float on cloud nine... or maybe even higher than that!"
@@ -2627,14 +2615,14 @@ label vt_wild_sleepover_herplace_response(the_person): #Spending the night at he
         "[the_person.title] takes your hand, pulling you towards her with a seductive smile as she leads you to her bedroom."
     return
 
-label vt_wild_sleepover_yourplace_sex_start(the_person): #Right before sexy times at your place
+label vt_wilder_sleepover_yourplace_sex_start(the_person): #Right before sexy times at your place
     "[the_person.title] saunters over to you, her hips swaying seductively as she moves."
     "She gives you a sly smile, her eyes sparkling with mischief as she looks you up and down."
     the_person "Well, are you ready to show me a good time? I hope you're not planning on getting any sleep tonight, because I'm just getting started."
     "[the_person.title] takes a step closer, her voice dropping to a sultry whisper as she leans in close to you."
     return
 
-label vt_wild_sleepover_herplace_sex_start(the_person): #Right before sexy times at her place
+label vt_wilder_sleepover_herplace_sex_start(the_person): #Right before sexy times at her place
     "[the_person.title] looks up at you with a sultry smile, her eyes sparkling with desire."
     the_person "Are you just going to stand there, or are you going to come and take what's yours?"
     "She raises an eyebrow, her smirk growing wider as she teases you."
@@ -2646,7 +2634,7 @@ label vt_wild_sleepover_herplace_sex_start(the_person): #Right before sexy times
     "[the_person.title] leans back on the couch, her legs spreading wide as she invites you to take her."
     return
 
-label vt_wild_sleepover_impressed_response(the_person):  #If you've made her cum a lot
+label vt_wilder_sleepover_impressed_response(the_person):  #If you've made her cum a lot
     "[the_person.title] looks up at you with a dazed expression, her eyes sparkling with pleasure."
     the_person "Ah fuck, you're melting my brain... promise me you keep fucking me like that, and I'll be your sex slave forever!"
     $ the_person.draw_person(position = "missionary")
@@ -2656,7 +2644,7 @@ label vt_wild_sleepover_impressed_response(the_person):  #If you've made her cum
     "[the_person.title] giggles, her body language screaming 'fuck me again' as she spreads her legs wide."
     return
 
-label vt_wild_sleepover_good_response(the_person):  #If you've made her cum
+label vt_wilder_sleepover_good_response(the_person):  #If you've made her cum
     "[the_person.title] looks up at you with a sly smile, her eyes sparkling with pleasure."
     the_person "Well, that wasn't too bad... but I think you can do better than that, don't you?"
     $ the_person.draw_person(position = "missionary")
@@ -2666,7 +2654,7 @@ label vt_wild_sleepover_good_response(the_person):  #If you've made her cum
     "[the_person.title] winks at you, her body language screaming 'fuck me again' as she spreads her legs wide."
     return
 
-label vt_wild_sleepover_bored_response(the_person):  #If she hasn't cum yet
+label vt_wilder_sleepover_bored_response(the_person):  #If she hasn't cum yet
     "[the_person.title] looks up at you with a pouty expression, her eyes flashing with disappointment."
     the_person "Come on! Is this the best you can do? I expected a little more than that... I thought you were supposed to be some kind of sex god or something."
     "She rolls her eyes and sighs, her body language screaming 'try harder' as she shifts her hips."

@@ -33,6 +33,176 @@ def VT_fetish_timer_reset(person: Person, fetish_type:str, VT_fetishtimer=0, VT_
         person.event_triggers_dict[f"VT_{fetish_type}_fetish_start"] = False
         person.remove_role(f"{fetish_type}_fetish_role")
 
+####  VAGINAL FETISH
+def VT_vaginal_fetish_employee_intro_requirement():
+    return time_of_day == 3 and mc.business.is_open_for_business and mc.is_at_office
+
+def VT_vaginal_fetish_family_intro_requirement(person: Person):
+    if person.home == harem_mansion:
+        return person.is_available
+    else:
+        return person.is_home and person.location.person_count == 1
+
+def VT_vaginal_fetish_generic_intro_requirement(person: Person):
+    return person.location != person.home and person.is_available
+
+def VT_vaginal_fetish_mom_intro_requirement():
+    return mc.is_in_bed and mc.energy > 80 and mom.is_available
+
+def VT_vaginal_fetish_lily_intro_requirement():
+    return time_of_day == 3 and mc.business.is_open_for_business and mc.is_at_office and lily.is_available
+
+def VT_vaginal_fetish_rebecca_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_gabrielle_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_stephanie_intro_requirement():
+    if mc.business.is_open_for_business and mc.is_at_office and renpy.random.randint(0, 100) < 20:
+        return stephanie.is_available
+    return False
+
+def VT_vaginal_fetish_alex_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_nora_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_emily_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_christina_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_starbuck_intro_requirement():
+    return time_of_day == 3 and mc.is_at_office and starbuck.is_available
+
+def VT_vaginal_fetish_sarah_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_ophelia_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_candace_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_dawn_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_erica_intro_requirement():
+    return day % 7 == 6 and erica.is_available
+
+def VT_vaginal_fetish_ashley_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_kaya_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_ellie_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_camila_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_sakari_intro_requirement():
+    return False
+
+def VT_vaginal_fetish_myra_intro_requirement():
+    return False
+
+def VT_start_vaginal_fetish_quest(person: NewPerson):
+    if (person.has_taboo("vaginal_sex") \
+            or person.vaginal_sex_skill < 4 \
+            or (person.opinion.vaginal_sex < 2 and person.opinion.creampies < 2 ) \
+            or not person.is_willing(missionary) \
+            or person.sluttiness < 60 \
+            or person.opinion.showing_her_ass < 2
+            or (person.vaginal_sex_count < 10 and person.vaginal_creampie_count <10)):
+        return False
+
+    if person.VT_has_started_vaginal_fetish:
+        return False
+    
+    # when blocking the fetish gain, prevent repeat triggering for a while
+    if day < person.get_event_day("vaginal_fetish_locked"):
+        return False
+
+    person.set_event_day("vaginal_fetish_locked", day + renpy.random.randint(5, 7) + person.opinion.being_submissive - person.opinion.taking_control)
+
+    if person == lily:
+        mc.business.add_mandatory_crisis(
+            Fetish_Action("Lily Vaginal Fetish Intro", VT_vaginal_fetish_lily_intro_requirement, "VT_vaginal_fetish_lily_intro_label", fetish_type = "vaginal")
+        )
+        return True
+    if person == mom:
+        mc.business.add_mandatory_crisis(
+            Fetish_Action("Jennifer Vaginal Fetish Intro", VT_vaginal_fetish_mom_intro_requirement, "VT_vaginal_fetish_mom_intro_label", fetish_type = "vaginal")
+        )
+        return True
+    if person == starbuck:
+        if get_shop_investment_rate() >= 6.0:
+            mc.business.add_mandatory_crisis(
+                Fetish_Action("Starbuck Vaginal Fetish Intro", VT_vaginal_fetish_starbuck_intro_requirement, "VT_vaginal_fetish_starbuck_intro_label", fetish_type = "vaginal")
+            )
+            return True
+        return False
+    if person == stephanie:
+        mc.business.add_mandatory_crisis(
+            Fetish_Action("Stephanie Vaginal Fetish Intro", VT_vaginal_fetish_stephanie_intro_requirement, "VT_vaginal_fetish_stephanie_intro_label", fetish_type = "vaginal")
+        )
+        return True
+    # elif person == emily and False:
+    #     pass
+    # elif person == christina and False:
+    #     pass
+    # elif person == sarah and False:
+    #     pass
+    # elif person == salon_manager and False:
+    #     pass
+    if person == erica:
+        if erica_has_given_morning_handjob():
+            mc.business.add_mandatory_morning_crisis(
+                Fetish_Action("Erica Vaginal Fetish Intro", VT_vaginal_fetish_erica_intro_requirement, "VT_vaginal_fetish_erica_intro_label", fetish_type = "vaginal")
+            )
+            return True
+        return False
+    # if person == candace and False:
+    #     pass
+    # elif person == ashley and False:
+    #     pass
+    # elif person == alexia and False:
+    #     pass
+    # elif person == kaya and False:
+    #     pass
+    # elif person == ellie and False:
+    #     pass
+    # elif person == camila and False:
+    #     pass
+    # elif person == sakari and False:
+    #     pass
+    # if person == myra:
+    #     Fetish_Action("Myra Anal Fetish Intro", anal_fetish_myra_intro_requirement, "anal_fetish_myra_intro_label", fetish_type = "anal")
+    if person.is_employee and not person in (erica, lily, mom, stephanie, starbuck):
+        mc.business.add_mandatory_crisis(
+            Fetish_Action("Employee Vaginal Fetish Intro", VT_vaginal_fetish_employee_intro_requirement, "VT_vaginal_fetish_employee_intro_label", args = person, priority = 10, fetish_type = "vaginal")
+        )
+        return True
+    if person.is_family and not person in (erica, lily, mom, stephanie, starbuck):
+        person.add_unique_on_room_enter_event(
+            Fetish_Action("Family Vaginal Fetish Intro", VT_anal_fetish_family_intro_requirement, "VT_vaginal_fetish_family_intro_label", fetish_type = "vaginal", priority = 30)
+        )
+        return True
+
+    if not person in (erica, lily, mom, stephanie, starbuck):
+        person.add_unique_on_talk_event(
+            Fetish_Action("Generic Vaginal Fetish Intro", VT_vaginal_fetish_generic_intro_requirement, "VT_vaginal_fetish_generic_intro_label", fetish_type = "vaginal")
+        )
+        return True
+    return False
+
+
+####  ANAL FETISH
 def VT_anal_fetish_employee_intro_requirement():
     return time_of_day == 3 and mc.business.is_open_for_business and mc.is_at_office
 
@@ -113,10 +283,10 @@ def VT_anal_fetish_myra_intro_requirement():
 def VT_start_anal_fetish_quest(person: NewPerson):
     if (person.has_taboo("anal_sex") \
             or person.anal_sex_skill < 4 \
-            or person.opinion.anal_sex < 2 \
+            or (person.opinion.anal_sex < 2 and person.opinion.anal_creampies < 2 ) \
             or not person.is_willing(doggy_anal) \
             or person.sluttiness < 60 \
-            or person.anal_sex_count < 10):
+            or (person.anal_sex_count < 10 and person.anal_creampie_count <10)):
         return False
 
     if person.VT_has_started_anal_fetish:
@@ -199,6 +369,7 @@ def VT_start_anal_fetish_quest(person: NewPerson):
         return True
     return False
 
+##### BREEDING FETISH
 def VT_breeding_fetish_employee_intro_requirement():
     if time_of_day == 3 and mc.business.is_open_for_business and mc.is_at_office:
         return True
@@ -280,14 +451,16 @@ def VT_breeding_fetish_myra_intro_requirement():
 def VT_start_breeding_fetish_quest(person: Person):
     #Determine who it is, then add the appropriate quest.
     if (persistent.pregnancy_pref == 0 \
-        or person.has_taboo(["condomless_sex", "vaginal_sex"]) \
-        or person.opinion.bareback_sex < 2 \
-        or person.is_willing(missionary) \
+        or person.vaginal_creampie_count < 10
         or person.vaginal_sex_skill < 4 \
-        or person.opinion.vaginal_sex < 2 \
-        or person.opinion.creampies < 2 \
+        or person.is_willing(missionary) \
+        or person.has_taboo("condomless_sex") \
+        or person.has_taboo("vaginal_sex") \
         or person.sluttiness < 60 \
-        or person.vaginal_creampie_count < 10) :
+        or person.opinion.bareback_sex < 2 \
+        or person.opinion.showing_her_ass < 2 \
+        or person.opinion.vaginal_sex < 2 \
+        or person.opinion.creampies < 2 ) :
         return False
     
     if person.VT_has_started_breeding_fetish:
@@ -466,11 +639,18 @@ def VT_cum_fetish_myra_intro_requirement(person: Person):
 
 def VT_start_cum_fetish_quest(person: Person):
     if (not person.has_taboo(["sucking_cock", "condomless_sex"]) \
+            or person.cum_exposure_count < 20 \
             or person.oral_sex_skill < 4 \
-            or person.sluttiness < 60 \
+            or person.sluttiness <  60 \
             or person.opinion.giving_blowjobs < 2 \
             or person.opinion.being_covered_in_cum < 2 \
-            or person.cum_exposure_count >19 ):
+            or person.opinion.cum_facials < 2 \
+            or person.opinion.drinking_cum < 2 \
+            or person.opinion.showing_her_tits < 2 \
+            or person.opinion.creampies < 2 \
+            or person.opinion.anal_creampies < 2 \
+            or person.opinion.bareback_sex < 2 \
+            or person.opinion.giving_handjobs < 2 ):
         return False
     
     if person.VT_has_started_cum_fetish:
@@ -605,16 +785,23 @@ def VT_exhibition_fetish_myra_intro_requirement():
 
 
 def VT_start_exhibition_fetish_quest(person: Person):
-
-    if person.VT_has_started_exhibition_fetish:
-        return False
-    if person.has_taboo(["sucking_cock", "vaginal_sex"]):
-        return False
-    if (person.opinion.public_sex < 2 \
+    if (not person.has_taboo(["sucking_cock", "vaginal_sex", "anal_sex", "bare_tits", "bare_pussy"])
+            or person.sex_record.get("Public Sex", 0) < 20 \
             or person.oral_sex_skill < 4 \
             or person.vaginal_sex_skill < 4 \
             or person.anal_sex_skill < 4 \
-            or person.sluttiness < 60):
+            or person.sluttiness < 60 \
+            or person.opinion.public_sex < 2 \
+            or person.opinion.not_wearing_anything < 2 \
+            or person.opinion.not_wearing_underwear < 2 \
+            or person.opinion.showing_her_ass < 2 \
+            or person.opinion.showing_her_tits < 2 \
+            or person.opinion.skimpy_outfits < 2 \
+            or person.opinion.skimpy_uniforms < 2 \
+            or person.opinion.masturbating < 2 ):
+        return False
+
+    if person.VT_has_started_exhibition_fetish:
         return False
 
     # when blocking the fetish gain, prevent repeat triggering for a while

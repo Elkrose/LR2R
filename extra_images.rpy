@@ -1,9 +1,14 @@
 init -10:
-    define VT_MOD = True
+    define VT_MOD = "4.0.0"
     image topboxVT = "[topboxVT_image.filename]"
     image multiboxVT = "[multiboxVT_image.filename]"
     image vtcherries = "[vtcherries_image.filename]"
     image bg Cherry_menu_background = Cherry_background_image
+    image bg park_afternoon_background = park_afternoon_background_image
+    image bg park_morning_background = park_morning_background_image
+    image bg park_evening_background = park_evening_background_image
+    image bg park_early_morning_background = park_early_morning_background_image
+    image bg park_bushes_background = park_bushes_background_image
     image information_mark = "[information_image.filename]"
     image question_mark = "[question_image.filename]"
     
@@ -91,6 +96,7 @@ init -10:
     image pinklips = "[pinklips_image.filename]"
     image ahegaoface = "[ahegaoface_image.filename]"
     image bitelip = "[bitelip_image.filename]"
+    image oralclaimed = "[oralclaimed_image.filename]"
 
 ### Vaginal Virgin Flag
     image virgin_vaginal = "[virgin_vaginal_image.filename]"
@@ -101,6 +107,7 @@ init -10:
     image claimedvag = "[claimedvag_image.filename]"
     image vagclosed = "[vagclosed_image.filename]"
     image knowvag = "[knowvag_image.filename]"
+    image vaginalclaimed = "[vaginalclaimed_image.filename]"
 
 ### Anal Virgin Flag
     image virgin_anal = "[virgin_anal_image.filename]"
@@ -110,6 +117,7 @@ init -10:
     image claimedass = "[claimedass_image.filename]"
     image knowpeach = "[knowpeach_image.filename]"
     image yespeach = "[yespeach_image.filename]"
+    image analclaimed = "[analclaimed_image.filename]"
 
 #### Had sex today
     image hadsextoday = "[hadsextoday_image.filename]"
@@ -150,3 +158,31 @@ init -10:
     image infraction = "[infraction_image.filename]"
     image cashpanties = "[cashpanties_image.filename]"
     image stripper = "[stripper_image.filename]"
+
+    image HUDVT = "[HUDVT_image.filename]"
+    image redlabbook = "[redlabbook_image.filename]"
+    image throatbook = "[redlabbook_image.filename]"
+    image analbook = "[redlabbook_image.filename]"
+    image vaginalbook = "[redlabbook_image.filename]"
+    image rosegardenbook = "[redlabbook_image.filename]"
+    image roseblossombook = "[redlabbook_image.filename]"
+    image smartrosebook = "[redlabbook_image.filename]"
+    image crimsonrosebook = "[redlabbook_image.filename]"
+    image fertilerosebook = "[redlabbook_image.filename]"
+    image redrosebook = "[redlabbook_image.filename]"
+    image clonewombrevivalbook = "[redlabbook_image.filename]"
+
+###### LEGEND ######
+    image relationship = "[dontknow_image.filename]"
+    image passionage = "[pinklotus_image.filename]"
+    image personalities =  "[bimbo_image.filename]"
+    image knowvaginal = "[knowpeach_image.filename]"
+    image knowanal = "[knowpeach_image.filename]"
+    image knowcumfetish = "[knowpeach_image.filename]"
+    image knowanalfetish = "[knowpeach_image.filename]"
+    image knowbreedingfetish = "[knowpeach_image.filename]"
+    image knowvaginalfetish = "[knowpeach_image.filename]"
+    image virgin_blood = "[virgin_vaginal_image.filename]"
+    image employee = "[employee_image.filename]"
+    image intern = "[intern_image.filename]"
+

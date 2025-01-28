@@ -1,12 +1,13 @@
 import renpy # @UnresolvedImport
-from game.major_game_classes.serum_related.SerumDesign_ren import SerumDesign
 from game.game_roles.business_roles._business_role_definitions_ren import clone_role
 from game.game_roles.role_pregnant_definition_ren import become_pregnant
 from game.bugfix_additions.SerumTraitMod_ren import SerumTraitMod
 from game.major_game_classes.character_related.Person_ren import Person, mc, list_of_instantiation_functions
 from game.major_game_classes.serum_related.SerumDesign_ren import SerumDesign
-from game.major_game_classes.serum_related.serums._serum_traits_T0_ren import basic_med_app
-
+from game.major_game_classes.serum_related.serums._serum_traits_T0_ren import basic_med_app, suggestion_drugs_trait
+from game.major_game_classes.serum_related.serums._serum_traits_T1_ren import exotic_components, clinical_testing, oral_enhancer, love_potion, obedience_enhancer, mood_enhancer, aphrodisiac, fertility_enhancement_trait
+from game.major_game_classes.serum_related.serums._serum_traits_T2_ren import advanced_serum_prod, vaginal_enhancer, anal_enhancer, focus_enhancement, int_enhancement, cha_enhancement, low_volatility_reagents, pregnancy_accelerator_trait
+from game.helper_functions.list_functions_ren import find_serum_trait_by_name
 """renpy
 IF FLAG_OPT_IN_ANNOTATIONS:
     rpy python annotations
@@ -96,7 +97,7 @@ def oral_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
         if person in mc.location.people: #If you're here applying this trait in person it causes her to exclaim.
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Ugh, why am I drooling???!")
     if person.oral_virgin == 0:
-        person.restore_taboo('sucking cock')
+        person.restore_taboo('sucking_cock')
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: Throat Stimulation Ended", "float_text_pink")
 
 def true_virgin_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
@@ -128,7 +129,7 @@ def true_virgin_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
         if person in mc.location.people: #If you're here applying this trait in person it causes her to exclaim.
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Ugh, why am I drooling???!")
     if person.oral_virgin == 0:
-        person.restore_taboo('sucking cock')
+        person.restore_taboo('sucking_cock')
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: True Throat Stimulation Ended", "float_text_pink")
 
 def clone_womb_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
@@ -531,7 +532,7 @@ def init_Virginal_Serum():
         on_turn = hymen_restore_on_turn,
         on_apply = hymen_restore_on_apply,
         on_remove = hymen_restore_on_remove,
-        requires = [basic_med_app],
+        requires = [basic_med_app, clinical_testing, advanced_serum_prod, vaginal_enhancer],
         tier = 2,
         start_researched = False,
         research_needed = 750,
@@ -549,7 +550,7 @@ def init_Virginal_Serum():
         on_turn = anal_restore_on_turn,
         on_apply = anal_restore_on_apply,
         on_remove = anal_restore_on_remove,
-        requires = [basic_med_app],
+        requires = [basic_med_app, clinical_testing, advanced_serum_prod, anal_enhancer],
         tier = 2,
         start_researched = False,
         research_needed = 750,
@@ -567,7 +568,7 @@ def init_Virginal_Serum():
         on_turn = oral_restore_on_turn,
         on_apply = oral_restore_on_apply,
         on_remove = oral_restore_on_remove,
-        requires = [basic_med_app],
+        requires = [basic_med_app, clinical_testing, advanced_serum_prod, oral_enhancer],
         tier = 2,
         start_researched = False,
         research_needed = 750,
@@ -579,16 +580,16 @@ def init_Virginal_Serum():
         desc = "A special serum trait developed to restore the muscles around the throat, anal, and vaginal cavity. Requires a week to fully stimulate.",
         positive_slug = "Throat, anal and vaginal muscles will be stimulated",
         negative_slug = "Stimulation is not a comfortable process and may cause excessive saliva and methane production. Stimulation may also cause the hymen to regrow.",
-        research_added = 300,
+        research_added = 2000,
         base_side_effect_chance = 100,
         duration_added = 3,
         on_turn = true_virgin_on_turn,
         on_apply = true_virgin_on_apply,
         on_remove = true_virgin_on_remove,
-        requires = [basic_med_app],
-        tier = 2,
+        requires = [find_serum_trait_by_name("Vaginal Muscle Stim"), find_serum_trait_by_name("Anal Muscle Stim"), find_serum_trait_by_name("Throat Muscle Stim")],
+        tier = 3,
         start_researched = False,
-        research_needed = 2000,
+        research_needed = 1000,
         clarity_cost = 2000,
         hidden_tag = "Medical",
         mental_aspect = 5, physical_aspect = 5, sexual_aspect = 9, medical_aspect = 9, flaws_aspect = 0, attention = 5)
@@ -597,37 +598,37 @@ def init_Virginal_Serum():
         desc = "A special serum trait developed to restore the womb of the infertile clone. Requires a week to fully stimulate.",
         positive_slug = "Womb muscles will be stimulated, vitamins and regrowth of fallopian tubes, egg growth.",
         negative_slug = "Stimulation is not a comfortable process, may cause excessive upset stomache aches and pains.",
-        research_added = 300,
+        research_added = 2000,
         base_side_effect_chance = 50,
         duration_added = 3,
         on_turn = clone_womb_restore_on_turn,
         on_apply = clone_womb_restore_on_apply,
         on_remove = clone_womb_restore_on_remove,
-        requires = [basic_med_app],
+        requires = [find_serum_trait_by_name("Vaginal Muscle Stim")],
         tier = 3,
         start_researched = False,
-        research_needed = 1450,
+        research_needed = 1000,
         clarity_cost = 1500,
-        hidden_tag = ["Reproduction", "Medical"],
+        hidden_tag = ["Reproduction", "Medical", "Unique"],
         mental_aspect = 4, physical_aspect = 2, sexual_aspect = 4, medical_aspect = 6, flaws_aspect = 0, attention = 5)
 
     SerumTraitMod(name = "R3D R0535",
         desc = "Red Rose formula, meant to hugely stimulate neural pathways positively, in theory.",
-        positive_slug = "Permanently icreases suggest, happiness, sluttiness, arousal, obedience and love.",
+        positive_slug = "Permanently increases suggest, happiness, sluttiness, arousal, obedience and love.",
         negative_slug = "One dose lasts 7 durations. Arousal",
-        research_added = 20,
+        research_added = 500,
         base_side_effect_chance = 35,
         duration_added = 7,
         on_turn = red_roses_on_turn,
         on_apply = red_roses_on_apply,
         on_remove = red_roses_on_remove,
-        requires = [basic_med_app],
-        tier = 0,
+        requires = [basic_med_app, exotic_components, clinical_testing, suggestion_drugs_trait, mood_enhancer, aphrodisiac, obedience_enhancer, love_potion],
+        tier = 1,
         start_researched = False,
-        research_needed = 50,
-        clarity_cost = 50,
-        hidden_tag = ["Obedience", "Slut"],
-        mental_aspect = 50, physical_aspect = 50, sexual_aspect = 50, medical_aspect = 50, flaws_aspect = 0, attention = 5)
+        research_needed = 250,
+        clarity_cost = 250,
+        hidden_tag = ["Obedience", "Slut", "Unique"],
+        mental_aspect = 4, physical_aspect = 0, sexual_aspect = 5, medical_aspect = 2, flaws_aspect = 0, attention = 2)
 
     SerumTraitMod(name = "F3RT1L3 R053",
         desc = "Sexual stimulator, an increase arousal and urge to copulate. Security Lock with Birth Control (will not affect Camila or Erica Story)",
@@ -639,50 +640,50 @@ def init_Virginal_Serum():
         on_turn = fertile_rose_on_turn,
         on_apply = fertile_rose_on_apply,
         on_remove = fertile_rose_on_remove,
-        requires = [basic_med_app],
-        tier = 0,
+        requires = [find_serum_trait_by_name("CR1M50N R053"), fertility_enhancement_trait,],
+        tier = 3,
         start_researched = False,
-        research_needed = 500,
-        clarity_cost = 500,
+        research_needed = 1500,
+        clarity_cost = 1000,
         hidden_tag = ["Reproduction", "Unique"],
-        mental_aspect = 69, physical_aspect = 69, sexual_aspect = 69, medical_aspect = 69, flaws_aspect = 0, attention = 5)
+        mental_aspect = 4, physical_aspect = 2, sexual_aspect = 5, medical_aspect = 3, flaws_aspect = 0, attention = 3)
 
     SerumTraitMod(name = "CR1M50N R053",
         desc = "A more silent R3D R053, which leads to rose petals on beds, of course.",
         positive_slug = "7 durations +15 Arousal/turn",
         negative_slug = "BC -40%",
-        research_added = 2000,
+        research_added = 1000,
         base_side_effect_chance = 75,
         duration_added = 7,
         on_turn = crimson_roses_on_turn,
         on_apply = crimson_roses_on_apply,
         on_remove = crimson_roses_on_remove,
-        requires = [basic_med_app],
-        tier = 0,
+        requires = [find_serum_trait_by_name("R3D R0535")],
+        tier = 2,
         start_researched = False,
         research_needed = 500,
         clarity_cost = 500,
         exclude_tags = "Suggest",
-        hidden_tag = ["Obedience", "Slut", "Suggest"],
-        mental_aspect = 50, physical_aspect = 50, sexual_aspect = 50, medical_aspect = 50, flaws_aspect = 0, attention = 5)
+        hidden_tag = ["Obedience", "Slut", "Suggest", "Unique"],
+        mental_aspect = 4, physical_aspect = 2, sexual_aspect = 5, medical_aspect = 3, flaws_aspect = 0, attention = 3)
 
     SerumTraitMod(name = "SM4RT R053",
         desc = "Permanently increase base stats, and slowly increases per turn.",
         positive_slug = "7 durations CHA/INT/FOC+ Max 20",
         negative_slug = "",
-        research_added = 2000,
+        research_added = 1000,
         base_side_effect_chance = 75,
         duration_added = 7,
         on_turn = smart_roses_on_turn,
         on_apply = smart_roses_on_apply,
         on_remove = smart_roses_on_remove,
-        requires = [basic_med_app],
-        tier = 0,
+        requires = [basic_med_app, advanced_serum_prod, focus_enhancement, int_enhancement, cha_enhancement, low_volatility_reagents,],
+        tier = 2,
         start_researched = False,
         research_needed = 500,
         clarity_cost = 500,
-        hidden_tag = "Skill",
-        mental_aspect = 50, physical_aspect = 50, sexual_aspect = 50, medical_aspect = 50, flaws_aspect = 0, attention = 5)
+        hidden_tag = ["Skill", "Unique"],
+        mental_aspect = 7, physical_aspect = 5, sexual_aspect = 5, medical_aspect = 3, flaws_aspect = 0, attention = 5)
 
     SerumTraitMod(name = "R053 BL0550M5",
         desc = "Company secret Rose Blossom formula, specially brewed to ensure the user will never feel alone nor incompetent.",
@@ -694,29 +695,29 @@ def init_Virginal_Serum():
         on_turn = rose_blossom_on_turn,
         on_apply = rose_blossom_on_apply,
         on_remove = rose_blossom_on_remove,
-        requires = [basic_med_app],
-        tier = 0,
+        requires = [find_serum_trait_by_name("CR1M50N R053"), find_serum_trait_by_name("SM4RT R053"),],
+        tier = 3,
         start_researched = False,
         research_needed = 500,
         clarity_cost = 500,
-        hidden_tag = ["Obedience", "Slut", "Love"],
-        mental_aspect = 55, physical_aspect = 55, sexual_aspect = 55, medical_aspect = 55, flaws_aspect = 0, attention = 5)
+        hidden_tag = ["Obedience", "Slut", "Love", "Unique"],
+        mental_aspect = 7, physical_aspect = 4, sexual_aspect = 6, medical_aspect = 4, flaws_aspect = 0, attention = 3)
 
     SerumTraitMod(name = "R053 G4RD3N5",
         desc = "Company secret Rose Blossom formula, specially brewed to promote a healthy speedy, spectacular pregnancy! With Sparkles!",
         positive_slug = "7 durations, increases in happiness, and speedy pregnancy.",
         negative_slug = "One dose lasts 7 durations",
-        research_added = 2000,
+        research_added = 1000,
         base_side_effect_chance = 75,
         duration_added = 7,
         on_turn = rose_gardens_on_turn,
         on_apply = rose_gardens_on_apply,
         on_remove = rose_gardens_on_remove,
-        requires = [basic_med_app],
-        tier = 0,
+        requires = [pregnancy_accelerator_trait, find_serum_trait_by_name("R3D R0535"),],
+        tier = 2,
         start_researched = False,
         research_needed = 500,
         clarity_cost = 500,
         exclude_tags = "Pregnancy",
         hidden_tag = ["Pregnancy", "Medical", "Unique"],
-        mental_aspect = 55, physical_aspect = 55, sexual_aspect = 55, medical_aspect = 55, flaws_aspect = 0, attention = 5)
+        mental_aspect = 7, physical_aspect = 7, sexual_aspect = 5, medical_aspect = 9, flaws_aspect = 0, attention = 4)

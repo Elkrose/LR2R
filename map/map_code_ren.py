@@ -23,9 +23,6 @@ init 5 python:
 from functools import lru_cache
 
 GRID_MAP_POS = [[1, 1], [0, 1], [2, 1], [0, 2], [2, 2], [1, 0], [1, 2]]
-# harem_mansion.formal_name = store.l_name + " Mansion"
-# harem_mansion.visible = True
-# harem_hub.formal_name = store.l_name + " Mansion"
 
 def mall_is_open():
     return time_of_day not in (0, 4)
@@ -170,16 +167,16 @@ def get_location_tooltip(location: Room) -> str:
                     else:
                         info.append("{image=bluelotus_small}")
  
-            if  (getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1) and (person.hymen==0 and person.anal_virgin==0 and person.oral_virgin==0):
+            if  (getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1) and (person.hymen==0 and person.anal_virgin==0 and person.oral_virgin==0) and  perk_system.has_ability_perk("Oral Virgin Perception") and  perk_system.has_ability_perk("Anal Virgin Perception") and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
                info.append("{image=virgin_token_small}")
             else:
-                if getattr(persistent, "virgin_vaginal")==1:
+                if getattr(persistent, "virgin_vaginal")==1 and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
                     if person.hymen == 0:
                         info.append("{image=virgin_vaginal_small}")
-                if getattr(persistent, "virgin_anal")==1:
+                if getattr(persistent, "virgin_anal")==1 and  perk_system.has_ability_perk("Anal Virgin Perception"):
                     if person.anal_virgin == 0:
                         info.append("{image=virgin_anal_small}")
-                if getattr(persistent, "virgin_oral")==1:
+                if getattr(persistent, "virgin_oral")==1 and  perk_system.has_ability_perk("Oral Virgin Perception"):
                     if person.oral_virgin == 0:
                         info.append("{image=virgin_oral_small}")
  
@@ -227,6 +224,13 @@ def get_location_tooltip(location: Room) -> str:
         if getattr(persistent, "cashpanties")==1:
             if person.has_role(prostitute_role) and person.is_job_known:
                 info.append("{image=cashpanties_small}")
+        if getattr(persistent, "employee")==1:
+            if person.is_employee:
+                info.append("{image=employee_small}")
+        if getattr(persistent, "intern")==1:
+            if person.is_intern:
+                info.append("{image=intern_small}")
+
         info.append("\n")
         tooltip += "".join(info)
 
@@ -369,16 +373,16 @@ def build_tile_information(known_people: list[Person], total_people: int, locati
             extra_info.append("{image=goldlotus_small}")
 
     #Virginal
-    if  (getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1) and any(x for x in known_people if x.hymen==0 and x.anal_virgin==0 and x.oral_virgin==0):
+    if  (getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1) and any(x for x in known_people if x.hymen==0 and x.anal_virgin==0 and x.oral_virgin==0 and  perk_system.has_ability_perk("Oral Virgin Perception") and  perk_system.has_ability_perk("Anal Virgin Perception") and  perk_system.has_ability_perk("Vaginal Virgin Perception")):
             extra_info.append("{image=virgin_token_small}")
     else:
-        if getattr(persistent, "virgin_vaginal")==1:
+        if getattr(persistent, "virgin_vaginal")==1 and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
             if any(x for x in known_people if x.hymen == 0):
                 extra_info.append("{image=virgin_vaginal_small}")
-        if getattr(persistent, "virgin_anal")==1:
+        if getattr(persistent, "virgin_anal")==1 and  perk_system.has_ability_perk("Anal Virgin Perception"):
             if any(x for x in known_people if x.anal_virgin == 0):
                 extra_info.append("{image=virgin_anal_small}")
-        if getattr(persistent, "virgin_oral")==1:
+        if getattr(persistent, "virgin_oral")==1 and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
             if any(x for x in known_people if x.oral_virgin == 0):
                 extra_info.append("{image=virgin_oral_small}")
 
@@ -443,6 +447,12 @@ def build_tile_information(known_people: list[Person], total_people: int, locati
         if any(x for x in known_people if x.has_exact_role(prostitute_role) and x.is_job_known):
             extra_info.append("{image=cashpanties_small}")
 
+    if getattr(persistent, "employee")==1:
+        if any(x for x in known_people if x.is_employee):
+            extra_info.append("{image=employee_small}")
+    if getattr(persistent, "intern")==1:
+        if any(x for x in known_people if x.is_intern):
+            extra_info.append("{image=intern_small}")
     # if len(extra_info) > 6:
         # break_insert = int((len(extra_info) + 1) / 2.0)
         # print("Insert tile break at {break_insert}")

@@ -1,10 +1,12 @@
 import inspect
 import renpy
+import renpy.store
 from renpy import persistent, basestring
 from renpy.exports import write_log
-from game.helper_functions.random_generation_functions_ren import create_random_person, make_person, create_party_schedule, get_premade_character
+from game.helper_functions.random_generation_functions_ren import create_random_person, make_person, create_party_schedule, get_premade_character, update_person_opinions, ensure_opinion_on_subject,fix_opinion_contradiction,set_work_opinion
 from game.major_game_classes.game_logic.Room_ren import Room, list_of_places, strip_club, bdsm_room, downtown_bar, downtown_hotel, downtown, hospital
 from game.main_character.MainCharacter_ren import mc
+from game.major_game_classes.character_related.Person_ren import mc
 from game.major_game_classes.character_related.StatTracker_ren import StatTracker
 from game.major_game_classes.game_logic.Person_ren import Person, list_of_people, mom, lily, aunt, cousin
 from helper_functions.vt_helper_functions_ren import _vt_virginity_stats, _vt_get_person_age_tag
@@ -14,6 +16,9 @@ from VTrandom_lists_ren import VT_AGE_RANGES, VT_Settings, _vt_build_weighted_li
 from game.random_lists_ren import get_random_from_weighted_list
 from game.major_game_classes.character_related.Person_ren import Person, list_of_patreon_characters, tan_images_dict
 from game.major_game_classes.character_related._job_definitions_ren import JobDefinition, university_professor_job, student_job, doctor_job, waitress_job, unemployed_job, stripper_job, stripclub_stripper_job, stripclub_bdsm_performer_job, stripclub_mistress_job, stripclub_waitress_job, stripclub_manager_job, prostitute_job, secretary_job, office_worker_job, lawyer_job, architect_job, interior_decorator_job, fashion_designer_job
+from game.main_character.perks.Perks_ren import Ability_Perk, perk_system
+from game.major_game_classes.character_related.configuration.opinion_lists_ren import init_list_of_opinions, init_list_of_sexy_opinions
+from game.major_game_classes.character_related.Opinion_ren import Opinion
 
 day: int
 #last_name: str
@@ -25,6 +30,50 @@ init 900 python:
 # TODO: on release, set False?
 VIRGIN_TRACKER_DEBUG = True
 
+def vt_init_list_of_sexy_opinions() -> list[str]:
+    return [
+        "anal creampies",  # Has gameplay effect
+        "anal sex",  # Has gameplay effect
+        "bareback sex",  # Has gameplay effect.
+        "being covered in cum",  # Has gameplay effect
+        "being fingered",  # Has gameplay effect
+        "being submissive",  # Has gameplay effect
+        "big dicks",
+        "cheating on men",  # Has gameplay effect
+        "creampies",  # Has gameplay effect
+        "cum facials",  # Has gameplay effect
+        "doggy style sex",  # Has gameplay effect
+        "drinking cum",  # Has gameplay effect
+        "flashing",  # Has gameplay effect
+        "getting head",  # Has gameplay effect
+        "giving blowjobs",  # Has gameplay effect
+        "giving handjobs",  # Has gameplay effect
+        "giving tit fucks",  # Has gameplay effect
+        "incest",  # Has gameplay effect
+        "kissing",  # Has gameplay effect
+        "likes men", # Has gameplay effect
+        "likes women",  # Has gameplay effect
+        "lingerie",  # Has gameplay effect
+        "masturbating",  # Has gameplay effect
+        "missionary style sex",  # Has gameplay effect
+        "not wearing anything",  # Has gameplay effect
+        "not wearing underwear",  # Has gameplay effect
+        "open relationships",  # Has gameplay effect
+        "peeping",  # Has gameplay effect
+        "polyamory", # Has gameplay effect
+        "public sex",  # Has gameplay effect
+        "sex standing up",  # Has gameplay effect
+        "showing her ass",  # Has gameplay effect
+        "showing her tits",  # Has gameplay effect
+        "skimpy outfits",  # Has gameplay effect
+        "skimpy uniforms",  # Has gameplay effect
+        "taking control",  # Has gameplay effect
+        "threesomes",
+        "vaginal sex",  # Has gameplay effect
+        # TODO: Add an "open relationships" sexy opinion. Reduces penalties of a girl seeing you cheating on her (at high levels add a special training to give a "harem member" role,.
+        # TODO: Add a "voyeurism" sexy opinion. Increases effects of watching someone having sex.
+    ]
+
 class VTPerson(Person):
 
     _initial_age_floor = 18
@@ -33,6 +82,28 @@ class VTPerson(Person):
     _final_age_ceiling = 70
     _teen_age_ceiling = 19
     _old_age_floor = 70
+
+    _sexy_opinions_list = vt_init_list_of_sexy_opinions()
+
+    _record_opinion_map = {
+        "Handjobs": ["giving handjobs", "sex standing up", "flashing", "likes men"],
+        "Kissing": ["kissing"],
+        "Fingered": ["masturbating", "being fingered", "sex standing up", "flashing", "peeping"],
+        "Tit Fucks": ["giving tit fucks", "showing her tits"],
+        "Blowjobs": ["giving blowjobs", "likes men"],
+        "Cunnilingus": ["getting head", "likes women"],
+        "Vaginal Sex": ["vaginal sex", "missionary style sex", "lingerie", "likes men"],
+        "Anal Sex": ["anal sex", "doggy style sex", "bareback sex", "likes men", "flashing"],
+        "Cum Facials": ["cum facials", "flashing", "likes men"],
+        "Cum in Mouth": ["drinking cum", "flashing", "likes men"],
+        "Cum Covered": ["being covered in cum", "flashing", "likes men"],
+        "Vaginal Creampies": ["creampies", "likes men"],
+        "Anal Creampies": ["anal creampies", "likes men"],
+        "Threesomes": ["not wearing anything", "skimpy outfits", "skimpy uniforms", "flashing", "peeping"],
+        "Spankings": ["not wearing underwear", "showing her ass", "flashing", "peeping"],
+        "Insertions": ["big dicks", "public sex", "sex standing up", "flashing"],
+        "Public Sex": ["flashing", "peeping", "public sex", "sex standing up", "skimpy outfits", "skimpy uniforms"]
+    }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -90,16 +161,24 @@ class VTPerson(Person):
             return False
 
     @property
+    def has_vaginal_fetish(self) -> bool:
+        return self.has_role(vaginal_fetish_role)
+
+    @property
+    def VT_has_started_cum_fetish(self) -> bool:
+        return self.event_triggers_dict.get("VT_cum_fetish_start", False)
+
+    @property
+    def VT_has_started_vaginal_fetish(self) -> bool:
+        return self.event_triggers_dict.get("VT_vaginal_fetish_start", False)
+
+    @property
     def VT_has_started_anal_fetish(self) -> bool:
         return self.event_triggers_dict.get("VT_anal_fetish_start", False)
 
     @property
     def VT_has_started_breeding_fetish(self) -> bool:
         return self.event_triggers_dict.get("VT_breeding_fetish_start", False)
-
-    @property
-    def VT_has_started_cum_fetish(self) -> bool:
-        return self.event_triggers_dict.get("VT_cum_fetish_start", False)
 
     @property
     def VT_has_started_exhibition_fetish(self) -> bool:
@@ -144,23 +223,40 @@ class VTPerson(Person):
             return "your cloned daughter"
         return "your family"
 
-    @property
-    def vt_sucking_cock_broken(self) -> int:
-        return self.broken_taboos.get("sucking cock", 0)
-
-    @property
-    def vt_vaginal_sex_broken(self) -> int:
-        return self.broken_taboos.get("vaginal sex", 0)
-        
-    @property
-    def vt_anal_sex_broken(self) -> int:
-        return self.broken_taboos.get("anal sex", 0)
-
     # @property
     # def on_birth_control(self) -> bool:
         # return self.is_infertile or self._birth_control
 
 Person         = VTPerson
+
+def init_vt_generic_roles():
+    global vaginal_fetish_role
+    vaginal_fetish_role = Role(role_name ="Vaginal Fetish", actions = get_vaginal_fetish_role_actions())
+    return
+init_vt_generic_roles()
+
+#to add property for likes women/men and flashing/peeping as well as open relationships
+class VTOpinion(Opinion):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    @property
+    def likes_women(self) -> int:
+        return self.get_func("likes women") #Has gameplay effect
+
+    @property
+    def likes_men(self) -> int:
+        return self.get_func("likes men") #Has gameplay effect
+
+    @property
+    def flashing(self) -> int:
+        return self.get_func("flashing") #Has gameplay effect
+
+    @property
+    def peeping(self) -> int:
+        return self.get_func("peeping") #Has gameplay effect
+
+Opinion     = VTOpinion
 
 #keep an eye on the vanilla stats, likes to change them alot, so might need to bring them here to keep stability
 class VTStatTracker(StatTracker):
@@ -233,15 +329,27 @@ class VTStatTracker(StatTracker):
 
     @property
     def number_of_sucking_cock_broken(self) -> int:
-        return sum(x.vt_sucking_cock_broken for x in list_of_people)
+        return sum(1 for x in list_of_people if x.has_broken_taboo("sucking_cock"))
 
     @property
     def number_of_vaginal_sex_broken(self) -> int:
-        return sum(x.vt_vaginal_sex_broken for x in list_of_people)
+        return sum(1 for x in list_of_people if x.has_broken_taboo("vaginal_sex"))
 
     @property
     def number_of_anal_sex_broken(self) -> int:
-        return sum(x.vt_anal_sex_broken for x in list_of_people)
+        return sum(1 for x in list_of_people if x.has_broken_taboo("anal_sex"))
+
+    @property
+    def number_of_bare_pussy_broken(self) -> int:
+        return sum(1 for x in list_of_people if x.has_broken_taboo("bare_pussy"))
+
+    @property
+    def number_of_bare_tits_broken(self) -> int:
+        return sum(1 for x in list_of_people if x.has_broken_taboo("bare_tits"))
+
+    @property
+    def number_of_condomless_sex_broken(self) -> int:
+        return sum(1 for x in list_of_people if x.has_broken_taboo("condomless_sex"))
 
 StatTracker     = VTStatTracker
 
@@ -256,6 +364,8 @@ def _vt_prefix_person_init(wrapped_func: Callable) -> Callable:
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
+
+
 def _vt_postfix_break_taboo(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # TODO: make more virgin taboo break dialogs for personalities
@@ -263,32 +373,54 @@ def _vt_postfix_break_taboo(wrapped_func: Callable) -> Callable:
         self = args[0]
         the_taboo = args[1]
         #VirginTracker virginity taboo breaks
-        if the_taboo == "vaginal_sex" and self.hymen==0:
-            def get_blood_item(clothing):
-                item = clothing.get_copy()
-                item.colour = [.71, .1, .1, 0.8]
-                item.layer = 0
-                return item
-            self.outfit.add_accessory(get_blood_item(creampie_cum))
-            self.outfit.add_accessory(get_blood_item(ass_cum))
-            self.event_triggers_dict["given_virginity"] = True
-            self.vaginal_first = mc.name
-            self.vaginal_virgin += 1
-            self.hymen = 1
-            if self.opinion.vaginal_sex < 1:
-                self.update_opinion_with_score("vaginal sex", 1)
-        elif the_taboo == "sucking_cock" and self.oral_virgin==0:
-            self.oral_virgin += 1
-            self.oral_first = mc.name
-            if self.opinion.giving_blowjobs < 1:
-                self.update_opinion_with_score("giving blowjobs", 1)
-        elif the_taboo == "anal_sex" and self.anal_virgin==0:
-            self.anal_virgin +=1
-            self.anal_first = mc.name
-            if self.opinion.anal_sex < 1:
-                self.update_opinion_with_score("anal sex", 1)
+        def get_blood_item(clothing):
+            #print("get_blood_item called")
+            item = clothing.get_copy()
+            item.colour = [.71, .1, .1, 0.8]
+            item.layer = 0
+            return item
+        if the_taboo == "vaginal_sex":
+            vt_bloodshow = int(persistent.virgin_blood)
+            #print( "vt_bloodshow =" + str(vt_bloodshow))
+            if self.hymen==0:
+                if vt_bloodshow > 0:
+                    vt_bloodrando = renpy.random.randint(1,100)
+                    #vt_bloodrando = 33
+                    #print( "vt_bloodrando =" + str(vt_bloodrando))
+                    if vt_bloodrando <= vt_bloodshow:
+                        print("Bloodshow is occurring")
+                        self.outfit.add_accessory(get_blood_item(creampie_cum))
+                        self.outfit.add_accessory(get_blood_item(ass_cum))
+                self.event_triggers_dict["given_virginity"] = True
+                self.vaginal_first = mc.name
+                self.vaginal_virgin = 1
+                self.hymen = 1
+                if self.opinion.vaginal_sex < 1:
+                    self.update_opinion_with_score("vaginal sex", 1)
+            renpy.call("evaluate_virgin_tracker_perks")
+            # print( "after evaluate virgin tracker perks...")
+        if the_taboo == "sucking_cock":
+            if self.oral_virgin == 0:
+                self.oral_virgin = 1
+                self.oral_first = mc.name
+                if self.opinion.giving_blowjobs < 1:
+                    self.update_opinion_with_score("giving blowjobs", 1)
+            renpy.call("evaluate_virgin_tracker_perks")
+        if the_taboo == "anal_sex":
+            if self.anal_virgin==0:
+                self.anal_virgin =1
+                self.anal_first = mc.name
+                if self.opinion.anal_sex < 1:
+                    self.update_opinion_with_score("anal sex", 1)
+            renpy.call("evaluate_virgin_tracker_perks")
+        if the_taboo=="condomless_sex":
+            renpy.call("evaluate_virgin_tracker_perks")
+        if the_taboo=="bare_tits":
+            renpy.call("evaluate_virgin_tracker_perks")
+        if the_taboo=="bare_pussy":
+            renpy.call("evaluate_virgin_tracker_perks")
 
-        return ret_val # probably None, but core could change
+        #return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
@@ -327,6 +459,26 @@ def _vt_postfix_restore_taboo(wrapped_func: Callable) -> Callable:
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
+
+# def _vt_postfix_advance_time_run_move(wrapped_func: Callable) -> Callable:
+    # def wrapping_func(*args, **kwargs):
+        # ret_val = wrapped_func(*args, **kwargs)
+        # #self = args[0]
+
+        # # #Add the  background switch here if needed
+        # if time_of_day == 0:
+            # park.background_name = "Park_Early_Morning_Background"
+        # elif time_of_day == 1:
+            # park.background_name = "Park_Morning_Background"
+        # elif time_of_day == 2:
+            # park.background_name = "Park_Afternoon_Background"
+        # elif time_of_day >3:
+            # park.background_name = "Park_Evening_Background"
+
+
+        # return ret_val # probably None, but core could change
+    # wrapping_func.__signature__ = inspect.signature(wrapped_func)
+    # return wrapping_func
 
 def _vt_postfix_person_run_turn(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
@@ -371,68 +523,99 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
         # remove up to one level vaginal cum (only way to remove last level)
         if self.vaginal_cum > 0 and (day - self.sex_record.get("Last Vaginal Day", -1)) >= 4:
             self.vaginal_cum -= 1
-
         # auto-develop natural fetishes without serums or nanos
         if (not self.has_cum_fetish \
-            and not self.has_taboo(["sucking_cock", "condomless_sex"]) \
+            and self.cum_exposure_count >=20 \
+            and self.has_broken_taboo("condomless_sex") \
+            and self.has_broken_taboo("anal_sex") \
+            and self.has_broken_taboo("vaginal_sex") \
+            and self.has_broken_taboo("bare_tits") \
+            and self.has_broken_taboo("bare_pussy") \
             and self.oral_sex_skill >= 4 \
             and self.sluttiness >= 60 \
-            and self.opinion.giving_blowjobs >=2 \
-            and self.opinion.being_covered_in_cum < 2 \
-            and self.cum_exposure_count >=19 ):
+            and self.opinion.giving_blowjobs == 2 \
+            and self.opinion.being_covered_in_cum == 2 \
+            and self.opinion.cum_facials == 2 \
+            and self.opinion.drinking_cum == 2 \
+            and self.opinion.showing_her_tits == 2 \
+            and self.opinion.creampies == 2 \
+            and self.opinion.anal_creampies == 2 \
+            and self.opinion.bareback_sex == 2 \
+            and self.opinion.giving_handjobs == 2 ):
             if VT_start_cum_fetish_quest(self):
                 self.event_triggers_dict["VT_cum_fetish_start"] = True
 
+        if (not self.has_vaginal_fetish \
+            and (self.vaginal_sex_count >=10 or self.vaginal_creampie_count >= 10) \
+            and self.vaginal_sex_skill >=4 \
+            and self.is_willing(missionary) \
+            and self.has_broken_taboo("vaginal_sex") \
+            and self.sluttiness >=60 \
+            and (self.opinion.vaginal_sex >=2 or self.opinion.creampies >=2) \
+            and self.opinion.showing_her_ass >= 2 ):
+            if VT_start_vaginal_fetish_quest(self):
+                self.event_triggers_dict["VT_vaginal_fetish_start"] = True
+
         if (not self.has_anal_fetish \
-                and not self.has_taboo("anal_sex") \
+                and (self.anal_sex_count >= 10 or self.anal_creampie_count >= 10) \
                 and self.anal_sex_skill >= 4 \
-                and self.opinion.anal_sex >= 2 \
-                and self.opinion.anal_creampies >= 2 \
                 and self.is_willing(doggy_anal) \
+                and self.has_broken_taboo("anal_sex") \
                 and self.sluttiness >= 60 \
-                and (self.anal_sex_count >= 10 or self.anal_creampie_count >= 10)):
+                and (self.opinion.anal_sex >= 2 or self.opinion.anal_creampies >= 2 ) \
+                and self.opinion.showing_her_ass >= 2 ):
             if VT_start_anal_fetish_quest(self):
                 self.event_triggers_dict["VT_anal_fetish_start"] = True
 
         if (not self.has_breeding_fetish \
-                and persistent.pregnancy_pref > 0
-                and not self.has_taboo(["condomless_sex", "vaginal_sex"]) \
-                and self.opinion.bareback_sex >=2 \
-                and self.is_willing(missionary) \
+                and persistent.pregnancy_pref > 0 \
+                and self.vaginal_creampie_count >= 10 \
                 and self.vaginal_sex_skill >= 4 \
-                and self.opinion.vaginal_sex >= 2 \
-                and self.opinion.creampies >= 2 \
+                and self.is_willing(missionary) \
+                and self.has_broken_taboo("condomless_sex") \
+                and self.has_broken_taboo("vaginal_sex") \
                 and self.sluttiness >=60 \
-                and self.vaginal_creampie_count >= 10):
+                and self.opinion.bareback_sex >=2 \
+                and person.opinion.showing_her_ass >= 2 \
+                and self.opinion.vaginal_sex >= 2 \
+                and self.opinion.creampies >= 2 ):
             if VT_start_breeding_fetish_quest(self):
                 self.event_triggers_dict["VT_breeding_fetish_start"] = True
 
-        # if self.has_breeding_fetish:
-            # tempfertiledaystart = self.ideal_fertile_day - 3
-            # tempfertiledayend = self.ideal_fertile_day + 3
-            # if day >= tempfertiledaystart and day <= tempfertiledayend:  
-                # #high fertile 
-                # VT_breeding_fetish_recycle(self)
-
         if (not self.has_exhibition_fetish \
             and self.sex_record.get("Public Sex", 0) > 19 \
-            and not self.has_taboo(["sucking_cock", "vaginal_sex"]) \
+            and self.has_broken_taboo("sucking_cock") \
+            and self.has_broken_taboo("vaginal_sex") \
+            and self.has_broken_taboo("anal_sex") \
+            and self.has_broken_taboo("bare_tits") \
+            and self.has_broken_taboo("bare_pussy") \
             and self.oral_sex_skill >= 4 \
             and self.anal_sex_skill >= 4 \
             and self.vaginal_sex_skill >= 4 \
             and self.sluttiness >= 60 \
-            and self.opinion.public_sex >=2 \
-            and self.opinion.being_covered_in_cum >= 2 \
-            and self.cum_exposure_count >=19 ):
+            and person.opinion.public_sex >= 2 \
+            and person.opinion.not_wearing_anything >= 2 \
+            and person.opinion.not_wearing_underwear >= 2 \
+            and person.opinion.showing_her_ass >= 2 \
+            and person.opinion.showing_her_tits >= 2 \
+            and person.opinion.skimpy_outfits >= 2 \
+            and person.opinion.skimpy_uniforms >= 2 \
+            and person.opinion.masturbating >= 2 ):
             if VT_start_exhibition_fetish_quest(self):
                 self.event_triggers_dict["VT_exhibition_fetish_start"] = True
-        
+
+        #run randomizer for girls
+        VT_shuffle_and_update()
+
         #use run day 1 to set the harem mansion name
         if day == 1:
             harem_mansion.formal_name = str(mc.last_name) + " Mansion"
             #harem_mansion.visible = True
             harem_hub.formal_name = str(mc.last_name) + " Mansion"
-
+        #do a check on end of day to see if  any of the perks popped
+        if len(known_people_in_the_game()) == 20:
+            renpy.call("evaluate_virgin_tracker_perks")
+        
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
@@ -511,6 +694,8 @@ def _vt_postfix_person_update_sex_record(wrapped_func: Callable) -> Callable:
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
+# advance_time_run_move         = _vt_postfix_advance_time_run_move(advance_time_run_move)
+
 Person.__init__         = _vt_prefix_person_init(Person.__init__)
 Person.break_taboo      = _vt_postfix_break_taboo(Person.break_taboo)
 Person.restore_taboo    = _vt_postfix_restore_taboo(Person.restore_taboo)
@@ -520,6 +705,83 @@ Person.cum_in_mouth     = _vt_postfix_person_cum_in_mouth(Person.cum_in_mouth)
 Person.cum_in_vagina    = _vt_postfix_person_cum_in_vagina(Person.cum_in_vagina)
 Person.cum_in_ass       = _vt_postfix_person_cum_in_ass(Person.cum_in_ass)
 Person.update_person_sex_record = _vt_postfix_person_update_sex_record(Person.update_person_sex_record)
+
+def _vt_postfix_update_person_opinions(wrapped_func: Callable) -> Callable:
+    def wrapping_func(*args, **kwargs):
+        # TODO: make mod install compatible with existing savegames (person doesn't have VT attribute anal_cum)
+        ret_val = wrapped_func(*args, **kwargs)
+        person = args[0]
+        ensure_opinion_on_subject(person, ["dresses", "pants", "skirts"])
+        ensure_opinion_on_subject(person, ["boots", "high heels"])
+        ensure_opinion_on_subject(person, ["classical music", "heavy metal music", "jazz", "punk music", "pop music"])
+        ensure_opinion_on_subject(person, ["Mondays", "Fridays", "the weekend"])
+        ensure_opinion_on_subject(person, ["hiking", "sports", "yoga"])
+
+        ensure_sexy_opinion_on_subject(person, ["lingerie", "showing her tits", "showing her ass"])
+        ensure_sexy_opinion_on_subject(person, ["skimpy outfits", "not wearing underwear", "skimpy uniforms"])
+
+        # skew anal sex to negative
+        if person.anal_sex_skill > 2:
+            person.sex_skills["Anal"] -= 2
+
+        # by default there is a negative skew opinion on incest / threesomes / cheating (66%)
+        if person.opinion.incest == 0 and renpy.random.randint(0, 2) != 1:
+            person.set_opinion("incest", renpy.random.choice([-2, -1]), False)
+
+        if person.opinion.threesomes == 0 and renpy.random.randint(0, 2) != 1:
+            person.set_opinion("threesomes", renpy.random.choice([-2, -1]), False)
+
+        if person.opinion.cheating_on_men == 0 and renpy.random.randint(0, 2) != 1:
+            person.set_opinion("cheating on men", renpy.random.choice([-2, -1]), False)
+
+        # do we have sexual preferences / dislikes?
+        ensure_opinion_on_sexual_preference(person, "Foreplay", ["kissing", "being fingered", "giving handjobs"])
+        ensure_opinion_on_sexual_preference(person, "Oral", ["giving blowjobs", "getting head", "drinking cum"])
+        ensure_opinion_on_sexual_preference(person, "Vaginal", ["missionary style sex", "vaginal sex", "creampies"])
+        ensure_opinion_on_sexual_preference(person, "Anal", ["anal sex", "anal creampies", "doggy style sex"])
+
+        # fix opinion contradictions (one cannot exclude other)
+        fix_opinion_contradiction(person, "drinking cum", ["giving blowjobs", "giving handjobs", "giving tit fucks", "like men"])
+        fix_opinion_contradiction(person, "bareback sex", ["creampies", "anal creampies", "like men"])
+        fix_opinion_contradiction(person, "skimpy outfits", ["showing her tits", "showing her ass", "high heels", "flashing"])
+        fix_opinion_contradiction(person, "masturbating", ["being fingered", "peeping", "flashing"])
+        fix_opinion_contradiction(person, "vaginal sex", ["creampies", "like men"])
+        fix_opinion_contradiction(person, "anal sex", ["anal creampies", "like men"])
+        fix_opinion_contradiction(person, "cheating on men", ["flashing", "peeping", "like men", "like women", "open relationships"])
+        fix_opinion_contradiction(person, "being covered in cum", ["flashing", "like men"])
+        fix_opinion_contradiction(person, "giving blowjobs", ["flashing", "like men"])
+        fix_opinion_contradiction(person, "likes women", ["getting head", "masturbating", "being fingered"])
+        
+        # choose at least three colours for an opinion (one from primary, one from b/w, one from secondary)
+        ensure_opinion_on_subject(person, ["the colour red", "the colour green", "the colour blue"])
+        ensure_opinion_on_subject(person, ["the colour black", "the colour white"])
+        ensure_opinion_on_subject(person, ["the colour pink", "the colour purple", "the colour orange", "the colour yellow", "the colour brown"])
+
+        # fix opinion exclusion (one excludes other)
+        fix_opinion_exclusion(person, "lingerie", ["not wearing underwear", "not wearing anything"])
+        fix_opinion_exclusion(person, "skimpy outfits", ["not wearing anything", "conservative outfits"])
+        fix_opinion_exclusion(person, "the colour red", ["the colour pink", "the colour purple"]) # red and pink/purple clash
+        fix_opinion_exclusion(person, "the colour pink", ["the colour purple", "the colour red"]) # pink and purple/red clash
+        fix_opinion_exclusion(person, "the colour purple", ["the colour pink", "the colour red", "the colour blue"]) # purple and pink/red/blue clash
+        fix_opinion_exclusion(person, "the colour blue", ["the colour purple"]) # pink and purple clash
+        fix_opinion_exclusion(person, "the colour orange", ["the colour yellow"]) # orange and yellow clash
+        fix_opinion_exclusion(person, "the colour yellow", ["the colour orange"]) # yellow and orange clash
+
+        # set work opinions (based on stats / skills)
+        if not person.is_unique:
+            set_work_opinion(person, "research work", person.int, person.research_skill)
+            set_work_opinion(person, "marketing work", person.charisma, person.market_skill)
+            set_work_opinion(person, "HR work", person.charisma, person.hr_skill)
+            set_work_opinion(person, "supply work", person.focus, person.supply_skill)
+            set_work_opinion(person, "production work", person.focus, person.production_skill)
+        
+        
+        
+        return ret_val # probably None, but core could change
+    wrapping_func.__signature__ = inspect.signature(wrapped_func)
+    return wrapping_func
+
+update_person_opinions = _vt_postfix_update_person_opinions(update_person_opinions)
 
 def _vt_create_random_person_override(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs) -> Person:
