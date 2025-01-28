@@ -1,5 +1,5 @@
 # LR2R-VTMod
-🍒🍒🍒🍒    LR2R-VTMod 3.0.2    🍒🍒🍒🍒 
+🍒🍒🍒🍒    LR2R-VTMod 4.0.0    🍒🍒🍒🍒 
 Lab Rats 2 Reformulate Virginity Tracker Mod
 - the VT Trackers now are persistent through saves.
 💮 Adds a visual HUD for those with the virgin/preggo/dom kinks. More visuals, more text, more fun.
@@ -10,9 +10,10 @@ Lab Rats 2 Reformulate Virginity Tracker Mod
 	🥵 Real Porn Mod 0.63 - Good!
 	🥵 KiNA's Mods - Good!
 	🥵 Kaden's Mods - Good!
+	🥵 ZenPak's Mods - Good!
 	🔥 Lab Rats2 Reformulate: v2024.08  Ren'Py 8.2.1
 	🔥 Lab Rats2 Reformulate: v2024.09-code-beta  Ren'Py 8.2.1
-	🔥 lr2mods-develop - Jan 12, 2025 3:55 AM EDT - [https://discord.com/channels/564870606382956576/571557121716387840/1327923969143214142](https://discord.com/channels/564870606382956576/571557121716387840/1327923969143214142) 
+	🔥 lr2mods-develop - Jan 27, 2025 11:19 AM EDT - 
 
 💮 Vanilla files modified: none - the MOD is completely on its own in the mods folder.
 💮 Image Files added: 60+ images to gui
@@ -65,7 +66,6 @@ Lab Rats 2 Reformulate Virginity Tracker Mod
 	- Breeder_Personality
 	- Cosplay Personality - still a lil rough around the edges
 	- Dandere Personality OwO
-	- Foodie Personality - you are what you eat...
 	- Gothic Personality
 	- Goudere Personality -.-
 	- Kuudere Personality -_-
@@ -73,18 +73,16 @@ Lab Rats 2 Reformulate Virginity Tracker Mod
 	- Slutty Personality - eh?
 	- Tomboy Personality - what?
 	- Tsundere Personality ^.^
-	- Wild Personality - replaces original wild personality
+	- Wilder Personality 
 	- Yandere Personality! ^w^
 
-💮 4 Natural Fetish Forming Fetishes: Anal/Breeding/Cum/Exhibition
+💮 5 Natural Fetish Forming Fetishes: Anal/Breeding/Cum/Exhibition/Vaginal
 - the Icons are there to guide you into unlocking the fetishes if you wish to
 - should not interfere with serum/nano fetishes.
 
 *Natural Fetishes:
 - Fetishes requirements lowered from 19 to 10
-- Random NPCs spawned with Fetishes already enabled! o.O watch out!
 - Random NPC The Golden Lotus created
-- Gotta ~~BANG~~ Catch them all!!
 
 🔥 Install Instructions: 🔥
 Place in the game/mods folder. Launch game.
