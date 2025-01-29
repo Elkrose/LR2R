@@ -371,7 +371,7 @@ label vaginal_fetish_generic_intro_label(the_person):
     "She stops mid-sentence as you give her a quick thrust."
     mc.name "It's okay to admit you are a slut. Now, let's just make sure your needs are sated before we part ways."
     "[the_person.possessive_title!c] is unable to reply as you begin to fuck her pussy. It's time to show her just how good you can make her feel that way."
-    call fuck_person(the_person, start_position = vaginal_standing, start_object = make_wall(), skip_intro = True, skip_condom = True) from vt_call_fuck_person_vaginal_fetish_intro_generic_01
+    call fuck_person(the_person, start_position = standing_doggy, start_object = make_wall(), skip_intro = True, skip_condom = True) from vt_call_fuck_person_vaginal_fetish_intro_generic_01
     #$ the_person.SB_fetish = "vaginal sex"
     $ the_person.max_opinion_score("vaginal sex")
     $ the_person.max_opinion_score("creampies")
