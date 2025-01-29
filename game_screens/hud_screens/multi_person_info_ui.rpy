@@ -395,7 +395,7 @@ screen actor_info_block(actor):
                                     else:
                                         $ VToralst = "bitelip"
                                         if actor.person.oral_virgin == 0:
-                                            $ VToraltt = f"{{image=virgin_token_small}} She plays with her innocent hungry fresh pussy.\nShe bites her lip coyly."
+                                            $ VToraltt = f"{{image=virgin_oral_small}} She plays with her innocent hungry fresh pussy.\nShe bites her lip coyly."
                                         else:
                                             if actor.person.oral_first == mc.name:
                                                 $ VToraltt = f"{{image=handprint_token_small}} She locks eyes with you and bite her lip sexily."
@@ -409,7 +409,7 @@ screen actor_info_block(actor):
                                 if actor.person.oral_cum ==0:
                                     $ VToralst = "ahegaoface"
                                     if actor.person.oral_virgin == 0:
-                                        $ VToraltt = f"{{image=virgin_token_small}} She looks at you with lust \n in her innocent hungry eyes."
+                                        $ VToraltt = f"{{image=virgin_oral_small}} She looks at you with lust \n in her innocent hungry eyes."
                                     else:
                                         if actor.person.oral_first == mc.name:
                                             $ VToraltt = f"{{image=handprint_token_small}} She starts to drool \n and undress you with her eyes."
@@ -429,8 +429,8 @@ screen actor_info_block(actor):
                                         $ VToraltt += f"\n{{image=ahegaomouth_small}} "+ str(actor.person.oral_cum) +" doses of your cum \n swimming in her belly."
                             else:
                                 if actor.person.oral_virgin == 0: #morevisual with virgin
-                                    $ VToralst = "truevirgin"
-                                    $ VToraltt = f"{{image=virgin_token_small}} Her lips look sweet and inexperienced."
+                                    $ VToralst = "virgin_oral"
+                                    $ VToraltt = f"{{image=virgin_oral_small}} Her lips look sweet and inexperienced."
                                 if actor.person.oral_first == mc.name:
                                     $ VToralst = "claimedmouth"
                                     $ VToraltt = f"{{image=handprint_token_small}} You Claimed this Pie Hole!"
@@ -526,7 +526,7 @@ screen actor_info_block(actor):
                                     else:
                                         $ VTvaginalst = "spreadvag"
                                         if actor.person.vaginal_virgin == 0:
-                                            $ VTvaginaltt = f"{{image=virgin_token_small}} She plays with her fresh innocent hungry pussy."
+                                            $ VTvaginaltt = f"{{image=virgin_vaginal_small}} She plays with her fresh innocent hungry pussy."
                                         else:
                                             if actor.person.vaginal_first == mc.name:
                                                 $ VTvaginaltt = f"{{image=handprint_token_small}} She locks eyes with you and licks her lips \n and plays with her pussy."
@@ -537,8 +537,8 @@ screen actor_info_block(actor):
 
                         if VTvaginalat=="sexualized":
                             if actor.person.hymen == 0 and actor.person.vaginal_virgin <=1: #morevisual with virgin
-                                $ VTvaginalst = "truevirgin"
-                                $ VTvaginaltt = f"{{image=virgin_token_small}} She looks so innocent and inexperienced."
+                                $ VTvaginalst = "virgin_vaginal"
+                                $ VTvaginaltt = f"{{image=virgin_vaginal_small}} She looks so innocent and inexperienced."
                             $ VTvaginalcum = "bc_cum"
                             if actor.person.hymen >1 and actor.person.vaginal_cum >1:
                                 $ VTvaginalcum = "bc_cum"
@@ -548,8 +548,8 @@ screen actor_info_block(actor):
                                     $ VTvaginalcum = "vaghymen"
                         if VTvaginalat=="talking":
                             if actor.person.hymen == 0 and actor.person.vaginal_virgin <=1: #morevisual with virgin
-                                $ VTvaginalst = "truevirgin"
-                                $ VTvaginaltt = f"{{image=virgin_token_small}} She looks so innocent and inexperienced."
+                                $ VTvaginalst = "virgin_vaginal"
+                                $ VTvaginaltt = f"{{image=virgin_vaginal_small}} She looks so innocent and inexperienced."
                             if actor.person.vaginal_first == mc.name:
                                 $ VTvaginalst = "claimedvag"
                                 $ VTvaginaltt = f"{{image=handprint_token_small}} You Claimed this Pussy!"
@@ -560,9 +560,9 @@ screen actor_info_block(actor):
                             if actor.person.arousal_perc >= 59 and actor.person.vaginal_cum<=0:
                                 $ VTvaginalst = "spreadvag"
                                 if actor.person.vaginal_virgin <= 1:
-                                    $ VTvaginaltt += f"\n{{image=virgin_token_small}} Her fresh pussy is dripping for you.\n*You can really smell her arousal*"
+                                    $ VTvaginaltt += f"\n{{image=virgin_vaginal_small}} Her fresh pussy is dripping for you.\n*You can really smell her arousal*"
                                     if actor.person.hymen ==0:
-                                        $ VTvaginaltt += f"\n{{image=virgin_token_small}} She is more than ready to be fucked."
+                                        $ VTvaginaltt += f"\n{{image=virgin_vaginal_small}} She is more than ready to be fucked."
                                 else:
                                     if actor.person.vaginal_first == mc.name:
                                         $ VTvaginaltt += f"\n{{image=handprint_token_small}} Her pussy is dripping for you.\n*You can really smell her arousal*\nCome take me!"
@@ -660,7 +660,7 @@ screen actor_info_block(actor):
                                     else:
                                         $ VTanalst = "yespeach"
                                         if actor.person.anal_virgin == 0:
-                                            $ VTanaltt = f"{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking!"
+                                            $ VTanaltt = f"{{image=virgin_anal_small}} Her ass sways so ripely, ready for the taking!"
                                         else:
                                             if actor.person.anal_first == mc.name:
                                                 $ VTanaltt = f"{{image=handprint_token_small}} Her ass sways, hypnotizing you..\nThen she slaps it!"
@@ -679,14 +679,14 @@ screen actor_info_block(actor):
 
                         if VTanalat=="talking":
                             if actor.person.anal_virgin == 0 and actor.person.anal_cum ==0:
-                                $ VTanalst = "truevirgin"
-                                $ VTanaltt = f"{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking"
+                                $ VTanalst = "virgin_anal"
+                                $ VTanaltt = f"{{image=virgin_anal_small}} Her ass sways so ripely, ready for the taking"
                                 
                             if actor.person.arousal_perc >= 59:
                                 if actor.person.anal_cum ==0:
-                                    $ VTanalst = "truevirgin"
+                                    $ VTanalst = "virgin_anal"
                                     if actor.person.anal_virgin == 0:
-                                        $ VTanaltt = f"{{image=virgin_token_small}} Her ass sways so ripely, ready for the taking!"
+                                        $ VTanaltt = f"{{image=virgin_anal_small}} Her ass sways so ripely, ready for the taking!"
                                     else:
                                         $ VTanalst = "yespeach"
                                         if actor.person.anal_first == mc.name:
