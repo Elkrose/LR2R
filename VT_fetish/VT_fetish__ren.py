@@ -132,24 +132,24 @@ def VT_start_vaginal_fetish_quest(person: NewPerson):
 
     if person == lily:
         mc.business.add_mandatory_crisis(
-            Fetish_Action("Lily Vaginal Fetish Intro", VT_vaginal_fetish_lily_intro_requirement, "VT_vaginal_fetish_lily_intro_label", fetish_type = "vaginal")
+            Fetish_Action("Lily Vaginal Fetish Intro", VT_vaginal_fetish_lily_intro_requirement, "vaginal_fetish_lily_intro_label", fetish_type = "vaginal")
         )
         return True
     if person == mom:
         mc.business.add_mandatory_crisis(
-            Fetish_Action("Jennifer Vaginal Fetish Intro", VT_vaginal_fetish_mom_intro_requirement, "VT_vaginal_fetish_mom_intro_label", fetish_type = "vaginal")
+            Fetish_Action("Jennifer Vaginal Fetish Intro", VT_vaginal_fetish_mom_intro_requirement, "vaginal_fetish_mom_intro_label", fetish_type = "vaginal")
         )
         return True
     if person == starbuck:
         if get_shop_investment_rate() >= 6.0:
             mc.business.add_mandatory_crisis(
-                Fetish_Action("Starbuck Vaginal Fetish Intro", VT_vaginal_fetish_starbuck_intro_requirement, "VT_vaginal_fetish_starbuck_intro_label", fetish_type = "vaginal")
+                Fetish_Action("Starbuck Vaginal Fetish Intro", VT_vaginal_fetish_starbuck_intro_requirement, "vaginal_fetish_starbuck_intro_label", fetish_type = "vaginal")
             )
             return True
         return False
     if person == stephanie:
         mc.business.add_mandatory_crisis(
-            Fetish_Action("Stephanie Vaginal Fetish Intro", VT_vaginal_fetish_stephanie_intro_requirement, "VT_vaginal_fetish_stephanie_intro_label", fetish_type = "vaginal")
+            Fetish_Action("Stephanie Vaginal Fetish Intro", VT_vaginal_fetish_stephanie_intro_requirement, "vaginal_fetish_stephanie_intro_label", fetish_type = "vaginal")
         )
         return True
     # elif person == emily and False:
@@ -163,7 +163,7 @@ def VT_start_vaginal_fetish_quest(person: NewPerson):
     if person == erica:
         if erica_has_given_morning_handjob():
             mc.business.add_mandatory_morning_crisis(
-                Fetish_Action("Erica Vaginal Fetish Intro", VT_vaginal_fetish_erica_intro_requirement, "VT_vaginal_fetish_erica_intro_label", fetish_type = "vaginal")
+                Fetish_Action("Erica Vaginal Fetish Intro", VT_vaginal_fetish_erica_intro_requirement, "vaginal_fetish_erica_intro_label", fetish_type = "vaginal")
             )
             return True
         return False
@@ -185,18 +185,18 @@ def VT_start_vaginal_fetish_quest(person: NewPerson):
     #     Fetish_Action("Myra Anal Fetish Intro", anal_fetish_myra_intro_requirement, "anal_fetish_myra_intro_label", fetish_type = "anal")
     if person.is_employee and not person in (erica, lily, mom, stephanie, starbuck):
         mc.business.add_mandatory_crisis(
-            Fetish_Action("Employee Vaginal Fetish Intro", VT_vaginal_fetish_employee_intro_requirement, "VT_vaginal_fetish_employee_intro_label", args = person, priority = 10, fetish_type = "vaginal")
+            Fetish_Action("Employee Vaginal Fetish Intro", VT_vaginal_fetish_employee_intro_requirement, "vaginal_fetish_employee_intro_label", args = person, priority = 10, fetish_type = "vaginal")
         )
         return True
     if person.is_family and not person in (erica, lily, mom, stephanie, starbuck):
         person.add_unique_on_room_enter_event(
-            Fetish_Action("Family Vaginal Fetish Intro", VT_anal_fetish_family_intro_requirement, "VT_vaginal_fetish_family_intro_label", fetish_type = "vaginal", priority = 30)
+            Fetish_Action("Family Vaginal Fetish Intro", VT_anal_fetish_family_intro_requirement, "vaginal_fetish_family_intro_label", fetish_type = "vaginal", priority = 30)
         )
         return True
 
     if not person in (erica, lily, mom, stephanie, starbuck):
         person.add_unique_on_talk_event(
-            Fetish_Action("Generic Vaginal Fetish Intro", VT_vaginal_fetish_generic_intro_requirement, "VT_vaginal_fetish_generic_intro_label", fetish_type = "vaginal")
+            Fetish_Action("Generic Vaginal Fetish Intro", VT_vaginal_fetish_generic_intro_requirement, "vaginal_fetish_generic_intro_label", fetish_type = "vaginal")
         )
         return True
     return False
