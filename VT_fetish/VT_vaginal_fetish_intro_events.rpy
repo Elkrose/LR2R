@@ -498,7 +498,7 @@ label vaginal_fetish_mom_intro_label():
     $ the_person.break_taboo("vaginal_sex")
     "It takes her a few moments, but eventually she starts to move her hips."
     the_person "Okay... don't hold back! Mommy wants your cum baby!"
-    call get_fucked(the_person, the_goal = "vaginal creampie", start_position = vaginal_on_lap, start_object = make_couch(), skip_intro = True, allow_continue = False) from vt_call_get_fucked_mom_vaginal_fetish_intro_01
+    call get_fucked(the_person, the_goal = "creampie", start_position = cowgirl, start_object = make_couch(), skip_intro = True, allow_continue = False) from vt_call_get_fucked_mom_vaginal_fetish_intro_01
     $ the_person.draw_person(position = "sitting")
     $ add_vaginal_fetish(the_person)
     the_person "Oh my god... [the_person.mc_title] that was so good."
@@ -540,7 +540,7 @@ label vaginal_fetish_mom_intro_label():
     $ play_moan_sound()
     "She bottoms out and moans loudly."
     # call fuck_person(the_person, start_position = vaginal_cowgirl, start_object = make_bed(), skip_intro = True, girl_in_charge = True, position_locked = True) from _call_sex_description_SBA41
-    call get_fucked(the_person, the_goal = "vaginal creampie", private= True, start_position = vaginal_cowgirl, start_object = make_bed(), skip_intro = True, allow_continue = False) from vt_call_get_fucked_mom_vaginal_fetish_intro_02
+    call get_fucked(the_person, the_goal = "creampie", private= True, start_position = cowgirl, start_object = make_bed(), skip_intro = True, allow_continue = False) from vt_call_get_fucked_mom_vaginal_fetish_intro_02
     $ the_report = _return
     if the_report.get("girl orgasms", 0) > 0:
         "[the_person.possessive_title!c] lies there on the bed, speechless from your vaginal plundering."
