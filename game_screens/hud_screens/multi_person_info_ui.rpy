@@ -436,8 +436,8 @@ screen actor_info_block(actor):
                                     $ VToraltt = f"{{image=handprint_token_small}} You Claimed this Pie Hole!"
                                 else:
                                     if actor.person.oral_first !=None and actor.person.oral_virgin>0:
-                                        $ VToralst = "knowlips"
-                                        $ VToraltt = f"{{image=taboo_break}} Someone else had her lips before you... CLAIM IT!"
+                                        $ VToralst = "oralclaimed"
+                                        $ VToraltt = f"{{image=oralclaimed_small}} Someone else had her lips before you... CLAIM IT!"
                                 if actor.person.oral_cum >0:
                                     $ VToralst = "bitelip"
                                     if actor.person.oral_cum == 1:
@@ -555,8 +555,8 @@ screen actor_info_block(actor):
                                 $ VTvaginaltt = f"{{image=handprint_token_small}} You Claimed this Pussy!"
                             else:
                                 if actor.person.vaginal_first !=None and actor.person.hymen==2:
-                                    $ VTvaginalst = "knowpeach"
-                                    $ VTvaginaltt = f"{{image=taboo_break}} Someone else had this pussy before you... OWN IT!"
+                                    $ VTvaginalst = "vaginalclaimed"
+                                    $ VTvaginaltt = f"{{image=vaginalclaimed_small}} Someone else had this pussy before you... OWN IT!"
                             if actor.person.arousal_perc >= 59 and actor.person.vaginal_cum<=0:
                                 $ VTvaginalst = "spreadvag"
                                 if actor.person.vaginal_virgin <= 1:
@@ -708,8 +708,8 @@ screen actor_info_block(actor):
                                     $ VTanaltt = f"{{image=handprint_token_small}} You Claimed this Ass!"
                                 else:
                                     if actor.person.anal_first !=None and actor.person.anal_virgin>0:
-                                        $ VTanalst = "knowpeach"
-                                        $ VTanaltt = f"{{image=taboo_break}} Someone else had her ass before you... RECLAIM IT!"
+                                        $ VTanalst = "analclaimed"
+                                        $ VTanaltt = f"{{image=analclaimed_small}} Someone else had her ass before you... RECLAIM IT!"
                                 if actor.person.anal_cum >0:
                                     $ VTanalst = "bitelip"
                                     if actor.person.anal_cum == 1:
