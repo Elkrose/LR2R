@@ -576,7 +576,7 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
                 and self.has_broken_taboo("vaginal_sex") \
                 and self.sluttiness >=60 \
                 and self.opinion.bareback_sex >=2 \
-                and person.opinion.showing_her_ass >= 2 \
+                and self.opinion.showing_her_ass >= 2 \
                 and self.opinion.vaginal_sex >= 2 \
                 and self.opinion.creampies >= 2 ):
             if VT_start_breeding_fetish_quest(self):
@@ -593,14 +593,14 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
             and self.anal_sex_skill >= 4 \
             and self.vaginal_sex_skill >= 4 \
             and self.sluttiness >= 60 \
-            and person.opinion.public_sex >= 2 \
-            and person.opinion.not_wearing_anything >= 2 \
-            and person.opinion.not_wearing_underwear >= 2 \
-            and person.opinion.showing_her_ass >= 2 \
-            and person.opinion.showing_her_tits >= 2 \
-            and person.opinion.skimpy_outfits >= 2 \
-            and person.opinion.skimpy_uniforms >= 2 \
-            and person.opinion.masturbating >= 2 ):
+            and self.opinion.public_sex >= 2 \
+            and self.opinion.not_wearing_anything >= 2 \
+            and self.opinion.not_wearing_underwear >= 2 \
+            and self.opinion.showing_her_ass >= 2 \
+            and self.opinion.showing_her_tits >= 2 \
+            and self.opinion.skimpy_outfits >= 2 \
+            and self.opinion.skimpy_uniforms >= 2 \
+            and self.opinion.masturbating >= 2 ):
             if VT_start_exhibition_fetish_quest(self):
                 self.event_triggers_dict["VT_exhibition_fetish_start"] = True
 
