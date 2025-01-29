@@ -484,7 +484,7 @@ def _vt_postfix_person_run_turn(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # TODO: make mod install compatible with existing savegames (person doesn't have VT attributes)
         # Call core code; has core side effects
-        ret_val = wrapped_func(*args, **kwargs)
+        #ret_val = wrapped_func(*args, **kwargs)
         self = args[0]
         #VirginTracker cum tracker dealing with cum in orifices
         # NOTE: vaginal_cum has floor 1, other two have floor 0
@@ -495,7 +495,8 @@ def _vt_postfix_person_run_turn(wrapped_func: Callable) -> Callable:
         if self.vaginal_cum > 1 and (day -self.sex_record.get("Last Vaginal Day", -1)) >= 0:
             self.vaginal_cum -= 1
 
-        return ret_val # probably None, but core could change
+        return  # probably None, but core could change
+        #return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 

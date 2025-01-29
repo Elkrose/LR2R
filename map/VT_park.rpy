@@ -1,4 +1,111 @@
 #used Kaden's Beach code as a template
+init -1 python:
+     def vt_can_add_clothing(outfit, new_clothing):
+        if new_clothing in dress_list:
+            if outfit.can_add_dress(new_clothing):
+                return True
+        elif new_clothing in shirts_list or new_clothing in bra_list:
+            if outfit.can_add_upper(new_clothing):
+                return True
+        elif new_clothing in pants_list or new_clothing in skirts_list or new_clothing in panties_list:
+            if outfit.can_add_lower(new_clothing):
+                return True
+        elif new_clothing in socks_list or new_clothing in shoes_list:
+            if outfit.can_add_feet(new_clothing):
+                return True
+        elif new_clothing in earings_list or new_clothing in bracelet_list or new_clothing in rings_list or new_clothing in neckwear_list:
+            if outfit.can_add_accessory(new_clothing):
+                return True
+        return False
+
+     def vt_add_clothing(outfit, new_clothing, re_colour = None, pattern = None, colour_pattern = None):
+        if vt_can_add_clothing(outfit, new_clothing):
+            if new_clothing in dress_list:
+                outfit.add_dress(new_clothing, re_colour = None, pattern = None, colour_pattern = None)
+            elif new_clothing in shirts_list or new_clothing in bra_list:
+                outfit.add_upper(new_clothing, re_colour = None, pattern = None, colour_pattern = None)
+            elif new_clothing in pants_list or new_clothing in skirts_list or new_clothing in panties_list:
+                outfit.add_lower(new_clothing, re_colour = None, pattern = None, colour_pattern = None)
+            elif new_clothing in socks_list or new_clothing in shoes_list:
+                outfit.add_feet(new_clothing, re_colour = None, pattern = None, colour_pattern = None)
+            elif new_clothing in earings_list or new_clothing in bracelet_list or new_clothing in rings_list or new_clothing in neckwear_list:
+                outfit.can_add_accessory(new_clothing, re_colour = None, pattern = None, colour_pattern = None)
+        return
+
+     def vt_generalised_dressing_description(the_person, outfit, group_display = None, other_people = None, position = None):
+        scene_manager = Scene()
+        for cloth in [x for x in the_person.outfit.upper_body + the_person.outfit.lower_body + the_person.outfit.feet + the_person.outfit.accessories if x.half_off]:
+            cloth.half_off = False
+            scene_manager.add_actor(the_person)
+            renpy.say(None, the_person.title + " adjusts her " + cloth.display_name + ", restoring it to the way it is normally worn.")
+        if isinstance(outfit, Clothing):
+            temp_list = [temp_list] #Lets you hand over a single item to put on
+        else:
+            temp_list = []
+            for item in outfit.get_full_strip_list():
+                temp_list.append(item)
+        test_outfit = the_person.outfit.get_copy() #Use a copy to keep track of what's changed between iterations, so we can narrate tits being out, etc.
+        loop_count = 0 #Used to keep all of the other people on the same track as the main stripper
+        for item in list(reversed(temp_list)):
+            if group_display is not None:
+                if vt_can_add_clothing(the_person.outfit, item):
+                    vt_add_clothing(the_person.outfit, item)
+                group_display.redraw_group()
+                if other_people is not None:
+                    for person_tuple in other_people:
+                        another_person = person_tuple[0]
+                        another_temp_list = person_tuple[1]
+                        if item == temp_list[-1]:
+                            if vt_can_add_clothing(another_person.outfit, another_temp_list):
+                                vt_add_clothing(another_person.outfit, another_temp_list)
+                        elif len(another_temp_list) > loop_count:
+                            if vt_can_add_clothing(another_person.outfit, another_temp_list[loop_count]):
+                                vt_add_clothing(another_person.outfit, another_temp_list[loop_count])
+                        group_display.redraw_group()
+            else:
+                if vt_can_add_clothing(the_person.outfit, item):
+                    vt_add_clothing(the_person.outfit, item)
+                    scene_manager.update_actor(the_person)
+                    if test_outfit.tits_available and not the_person.tits_available: #Tits are contained
+                        if the_person.has_large_tits:
+                            renpy.say(None, the_person.title + " pulls on her " + item.display_name + ", covering her " + the_person.tits_description + ".")
+                        else:
+                            renpy.say(None, the_person.title + " puts on her " + item.display_name + " concealing her " + the_person.tits_description + ".")
+                    elif test_outfit.tits_visible and not the_person.outfit.tits_visible: #Tits are fully covered
+                        if the_person.has_large_tits:
+                            renpy.say(None, the_person.title + " pulls on her " + item.display_name + ", hiding away all trace of her " + the_person.tits_description + ".")
+                        else:
+                            renpy.say(None, the_person.title + " dons her " + item.display_name + ", hiding away her " + the_person.tits_description + ".")
+                    elif test_outfit.vagina_available and not the_person.vagina_available: #Pussy contained
+                        if item.underwear:
+                            renpy.say(None, the_person.title + " slips on her " + item.display_name + ", adjusting them to cover her " + the_person.pubes_description + " pussy.")
+                        else:
+                            renpy.say(None, the_person.title + " puts on her " + item.display_name + " hiding her " + the_person.pubes_description + " pussy underneath.")
+                    elif test_outfit.vagina_visible and not the_person.outfit.vagina_visible: #Pussy fully covered
+                        renpy.say(None, the_person.title + " puts on her " + item.display_name + ", covering her " + the_person.pubes_description + " pussy.")
+                    elif item.layer == 2:
+                        if test_outfit.wearing_panties and pelvis_region in item.half_off_regions:
+                            renpy.say(None, the_person.title + " puts on her " + item.display_name + ", covering her " + test_outfit.get_panties().display_name + ".")
+                        elif test_outfit.wearing_bra and torso_region in item.half_off_regions:
+                            renpy.say(None, the_person.title + " puts on her " + item.display_name + ", concealing her " + test_outfit.get_bra().display_name + ".")
+                    else:
+                        rand = renpy.random.randint(0,3)
+                        if rand == 0:
+                            renpy.say(None, the_person.title + " slips on her " + item.display_name + ".")
+                        elif rand == 1:
+                            renpy.say(None, the_person.title + " puts on her " + item.display_name + ".")
+                        elif rand == 2:
+                            renpy.say(None, the_person.title + " slips her " + item.display_name + " on.")
+                        else:
+                            renpy.say(None, the_person.title + " pulls on her " + item.display_name + ".")
+                    if vt_can_add_clothing(test_outfit, item):
+                        vt_add_clothing(test_outfit, item) #Update our test outfit.
+                    loop_count += 1
+                    if group_display is not None: #This is needed to ensure the animation times for the clothing fade out are reset. Not ideal for a speedy draw, but it'll do for now.
+                        scene_manager.clear_scene()
+                        group_display.redraw_group()
+        return
+
 init 16 python:
     def vt_select_action(person):
         roll = random.randint(1, 3)
@@ -332,8 +439,14 @@ label park_wrapper(the_person):
     mc.name "Bye [the_person.title], see you next time."
     $ scene_manager.update_actor(the_person, position="walking_away")
     $ the_person.apply_planned_outfit()
-    $ mc.change_location(downtown)
-    $ scene_manager.clear_scene()
+    # $ mc.change_location(downtown)
+    # $ scene_manager.clear_scene()
+    if time_of_day == 4:
+        $ mc.change_location(bedroom)
+        $ scene_manager.clear_scene()
+        call advance_time() from vt_call_advance_time_park_wrapper_latenight
+    else:
+        call advance_time() from vt_call_advance_time_park_wrapper
     return
 
 label park_walk_label(the_person, temp_outfit):
@@ -390,7 +503,7 @@ label park_walk_label(the_person, temp_outfit):
             mc.name "That felt great [the_person.title]. Thanks."
             the_person "It really did. Ah..."
             "You hang around by the waterfall for a few minutes while you both catch your breath, then head back through the trees again."
-            $ generalised_dressing_description(the_person, temp_outfit)
+            $ vt_generalised_dressing_description(the_person, temp_outfit)
             "[the_person.title] takes your hand in hers while you take a slow stroll back to the center of the park."
         elif vt_selected_action == "standing_doggy":
             "[the_person.title] presses herself against you before you can even get clear of the trees, wrapping her arms around your waist and grinding her hips against yours."
@@ -426,7 +539,7 @@ label park_walk_label(the_person, temp_outfit):
                 mc.name "That felt great [the_person.title]. Thanks."
                 the_person "It really did. Ah..."
             "You hang around by the waterfall for a few minutes while you both catch your breath, then head back through the trees again."
-            $ generalised_dressing_description(the_person, temp_outfit)
+            $ vt_generalised_dressing_description(the_person, temp_outfit)
             "[the_person.title] takes your hand in hers while you take a slow stroll back to the center of the park."
         elif vt_selected_action == "blowjob":
             $ scene_manager.update_actor(the_person, position = "kneeling1")
@@ -446,7 +559,7 @@ label park_walk_label(the_person, temp_outfit):
             "She gets up off her knees and looks around the clearing."
             the_person "This place is nice, but we should probably head back soon if we want to do anything else today."
             mc.name "I suppose you're right. Come on, I'll lead."
-            $ generalised_dressing_description(the_person, temp_outfit)
+            $ vt_generalised_dressing_description(the_person, temp_outfit)
             "You and [the_person.title] head back through the trees, joining up on the other side. She takes your hand in hers, and the two of you take a slow stroll back to the center of the park."
         else:
             "[the_person.title] looks around, then bites her lip and motions for you to come closer."
@@ -477,7 +590,7 @@ label park_walk_label(the_person, temp_outfit):
             else:
                 the_person "I'm sorry, [the_person.mc_title]."
                 mc.name "It's okay, I appreciate the effort."
-            $ generalised_dressing_description(the_person, temp_outfit)
+            $ vt_generalised_dressing_description(the_person, temp_outfit)
             $ scene_manager.update_actor(the_person, position = "stand3")
             the_person "No problem. We should probably start heading back if we want to have time to do something else."
             "You get up and join [the_person.possessive_title], heading back through the trees. From there the two of you take a slow stroll back to the center of the park."
@@ -568,7 +681,7 @@ label park_public_label(the_person, temp_outfit):
             $ temp_outfit.remove_all_cum()
         "Soon you come to the end of the park, where the path is just a narrow strip next to the trees."
         the_person "I guess that's all there is to see this way. I'm going to get dressed again, and then we can head back and do something else."
-        $ generalised_dressing_description(the_person, temp_outfit)
+        $ vt_generalised_dressing_description(the_person, temp_outfit)
         $ the_person.tan_style = None
     elif the_person.effective_sluttiness(["bare_tits","bare_pussy"]) > 60:
         "After a few minutes of walking [the_person.title] slows down and lets go of your arm."
@@ -630,7 +743,7 @@ label park_public_label(the_person, temp_outfit):
         the_person "Come on, let's keep walking for a little bit."
         "You walk together until the beach is just a sliver of sand running along the waters edge. With nothing more to see, you turn around and stroll back towards the center of the beach."
         "[the_person.title] gets redressed before you get to the most populated sections, to avoid getting you both in trouble."
-        $ generalised_dressing_description(the_person, temp_outfit)
+        $ vt_generalised_dressing_description(the_person, temp_outfit)
         $ the_person.tan_style = None
     elif the_person.effective_sluttiness(["underwear_nudity","bare_tits"]) > 40:
         $ scene_manager.strip_to_underwear(the_person, visible_enough = False)
@@ -670,7 +783,7 @@ label park_public_label(the_person, temp_outfit):
         $ mc.change_locked_clarity(10)
         "You stroll back, chatting with each other as you go. [the_person.title] eagerly points out all the men trying to take subtle glances at her tits, pressing up against your side tightly as you walk."
         "She finally puts her top back on when you get back to the heavily populated area of the beach, to avoid getting you both in trouble."
-        $ generalised_dressing_description(the_person, temp_outfit)
+        $ vt_generalised_dressing_description(the_person, temp_outfit)
         if not the_person.tan_style == None:
             $ the_person.tan_style = slutty_tan
     elif the_person.effective_sluttiness("underwear_nudity") > 30:
@@ -1123,7 +1236,7 @@ label park_change_label(the_person, temp_outfit):
                             "You enjoy the view for a few more seconds, until you see another couple heading your way from the park."
                             $ mc.change_arousal(10)
                             mc.name "Okay [the_person.title], that will be enough for now."
-                            $ generalised_dressing_description(the_person, temp_outfit)
+                            $ vt_generalised_dressing_description(the_person, temp_outfit)
                             "Once dressed, she shakes her tits again to get them into place."
                         else:
                             "[the_person.title] thinks about it for a brief moment, then nods and steps into the car. She motions for you to follow, and closes the door behind her."
@@ -1140,7 +1253,7 @@ label park_change_label(the_person, temp_outfit):
                             "You enjoy the view for a minute or two, watching [the_person.possessive_title]'s breasts bounce as she plays with them."
                             $ mc.change_arousal(10)
                             mc.name "Okay [the_person.title], that will be enough for now."
-                            $ generalised_dressing_description(the_person, temp_outfit)
+                            $ vt_generalised_dressing_description(the_person, temp_outfit)
                             "Once dressed, she shakes her tits one last time to get them into place."
                         mc.name "Let's head back to the picnic table and relax for a little while."
                         "You and [the_person.title] return to your seats."
@@ -1205,7 +1318,7 @@ label park_change_label(the_person, temp_outfit):
                             mc.name "I think there are some napkins in the glove compartment if you want to get cleaned up."
                             "[the_person.title] gets onto her feet and nods. You wait until she's cleaned up, then head back to the picnic table and hang out a bit longer."
                             $ temp_outfit.remove_all_cum()
-                            $ generalised_dressing_description(the_person, temp_outfit)
+                            $ vt_generalised_dressing_description(the_person, temp_outfit)
                         else:
                             "[the_person.title] thinks about it for a long moment, taking a slow step towards the glove compartment."
                             the_person "You want me to check the glove compartment?"
@@ -1289,7 +1402,7 @@ label park_change_label(the_person, temp_outfit):
                                     "[the_person.title] shakes her head and bites her lip, stifling another moan. You feel her pussy twitch around your cock."
                                 call fuck_person(the_person, private = True, start_position = against_wall, start_object = None, skip_intro = True, girl_in_charge = True, self_strip = False, hide_leave = False, position_locked = True, affair_ask_after = False, ignore_taboo = False, skip_condom = True) from call_fuck_person_parkchangefuck
                                 "[the_person.title] follows you as you head back to the picnic table, pulling her pants back into place as you go. You hang out at the table until you've both recovered from the exertion."
-                                $ generalised_dressing_description(the_person, temp_outfit)
+                                $ vt_generalised_dressing_description(the_person, temp_outfit)
                             else:
                                 "[the_person.title] thinks about it for a long moment, taking a slow step towards the trunk."
                                 the_person "You really want to have sex with me? Right here?"
@@ -1301,7 +1414,8 @@ label park_change_label(the_person, temp_outfit):
                                 "She's got a sharp look in her eyes now, pushing her any farther now would do more harm than good."
                                 mc.name "Alright, I'm sorry. Just forget I said anything at all, and let's get back to the picnic."
                                 "You and [the_person.title] return to the picnic table."
-
+    #$ scene_manager.clear_scene()
+    return
 
 
 # "Fuck her" if influence > 90:
