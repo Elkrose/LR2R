@@ -1747,7 +1747,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 if not person.is_willing(missionary):
                                     $ VTvaginalfetishtt += f"\n{{image=progress_token_small}} She needs to be willing to do missionary position."
                                 #the taboos related to fetish
-                                if person.has_broken_taboo("vaginal_sex"):
+                                if not person.has_broken_taboo("vaginal_sex"):
                                     $ VTvaginalfetishtt += f"\n{{image=triskelion_token_small}} Have vaginal sex with her!"
                                 #the sluttiness required
                                 if person.sluttiness < 60:
@@ -1851,7 +1851,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 if not person.is_willing(doggy_anal):
                                     $ VTanalfetishtt += f"\n{{image=progress_token_small}} She needs to be willing to do doggy style position."
                                 #the taboos related to fetish
-                                if person.has_broken_taboo("anal_sex"):
+                                if not person.has_broken_taboo("anal_sex"):
                                     $ VTanalfetishtt += f"\n{{image=triskelion_token_small}} Have anal sex with her!"
                                 #the sluttiness required
                                 if person.sluttiness < 60:
@@ -1962,9 +1962,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 if not person.is_willing(missionary):
                                     $ VTbreedfetishtt += f"\n{{image=progress_token_small}} She needs to be willing to do missionary position."
                                 #the taboos related to fetish
-                                if person.has_broken_taboo("condomless_sex"):
+                                if not person.has_broken_taboo("condomless_sex"):
                                     $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Have condomless sex with her!"
-                                if person.has_broken_taboo("vaginal_sex"):
+                                if not person.has_broken_taboo("vaginal_sex"):
                                     $ VTbreedfetishtt += f"\n{{image=triskelion_token_small}} Have vaginal sex with her!"
                                 #the sluttiness required
                                 if person.sluttiness < 60:

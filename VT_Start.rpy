@@ -9,13 +9,27 @@ init python:
     
     # Define your lists
     VTvaginalknowlist = [
-        "Want to be inside her?",
-        "Would you like to have sex with her?",
-        "Want to penetrate her?",
-        "Her warmth around your cock?",
-        "Want to make love to her?",
-        "Take care of her needs with your body?",
-        "Wonder how good she is in bed?"]
+        "Want to be inside her pussy?",
+        "Would you like to have vaginal sex with her?",
+        "Want to penetrate her vagina?",
+        "Her warm pussy around your cock?",
+        "Want to make love to her with your cock in her pussy?",
+        "Take care of her pussy needs with your body?",
+        "Wonder how good her pussy feels?",
+        "Feel her tight vagina around your cock?",
+        "Want to thrust into her pussy?",
+        "Get intimate with her vagina?",
+        "Want to fill her pussy up?",
+        "Have her ride your cock with her vagina?",
+        "Want to be deep inside her vagina?",
+        "Feel her vaginal wetness on your cock?",
+        "Want to make her cum with your cock in her pussy?",
+        "Take control of her vagina?",
+        "Want to be one with her through vaginal sex?",
+        "Feel her vaginal muscles squeeze your cock?",
+        "Want to pound into her pussy?",
+        "Have her take your cock in her vagina?",
+        "Want to ravage her pussy?"]
     VTvaginalvirginlist = [
         "Her body is untouched and innocent.",
         "She's never had a man inside her.",
@@ -55,7 +69,20 @@ init python:
         "Her tongue on the underside of your cock?",
         "Want her to suck you off?",
         "Take care of you with her mouth?",
-        "Wonder how good she is playing the skin flute?"]
+        "Wonder how good she is playing the skin flute?",
+        "Feel her warm breath on your cock?",
+        "Want her to deepthroat you?",
+        "Get a blowjob from her?",
+        "Have her swallow your cum?",
+        "Want her to lick your balls?",
+        "Feel her tongue on your shaft?",
+        "Want her to give you a handjob with her mouth?",
+        "Get head from her?",
+        "Want her to suck your cock dry?",
+        "Feel her lips wrapped around your cock?",
+        "Want her to take care of your hard-on?",
+        "Have her give you a sloppy blowjob?",
+        "Want her to make you cum with her mouth?"]
     VToralvirginlist = [
         "Her lips look sweet and inexperienced.",
         "Those lips have never been kissed.",
@@ -97,7 +124,20 @@ init python:
         "Want to make love to her anally?",
         "Take care of her needs with your body from behind?",
         "Wonder how good she is at anal?",
-        "Want to claim her ass as your own?"]
+        "Feel her tight anus around your cock?",
+        "Want to thrust into her from behind?",
+        "Get intimate with her ass?",
+        "Want to fill her anus up?",
+        "Have her take it from behind?",
+        "Want to be deep inside her ass?",
+        "Feel her anal muscles squeeze your cock?",
+        "Want to pound into her from behind?",
+        "Take control of her ass?",
+        "Want to ravage her anus?",
+        "Have her submit to anal sex?",
+        "Want to own her ass?",
+        "Feel her ass cheeks on your thighs?",
+        "Want to make her cum from anal sex?"]
     VTanalfirstlist = [
         "Her ass is untouched and innocent.",
         "She's never had a man inside her from behind.",
