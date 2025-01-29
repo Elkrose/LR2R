@@ -599,9 +599,9 @@ label VT_start():
             mc.sex_skills["Oral"] +=4
             mc.sex_skills["Anal"] +=4
             mc.sex_skills["Vaginal"] +=4
-            mc.max_stats = 15
-            mc.max_work_skills = 15
-            mc.max_sex_skills = 15
+            mc.max_stats = 20
+            mc.max_work_skills = 20
+            mc.max_sex_skills = 20
             mc.max_energy_cap = 1000
             mc.business.supply_goal += 1000
             mc.energy = 500
