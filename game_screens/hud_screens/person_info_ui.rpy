@@ -46,7 +46,7 @@ init -2 python:
             active_fetishes.append("Breeding")
         if exhibition_fetish_role in person.special_role and person.known_opinion("public sex"):
             active_fetishes.append("Exhibition")
-        if vaginal_fetish_role in person.special_role and person.known_opinion("creampies") and person.known_opinion("vaginal sex"):
+        if vaginal_fetish_role in person.special_role and person.known_opinion("vaginal sex"):
             active_fetishes.append("Vaginal")
 
         return (sorted(info_list), active_fetishes)
@@ -610,7 +610,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $VTpersonalitytt = f"{{image=vtcherries_small}} She appears excited and energetic, with a huge smile on her face. She studies you with a sparkling gaze, her eyes shining with a love of fun and adventure. Her tone is loud and boisterous, with a hint of infectious enthusiasm."
                     elif VTpersonality == "wilder":
                         $VTpersonalityst = "wild"
-                        $VTpersonalitytt = f"{{image=vtcherries_small}} She appears excited and energetic, with a huge smile on her face. She studies you with a sparkling gaze, her eyes shining with a love of fun and adventure. Her tone is loud and boisterous, with a hint of infectious enthusiasm."
+                        $VTpersonalitytt = f"{{image=vtcherries_small}} She's a frenzied firecracker, face alight with a maniacal grin. Her eyes blaze with reckless abandon, sparkling with a love of mayhem. Her tone is a deafening scream of unbridled chaos and infectious enthusiasm."
                     elif VTpersonality == "dandere":
                         $VTpersonalityst = "dandere"
                         $VTpersonalitytt = f"{{image=vtcherries_small}} She appears distracted and preoccupied, with a far-off look in her eyes. She studies you with a slightly vacant expression, as if they were gazing right through you. Her tone is flat and monotone, with a hint of disinterest and detachment."
@@ -1403,7 +1403,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             #List of everything one needs to make Exhibition happen
                             if (
                                 person.sex_record.get("Public Sex", 0) >= 20
-                                and person.has_broken_taboo(["sucking_cock", "vaginal_sex", "anal_sex", "bare_tits", "bare_pussy"])
+                                and person.has_broken_taboo("sucking_cock")
+                                and person.has_broken_taboo("vaginal_sex")
+                                and person.has_broken_taboo("anal_sex")
+                                and person.has_broken_taboo("bare_tits")
+                                and person.has_broken_taboo("bare_pussy")
                                 and person.sluttiness >= 60
                                 and person.oral_sex_skill >= 4
                                 and person.vaginal_sex_skill >= 4
@@ -1418,13 +1422,15 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 and person.opinion.masturbating >= 2
                             ):
                                 $ VTexhibitfetishst = "vtcherries"
-                                if person.event_triggers_dict.get("exhibition_fetish_locked", 0) < day:
-                                    $ VTexhibitfetishtt = f"{{image=creamcherry_small}} Natural Exhibition Fetish Event will trigger soon!"
+                                if person.event_triggers_dict.get("exhibition_fetish_locked", 0) > day and person.event_triggers_dict.get("VT_exhibition_fetish_start", False) is True:
+                                    $ VTexhibitfetishtt = f"{{image=creamcherry_small}} Exhibition Fetish Intro will unlock in "+str(person.event_triggers_dict.get("exhibition_fetish_locked", 0)  - day)+" days!"
+                                else:
+                                    $ VTexhibitfetishtt = f"{{image=creamcherry_small}} She meets the requirements! \n It will unlock the following day."
                             else:
                                 $ VTexhibitfetishtt = f"{{image=question_mark_small}} Unlock the Exhibition Fetish?"
                                 #the amount of sex related to fetish
                                 if person.sex_record.get("Public Sex", 0) < 20:
-                                    $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Get caught in the act {20 - person.sex_record.get('Public Sex', 0)} more times!"
+                                    $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Have sex with her in public places {20 - person.sex_record.get('Public Sex', 0)} more times!"
                                 #the taboos related to fetish
                                 if not person.has_broken_taboo("sucking_cock"):
                                     $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Get her to suck your cock!"
@@ -1499,7 +1505,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         if person.vaginal_cum >3:
                             $ VTexhibitfetishtt += f"\n{{image=openvag_small}} Your cum is oozing out of her {random_pussy_word}, a sticky reminder of the intense pleasure you shared."
                         else:
-                            $ VTexhibitfetishtt += f"\n{{image=openvag_small}} Your cum is starting to drip from her {random_pussy_word}, a tantalizing tease of the ecstasy that's to come."
+                            $ VTexhibitfetishtt += f"\n{{image=openvag_small}} Your cum is starting to drip from her {random_pussy_word}, a tantalizing sight that fills you with satisfaction and pleasure."
                 else:
                     if person.vagina_visible or (person.vagina_available and perk_system.has_ability_perk("Bald Eagle Perception")):
                         $ VTexhibitfetishst = "bodybra"
@@ -1511,7 +1517,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             if person.vaginal_cum >3:
                                 $ VTexhibitfetishtt += f"\n{{image=openvag_small}} Your cum is oozing out of her {random_pussy_word}, a sticky reminder of the intense pleasure you shared."
                             else:
-                                $ VTexhibitfetishtt += f"\n{{image=openvag_small}} Your cum is starting to drip from her {random_pussy_word}, a tantalizing tease of the ecstasy that's to come."
+                                $ VTexhibitfetishtt += f"\n{{image=openvag_small}} Your cum is starting to drip from her {random_pussy_word}, a tantalizing sight that fills you with satisfaction and pleasure."
                     elif person.tits_visible or (person.tits_available and perk_system.has_ability_perk("Strap Sense")) :
                         $ VTexhibitfetishst = "bodypanties"
                         $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} You're treated to a breathtaking view of her luscious tits, her nipples begging to be sucked and licked."
@@ -1577,12 +1583,12 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 and person.opinion.creampies >= 2
                                 and person.opinion.anal_creampies >= 2
                                 and person.opinion.bareback_sex >= 2
-                                and person.opinion.giving_handjobs >= 2
-                            ):
-                               $ VTcumfetishst = "bitelip"
-                               #if person.event_triggers_dict.get("cum_fetish_locked", 0) < day or person.event_triggers_dict["VT_cum_fetish_start"] is True:
-                               if person.event_triggers_dict.get("cum_fetish_locked", 0) < day:
-                                    $ VTcumfetishtt = f"{{image=creamcherry_small}} Natural Cum Fetish Event will trigger soon!"
+                                and person.opinion.giving_handjobs >= 2 ):
+                                $ VTcumfetishst = "bitelip"
+                                if person.event_triggers_dict.get("cum_fetish_locked", 0) > day and person.event_triggers_dict.get("VT_cum_fetish_start", False) is True:
+                                    $ VTcumfetishtt = f"{{image=creamcherry_small}} Cum Fetish Intro will unlock in "+str(person.event_triggers_dict.get("cum_fetish_locked", 0)  - day)+" days!"
+                                else:
+                                    $ VTcumfetishtt = f"{{image=creamcherry_small}} She meets the requirements! \n It will unlock the following day."
                             else:
                                 $ VTcumfetishtt = f"{{image=question_mark_small}} Unlock the Cum Fetish?"
                                 #the amount of sex related to fetish
@@ -1704,23 +1710,21 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 else:
                     if person.sexy_opinions.get("vaginal sex")[1]==True:
                         if person.has_vaginal_fetish or vaginal_fetish_role in person.special_role:
-                            # $ VTvaginalfetishst = "vtcherries"
-                            # $ VTvaginalfetishtt = f"\n{{image=triskelion_token_small}} mmmm stick your {random_cock_word} in my {random_pussy_word}!"
                             if person.days_since_event("LastVaginalFetish") > 10:
                                 if person.vaginal_cum == 0:
                                     $ VTvaginalfetishst = "vtcherries"
-                                    $ VTvaginalfetishtt = f"{{image=progress_token_small}} MMmmMm going to need your yummy\n{random_cock_word} in my {random_pussy_word} soon!"
+                                    $ VTvaginalfetishtt = f"{{image=progress_token_small}} My {random_pussy_word} is aching for your {random_cock_word}... I need to feel you inside me."
                                 else:
                                     $ VTvaginalfetishst = "creamcherry"
-                                    $ VTvaginalfetishtt = f"{{image=triskelion_token_small}} MMmmMm still feel your {random_cock_word} in my {random_pussy_word}!"
+                                    $ VTvaginalfetishtt = f"{{image=triskelion_token_small}} The memory of your {random_cock_word} is still etched in my {random_pussy_word}... I can almost feel your presence."
                             else:
                                 if person.vaginal_cum > 0:
                                     $ VTvaginalfetishst = "creamcherry"
                                     $ VTvaginalfetishtt = "*fetish 'puss'salted complete*"
-                                    $ VTvaginalfetishtt += f"\n{{image=creamcherry_small}} MMmmMm my {random_pussy_word} still molded to your {random_cock_word}."
+                                    $ VTvaginalfetishtt += f"\n{{image=creamcherry_small}} My {random_pussy_word} is still throbbing from your {random_cock_word}... the sensation lingers, a delicious echo."
                                 else:
                                     $ VTvaginalfetishst = "vtcherries"
-                                    $ VTvaginalfetishtt = f"{{image=creamcherry_small}} I need your {random_cock_word} pounding my {random_pussy_word}!"
+                                    $ VTvaginalfetishtt = f"{{image=creamcherry_small}} I crave the feeling of your {random_cock_word} sliding into my {random_pussy_word}, stretching me, filling me..."
                         else:
                             #List of everything one needs to make Vaginal  Fetish happen
                             if (
@@ -1730,16 +1734,19 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 and person.has_broken_taboo("vaginal_sex")
                                 and person.sluttiness >= 60
                                 and (person.opinion.vaginal_sex >= 2 or person.opinion.creampies >= 2)
+                                and person.opinion.bareback_sex >= 2
                                 and person.opinion.showing_her_ass >= 2
+                                and person.opinion.missionary_style >= 2
                             ):
                                 $ VTvaginalfetishst = "vtcherries"
-                                #if person.event_triggers_dict.get("vaginal_fetish_locked", 0) < day or person.event_triggers_dict["VT_vaginal_fetish_start"] is True:
-                                if person.event_triggers_dict.get("vaginal_fetish_locked", 0) < day :
-                                    $ VTvaginalfetishtt = f"{{image=creamcherry_small}} Natural Vaginal Fetish Event will trigger soon!"
+                                if person.event_triggers_dict.get("vaginal_fetish_locked", 0) > day and person.event_triggers_dict.get("VT_vaginal_fetish_start", False) is True:
+                                    $ VTvaginalfetishtt = f"{{image=creamcherry_small}} Vaginal Fetish Intro will unlock in "+str(person.event_triggers_dict.get("vaginal_fetish_locked", 0)  - day)+" days!"
+                                else:
+                                    $ VTvaginalfetishtt = f"{{image=creamcherry_small}} She meets the requirements! \nIt will unlock the following day."
                             else:
                                 $ VTvaginalfetishtt = f"{{image=question_mark_small}} Unlock the Vaginal Fetish?"
                                 #the amount of sex related to fetish
-                                if person.vaginal_sex_count < 10 or person.vaginal_creampie_count < 10:
+                                if person.vaginal_sex_count < 10 and person.vaginal_creampie_count < 10:
                                     $ VTvaginalfetishtt += f"\n{{image=progress_token_small}} Make love to your Vaginal Queen!"
                                     $ VTvaginalfetishtt += f"\n{{image=triskelion_token_small}} Have vaginal sex with her "+str(10 - person.vaginal_sex_count)+" more times!"
                                     $ VTvaginalfetishtt += f"\n OR "
@@ -1755,9 +1762,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     $ VTvaginalfetishtt += f"\n{{image=triskelion_token_small}} Have vaginal sex with her!"
                                 #the sluttiness required
                                 if person.sluttiness < 60:
-                                    $ VTvaginalfetishtt += f"\n{{image=gold_heart_token_small}} Corrupt her innocence by {60 - person.sluttiness} points!"
+                                    $ VTvaginalfetishtt += f"\n{{image=gold_heart_token_small}} Corrupt her innocence by {60 - person.sluttiness} /60 points!"
                                 #the opinions required
                                 if person.opinion.vaginal_sex < 2  or person.opinion.creampies < 2:
+                                    $ VTvaginalfetishtt += f"\n Make her opinion loves Vaginal Sex or Creampies"
                                     if not person.known_opinion("vaginal sex"):
                                         $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Ask about Vaginal Sex."
                                     elif person.opinion.vaginal_sex < 2:
@@ -1767,10 +1775,21 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     elif person.opinion.creampies < 2:
                                         $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love vaginal creampies."
 
+                                elif not person.known_opinion("bareback sex"):
+                                    $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Ask about Bareback Sex."
+                                elif person.opinion.bareback_sex < 2:
+                                    $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love bareback sex."
+
                                 elif not person.known_opinion("showing her ass"):
                                     $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Ask about showing her ass."
                                 elif person.opinion.showing_her_ass < 2:
                                     $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing her ass."
+
+                                elif not person.known_opinion("missionary style sex"):
+                                    $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Ask about Missionary Style Sex."
+                                elif person.opinion.missionary_style < 2:
+                                    $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love Missionary Style Sex."
+
                 #the interactive icons during sex stuff
                 if 'position_choice' in globals():
                     $ VTvaginalfetishat = "sexualized"
@@ -1832,15 +1851,17 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 (person.anal_sex_count >= 10 or person.anal_creampie_count >= 10)
                                 and person.anal_sex_skill >= 4
                                 and person.is_willing(doggy_anal)
-                                and person.has_broken_taboo(["anal_sex"])
+                                and person.has_broken_taboo("anal_sex")
                                 and person.sluttiness >= 60
                                 and (person.opinion.anal_sex >= 2 or person.opinion.anal_creampies >= 2)
+                                and person.opinion.doggy_style >= 2
                                 and person.opinion.showing_her_ass >= 2
                             ):
                                 $ VTanalfetishst = "vtcherries"
-                                #if person.event_triggers_dict.get("anal_fetish_locked", 0) < day or person.event_triggers_dict["VT_anal_fetish_start"] is True:
-                                if person.event_triggers_dict.get("anal_fetish_locked", 0) < day :
-                                    $ VTanalfetishtt = f"{{image=creamcherry_small}} Natural Anal Fetish Event will trigger soon!"
+                                if person.event_triggers_dict.get("anal_fetish_locked", 0) > day and person.event_triggers_dict.get("VT_anal_fetish_start", False) is True:
+                                    $ VTanalfetishtt = f"{{image=creamcherry_small}} Anal Fetish Intro will unlock in "+str(person.event_triggers_dict.get("anal_fetish_locked", 0)  - day)+" days!"
+                                else:
+                                    $ VTanalfetishtt = f"{{image=creamcherry_small}} She meets the requirements! \n It will unlock the following day."
                             else:
                                 $ VTanalfetishtt = f"{{image=question_mark_small}} Unlock the Anal Fetish?"
                                 #the amount of sex related to fetish
@@ -1876,6 +1897,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     $ VTanalfetishtt += f"\n{{image=question_mark_small}} Ask about showing her ass."
                                 elif person.opinion.showing_her_ass < 2:
                                     $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing her ass."
+
+                                elif not person.known_opinion("doggystyle"):
+                                    $ VTanalfetishtt += f"\n{{image=question_mark_small}} Ask about Doggy Style Sex."
+                                elif person.opinion.doggy_style < 2:
+                                    $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love doggy style sex."
                 #the interactive icons during sex stuff
                 if 'position_choice' in globals():
                     $ VTanalfetishat = "sexualized"
@@ -1916,29 +1942,27 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ VTbreedfetishtt = f"{{image=question_mark_small}} Her thoughts on vaginal sex?"
                 else:
                     if person.sexy_opinions.get("vaginal sex")[1]==True:
-                        if person.has_breeding_fetish:
-                            # $ VTvaginalfetishst = "vtcherries"
-                            # $ VTvaginalfetishtt = f"\n{{image=triskelion_token_small}} mmmm stick your {random_cock_word} in my {random_pussy_word}!"
+                        if person.has_breeding_fetish or breeding_fetish_role in person.special_role:
                             if person.days_since_event("LastBreedingFetish") > 10 and not person.is_pregnant:
                                 if person.vaginal_cum == 0:
                                     $ VTbreedfetishst = "vtcherries"
-                                    $ VTbreedfetishtt = f"{{image=progress_token_small}} MMmmMm going to need another \nyummy creampie filling soon!"
+                                    $ VTbreedfetishtt = f"{{image=progress_token_small}} My womb is craving your seed... fill me to the brim!"
                                 else:
                                     $ VTbreedfetishst = "creamcherry"
-                                    $ VTbreedfetishtt = f"{{image=triskelion_token_small}} MMmmMm feeling your seed inside me, might get pregnant!"
+                                    $ VTbreedfetishtt = f"{{image=triskelion_token_small}} Your cum is warming my belly... I can feel it trying to take root."
                             else:
                                 if person.is_pregnant:
                                     $ VTbreedfetishst = "creamcherry"
                                     $ VTbreedfetishtt = "*fetish 'full'filled*"
-                                    $ VTbreedfetishtt = f"{{image=creamcherry_small}} MMmmMmmm my womb is happy."
+                                    $ VTbreedfetishtt = f"{{image=creamcherry_small}} Blissful and bred... my womb is at peace."
                                 else:
                                     if person.vaginal_cum > 0:
                                         $ VTbreedfetishst = "creamcherry"
                                         $ VTbreedfetishtt = "*fetish 'full'filled*"
-                                        $ VTbreedfetishtt = f"{{image=creamcherry_small}} MMmmMmmm give me more!"
+                                        $ VTbreedfetishtt = f"{{image=creamcherry_small}} More, please... I'm not yet sated."
                                     else:
                                         $ VTbreedfetishst = "vtcherries"
-                                        $ VTbreedfetishtt = f"{{image=creamcherry_small}} Breed me! Flood my womb full of your cum!"
+                                        $ VTbreedfetishtt = f"{{image=creamcherry_small}} Claim me, breed me, fill me to overflowing!"
                         else:
                             #List of everything one needs to make Breeding  Fetish happen
                             if (person.vaginal_creampie_count >= 10
@@ -1951,11 +1975,13 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 and person.opinion.creampies >= 2
                                 and person.opinion.bareback_sex >= 2
                                 and person.opinion.showing_her_ass >= 2
+                                and person.opinion.missionary_style >= 2
                             ):
                                 $ VTbreedfetishst = "vtcherries"
-                                #if person.event_triggers_dict.get("breeding_fetish_locked", 0) < day or person.event_triggers_dict["VT_breeding_fetish_start"] is True:
-                                if person.event_triggers_dict.get("breeding_fetish_locked", 0) < day:
-                                    $ VTbreedfetishtt = f"{{image=creamcherry_small}} Natural Breeding Fetish Event will trigger soon!"
+                                if person.event_triggers_dict.get("breeding_fetish_locked", 0) > day and person.event_triggers_dict.get("VT_breeding_fetish_start", False) is True:
+                                    $ VTbreedfetishtt = f"{{image=creamcherry_small}} Breeding Fetish Intro will unlock in "+str(person.event_triggers_dict.get("breeding_fetish_locked", 0)  - day)+" days!"
+                                else:
+                                    $ VTbreedfetishtt = f"{{image=creamcherry_small}} She meets the requirements! \n It will unlock the following day."
                             else:
                                 $ VTbreedfetishtt = f"{{image=question_mark_small}} Unlock the Breeding Fetish?"
                                 #the amount of sex related to fetish
@@ -1997,6 +2023,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 elif person.opinion.showing_her_ass < 2:
                                     $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing her ass."
 
+                                elif not person.known_opinion("missionary style sex"):
+                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Ask about Missionary Style Sex."
+                                elif person.opinion.missionary_style < 2:
+                                    $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Get her to love Missionary Style Sex."
                 #the interactive icons during sex stuff
                 if 'position_choice' in globals():
                     if hasattr(position_choice, 'skill_tag'):
@@ -2030,13 +2060,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     if person.vaginal_cum >0:
                         if person.vaginal_cum == 1:
                             if person.hymen <=1:
-                                $ VTbreedfetishst = "vaghymen"
                                 $ VTbreedfetishtt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh"+VTbreedfertile+VTpro+" womb with your seed."
                             else:
                                 $ VTbreedfetishtt += f"\n{{image=beezee_token_small}} Your seed is in her"+VTbreedfertile+VTpro+" womb."
                         else:
                             if person.hymen <=1:
-                                $ VTbreedfetishst = "vaghymen"
                                 $ VTbreedfetishtt += f"\n{{image=handprint_token_small}}{{image=beezee_token_small}} Marked her fresh"+VTbreedfertile+VTpro+" womb with "+str(person.vaginal_cum)+ " doses of your seed."
                             else:
                                 $ VTbreedfetishtt += f"\n{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her"+VTbreedfertile+VTpro+" womb."+daysince
@@ -2046,9 +2074,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         action NullAction()
                         tooltip VTbreedfetishtt
 
-                    if person.hymen >1 and person.vaginal_cum >1:
-                        imagebutton:
-                            pos(866, 166)
-                            idle "bc_cum"
-                            action NullAction()
-                            tooltip VTbreedfetishtt
+                    # if person.hymen >1 and person.vaginal_cum >1:
+                        # imagebutton:
+                            # pos(866, 166)
+                            # idle "bc_cum"
+                            # action NullAction()
+                            # tooltip VTbreedfetishtt

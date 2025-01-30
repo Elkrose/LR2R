@@ -171,8 +171,10 @@ init 16 python:
             park.background_name = "Park_Morning_Background"
         elif time_of_day == 2:
             park.background_name = "Park_Afternoon_Background"
-        elif time_of_day >3:
+        elif time_of_day ==3:
             park.background_name = "Park_Evening_Background"
+        elif time_of_day ==4:
+            park.background_name = "Park_Night_Background"
         
         if day==0:
             return time_of_day in (0,1, 2, 3,4) and day != 0
@@ -682,7 +684,6 @@ label park_public_label(the_person, temp_outfit):
         "Soon you come to the end of the park, where the path is just a narrow strip next to the trees."
         the_person "I guess that's all there is to see this way. I'm going to get dressed again, and then we can head back and do something else."
         $ vt_generalised_dressing_description(the_person, temp_outfit)
-        $ the_person.tan_style = None
     elif the_person.effective_sluttiness(["bare_tits","bare_pussy"]) > 60:
         "After a few minutes of walking [the_person.title] slows down and lets go of your arm."
         mc.name "Everything alright?"
@@ -744,7 +745,6 @@ label park_public_label(the_person, temp_outfit):
         "You walk together until the beach is just a sliver of sand running along the waters edge. With nothing more to see, you turn around and stroll back towards the center of the beach."
         "[the_person.title] gets redressed before you get to the most populated sections, to avoid getting you both in trouble."
         $ vt_generalised_dressing_description(the_person, temp_outfit)
-        $ the_person.tan_style = None
     elif the_person.effective_sluttiness(["underwear_nudity","bare_tits"]) > 40:
         $ scene_manager.strip_to_underwear(the_person, visible_enough = False)
         $ scene_manager.update_actor(the_person)
@@ -784,8 +784,6 @@ label park_public_label(the_person, temp_outfit):
         "You stroll back, chatting with each other as you go. [the_person.title] eagerly points out all the men trying to take subtle glances at her tits, pressing up against your side tightly as you walk."
         "She finally puts her top back on when you get back to the heavily populated area of the beach, to avoid getting you both in trouble."
         $ vt_generalised_dressing_description(the_person, temp_outfit)
-        if not the_person.tan_style == None:
-            $ the_person.tan_style = slutty_tan
     elif the_person.effective_sluttiness("underwear_nudity") > 30:
         "You walk along the beach for a few minutes, passing by groups of people with umbrellas and tents set up."
         the_person "Hey, you see those guys over there?"

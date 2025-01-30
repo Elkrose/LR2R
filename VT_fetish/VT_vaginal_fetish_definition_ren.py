@@ -83,21 +83,21 @@ def add_vaginal_fetish(person: Person):
     if person.vaginal_sex_skill < 6:
         person.update_sex_skill("Vaginal", 6)
     person.set_event_day("LastVaginalFetish")
-    fetish_add_collar(person, fuck_doll_collar)
+    #fetish_add_collar(person, fuck_doll_collar)
     person.unlock_spanking()
 
 def get_vaginal_fetish_unique_dialogue_list():
     vaginal_list = [lily, starbuck, mom, stephanie]
     return vaginal_list
 
-def debug_set_stats_for_vaginal_fetish_mins(person: Person):
-    person.arousal = 0
-    person.energy = person.max_energy
-    person.max_opinion_score("vaginal sex")
-    person._sluttiness = 70
-    person._obedience = 100
-    person.happiness = 100
-    person.love = 0
+# def debug_set_stats_for_vaginal_fetish_mins(person: Person):
+    # person.arousal = 0
+    # person.energy = person.max_energy
+    # person.max_opinion_score("vaginal sex")
+    # person._sluttiness = 70
+    # person._obedience = 100
+    # person.happiness = 100
+    # person.love = 0
 
 def abort_vaginal_fetish_intro(person: Person): #Use this function to exit a vaginal fetish scene for whatever reason (something fails, MC choice, etc.)
     person.event_triggers_dict["vaginal_fetish_start"] = False
@@ -111,7 +111,7 @@ def add_fetish_vaginal_staylate_event(person: Person):
         Fetish_Action("Employee stays late", fetish_vaginal_staylate_event_requirement, "fetish_vaginal_staylate_event_label", args = person, priority = 10, fetish_type = "vaginal")
     )
 
-#This is a list of positions that show off a person's pussy. Can grab one randomly for when a girl wants to show off pussy specifically
-def SB_get_random_pussy_position():
-    return get_random_from_list(["back_peek", "standing_doggy", "doggy", "walking_away"])
+# #This is a list of positions that show off a person's pussy. Can grab one randomly for when a girl wants to show off pussy specifically
+# def SB_get_random_pussy_position():
+    # return get_random_from_list(["back_peek", "standing_doggy", "doggy", "walking_away"])
 
