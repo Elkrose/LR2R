@@ -70,8 +70,6 @@ def vt_init_list_of_sexy_opinions() -> list[str]:
         "taking control",  # Has gameplay effect
         "threesomes",
         "vaginal sex",  # Has gameplay effect
-        # TODO: Add an "open relationships" sexy opinion. Reduces penalties of a girl seeing you cheating on her (at high levels add a special training to give a "harem member" role,.
-        # TODO: Add a "voyeurism" sexy opinion. Increases effects of watching someone having sex.
     ]
 
 class VTPerson(Person):
@@ -159,6 +157,10 @@ class VTPerson(Person):
                 self.body_type = "standard_body"
                 return True
             return False
+
+    @property
+    def fetish_count(self) -> int:
+        return builtins.len([x for x in self.special_role if x in (anal_fetish_role, cum_fetish_role, breeding_fetish_role, exhibition_fetish_role, vaginal_fetish_role)])
 
     @property
     def has_vaginal_fetish(self) -> bool:
@@ -525,8 +527,31 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
         if self.vaginal_cum > 0 and (day - self.sex_record.get("Last Vaginal Day", -1)) >= 4:
             self.vaginal_cum -= 1
         # auto-develop natural fetishes without serums or nanos
+        if (not self.has_exhibition_fetish \
+            and self.sex_record.get("Public Sex", 0) > 19 \
+            and self.has_broken_taboo("sucking_cock") \
+            and self.has_broken_taboo("vaginal_sex") \
+            and self.has_broken_taboo("anal_sex") \
+            and self.has_broken_taboo("bare_tits") \
+            and self.has_broken_taboo("bare_pussy") \
+            and self.sluttiness >= 60 \
+            and self.oral_sex_skill >= 4 \
+            and self.anal_sex_skill >= 4 \
+            and self.vaginal_sex_skill >= 4 \
+            and self.opinion.public_sex >= 2 \
+            and self.opinion.not_wearing_anything >= 2 \
+            and self.opinion.not_wearing_underwear >= 2 \
+            and self.opinion.showing_her_ass >= 2 \
+            and self.opinion.showing_her_tits >= 2 \
+            and self.opinion.skimpy_outfits >= 2 \
+            and self.opinion.skimpy_uniforms >= 2 \
+            and self.opinion.masturbating >= 2 ):
+            if VT_start_exhibition_fetish_quest(self):
+                self.event_triggers_dict["VT_exhibition_fetish_start"] = True
+
         if (not self.has_cum_fetish \
             and self.cum_exposure_count >=20 \
+            and self.has_broken_taboo("sucking_cock") \
             and self.has_broken_taboo("condomless_sex") \
             and self.has_broken_taboo("anal_sex") \
             and self.has_broken_taboo("vaginal_sex") \
@@ -534,15 +559,15 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
             and self.has_broken_taboo("bare_pussy") \
             and self.oral_sex_skill >= 4 \
             and self.sluttiness >= 60 \
-            and self.opinion.giving_blowjobs == 2 \
-            and self.opinion.being_covered_in_cum == 2 \
-            and self.opinion.cum_facials == 2 \
-            and self.opinion.drinking_cum == 2 \
-            and self.opinion.showing_her_tits == 2 \
-            and self.opinion.creampies == 2 \
-            and self.opinion.anal_creampies == 2 \
-            and self.opinion.bareback_sex == 2 \
-            and self.opinion.giving_handjobs == 2 ):
+            and self.opinion.giving_blowjobs >= 2 \
+            and self.opinion.being_covered_in_cum >= 2 \
+            and self.opinion.cum_facials >= 2 \
+            and self.opinion.drinking_cum >= 2 \
+            and self.opinion.showing_her_tits >= 2 \
+            and self.opinion.creampies >= 2 \
+            and self.opinion.anal_creampies >= 2 \
+            and self.opinion.bareback_sex >= 2 \
+            and self.opinion.giving_handjobs >= 2 ):
             if VT_start_cum_fetish_quest(self):
                 self.event_triggers_dict["VT_cum_fetish_start"] = True
 
@@ -553,7 +578,9 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
             and self.has_broken_taboo("vaginal_sex") \
             and self.sluttiness >=60 \
             and (self.opinion.vaginal_sex >=2 or self.opinion.creampies >=2) \
-            and self.opinion.showing_her_ass >= 2 ):
+            and self.opinion.bareback_sex >= 2 \
+            and self.opinion.showing_her_ass >= 2 \
+            and self.opinion.missionary_style >= 2 ):
             if VT_start_vaginal_fetish_quest(self):
                 self.event_triggers_dict["VT_vaginal_fetish_start"] = True
 
@@ -564,6 +591,7 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
                 and self.has_broken_taboo("anal_sex") \
                 and self.sluttiness >= 60 \
                 and (self.opinion.anal_sex >= 2 or self.opinion.anal_creampies >= 2 ) \
+                and self.opinion.doggy_style >= 2 \
                 and self.opinion.showing_her_ass >= 2 ):
             if VT_start_anal_fetish_quest(self):
                 self.event_triggers_dict["VT_anal_fetish_start"] = True
@@ -579,31 +607,10 @@ def _vt_postfix_person_run_day(wrapped_func: Callable) -> Callable:
                 and self.opinion.bareback_sex >=2 \
                 and self.opinion.showing_her_ass >= 2 \
                 and self.opinion.vaginal_sex >= 2 \
+                and self.opinion.missionary_style >= 2 \
                 and self.opinion.creampies >= 2 ):
             if VT_start_breeding_fetish_quest(self):
                 self.event_triggers_dict["VT_breeding_fetish_start"] = True
-
-        if (not self.has_exhibition_fetish \
-            and self.sex_record.get("Public Sex", 0) > 19 \
-            and self.has_broken_taboo("sucking_cock") \
-            and self.has_broken_taboo("vaginal_sex") \
-            and self.has_broken_taboo("anal_sex") \
-            and self.has_broken_taboo("bare_tits") \
-            and self.has_broken_taboo("bare_pussy") \
-            and self.oral_sex_skill >= 4 \
-            and self.anal_sex_skill >= 4 \
-            and self.vaginal_sex_skill >= 4 \
-            and self.sluttiness >= 60 \
-            and self.opinion.public_sex >= 2 \
-            and self.opinion.not_wearing_anything >= 2 \
-            and self.opinion.not_wearing_underwear >= 2 \
-            and self.opinion.showing_her_ass >= 2 \
-            and self.opinion.showing_her_tits >= 2 \
-            and self.opinion.skimpy_outfits >= 2 \
-            and self.opinion.skimpy_uniforms >= 2 \
-            and self.opinion.masturbating >= 2 ):
-            if VT_start_exhibition_fetish_quest(self):
-                self.event_triggers_dict["VT_exhibition_fetish_start"] = True
 
         #run randomizer for girls
         VT_shuffle_and_update()

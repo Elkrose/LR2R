@@ -167,16 +167,16 @@ def get_location_tooltip(location: Room) -> str:
                     else:
                         info.append("{image=bluelotus_small}")
  
-            if  (getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1) and (person.hymen==0 and person.anal_virgin==0 and person.oral_virgin==0) and  perk_system.has_ability_perk("Oral Virgin Perception") and  perk_system.has_ability_perk("Anal Virgin Perception") and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
+            if  (getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1) and (person.hymen==0 and person.anal_virgin==0 and person.oral_virgin==0) and  perk_system.has_ability_perk("Lip Lock Intuition") and  perk_system.has_ability_perk("Midnight Mirage") and  perk_system.has_ability_perk("Rose Petal Insight"):
                info.append("{image=virgin_token_small}")
             else:
-                if getattr(persistent, "virgin_vaginal")==1 and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
+                if getattr(persistent, "virgin_vaginal")==1 and  perk_system.has_ability_perk("Rose Petal Insight"):
                     if person.hymen == 0:
                         info.append("{image=virgin_vaginal_small}")
-                if getattr(persistent, "virgin_anal")==1 and  perk_system.has_ability_perk("Anal Virgin Perception"):
+                if getattr(persistent, "virgin_anal")==1 and  perk_system.has_ability_perk("Midnight Mirage"):
                     if person.anal_virgin == 0:
                         info.append("{image=virgin_anal_small}")
-                if getattr(persistent, "virgin_oral")==1 and  perk_system.has_ability_perk("Oral Virgin Perception"):
+                if getattr(persistent, "virgin_oral")==1 and  perk_system.has_ability_perk("Lip Lock Intuition"):
                     if person.oral_virgin == 0:
                         info.append("{image=virgin_oral_small}")
  
@@ -373,16 +373,16 @@ def build_tile_information(known_people: list[Person], total_people: int, locati
             extra_info.append("{image=goldlotus_small}")
 
     #Virginal
-    if  (getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1) and any(x for x in known_people if x.hymen==0 and x.anal_virgin==0 and x.oral_virgin==0 and  perk_system.has_ability_perk("Oral Virgin Perception") and  perk_system.has_ability_perk("Anal Virgin Perception") and  perk_system.has_ability_perk("Vaginal Virgin Perception")):
+    if  (getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1) and any(x for x in known_people if x.hymen==0 and x.anal_virgin==0 and x.oral_virgin==0 and  perk_system.has_ability_perk("Lip Lock Intuition") and  perk_system.has_ability_perk("Midnight Mirage") and  perk_system.has_ability_perk("Rose Petal Insight")):
             extra_info.append("{image=virgin_token_small}")
     else:
-        if getattr(persistent, "virgin_vaginal")==1 and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
+        if getattr(persistent, "virgin_vaginal")==1 and  perk_system.has_ability_perk("Rose Petal Insight"):
             if any(x for x in known_people if x.hymen == 0):
                 extra_info.append("{image=virgin_vaginal_small}")
-        if getattr(persistent, "virgin_anal")==1 and  perk_system.has_ability_perk("Anal Virgin Perception"):
+        if getattr(persistent, "virgin_anal")==1 and  perk_system.has_ability_perk("Midnight Mirage"):
             if any(x for x in known_people if x.anal_virgin == 0):
                 extra_info.append("{image=virgin_anal_small}")
-        if getattr(persistent, "virgin_oral")==1 and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
+        if getattr(persistent, "virgin_oral")==1 and  perk_system.has_ability_perk("Lip Lock Intuition"):
             if any(x for x in known_people if x.oral_virgin == 0):
                 extra_info.append("{image=virgin_oral_small}")
 

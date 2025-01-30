@@ -146,16 +146,16 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                             else:
                                 info.append("{image=bluelotus_small}")
             if not item.is_stranger:
-                if  getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1 and item.hymen==0 and item.anal_virgin==0 and item.oral_virgin==0 and  perk_system.has_ability_perk("Oral Virgin Perception") and  perk_system.has_ability_perk("Anal Virgin Perception") and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
+                if  getattr(persistent, "virgin_vaginal")==1 and  getattr(persistent, "virgin_anal")==1 and  getattr(persistent, "virgin_oral")==1 and item.hymen==0 and item.anal_virgin==0 and item.oral_virgin==0 and  perk_system.has_ability_perk("Lip Lock Intuition") and  perk_system.has_ability_perk("Midnight Mirage") and  perk_system.has_ability_perk("Rose Petal Insight"):
                     info.append("{image=virgin_token_small}")
                 else:
-                    if getattr(persistent, "virgin_vaginal")==1 and  perk_system.has_ability_perk("Vaginal Virgin Perception"):
+                    if getattr(persistent, "virgin_vaginal")==1 and  perk_system.has_ability_perk("Rose Petal Insight"):
                         if item.hymen == 0:
                             info.append("{image=virgin_vaginal_small}")
-                    if getattr(persistent, "virgin_anal")==1 and  perk_system.has_ability_perk("Anal Virgin Perception"):
+                    if getattr(persistent, "virgin_anal")==1 and  perk_system.has_ability_perk("Midnight Mirage"):
                         if item.anal_virgin == 0:
                             info.append("{image=virgin_anal_small}")
-                    if getattr(persistent, "virgin_oral")==1 and  perk_system.has_ability_perk("Oral Virgin Perception"):
+                    if getattr(persistent, "virgin_oral")==1 and  perk_system.has_ability_perk("Lip Lock Intuition"):
                         if item.oral_virgin == 0:
                             info.append("{image=virgin_oral_small}")
                 if any((draw_insta, draw_dikdok, draw_onlyfans)):

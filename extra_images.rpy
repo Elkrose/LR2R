@@ -7,6 +7,7 @@ init -10:
     image bg park_afternoon_background = park_afternoon_background_image
     image bg park_morning_background = park_morning_background_image
     image bg park_evening_background = park_evening_background_image
+    image bg park_night_background = park_night_background_image
     image bg park_early_morning_background = park_early_morning_background_image
     image bg park_bushes_background = park_bushes_background_image
     image information_mark = "[information_image.filename]"
