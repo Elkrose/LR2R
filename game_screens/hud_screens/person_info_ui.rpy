@@ -1246,7 +1246,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 if 'position_choice' in globals()and hasattr(position_choice, 'skill_tag'):
                     if position_choice.skill_tag == 'Anal':
                         $ VTanalat = "sexualized"
-                        if position_choice.name in ["Anal Cowgirl", "Anal Doggy", "Anal On Lap", "Anal Piledriver", "Anal Standing", "Anal Swing", "Doggy Anal", "Doggy Anal Dildo DP", "Prone Anal"]:
+                        if position_choice.name in ["Anal Cowgirl", "Anal Doggy", "Anal On Lap", "Anal Piledriver", "Anal Standing", "Anal Swing", "Doggy Anal", "Doggy Anal Dildo DP", "Prone Anal", "Standing Anal"]:
                             $VTorifice_current = "Anal"
                             $ VTanalst = "yesanal"
                             if position_choice.name == "Anal Doggy":
@@ -1261,6 +1261,8 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 $ VTanaltt = f"{{image=yesanal_small}} You thrust your {random_condom_word} {random_cock_word} deep up her {random_anal_word}, her body trembling with each thrust as you take her from behind...."
                             elif position_choice.name == "Anal Swing":
                                 $ VTanaltt = f"{{image=yesanal_small}} You fuck her {random_anal_word} while rocking the swing, the motion sending waves of pleasure through her body...."
+                            elif position_choice.name == "Standing Anal":
+                                $ VTanaltt = f"{{image=yesanal_small}} You thrust your {random_condom_word} {random_cock_word} deep up her {random_anal_word}, her body trembling with each thrust as you take her from behind...."
                             elif position_choice.name == "Doggy Anal":
                                 $ VTanaltt = f"{{image=yesanal_small}} You fuck her like a bitch in heat, her body responding to your every thrust as you take her from behind...."
                             elif position_choice.name == "Doggy Anal Dildo DP":
@@ -1399,6 +1401,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 $ VTexhibitfetishst = "creamcherry"
                                 $ VTexhibitfetishtt = "*fetish 'a'salted complete*"
                                 $ VTexhibitfetishtt = f"{{image=creamcherry_small}} MMmmMm my skin feels good."
+                            $ VTexhibitfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("exhibition_fetish_locked", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Exhibition happen
                             if (
@@ -1563,6 +1566,8 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 $ VTcumfetishst = "creamcherry"
                                 $ VTcumfetishtt = "*fetish 'salty' lipbalm complete!*"
                                 $ VTcumfetishtt += f"\n{{image=creamcherry_small}} MMmmMm still taste you in my mouth..."
+                        
+                            $ VTcumfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("cum_fetish_locked", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Cum Fetish happen
                             if (
@@ -1725,6 +1730,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 else:
                                     $ VTvaginalfetishst = "vtcherries"
                                     $ VTvaginalfetishtt = f"{{image=creamcherry_small}} I crave the feeling of your {random_cock_word} sliding into my {random_pussy_word}, stretching me, filling me..."
+                            $ VTvaginalfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("vaginal_fetish_locked", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Vaginal  Fetish happen
                             if (
@@ -1845,6 +1851,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 $ VTanalfetishst = "creamcherry"
                                 $ VTanalfetishtt = "*fetish 'ass'salted complete*"
                                 $ VTanalfetishtt += f"\n{{image=creamcherry_small}} MMmmMm my ass still molded to your cock."
+                            $ VTanalfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("anal_fetish_locked", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Anal  Fetish happen
                             if (
@@ -1963,6 +1970,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     else:
                                         $ VTbreedfetishst = "vtcherries"
                                         $ VTbreedfetishtt = f"{{image=creamcherry_small}} Claim me, breed me, fill me to overflowing!"
+                                $ VTbreedfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("breeding_fetish_locked", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Breeding  Fetish happen
                             if (person.vaginal_creampie_count >= 10
