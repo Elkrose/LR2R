@@ -125,7 +125,7 @@ def mandatory_fertility_collar_policy_on_turn():
         #Black: Infertile or Menstrual Phase
         if person.is_infertile or person.on_birth_control:
             if person.has_breeding_fetish:
-                mandatory_policy_collar(person, breed_me_collar, [.04, .04, .04, 1], "Pattern_1", [.97, .97, 1, 1])
+                mandatory_policy_collar(person, breed_collar, [.04, .04, .04, 1], "Pattern_1", [.97, .97, 1, 1])
             elif person.has_cum_fetish:
                 mandatory_policy_collar(person, cum_slut_collar, [.04, .04, .04, 1], "Pattern_1", [.97, .97, 1, 1])
             elif person.sluttiness > 70 or person.has_vaginal_fetish or person.has_anal_fetish:
@@ -135,7 +135,7 @@ def mandatory_fertility_collar_policy_on_turn():
         #White: Pregnant
         elif person.is_pregnant:
             if person.has_breeding_fetish:
-                mandatory_policy_collar(person, breed_me_collar, [1, 1, 1, 1], "Pattern_1", [.04, .04, .04, 1])
+                mandatory_policy_collar(person, breed_collar, [1, 1, 1, 1], "Pattern_1", [.04, .04, .04, 1])
             elif person.has_cum_fetish:
                 mandatory_policy_collar(person, cum_slut_collar, [1, 1, 1, 1], "Pattern_1", [.04, .04, .04, 1])
             elif person.sluttiness > 70 or person.has_vaginal_fetish or person.has_anal_fetish:
@@ -155,7 +155,7 @@ def mandatory_fertility_collar_policy_on_turn():
         #Red: Prolific Phase
         elif person.days_from_ideal_fertility <= 6:
             if person.has_breeding_fetish:
-                mandatory_policy_collar(person, breed_me_collar, [.65, .01, .01, 1], "Pattern_1", [.97, .97, 1, 1])
+                mandatory_policy_collar(person, breed_collar, [.65, .01, .01, 1], "Pattern_1", [.97, .97, 1, 1])
             elif person.has_cum_fetish:
                 mandatory_policy_collar(person, cum_slut_collar, [.65, .01, .01, 1], "Pattern_1", [.97, .97, 1, 1])
             elif person.sluttiness > 70 or person.has_vaginal_fetish or person.has_anal_fetish:
@@ -165,7 +165,7 @@ def mandatory_fertility_collar_policy_on_turn():
         #Grey: Secretory Phase
         elif person.days_from_ideal_fertility > 6:
             if person.has_breeding_fetish:
-                mandatory_policy_collar(person, breed_me_collar, [.36, .36, .36, 1], "Pattern_1", [.97, .97, 1, 1])
+                mandatory_policy_collar(person, breed_collar, [.36, .36, .36, 1], "Pattern_1", [.97, .97, 1, 1])
             elif person.has_cum_fetish:
                 mandatory_policy_collar(person, cum_slut_collar, [.36, .36, .36, 1], "Pattern_1", [.97, .97, 1, 1])
             elif person.sluttiness > 70 or person.has_vaginal_fetish or person.has_anal_fetish:
