@@ -335,6 +335,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     # $ daysince = "\nMy womb feels empty!"
                 # else:
                     # $ daysince = "\nYour sperm in me for "+str(dayslastsex)+" more days!\n Such warm butterflies!"
+        $VTorifice_current = "None"
     #### VT HUD UI ####
         if getattr(persistent, "HUDVT")==1:
     #### Relationship Status
@@ -860,7 +861,6 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         action NullAction()
                         tooltip f"{{image=donetrain_token_small}} Already Trained her!"
 
-                $VTorifice_current = "None"
     #hymen is 0 = sealed, 1=recently torn bleeding, 2=normal - serum to regenerate vaginal and hymen
     #0=virgin, 1=just the tip, 2=full penetration, 3-10 is degree of tightness
     #### Oral Virgin Flag
@@ -1060,8 +1060,8 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     if position_choice.skill_tag == 'Pussy':
                         $ VTvaginalat = "sexualized"
                         if position_choice.name in ["Against Wall", "Cowgirl", "Doggy","Facing Wall", "Missionary", "Piledriver","Piledriver DP", "Prone Bone", "Reverse Cowgirl", "Spooning Sex", "Standing Doggy"]:
-                           $ VTorifice_current = "Pussy"
-                           if position_choice.name in ["Against Wall", "Cowgirl", "Doggy","Facing Wall", "Missionary", "Piledriver","Piledriver DP", "Prone Bone", "Reverse Cowgirl", "Spooning Sex", "Standing Doggy"]:
+                            $ VTorifice_current = "Pussy"
+                            if position_choice.name in ["Against Wall", "Cowgirl", "Doggy","Facing Wall", "Missionary", "Piledriver","Piledriver DP", "Prone Bone", "Reverse Cowgirl", "Spooning Sex", "Standing Doggy"]:
                                 $ VTvaginalst = "spreadvag"
                                 if position_choice.name == "Against Wall":
                                     $ VTvaginaltt = f"{{image=spreadvag_small}} You slam your {random_condom_word} {random_cock_word} into her {random_pussy_word}, feeling her warm juices gush around you as she screams in ecstasy."
@@ -1802,14 +1802,14 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 else:
                     $ VTvaginalfetishat = "talking"
                 if VTvaginalfetishat=="sexualized":
-                   if person.vaginal_cum >0:
+                    if person.vaginal_cum >0:
                         if person.vaginal_cum == 1:
                             $ VTvaginalfetishst = "openvag"
                             $ VTvaginalfetishtt += f"\n{{image=beezee_token_small}} Your cum is swimming in her"+VTbreedfertile+VTpro+" womb."
                         else:
                             $ VTvaginalfetishst = "ahegaovag"
                             $ VTvaginalfetishtt += f"\n{{image=beezee_token_small}} "+ str(person.vaginal_cum) +" doses of your cum \n swimming in her"+VTbreedfertile+VTpro+" womb."
-                   imagebutton:
+                    imagebutton:
                         pos(792, 166)
                         idle VTvaginalfetishst
                         action NullAction()
