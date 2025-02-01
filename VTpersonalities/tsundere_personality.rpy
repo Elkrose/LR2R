@@ -327,7 +327,7 @@ label tsundere_sex_accept(the_person, the_position):
                 the_person "Oh, I've been wanting you to do that for a while now. Just thinking about it makes me wet."
             elif the_position.skill_tag == "Oral":
                 if "getting head" in the_position.opinion_tags:
-                    the_person "Ugh, I can't wait any longer. Suck my [pussy/clit] already!"
+                    the_person "Ugh, I can't wait any longer. Suck my clit already!"
                 else:
                     the_person "You're going down on me right now, and you're going to make me cum."
             else:
