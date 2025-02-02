@@ -1025,7 +1025,7 @@ label park_to_chill_label(the_person, temp_outfit):
         "You and [the_person.title] continue to play, with [the_person.title] getting more and more flirtatious as the game goes on."
         if the_person.is_willing(handjob, private = False) and not the_person.has_taboo("touching_penis"):
             the_person "I think we're going to win this game, and I think I know just how to celebrate."
-            $ scene_manager.update_actor(the_person, position = "handjob")
+            $ scene_manager.update_actor(the_person, position = "stand3")
             $ mc.change_locked_clarity(5)
             "[the_person.title] reaches out and starts to stroke your cock."
             "The other couple watches in shock as [the_person.title] starts to give you a handjob."
