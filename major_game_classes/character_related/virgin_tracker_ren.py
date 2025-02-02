@@ -122,7 +122,11 @@ class VTPerson(Person):
             extra_modifier = max(self.days_since_event("preg_start_date") - 25, 0) * .17
         return self._weight + extra_modifier    
 
-    def change_weight(self, amount: float, chance: int) -> bool:
+    @weight.setter
+    def weight(self, value: float):
+        self._weight = value
+
+    def change_weight(self, amount: float, chance: int = 100) -> bool:
         if amount == 0:
             return False
 
@@ -136,24 +140,24 @@ class VTPerson(Person):
         switch_point_high = (self.height) * 83
 
         if amount > 0:
-            if self._weight > switch_point_low + 3 and self.body_type == "thin_body":
+            if self.weight > switch_point_low + 3 and self.body_type == "thin_body":
                 self.body_type = "standard_body"
                 return True
-            if self._weight > switch_point_high + 3 and self.body_type == "standard_body":
+            if self.weight > switch_point_high + 3 and self.body_type == "standard_body":
                 self.body_type = "curvy_body"
                 return True
-            if self._weight > max_weight: #Maximum weight
+            if self.weight > max_weight: #Maximum weight
                 self._weight = max_weight
             return False
 
         if amount < 0:
-            if self._weight < min_weight:  #Minimum weight
+            if self.weight < min_weight:  #Minimum weight
                 self._weight = min_weight
                 return False
-            if self._weight < switch_point_low - 3 and self.body_type == "standard_body":
+            if self.weight < switch_point_low - 3 and self.body_type == "standard_body":
                 self.body_type = "thin_body"
                 return True
-            if self._weight < switch_point_high - 3 and self.body_type == "curvy_body":
+            if self.weight < switch_point_high - 3 and self.body_type == "curvy_body":
                 self.body_type = "standard_body"
                 return True
             return False
