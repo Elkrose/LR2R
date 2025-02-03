@@ -466,26 +466,6 @@ def _vt_postfix_restore_taboo(wrapped_func: Callable) -> Callable:
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func
 
-# def _vt_postfix_advance_time_run_move(wrapped_func: Callable) -> Callable:
-    # def wrapping_func(*args, **kwargs):
-        # ret_val = wrapped_func(*args, **kwargs)
-        # #self = args[0]
-
-        # # #Add the  background switch here if needed
-        # if time_of_day == 0:
-            # park.background_name = "Park_Early_Morning_Background"
-        # elif time_of_day == 1:
-            # park.background_name = "Park_Morning_Background"
-        # elif time_of_day == 2:
-            # park.background_name = "Park_Afternoon_Background"
-        # elif time_of_day >3:
-            # park.background_name = "Park_Evening_Background"
-
-
-        # return ret_val # probably None, but core could change
-    # wrapping_func.__signature__ = inspect.signature(wrapped_func)
-    # return wrapping_func
-
 def _vt_postfix_person_run_turn(wrapped_func: Callable) -> Callable:
     def wrapping_func(*args, **kwargs):
         # TODO: make mod install compatible with existing savegames (person doesn't have VT attributes)
