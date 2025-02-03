@@ -2,7 +2,7 @@
 # Tweaked start
 define config.name = _("Lab Rats 2 Reformulate - Cherries Edition")
 define config.window_icon = "VTimages/mod_icon.png"
-define VT_Game_Version = "VTMod4.0.3"
+define VT_Game_Version = "VTMod4.0.4"
 
 init python:
     config.version += VT_Game_Version
@@ -495,7 +495,7 @@ label VT_start():
             mc.business.funds_yesterday = 10000
             mc.business.supply_count = 1000
             mc.business.supply_goal = 1000
-            mc.business.effectiveness_cap = 110
+            mc.business.base_effectiveness_cap  = 110
             mc.business.marketability = 100
             # increased player stats
             mc.max_energy = 120
@@ -583,7 +583,7 @@ label VT_start():
             mc.business.funds_yesterday = 10000
             mc.business.supply_count = 1000
             mc.business.supply_goal = 10000
-            mc.business.effectiveness_cap = 110
+            mc.business.base_effectiveness_cap  = 110
             mc.business.marketability = 100
             mc.business.max_employee_count = 12
             # increased player stats
