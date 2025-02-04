@@ -2,6 +2,7 @@
 
 screen cheat_menu():
     zorder 120
+    modal True
 
     # Screen management variables
     default main_screen_showing = True
@@ -64,8 +65,7 @@ screen cheat_menu():
 
         "Funds": ["funds", "funds", 10000, 20, (0, 100000000)],
         "Supplies": ["supply_count", "supply_count", 10000, 21, (0, 100000)],
-        "Efficiency": ["team_effectiveness", "team_effectiveness", 10, 22, (50, 300)],
-        "Max Efficiency": ["base_effectiveness_cap", "base_effectiveness_cap", 10, 23, (50, 300)],
+        "Base Efficiency": ["base_effectiveness_cap", "base_effectiveness_cap", 10, 23, (50, 300)],
         "Market Reach": ["market_reach", "market_reach", 1000,  24, (0, 100000000)]
         }
     default work_skills = {
@@ -544,21 +544,27 @@ screen cheat_menu():
                     vbox:
                         xsize 250
                         if personality_options and hasattr(editing_target, "personality"):
-                            for x in sorted([x for x in available_personalities], key = lambda x: x.lower()):
-                                $ name = x.title()
-                                textbutton "[name]":
-                                    xfill True
-                                    style "textbutton_no_padding_highlight"
-                                    text_style "cheat_text_style"
+                            viewport:
+                                mousewheel True
+                                scrollbars "vertical"
+                                ysize 480
 
-                                    if editing_target.personality.personality_type_prefix == x:
-                                        sensitive False
-                                        background "#4f7ad6"
-                                        hover_background "#4f7ad6"
+                                vbox:
+                                    for x in sorted([x for x in available_personalities], key = lambda x: x.lower()):
+                                        $ name = x.title()
+                                        textbutton "[name]":
+                                            xfill True
+                                            style "textbutton_no_padding_highlight"
+                                            text_style "cheat_text_style"
 
-                                    action [
-                                        Function(setattr, editing_target, "personality", available_personalities[x])
-                                    ]
+                                            if editing_target.personality.personality_type_prefix == x:
+                                                sensitive False
+                                                background "#4f7ad6"
+                                                hover_background "#4f7ad6"
+
+                                            action [
+                                                Function(setattr, editing_target, "personality", available_personalities[x])
+                                            ]
 
                         if face_options and hasattr(editing_target, "face_style"):
                             for x in available_faces:
