@@ -65,7 +65,7 @@ screen cheat_menu():
         "Funds": ["funds", "funds", 10000, 20, (0, 100000000)],
         "Supplies": ["supply_count", "supply_count", 10000, 21, (0, 100000)],
         "Efficiency": ["team_effectiveness", "team_effectiveness", 10, 22, (50, 300)],
-        "Max Efficiency": ["effectiveness_cap", "effectiveness_cap", 10, 23, (50, 300)],
+        "Max Efficiency": ["base_effectiveness_cap", "base_effectiveness_cap", 10, 23, (50, 300)],
         "Market Reach": ["market_reach", "market_reach", 1000,  24, (0, 100000000)]
         }
     default work_skills = {
