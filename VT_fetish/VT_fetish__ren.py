@@ -693,7 +693,7 @@ def VT_breeding_fetish_rebecca_intro_requirement():
     return False
 
 def VT_breeding_fetish_gabrielle_intro_requirement():
-     if cousin.location == cousin.home and cousin.is_available:
+    if cousin.location == cousin.home and cousin.is_available:
         return True
     return False
 
