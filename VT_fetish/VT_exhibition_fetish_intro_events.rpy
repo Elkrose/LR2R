@@ -6,7 +6,7 @@ label VT_exhibition_fetish_employee_intro_label(the_person):
     "You blink a few times to make sure you are seeing what your seeing, but your vision is perfectly fine..."
     $ the_person.apply_outfit(Outfit("Nude"))
     $ the_person.draw_person()
-    "You watch as [the_person.mc_title] is happily dancing to her dance music in her birthday suit! You chuckle... and she notices!"
+    "You watch as [the_person.title] is happily dancing to her dance music in her birthday suit! You chuckle... and she notices!"
     the_person "Ah! [the_person.mc_title]... I was hoping to catch you alone. I need to talk to you about something."
     mc.name "Good evening [the_person.title]. What can I do for you?"
     the_person "Ah... more like... what can you do to me..."

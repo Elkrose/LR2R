@@ -1491,6 +1491,11 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 elif person.opinion.skimpy_uniforms < 2:
                                     $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love wearing sexy uniforms."
 
+                                elif not person.known_opinion("masturbating"):
+                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Ask about masturbating."
+                                elif person.opinion.masturbating < 2:
+                                    $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love masturbating."
+
                 #the interactive icons during sex stuff
                 if 'position_choice' in globals():
                     if hasattr(position_choice, 'skill_tag'):
@@ -1501,9 +1506,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 #Determine Clothing Status                    
                 if (person.tits_visible and person.vagina_visible) or (person.tits_available and person.vagina_available and person.vagina_visible and perk_system.has_ability_perk("Bald Eagle Perception") and perk_system.has_ability_perk("Strap Sense")):
                     $ VTexhibitfetishst = "nudebody"
-                    $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} You're treated to a breathtaking view of her luscious tits and juicy {random_pussy_word}."
                     if person.arousal_perc >= 59:
                         $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} Her nipples are rock-hard and her {random_pussy_word} is dripping with desire, begging to be devoured by your hungry {random_cock_word}."
+                    else:
+                        $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} You're treated to a breathtaking view of her luscious tits and juicy {random_pussy_word}."
                     if person.vaginal_cum >0:
                         if person.vaginal_cum >3:
                             $ VTexhibitfetishtt += f"\n{{image=openvag_small}} Your cum is oozing out of her {random_pussy_word}, a sticky reminder of the intense pleasure you shared."
@@ -1524,9 +1530,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 $ VTexhibitfetishtt += f"\n{{image=spreadvag_small}} You catch a glimpse of her {random_pussy_word}, a tantalizing tease of the pleasure that's to come."
                     elif person.tits_visible or (person.tits_available and perk_system.has_ability_perk("Strap Sense")) :
                         $ VTexhibitfetishst = "bodypanties"
-                        $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} You're treated to a breathtaking view of her luscious tits, her nipples begging to be sucked and licked."
                         if person.arousal_perc >= 59:
                             $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} Her nipples are rock-hard, a clear sign that she's ready to be taken to the next level of pleasure."
+                        else:
+                            $ VTexhibitfetishtt += f"\n{{image=vtcherries_small}} You're treated to a breathtaking view of her luscious tits, her nipples begging to be sucked and licked."
                     else:
                         if perk_system.has_ability_perk("Bald Eagle Perception") or perk_system.has_ability_perk("Strap Sense"):
                             $ VTexhibitfetishst = "bodyconcealed"
@@ -1852,7 +1859,6 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 $ VTanalfetishst = "creamcherry"
                                 $ VTanalfetishtt = "*fetish 'ass'salted complete*"
                                 $ VTanalfetishtt += f"\n{{image=creamcherry_small}} MMmmMm my ass still molded to your cock."
-                            $ VTanalfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("LastAnalFetish", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Anal  Fetish happen
                             if (
@@ -1906,7 +1912,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 elif person.opinion.showing_her_ass < 2:
                                     $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing her ass."
 
-                                elif not person.known_opinion("doggystyle"):
+                                elif not person.known_opinion("doggy style sex"):
                                     $ VTanalfetishtt += f"\n{{image=question_mark_small}} Ask about Doggy Style Sex."
                                 elif person.opinion.doggy_style < 2:
                                     $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love doggy style sex."
@@ -1951,13 +1957,16 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                 else:
                     if person.sexy_opinions.get("vaginal sex")[1]==True:
                         if person.has_breeding_fetish or breeding_fetish_role in person.special_role:
-                            if person.days_since_event("LastBreedingFetish") > 10 and not person.is_pregnant:
+                            if person.days_since_event("LastBreedingFetish") > 10:
                                 if person.vaginal_cum == 0:
                                     $ VTbreedfetishst = "vtcherries"
                                     $ VTbreedfetishtt = f"{{image=progress_token_small}} My womb is craving your seed... fill me to the brim!"
                                 else:
                                     $ VTbreedfetishst = "creamcherry"
-                                    $ VTbreedfetishtt = f"{{image=triskelion_token_small}} Your cum is warming my belly... I can feel it trying to take root."
+                                    if not person.is_pregnant:
+                                        $ VTbreedfetishtt = f"{{image=triskelion_token_small}} Your cum is warming my belly... I can feel it trying to take root."
+                                    else:
+                                        $ VTbreedfetishtt = f"{{image=creamcherry_small}} Blissful and bred... my womb is at peace."
                             else:
                                 if person.is_pregnant:
                                     $ VTbreedfetishst = "creamcherry"
@@ -1967,11 +1976,13 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     if person.vaginal_cum > 0:
                                         $ VTbreedfetishst = "creamcherry"
                                         $ VTbreedfetishtt = "*fetish 'full'filled*"
-                                        $ VTbreedfetishtt = f"{{image=creamcherry_small}} More, please... I'm not yet sated."
+                                        if not person.is_pregnant:
+                                            $ VTbreedfetishtt = f"{{image=creamcherry_small}} More, please... I'm not yet need more to coat my womb."
+                                        else:
+                                            $ VTbreedfetishtt = f"{{image=creamcherry_small}} MmmmmMMm I can feel your cum trying to taking root."
                                     else:
                                         $ VTbreedfetishst = "vtcherries"
                                         $ VTbreedfetishtt = f"{{image=creamcherry_small}} Claim me, breed me, fill me to overflowing!"
-                                $ VTbreedfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("LastBreedingFetish", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Breeding  Fetish happen
                             if (person.vaginal_creampie_count >= 10
