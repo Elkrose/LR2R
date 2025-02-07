@@ -1401,7 +1401,6 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 $ VTexhibitfetishst = "creamcherry"
                                 $ VTexhibitfetishtt = "*fetish 'a'salted complete*"
                                 $ VTexhibitfetishtt = f"{{image=creamcherry_small}} MMmmMm my skin feels good."
-                            $ VTexhibitfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("LastExhibitionFetish", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Exhibition happen
                             if (
@@ -1555,7 +1554,6 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         idle VTexhibitfetishst
                         action NullAction()
                         tooltip VTexhibitfetishtt
-
     ###### Cum Fetish
             if getattr(persistent, "knowcumfetish")==1:
                 $ VTcumfetishat = "talking"
@@ -1574,8 +1572,6 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 $ VTcumfetishst = "creamcherry"
                                 $ VTcumfetishtt = "*fetish 'salty' lipbalm complete!*"
                                 $ VTcumfetishtt += f"\n{{image=creamcherry_small}} MMmmMm still taste you in my mouth..."
-                        
-                            $ VTcumfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("LastCumFetish", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Cum Fetish happen
                             if (
@@ -1738,7 +1734,6 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 else:
                                     $ VTvaginalfetishst = "vtcherries"
                                     $ VTvaginalfetishtt = f"{{image=creamcherry_small}} I crave the feeling of your {random_cock_word} sliding into my {random_pussy_word}, stretching me, filling me..."
-                            $ VTvaginalfetishtt += f"\n{{image=creamcherry_small}} Will trigger in another "+str(person.event_triggers_dict.get("LastVaginalFetish", 0)  - day)+" days!"
                         else:
                             #List of everything one needs to make Vaginal  Fetish happen
                             if (
