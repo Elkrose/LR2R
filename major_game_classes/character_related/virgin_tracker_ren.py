@@ -77,9 +77,9 @@ class VTPerson(Person):
     _initial_age_floor = 18
     _initial_age_ceiling = 50
     _final_age_floor = 18
-    _final_age_ceiling = 70
+    _final_age_ceiling = 90
     _teen_age_ceiling = 19
-    _old_age_floor = 70
+    _old_age_floor = 90
 
     _sexy_opinions_list = vt_init_list_of_sexy_opinions()
 

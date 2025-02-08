@@ -321,7 +321,24 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         $ dayslastsex = 0
         $ daysince = ""
         $ VTbuzz = ""
+        $ VTpro = ""
+        if person.bc_status_known:
+            if person._birth_control and person.on_birth_control:
+                $ VTpro = " protected"
+            else:
+                $ VTpro = " defenseless"
+                if person.is_infertile:
+                    $ VTpro = " infertile"
+                if not person._birth_control and person.on_birth_control and person.name=="Erica":
+                    $ VTpro = " protected"
+        if person.bc_status_known and person.is_highly_fertile and not person.on_birth_control and perk_system.has_ability_perk("Ovulation Cycle Perception") and persistent.pregnancy_pref > 0:
+            $ VTbreedfertile = " highly fertile"
+            $ VTbuzz = "beezee_token_small"
+        if person.knows_pregnant:
+            $ VTpro = ""
+            $ VTbreedfertile = " pregnant"
 
+        $ VTbreedfertile = ""
         if person.has_event_day("last_insemination"):
             $ days_since_insemination = person.days_since_event("last_insemination")
             if days_since_insemination < 4 and days_since_insemination > 1:
@@ -594,6 +611,9 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     elif VTpersonality == "cougar":
                         $VTpersonalityst = "cougar"
                         $VTpersonalitytt = f"{{image=vtcherries_small}} She appears sultry and seductive, with a confident and flirtatious smile. She studies you with a piercing gaze, her eyes seeming to sparkle with a knowing glint. Her tone is low and husky, with a hint of a purr, as if she is savoring every word."
+                    elif VTpersonality == "albedo":
+                        $VTpersonalityst = "goudere"
+                        $VTpersonalitytt = f"{{image=vtcherries_small}} Regal poise, golden eyes smolder beneath raven hair. Each husky word a calculated purr; curving smile both invitation and blade. Hips sway with devout madness. 'Your will my sacrament—your touch my rapture.'"
                     elif VTpersonality == "alpha":
                         $VTpersonalityst = "alpha"
                         $VTpersonalitytt = f"{{image=vtcherries_small}} She appears confident and assertive, with a strong and commanding presence. She studies you with a direct and piercing gaze, her eyes seeming to bore into your very soul. Her tone is firm and authoritative, with a hint of a growl, as if she is daring you to challenge her."
@@ -691,7 +711,6 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ VTbcst = "knowbirthcontrol"
                     $ VTbctt = f"{{image=knowbc_token_small}} Is she on birth control?"
 
-                $ VTbreedfertile = ""
                 if person.bc_status_known and person.is_highly_fertile and not person.on_birth_control and perk_system.has_ability_perk("Ovulation Cycle Perception") and persistent.pregnancy_pref > 0:
                     $ VTbreedfertile = " highly fertile"
                     $ VTbuzz = "beezee_token_small"
