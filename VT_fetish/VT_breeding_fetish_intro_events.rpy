@@ -248,7 +248,7 @@ label VT_breeding_fetish_generic_intro_label(the_person):
     "[the_person.possessive_title!c] now has a fetish to get bred by you, to be your breeding stock, your cumdump."
     return
     
-label VT_breeding_fetish_mom_intro_label(the_person):
+label VT_breeding_fetish_mom_intro_label():
     $ the_person = mom
     $ the_person.on_birth_control = False
     $ the_person.event_triggers_dict["Mom_forced_off_bc"] = False
@@ -295,7 +295,7 @@ label VT_breeding_fetish_mom_intro_label(the_person):
     $ mc.change_locked_clarity(10)
     return #Needs testing
 
-label VT_breeding_fetish_lily_intro_label(the_person): 
+label VT_breeding_fetish_lily_intro_label(): 
     $ the_person = lily
     "Note: This scene was written assuming that eventually you fuck [the_person.title] on a live stream, but so far Vren has not written this step."
     $ mc.change_location(the_person.home)
@@ -445,7 +445,7 @@ label VT_breeding_fetish_lily_intro_label(the_person):
     "You can hardly believe it. Your own sister now has a fetish to get bred by you, to be your cumdump, your breeding stock, your slut."
     return
 
-label VT_breeding_fetish_rebecca_intro_label(the_person): #NEeds testing, evening room entry event
+label VT_breeding_fetish_rebecca_intro_label(): #NEeds testing, evening room entry event
     $ the_person = aunt
     "You step into [the_person.possessive_title]'s room, and you're immediately struck by the sight of her curves, her body. She's sitting at her desk, surrounded by books and papers, but her eyes are fixed on you, and you can see the desire burning in them."
     $ the_person.draw_person()
@@ -477,7 +477,7 @@ label VT_breeding_fetish_rebecca_intro_label(the_person): #NEeds testing, evenin
     "You look at her, and you see a sexy [the_person.title], a creature of beauty and desire. You know that you'll never forget this moment, this feeling of passion and desire."
     return
 
-label VT_breeding_fetish_gabrielle_intro_label(the_person): #NEeds testing, evening room entry event
+label VT_breeding_fetish_gabrielle_intro_label(): #NEeds testing, evening room entry event
     $ the_person = cousin
     "You step into [the_person.possessive_title]'s room, and you're immediately enveloped in the dark, moody atmosphere. The walls are adorned with Gothic-inspired artwork, and the air is thick with the scent of incense."
     $ the_person.draw_person()
