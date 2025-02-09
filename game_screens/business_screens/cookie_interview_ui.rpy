@@ -191,11 +191,11 @@ screen interview_ui(the_candidates, count):
                 vbox:
                     xsize 650
                     text "Expected Production" style "menu_text_title_style"
-                    text f"    Human Resources: +{human_resource_potential_stat(the_candidate)}% Company efficiency per turn" style "menu_text_style" size 16
-                    text f"    Marketing: +{marketing_potential_stat(the_candidate)} Market reach people per turn" style "menu_text_style" size 16
-                    text f"    Research and Development: {research_potential_stat(the_candidate)} Research points per turn" style "menu_text_style" size 16
-                    text f"    Production: {production_potential_stat(the_candidate)} Production points per turn" style "menu_text_style" size 16
-                    text f"    Supply Procurement: {supply_potential_stat(the_candidate)} Units of supplies per turn" style "menu_text_style" size 16
+                    text f"    Human Resources: +{the_candidate.human_resource_potential}% Company efficiency per turn" style "menu_text_style" size 16
+                    text f"    Marketing: +{the_candidate.marketing_potential} Market reach people per turn" style "menu_text_style" size 16
+                    text f"    Research and Development: {the_candidate.research_potential} Research points per turn" style "menu_text_style" size 16
+                    text f"    Production: {the_candidate.production_potential} Production points per turn" style "menu_text_style" size 16
+                    text f"    Supply Procurement: {the_candidate.supply_potential} Units of supplies per turn" style "menu_text_style" size 16
 
                 if count > 1:
                     vbox:
