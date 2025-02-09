@@ -3,13 +3,8 @@ screen person_info_detailed(person):
     modal True
     zorder 100
 
-    default hr_base = human_resource_potential_stat(person)
-    default market_base = marketing_potential_stat(person)
-    default research_base = research_potential_stat(person)
-    default prod_base = production_potential_stat(person)
-    default supply_base = supply_potential_stat(person)
     default master_opinion_dict = dict(person.opinions, **person.sexy_opinions)
-    default relationship_list = sorted(town_relationships.get_relationship_type_list(person, visible = True), key = lambda x: x[0].name)
+    default relationship_list = sorted(town_relationships.get_relationship_type_list(person, visible = True), key = lambda x: (RelationshipArray.relationship_type_sort_index(x[1]), x[0].name))
     default visible_roles = ", ".join([x.role_name for x in person.special_role if not x.hidden])
     default person_portrait = person.build_person_portrait()
     default person_job_info = person_info_ui_get_job_title(person)
@@ -112,9 +107,8 @@ screen person_info_detailed(person):
                         else:
                             hbox:
                                 text "Birth Control:" style "menu_text_style"
-                                vbox:
-                                    text ("Yes" if person.on_birth_control else "No") style "menu_text_style"
-                                    text "Known [known_days] days ago" size 12 style "menu_text_style"
+                                text ("Yes" if person.on_birth_control else "No") style "menu_text_style"
+                                text " ([known_days] days old)" size 12 style "menu_text_style" yalign 0.8
                             if persistent.pregnancy_pref >= 3:
                                 text "Baby Desire: [baby_desire_string]" style "menu_text_style"
 
@@ -222,7 +216,7 @@ screen person_info_detailed(person):
                             for record, value in sorted(person.sex_record.items()):
                                 if record == "Last Sex Day":
                                 #VTCODE HERE
-                                    text f"Last Sex: {last_sex_to_string(day, value)} " style "menu_text_style"
+                                    text f"Last Sex: {last_sex_to_string(day, value)}" style "menu_text_style"
                                 elif record == "Last Oral Day":
                                     text f"Oral Last: {last_sex_to_string(day, last_oral_day)} " style "menu_text_style"
                                 elif record == "Last Anal Day":
@@ -311,11 +305,11 @@ screen person_info_detailed(person):
                 xysize (325, 185)
                 vbox xfill True:
                     text "Job Statistics" style "serum_text_style_header"
-                    text "HR: [hr_base]% Company Efficiency" style "menu_text_style"
-                    text "Marketing: [market_base] People" style "menu_text_style"
-                    text "Research: [research_base] Research Points" style "menu_text_style"
-                    text "Production: [prod_base] Production Points" style "menu_text_style"
-                    text "Supply: [supply_base] Supply Units" style "menu_text_style"
+                    text "HR: [person.human_resource_potential]% Company Efficiency" style "menu_text_style"
+                    text "Marketing: [person.marketing_potential] People" style "menu_text_style"
+                    text "Research: [person.research_potential] Research Points" style "menu_text_style"
+                    text "Production: [person.production_potential] Production Points" style "menu_text_style"
+                    text "Supply: [person.supply_potential] Supply Units" style "menu_text_style"
                     if person in mc.business.on_payroll:
                         text "Desired Salary: $[base_salary:.2f]/day" style "menu_text_style"
 
@@ -358,7 +352,7 @@ screen person_info_detailed(person):
                                 text "No active serums" style "menu_text_style"
                             else:
                                 for serum in person.serum_effects:
-                                    text f"{serum.name}: {serum.duration - serum.duration_counter} Turns Left" style "menu_text_style"
+                                    text f"{serum.name}: {serum.total_duration - serum.duration_counter} Turns Left" style "menu_text_style"
 
     use default_tooltip("person_info_detailed")
 

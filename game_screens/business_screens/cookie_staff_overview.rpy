@@ -193,15 +193,15 @@ screen employee_overview(white_list = None, black_list = None, person_select = F
                                 if attribute[1] == "salary":
                                     text f"${getattr(person, attribute[1]):.2f}\n{{size=12}}(wants ${sum(x.base_salary for x in person.jobs if x.is_paid):.2f}){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
                                 elif attribute[1] == "research_skill":
-                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({research_potential_stat(person)} points){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
+                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({person.research_potential} points){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
                                 elif attribute[1] == "production_skill":
-                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({production_potential_stat(person)} points){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
+                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({person.production_potential} points){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
                                 elif attribute[1] == "supply_skill":
-                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({supply_potential_stat(person)} units){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
+                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({person.supply_potential} units){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
                                 elif attribute[1] == "market_skill":
-                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({marketing_potential_stat(person)} people){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
+                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({person.marketing_potential} people){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
                                 elif attribute[1] == "hr_skill":
-                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({human_resource_potential_stat(person)}%){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
+                                    text f"{getattr(person, attribute[1])}\n{{size=12}}({person.human_resource_potential}%){{/size}}" style "menu_text_style" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
                                 elif attribute[1] == "primary_job.seniority_level" and person.primary_job and len(person.duties) < rgetattr(person, "primary_job.seniority_level", 0):
                                     text f"{len(person.duties)}/{rgetattr(person, 'primary_job.seniority_level', 0)}" style "menu_text_style" color "#eee000" text_align 0.5 xfill True xalign 0.5 xanchor 0.5 yalign 0.5 yanchor 0.5
                                 elif attribute[1] == "primary_job.seniority_level":
