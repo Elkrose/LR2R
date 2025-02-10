@@ -468,7 +468,7 @@ label VT_breeding_fetish_rebecca_intro_label(): #NEeds testing, evening room ent
     the_person "Take me, [the_person.mc_title]. Take me and make me yours."
     $ the_person.draw_person(position = "missionary")
     "You take her, the passion igniting between you like a wildfire. You feel like you're losing yourself in her, in the desire that's been building between you for so long."
-    call fuck_person(the_person, start_position = breeding_missionary, start_object = make_bed(), private = True, skip_intro = True, position_locked = True, skip_condom = True) from _call_fuck_person_VT_breeding_fetish_aunt_intro_01
+    call fuck_person(the_person, start_position = breeding_missionary, start_object = make_bed(), private = True, skip_intro = True, position_locked = True, skip_condom = True) from _call_fuck_person_VT_breeding_fetish_rebecca_intro_01
     $ VT_add_breeding_fetish(the_person)
     "When you finish, [the_person.title] is lying beneath you, her body glowing with a soft, ethereal light. She's like a goddess, a creature of beauty and desire."
     the_person "Ah, [the_person.mc_title]... that was... incredible. I feel like I've been transformed, like I've been reborn."
