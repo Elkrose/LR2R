@@ -688,19 +688,22 @@ def VT_breeding_fetish_lily_intro_requirement(person: Person):
     return lily.location == lily.home and lily_bedroom.person_count == 1
 
 def VT_breeding_fetish_rebecca_intro_requirement():
-    if aunt.location == aunt.home and aunt.is_available:
-        return True
-    return False
+    return aunt.location == aunt.home and aunt.is_available
+    # if aunt.location == aunt.home and aunt.is_available:
+        # return True
+    # return False
 
 def VT_breeding_fetish_gabrielle_intro_requirement():
-    if cousin.location == cousin.home and cousin.is_available:
-        return True
-    return False
+    return cousin.location == cousin.home and cousin.is_available
+    # if cousin.location == cousin.home and cousin.is_available:
+        # return True
+    # return False
 
 def VT_breeding_fetish_stephanie_intro_requirement():
-    if mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25:
-        return True
-    return False
+    return mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25
+    # if mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25:
+        # return True
+    # return False
 
 def VT_breeding_fetish_emily_intro_requirement():
     return False
