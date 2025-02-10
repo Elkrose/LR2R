@@ -75,11 +75,19 @@ def vt_init_list_of_sexy_opinions() -> list[str]:
 class VTPerson(Person):
 
     _initial_age_floor = 18
-    _initial_age_ceiling = 50
+    _initial_age_ceiling = 52
     _final_age_floor = 18
-    _final_age_ceiling = 90
+    _final_age_ceiling = 70
     _teen_age_ceiling = 19
-    _old_age_floor = 90
+    _old_age_floor = 53
+
+    #single 120, gf 50, Fia 20, Married 10
+    _base_list_of_relationships = [
+            ["Single", 120],
+            ["Girlfriend", 50],
+            ["Fiancée", 6],
+            ["Married", 24]
+    ]
 
     _sexy_opinions_list = vt_init_list_of_sexy_opinions()
 
@@ -462,6 +470,26 @@ def _vt_postfix_restore_taboo(wrapped_func: Callable) -> Callable:
         if add_to_log:
             mc.log_event(f"Taboo reasserted with {self.display_name}!", "float_text_red")
         return True
+        return ret_val # probably None, but core could change
+    wrapping_func.__signature__ = inspect.signature(wrapped_func)
+    return wrapping_func
+
+def _vt_postfix_advance_time_run_move(wrapped_func: Callable) -> Callable:
+    def wrapping_func(*args, **kwargs):
+        ret_val = wrapped_func(*args, **kwargs)
+        #self = args[0]
+
+        # #Add the  background switch here if needed
+        if time_of_day == 0:
+            park.background_name = "Park_Early_Morning_Background"
+        elif time_of_day == 1:
+            park.background_name = "Park_Morning_Background"
+        elif time_of_day == 2:
+            park.background_name = "Park_Afternoon_Background"
+        elif time_of_day >3:
+            park.background_name = "Park_Evening_Background"
+
+
         return ret_val # probably None, but core could change
     wrapping_func.__signature__ = inspect.signature(wrapped_func)
     return wrapping_func

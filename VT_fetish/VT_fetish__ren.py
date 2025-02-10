@@ -684,7 +684,7 @@ def VT_breeding_fetish_family_intro_requirement(person: Person):
 def VT_breeding_fetish_mom_intro_requirement(): #TODO this should be a morning mandatory crisis event.
     return True #??? Is this right?
 
-def VT_breeding_fetish_lily_intro_requirement(person: Person):
+def VT_breeding_fetish_lily_intro_requirement():
     return lily.location == lily.home and lily_bedroom.person_count == 1
 
 def VT_breeding_fetish_rebecca_intro_requirement(person: Person):
