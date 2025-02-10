@@ -164,10 +164,10 @@ def VT_cum_fetish_family_intro_requirement(person: Person):
 def VT_cum_fetish_generic_intro_requirement():
     return mc.is_in_bed and mc.energy > 70
 
-def VT_cum_fetish_mom_intro_requirement(person: Person):
+def VT_cum_fetish_mom_intro_requirement():
     return mc.is_in_bed and mc.energy > 70 and mom.is_available
 
-def VT_cum_fetish_lily_intro_requirement(person: Person):
+def VT_cum_fetish_lily_intro_requirement():
     return day % 7 != 5 and mc.is_home and lily.is_available
 
 def VT_cum_fetish_rebecca_intro_requirement(person: Person):
@@ -194,7 +194,7 @@ def VT_cum_fetish_christina_intro_requirement():
 def VT_cum_fetish_starbuck_intro_requirement():
     return False
 
-def VT_cum_fetish_sarah_intro_requirement(person: Person):
+def VT_cum_fetish_sarah_intro_requirement():
     if time_of_day == 2 and day % 7 != 0:
         return mc.is_at_office and mc.business.is_open_for_business and sarah.is_at_work and sarah.is_available
     return False
@@ -332,10 +332,10 @@ def VT_vaginal_fetish_family_intro_requirement(person: Person):
 def VT_vaginal_fetish_generic_intro_requirement(person: Person):
     return person.location != person.home and person.is_available
 
-def VT_vaginal_fetish_mom_intro_requirement(person: Person):
+def VT_vaginal_fetish_mom_intro_requirement():
     return mc.is_in_bed and mc.energy > 80 and mom.is_available
 
-def VT_vaginal_fetish_lily_intro_requirement(person: Person):
+def VT_vaginal_fetish_lily_intro_requirement():
     return time_of_day == 3 and mc.business.is_open_for_business and mc.is_at_office and lily.is_available
 
 def VT_vaginal_fetish_rebecca_intro_requirement():
@@ -344,7 +344,7 @@ def VT_vaginal_fetish_rebecca_intro_requirement():
 def VT_vaginal_fetish_gabrielle_intro_requirement():
     return False
 
-def VT_vaginal_fetish_stephanie_intro_requirement(person: Person):
+def VT_vaginal_fetish_stephanie_intro_requirement():
     if mc.business.is_open_for_business and mc.is_at_office and renpy.random.randint(0, 100) < 20:
         return stephanie.is_available
     return False
@@ -361,7 +361,7 @@ def VT_vaginal_fetish_emily_intro_requirement():
 def VT_vaginal_fetish_christina_intro_requirement():
     return False
 
-def VT_vaginal_fetish_starbuck_intro_requirement(person: Person):
+def VT_vaginal_fetish_starbuck_intro_requirement():
     return time_of_day == 3 and mc.is_at_office and starbuck.is_available
 
 def VT_vaginal_fetish_sarah_intro_requirement():
@@ -376,7 +376,7 @@ def VT_vaginal_fetish_candace_intro_requirement():
 def VT_vaginal_fetish_dawn_intro_requirement():
     return False
 
-def VT_vaginal_fetish_erica_intro_requirement(person: Person):
+def VT_vaginal_fetish_erica_intro_requirement():
     return day % 7 == 6 and erica.is_available
 
 def VT_vaginal_fetish_ashley_intro_requirement():
@@ -504,10 +504,10 @@ def VT_anal_fetish_family_intro_requirement(person: Person):
 def VT_anal_fetish_generic_intro_requirement(person: Person):
     return person.location != person.home and person.is_available
 
-def VT_anal_fetish_mom_intro_requirement(person: Person):
+def VT_anal_fetish_mom_intro_requirement():
     return mc.is_in_bed and mc.energy > 80 and mom.is_available
 
-def VT_anal_fetish_lily_intro_requirement(person: Person):
+def VT_anal_fetish_lily_intro_requirement():
     return time_of_day == 3 and mc.business.is_open_for_business and mc.is_at_office and lily.is_available
 
 def VT_anal_fetish_rebecca_intro_requirement():
@@ -516,7 +516,7 @@ def VT_anal_fetish_rebecca_intro_requirement():
 def VT_anal_fetish_gabrielle_intro_requirement():
     return False
 
-def VT_anal_fetish_stephanie_intro_requirement(person: Person):
+def VT_anal_fetish_stephanie_intro_requirement():
     if mc.business.is_open_for_business and mc.is_at_office and renpy.random.randint(0, 100) < 20:
         return stephanie.is_available
     return False
@@ -533,7 +533,7 @@ def VT_anal_fetish_emily_intro_requirement():
 def VT_anal_fetish_christina_intro_requirement():
     return False
 
-def VT_anal_fetish_starbuck_intro_requirement(person: Person):
+def VT_anal_fetish_starbuck_intro_requirement():
     return time_of_day == 3 and mc.is_at_office and starbuck.is_available
 
 def VT_anal_fetish_sarah_intro_requirement():
@@ -548,7 +548,7 @@ def VT_anal_fetish_candace_intro_requirement():
 def VT_anal_fetish_dawn_intro_requirement():
     return False
 
-def VT_anal_fetish_erica_intro_requirement(person: Person):
+def VT_anal_fetish_erica_intro_requirement():
     return day % 7 == 6 and erica.is_available
 
 def VT_anal_fetish_ashley_intro_requirement():
@@ -693,13 +693,13 @@ def VT_breeding_fetish_rebecca_intro_requirement(person: Person):
         # return True
     # return False
 
-def VT_breeding_fetish_gabrielle_intro_requirement(person: Person):
+def VT_breeding_fetish_gabrielle_intro_requirement():
     return cousin.location == cousin.home and cousin.is_available
     # if cousin.location == cousin.home and cousin.is_available:
         # return True
     # return False
 
-def VT_breeding_fetish_stephanie_intro_requirement(person: Person):
+def VT_breeding_fetish_stephanie_intro_requirement():
     return mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25
     # if mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25:
         # return True
@@ -711,16 +711,16 @@ def VT_breeding_fetish_emily_intro_requirement():
 def VT_breeding_fetish_christina_intro_requirement():
     return False
 
-def VT_breeding_fetish_starbuck_intro_requirement(person: Person):
+def VT_breeding_fetish_starbuck_intro_requirement():
     return time_of_day == 3 and sex_shop_stage() > 0 and starbuck.is_available
 
-def VT_breeding_fetish_sarah_intro_requirement(person: Person):
+def VT_breeding_fetish_sarah_intro_requirement():
     return day % 7 != 5 and mc.is_in_bed and sarah_threesomes_unlocked() and sarah.is_available
 
 def VT_breeding_fetish_ophelia_intro_requirement():
     return False
 
-def VT_breeding_fetish_erica_intro_requirement(person: Person):
+def VT_breeding_fetish_erica_intro_requirement():
     return mc.is_in_bed and day % 7 != 6 and erica.is_available
 
 def VT_breeding_fetish_erica_unsuccessful_followup_requirement():
@@ -744,7 +744,7 @@ def VT_breeding_fetish_camila_intro_requirement():
 def VT_breeding_fetish_sakari_intro_requirement():
     return False
 
-def VT_breeding_fetish_myra_intro_requirement(person: Person):
+def VT_breeding_fetish_myra_intro_requirement():
     return time_of_day == 4 and mc.energy > 80 and myra.energy > 80 and myra.is_available
 
 def VT_start_breeding_fetish_quest(person: Person):
