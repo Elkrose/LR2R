@@ -2049,7 +2049,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
 
                                 elif not person.known_opinion("bareback sex"):
                                     $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Ask about bareback sex."
-                                elif person.opinion.showing_her_ass < 2:
+                                elif person.opinion.bareback_sex < 2:
                                     $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Get her to love bareback sex."
 
                                 elif not person.known_opinion("showing her ass"):

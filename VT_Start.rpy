@@ -2,7 +2,7 @@
 # Tweaked start
 define config.name = _("Lab Rats 2 Reformulate - Cherries Edition")
 define config.window_icon = "VTimages/mod_icon.png"
-define VT_Game_Version = "VTMod4.0.19"
+define VT_Game_Version = "VTMod4.0.20"
 
 init python:
     config.version += VT_Game_Version
