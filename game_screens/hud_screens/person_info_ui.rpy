@@ -1991,7 +1991,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                         $ VTbreedfetishst = "creamcherry"
                                         $ VTbreedfetishtt = "*fetish 'full'filled*"
                                         if not person.is_pregnant:
-                                            $ VTbreedfetishtt = f"{{image=creamcherry_small}} More, please... I'm not yet need more to coat my womb."
+                                            $ VTbreedfetishtt = f"{{image=creamcherry_small}} More, please... I need more to coat my womb."
                                         else:
                                             $ VTbreedfetishtt = f"{{image=creamcherry_small}} MmmmmMMm I can feel your cum trying to taking root."
                                     else:
