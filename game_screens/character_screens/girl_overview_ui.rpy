@@ -297,6 +297,7 @@ screen person_info_detailed(person):
                                 text "[mc.name] [mc.last_name] [[Cousin]" size 14 style "menu_text_style"
                         for relationship in relationship_list:
                             text "[relationship[0].name] [relationship[0].last_name] [[[relationship[1]]]" size 14 style "menu_text_style"
+
         hbox:
             xsize 1750
             spacing 30
@@ -305,11 +306,11 @@ screen person_info_detailed(person):
                 xysize (325, 185)
                 vbox xfill True:
                     text "Job Statistics" style "serum_text_style_header"
-                    text "HR: [person.human_resource_potential]% Company Efficiency" style "menu_text_style"
-                    text "Marketing: [person.marketing_potential] People" style "menu_text_style"
-                    text "Research: [person.research_potential] Research Points" style "menu_text_style"
-                    text "Production: [person.production_potential] Production Points" style "menu_text_style"
-                    text "Supply: [person.supply_potential] Supply Units" style "menu_text_style"
+                    text f"HR: {{potential_colour=hr|{person.human_resource_potential}}}{person.human_resource_potential}% Company Efficiency{{/potential_colour}}" style "menu_text_style"
+                    text f"Marketing: {{potential_colour=market|{person.marketing_potential}}}{person.marketing_potential} People {{/potential_colour}}" style "menu_text_style"
+                    text f"Research: {{potential_colour=research|{person.research_potential}}}{person.research_potential} Research Points{{/potential_colour}}" style "menu_text_style"
+                    text f"Production: {{potential_colour=production|{person.production_potential}}}{person.production_potential} Production Points{{/potential_colour}}" style "menu_text_style"
+                    text f"Supply: {{potential_colour=supply|{person.supply_potential}}}{person.supply_potential} Supply Units{{/potential_colour}}" style "menu_text_style"
                     if person in mc.business.on_payroll:
                         text "Desired Salary: $[base_salary:.2f]/day" style "menu_text_style"
 
