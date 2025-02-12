@@ -1774,7 +1774,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             else:
                                 $ VTvaginalfetishtt = f"{{image=question_mark_small}} Unlock the Vaginal Fetish?"
                                 #the amount of sex related to fetish
-                                if person.vaginal_sex_count < 10 and person.vaginal_creampie_count < 10:
+                                if person.vaginal_sex_count >= 10 and person.vaginal_creampie_count >= 10:
+                                    # Proceed with the action that requires either condition to be met
+                                    pass
+                                else:
                                     $ VTvaginalfetishtt += f"\n{{image=progress_token_small}} Make love to your Vaginal Queen!"
                                     $ VTvaginalfetishtt += f"\n{{image=triskelion_token_small}} Have vaginal sex with her "+str(10 - person.vaginal_sex_count)+" more times!"
                                     $ VTvaginalfetishtt += f"\n OR "
@@ -1792,7 +1795,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 if person.sluttiness < 60:
                                     $ VTvaginalfetishtt += f"\n{{image=gold_heart_token_small}} Corrupt her innocence by {60 - person.sluttiness} /60 points!"
                                 #the opinions required
-                                if person.opinion.vaginal_sex < 2  or person.opinion.creampies < 2:
+                                if person.opinion.vaginal_sex >= 2  or person.opinion.creampies >= 2:
+                                    # Proceed with the action that requires either condition to be met
+                                    pass
+                                else:
                                     $ VTvaginalfetishtt += f"\n Make her opinion loves Vaginal Sex or Creampies"
                                     if not person.known_opinion("vaginal sex"):
                                         $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Ask about Vaginal Sex."
@@ -1893,7 +1899,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             else:
                                 $ VTanalfetishtt = f"{{image=question_mark_small}} Unlock the Anal Fetish?"
                                 #the amount of sex related to fetish
-                                if person.anal_sex_count < 10 or person.anal_creampie_count < 10:
+                                if person.anal_sex_count >= 10 or person.anal_creampie_count >= 10:
+                                    # Proceed with the action that requires either condition to be met
+                                    pass
+                                else:
                                     $ VTanalfetishtt += f"\n{{image=progress_token_small}} Sodomize your Anal Queen!"
                                     $ VTanalfetishtt += f"\n{{image=triskelion_token_small}} Have anal sex with her "+str(10 - person.anal_sex_count)+" more times!"
                                     $ VTanalfetishtt += f"\n OR "
@@ -1911,7 +1920,10 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 if person.sluttiness < 60:
                                     $ VTanalfetishtt += f"\n{{image=gold_heart_token_small}} Corrupt her innocence by {60 - person.sluttiness} points!"
                                 #the opinions required
-                                if person.opinion.anal_sex < 2  or person.opinion.anal_creampies < 2:
+                                if person.opinion.anal_sex >= 2  or person.opinion.anal_creampies >= 2:
+                                    # Proceed with the action that requires either condition to be met
+                                    pass
+                                else:
                                     if not person.known_opinion("anal sex"):
                                         $ VTanalfetishtt += f"\n{{image=question_mark_small}} Ask about Anal Sex."
                                     elif person.opinion.anal_sex < 2:
@@ -1921,7 +1933,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     elif person.opinion.anal_creampies < 2:
                                         $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love anal creampies."
 
-                                elif not person.known_opinion("showing her ass"):
+                                if not person.known_opinion("showing her ass"):
                                     $ VTanalfetishtt += f"\n{{image=question_mark_small}} Ask about showing her ass."
                                 elif person.opinion.showing_her_ass < 2:
                                     $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing her ass."

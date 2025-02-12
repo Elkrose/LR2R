@@ -8,21 +8,53 @@
 
 label bimboed_introduction(the_person):
     mc.name "Hey, can I talk to you for a sec?"
-    "[the_person.title] turns around, a totally clueless expression on her face, like she's trying to figure out who you are and why you're talking to her."
-    the_person "Oh my god, like, what's up?"
-    mc.name "I'm sorry if this is awkward, but you seem like an interesting person."
-    "[the_person.title] giggles and flips her hair, a totally adorable smile spreading across her face."
-    the_person "Omigod, thanks! I'm like, totally interesting, I guess."
-    mc.name "Well, I was wondering if you'd like to... do something together sometime."
-    "[the_person.title] squeals with excitement, like she's just been asked to the prom or something."
-    the_person "Oh my god, like, that would be so much fun! What did you have in mind, like, a date or something?"
-    mc.name "Haha, yeah, something like that. We could maybe grab coffee or something."
-    "[the_person.title] nods enthusiastically, like she's just been given the best idea ever."
-    the_person "That sounds, like, totally perfect! I love coffee, and I love... well, I don't know you yet, but I'm sure you're, like, totally awesome."
-    mc.name "Heh, thanks? I'll take that as a compliment."
+    if the_person.age < 19:
+        "[the_person.name] spins around with too much energy, backpack dangling precariously off one shoulder."
+        the_person "OMG! Are you talking to me? Like, for real?"
+        mc.name "Yeah, you seem... interesting?"
+        "[the_person.name] dramatically clutches a heart-shaped pendant necklace."
+        the_person "Shut UP! This is literally the best day ever! I'm SO interesting - I have TWO TikTok accounts!"
+    elif 18 <= the_person.age < 25:
+        "[the_person.name] turns around, chewing gum loudly while staring at her phone."
+        the_person "Like... who even ARE you? Make it quick, my Uber's coming."
+        mc.name "I just thought you looked... fun?"
+        "[the_person.name] snaps a selfie mid-conversation."
+        the_person "Duh, I'm literally viral? Follow my Insta and maybe I'll DM you back!"
+    elif 25 <= the_person.age < 30:
+        "[the_person.name] turns with club-ready eyelashes fluttering."
+        the_person "If you're selling something, I want free samples first."
+        mc.name "Just selling myself as potential company?"
+        "[the_person.name] fake-gasps while checking her lip gloss reflection."
+        the_person "Bold! I accept payment in tequila shots and compliments!"
+    elif 30 <= the_person.age < 40:
+        "[the_person.name] pivots slowly, radiating 'I could ruin your life' energy."
+        the_person "You have 60 seconds before my Botox appointment."
+        mc.name "I'm fascinated by your... life experience."
+        "[the_person.name] adjusts her waist trainer dramatically."
+        the_person "That's code for 'old', right? Buy me rosé and we'll talk!"
+    elif 40 <= the_person.age < 50:
+        "[the_person.name] turns like a rusty gate, jangling multiple charm bracelets."
+        the_person "Make it snappy - my book club's doing Fifty Shades this week!"
+        mc.name "You seem... passionate about literature?"
+        "[the_person.name] winks and adjusts her 'Wine Mom' tumbler."
+        the_person "Honey, I'm passionate about book club's 'special margarita mix'!"
+    elif 50 <= the_person.age < 70:
+        "[the_person.name] rotates with CBD-induced calm, crystals clinking."
+        the_person "Blessed be! Are you my Uber Eats?"
+        mc.name "More like... potential dinner companion?"
+        "[the_person.name] does a yoga pose mid-conversation."
+        the_person "Namastay for appetizers! But I'm vegan-gluten-free-aura-sensitive!"
+    else:  # 70+
+        "[the_person.name] creaks around like a haunted house door."
+        the_person "Eh? You here about my cats or my will?"
+        mc.name "Just thought you seemed... vibrant!"
+        "[the_person.name] adjusts her hearing aid suspiciously."
+        the_person "Viagra? No thanks - I outlived three husbands already!"
+    mc.name "Maybe we could grab coffee sometime?"
+    the_person "That sounds perfect!"
     $ the_person.set_title()
     $ the_person.set_possessive_title()
-    the_person "So, like, what's your name, anyway?"
+    the_person "So what's your name, handsome?"
     mc.name "I'm [mc.name]. Nice to meet you..."
     the_person "My name is [the_person.name], and I'm like, totally happy to meet you too!"
     $ the_person.change_happiness(1)
@@ -30,59 +62,342 @@ label bimboed_introduction(the_person):
 
 label bimboed_greetings(the_person):
     if the_person.love < 0:
-        the_person "Oh my god, like, why are you always so annoying?"
-        "She rolls her eyes and tosses her hair, clearly uninterested in talking to you."
+        if the_person.age < 18:
+            the_person "Ugh, like, why are you even HERE? Go bother someone else!"
+            "[the_person.title] dramatically snaps her gum and checks her nonexistent watch."
+        elif 18 <= the_person.age < 25:
+            the_person "OMG could you NOT? I'm literally trying to exist here!"
+            "[the_person.title] rolls her eyes so hard it looks painful."
+        elif 25 <= the_person.age < 30:
+            the_person "Ew, David. Don't you have some crypto to lose?"
+            "[the_person.title] texts furiously while ignoring you."
+        elif 30 <= the_person.age < 40:
+            the_person "Bless your heart for trying. Now shoo."
+            "[the_person.title] adjusts her Spanx loudly in disapproval."
+        elif 40 <= the_person.age < 50:
+            the_person "Did my ex-husband send you? Tell him child support's late!"
+            "[the_person.title] mutters about alimony while reapplying lipstick."
+        elif 50 <= the_person.age < 70:
+            the_person "Oh honey, no. Just... no."
+            "[the_person.title] waves sage around you dramatically."
+        else: # 70+
+            the_person "Young man, I survived WWII! I'll survive your nonsense too!"
+            "[the_person.title] brandishes her cane threateningly."
+
     elif the_person.happiness < 90:
-        the_person "Hey, like, hi. I'm having a totally bad day, but I guess it's nice to see you or whatever."
-        "She sighs and fiddles with her nails, looking distracted and unenthused."
+        if the_person.age < 18:
+            the_person "Ugh, today SUCKS! My BFF literally copied my TikTok dance!"
+            "[the_person.title] sniffles while staring at her dead phone battery."
+        elif 18 <= the_person.age < 25:
+            the_person "Don't even. My latte was almond milk instead of oat. DISASTER."
+            "[the_person.title] pouts while compulsively checking Instagram."
+        elif 25 <= the_person.age < 30:
+            the_person "My life is OVER! I have to actually file TAXES this year!"
+            "[the_person.title] hyperventilates into a designer handbag."
+        elif 30 <= the_person.age < 40:
+            the_person "I'm one PTA meeting away from drinking in the parking lot."
+            "[the_person.title] massages her temples like a war veteran."
+        elif 40 <= the_person.age < 50:
+            the_person "Menopause and teenagers? Pick your poison, sweetie."
+            "[the_person.title] pops ibuprofen like candy."
+        elif 50 <= the_person.age < 70:
+            the_person "My chakras are blocked and my yoga teacher judged my downdog."
+            "[the_person.title] awkwardly attempts a tree pose."
+        else: # 70+
+            the_person "The early bird special was CHICKEN today! CHICKEN!"
+            "[the_person.title] shakes her fist at the sky dramatically."
+
     else:
         if the_person.sluttiness > 60:
             if the_person.obedience > 180:
-                the_person "Oh, hi [the_person.mc_title]! Like, what can I do for you, sweetie?"
-                "She bats her eyelashes and smiles, clearly trying to flirt with you."
+                if the_person.age < 18:
+                    the_person "OMG you're HERE! Shouldn't we, like, do something... naughty?"
+                    "[the_person.title] 'accidentally' drops her textbooks."
+                elif 18 <= the_person.age < 25:
+                    the_person "Hey Daddy! I mean... Daddy? I mean... whatever."
+                    "[the_person.title] bites her lip and hikes up her skirt."
+                elif 25 <= the_person.age < 30:
+                    the_person "You look thirsty. Wanna taste my pumpkin spice latte?"
+                    "[the_person.title] leans forward provocatively."
+                elif 30 <= the_person.age < 40:
+                    the_person "My husband's away if you wanna... audit my assets."
+                    "[the_person.title] slowly peels off her cardigan."
+                elif 40 <= the_person.age < 50:
+                    the_person "Hot flash incoming! Better take these layers off..."
+                    "[the_person.title] fans herself with deliberate slowness."
+                elif 50 <= the_person.age < 70:
+                    the_person "Let's manifest some... carnal energy together!"
+                    "[the_person.title] rattles her healing crystals suggestively."
+                else: # 70+
+                    the_person "I've outlived three husbands - ready to be number four?"
+                    "[the_person.title] adjusts her dentures with a wink."
+
             else:
-                the_person "Hey, [the_person.mc_title]! So, like, what's up? Don't tell me you're here to, like, bother me or anything."
-                "She winks and plays with her hair, looking playful and flirtatious."
+                if the_person.age < 18:
+                    the_person "OMG you're soooo old! Wanna buy me vapes?"
+                    "[the_person.title] blows bubblegum smoke in your face."
+                elif 18 <= the_person.age < 25:
+                    the_person "If you're not here to pay my rent, keep it moving."
+                    "[the_person.title] checks her nails dismissively."
+                elif 25 <= the_person.age < 30:
+                    the_person "I accept payment in designer bags and emotional neglect."
+                    "[the_person.title] takes a shameless selfie mid-convo."
+                elif 30 <= the_person.age < 40:
+                    the_person "My biological clock's ticking louder than my car engine."
+                    "[the_person.title] eyes your pelvis like a buffet."
+                elif 40 <= the_person.age < 50:
+                    the_person "My divorce lawyer says I need 'recreational therapy'..."
+                    "[the_person.title] licks her lips dramatically."
+                elif 50 <= the_person.age < 70:
+                    the_person "Let's get weird before my hip replacement!"
+                    "[the_person.title] does an awkward sexy dance."
+                else: # 70+
+                    the_person "Last one to the cemetery buys the Depends!"
+                    "[the_person.title] cackles while adjusting her oxygen tube."
+
         else:
             if the_person.obedience > 180:
-                the_person "Hi, [the_person.mc_title]! Like, what can I get for you, honey?"
-                "She smiles and looks up at you with big, bright eyes, clearly eager to please."
+                if the_person.age < 18:
+                    the_person "OMG you're like, so wise! Tell me what to doooo!"
+                    "[the_person.title] stares with disturbing intensity."
+                elif 18 <= the_person.age < 25:
+                    the_person "I live to serve! Want me to do your laundry?"
+                    "[the_person.title] curtsies awkwardly in crop top."
+                elif 25 <= the_person.age < 30:
+                    the_person "Your wish is my command! Unless it's after 10pm."
+                    "[the_person.title] checks her overnight bag hopefully."
+                elif 30 <= the_person.age < 40:
+                    the_person "I made you gluten-free cookies! And Xanax muffins!"
+                    "[the_person.title] presents a bento box of chaos."
+                elif 40 <= the_person.age < 50:
+                    the_person "Need me to reorganize your life? I brought labels!"
+                    "[the_person.title] waves color-coded binders."
+                elif 50 <= the_person.age < 70:
+                    the_person "The crystals say I should obey you! How fun!"
+                    "[the_person.title] claps like an overgrown toddler."
+                else: # 70+
+                    the_person "I'll haunt whoever you want after I die! Promise!"
+                    "[the_person.title] giggles while knitting a voodoo doll."
+
             else:
-                the_person "Hey, like, what's up? Oh, you're talking to me? That's so cool!"
-                "She giggles and bounces up and down, looking excited and enthusiastic."
+                if the_person.age < 18:
+                    the_person "OH EM GEE you're talking to MEEEEE?!"
+                    "[the_person.title] squeals loud enough to break glass."
+                elif 18 <= the_person.age < 25:
+                    the_person "NO WAY! This is literally my Roman Empire!"
+                    "[the_person.title] Instagrams your forehead."
+                elif 25 <= the_person.age < 30:
+                    the_person "Stop! I'm totally freaking out right now!"
+                    "[the_person.title] hyperventilates into a Stanley cup."
+                elif 30 <= the_person.age < 40:
+                    the_person "Is this real life? Pinch my Spanx!"
+                    "[the_person.title] checks for hidden cameras."
+                elif 40 <= the_person.age < 50:
+                    the_person "Me? Interesting? Stop before I pee myself!"
+                    "[the_person.title] does kegels mid-conversation."
+                elif 50 <= the_person.age < 70:
+                    the_person "This is better than colonoscopy results!"
+                    "[the_person.title] does a happy interpretive dance."
+                else: # 70+
+                    the_person "At my age, this counts as foreplay!"
+                    "[the_person.title] does air quotes with shaky hands."
     return
 
 label bimboed_sex_responses_foreplay(the_person):
     if the_person.arousal_perc < 45:
         if the_person.sluttiness > 50:
-            "[the_person.possessive_title!c] moans enthusiastically, like, totally getting into it already."
-            the_person "Oh my god, this is soooo good! You're, like, really good at this, I guess."
+            if the_person.age < 18:
+                "[the_person.possessive_title!c] snaps gum while awkwardly grinding against you."
+                the_person "OMG this is like, way better than math class! You're not totally lame!"
+            elif 18 <= the_person.age < 25:
+                "[the_person.possessive_title!c] checks phone mid-moan, recording audio for later."
+                the_person "Slay! This might actually get me verified on OnlyFans!"
+            elif 25 <= the_person.age < 30:
+                "[the_person.possessive_title!c] adjusts push-up bra strategically."
+                the_person "Zaddyyy! This better count as my cardio for the week!"
+            elif 30 <= the_person.age < 40:
+                "[the_person.possessive_title!c] compares you to her ex husband verbally."
+                the_person "Jeff never did this! Well... Jeff never did anything!"
+            elif 40 <= the_person.age < 50:
+                "[the_person.possessive_title!c] digs out hot flash fan from purse."
+                the_person "Keep this up and I might skip my Thursday book club!"
+            elif 50 <= the_person.age < 70:
+                "[the_person.possessive_title!c] rattles like a jewelry store during earthquake."
+                the_person "The crystals say we're cosmically aligned... or horny!"
+            else: #70+
+                "[the_person.possessive_title!c] adjusts hearing aid with a wink."
+                the_person "At my age, this counts as extreme sports!"
+
         else:
-            "[the_person.possessive_title!c] moans happily to herself, looking all dreamy and stuff."
-            the_person "I'm like, totally relaxed now. You're not, like, totally bad at this or anything."
+            if the_person.age < 18:
+                "[the_person.possessive_title!c] texts friends while half-paying attention."
+                the_person "This is like... fine? Can we order pizza after?"
+            elif 18 <= the_person.age < 25:
+                "[the_person.possessive_title!c] reapplies lip gloss mid-stroke."
+                the_person "Cute I guess? My ex Tinder match did it better tho..."
+            elif 25 <= the_person.age < 30:
+                "[the_person.possessive_title!c] mentally plans grocery list."
+                the_person "Mmm, adequate. You get a participation trophy!"
+            elif 30 <= the_person.age < 40:
+                "[the_person.possessive_title!c] checks daycare cam feed."
+                the_person "Better than folding laundry... barely."
+            elif 40 <= the_person.age < 50:
+                "[the_person.possessive_title!c] compares you to menopause symptoms."
+                the_person "Hmm, slightly less unpleasant than hot flashes!"
+            elif 50 <= the_person.age < 70:
+                "[the_person.possessive_title!c] consults astrology app."
+                the_person "Mercury's in retrograde but you're... okay?"
+            else: #70+
+                "[the_person.possessive_title!c] falls asleep briefly."
+                the_person "ZZzz... oh! You're still here? How quaint!"
+
     elif the_person.arousal_perc < 60:
         if the_person.sluttiness > 50:
-            the_person "Omigod, this is like, so much better than I thought it would be! You're, like, really getting me going!"
+            if the_person.age < 18:
+                the_person "OMG I'm gonna TikTok this! Wait... forget I said that!"
+            elif 18 <= the_person.age < 25:
+                the_person "Yaaas! This is why I skipped community college!"
+            elif 25 <= the_person.age < 30:
+                the_person "Daddy issues paying OFF! Don't stop!"
+            elif 30 <= the_person.age < 40:
+                the_person "This almost makes up for my failed marriage!"
+            elif 40 <= the_person.age < 50:
+                the_person "Better than Xanax! And cheaper than therapy!"
+            elif 50 <= the_person.age < 70:
+                the_person "My chakras haven't been this aligned since '69!"
+            else: #70+
+                the_person "I'll need oxygen... but don't you dare stop!"
+
         else:
-            the_person "I'm like, totally feeling it now. You're not, like, completely clueless or anything."
+            if the_person.age < 18:
+                the_person "This is like... okayish? Do you have vapes?"
+            elif 18 <= the_person.age < 25:
+                the_person "Meh. I've had better from Uber drivers."
+            elif 25 <= the_person.age < 30:
+                the_person "It's giving... mediocre Tinder date energy."
+            elif 30 <= the_person.age < 40:
+                the_person "Not terrible. Would rate 3/5 on Yelp."
+            elif 40 <= the_person.age < 50:
+                the_person "Hmm. Better than my book club's wine selection."
+            elif 50 <= the_person.age < 70:
+                the_person "The crystals are... mildly impressed?"
+            else: #70+
+                the_person "Not bad... for someone who'll outlive me!"
+
     elif the_person.arousal_perc < 75:
         if the_person.sluttiness > 50:
-            the_person "Oh, yeah! You're like, totally hitting all the right spots now! I'm like, soooo close!"
+            if the_person.age < 18:
+                the_person "OMGOMG! I'm gonna lose my V-card for REALZ this time!"
+            elif 18 <= the_person.age < 25:
+                the_person "Yassss! Cancel my plans - we're going ALL night!"
+            elif 25 <= the_person.age < 30:
+                the_person "This better not end up on OnlyFans! ...Unless?"
+            elif 30 <= the_person.age < 40:
+                the_person "My therapist said 'feel something' - THIS IS IT!"
+            elif 40 <= the_person.age < 50:
+                the_person "Hot flash incoming! Or is that just YOU?!"
+            elif 50 <= the_person.age < 70:
+                the_person "The universe WANTS us to merge energies!"
+            else: #70+
+                the_person "Call the coroner first... then keep going!"
+
         else:
-            the_person "Alright, alright. You're like, really getting the hang of this. But don't expect me to be all, like, gushy about it or anything."
+            if the_person.age < 18:
+                the_person "Okay FINE you're not totally gross I guess..."
+            elif 18 <= the_person.age < 25:
+                the_person "This is... acceptable. For a normie."
+            elif 25 <= the_person.age < 30:
+                the_person "Huh. You might actually get a second date."
+            elif 30 <= the_person.age < 40:
+                the_person "Not horrible. I'll allow it."
+            elif 40 <= the_person.age < 50:
+                the_person "Well... the kids are at soccer practice..."
+            elif 50 <= the_person.age < 70:
+                the_person "The aura says... proceed with caution!"
+            else: #70+
+                the_person "At least buy me dinner first! ...Joking! Sorta!"
+
     elif the_person.arousal_perc < 90:
         if the_person.sluttiness > 50:
-            the_person "Mmm, I'm like, totally loving this now! You're like, soooo good at making me feel all tingly and stuff!"
+            if the_person.age < 18:
+                the_person "OMG I'm gonna SO get grounded for this!"
+            elif 18 <= the_person.age < 25:
+                the_person "FML this is BETTER than going viral!"
+            elif 25 <= the_person.age < 30:
+                the_person "Screw my credit score - THIS is life!"
+            elif 30 <= the_person.age < 40:
+                the_person "Forget the minivan - let's make bad decisions!"
+            elif 40 <= the_person.age < 50:
+                the_person "My divorce lawyer will LOVE this!"
+            elif 50 <= the_person.age < 70:
+                the_person "The moon cycle says YES! YES! YES!"
+            else: #70+
+                the_person "What's the worst that could happen? Heart attack?"
+
         else:
-            the_person "You're like, really doing it right now, [the_person.mc_title]. But don't expect me to be all, like, mushy about it or anything."
+            if the_person.age < 18:
+                the_person "Okay maybe you're kinda cool... DON'T TELL ANYONE!"
+            elif 18 <= the_person.age < 25:
+                the_person "Lowkey... this slaps? Ugh I hate that I said that!"
+            elif 25 <= the_person.age < 30:
+                the_person "FINE you win! This is... good. There, I said it!"
+            elif 30 <= the_person.age < 40:
+                the_person "Okay this almost makes turning 40 bearable!"
+            elif 40 <= the_person.age < 50:
+                the_person "Well... the hot flashes are useful for something!"
+            elif 50 <= the_person.age < 70:
+                the_person "The healing crystals APPROVE!"
+            else: #70+
+                the_person "Who needs blue pills when you've got... this!"
+
     else:
         if the_person.sluttiness > 50:
             if not the_person.has_significant_other:
-                the_person "Oh my god, I'm like, soooo close to cumming now! You're like, totally amazing, I swear!"
+                if the_person.age < 18:
+                    the_person "OMG I'M CUMMING! ...Wait how does that work?"
+                elif 18 <= the_person.age < 25:
+                    the_person "SQUIRTALERT! Tag me if you post it!"
+                elif 25 <= the_person.age < 30:
+                    the_person "CREAMPIE INCOMING! Wait... protection? LOL!"
+                elif 30 <= the_person.age < 40:
+                    the_person "This better not give me another kid!"
+                elif 40 <= the_person.age < 50:
+                    the_person "Menopause who? I'M ALIVE AGAIN!"
+                elif 50 <= the_person.age < 70:
+                    the_person "THE CRYSTALS HAVE SPOKEN! AHHH!"
+                else: #70+
+                    the_person "CALL 911! ...BUT FINISH FIRST!"
             else:
-                the_person "The way you touch me is like, soooo different from anyone else. But don't think this means I'm, like, totally forgiven or anything."
+                if the_person.age < 18:
+                    the_person "My parents will MURDER you! ...Worth it!"
+                elif 18 <= the_person.age < 25:
+                    the_person "My BF would die! Let's send him clips!"
+                elif 25 <= the_person.age < 30:
+                    the_person "Husband who? Daddy issues WINNING!"
+                elif 30 <= the_person.age < 40:
+                    the_person "The alimony better be worth this!"
+                elif 40 <= the_person.age < 50:
+                    the_person "Take THAT, Karen from book club!"
+                elif 50 <= the_person.age < 70:
+                    the_person "My ex's grave is shaking right now!"
+                else: #70+
+                    the_person "Widowed AND wild! Eat your heart out, bingo club!"
+
         else:
-            the_person "Alright, you're like, almost there now. But don't expect me to be all, like, happy and stuff about it or anything."
+            if the_person.age < 18:
+                the_person "OMG I think I like... did it? What's 'it' exactly?"
+            elif 18 <= the_person.age < 25:
+                the_person "Okay FINE you're good! Ugh, I hate being nice!"
+            elif 25 <= the_person.age < 30:
+                the_person "Not bad... for someone with a 401(k)."
+            elif 30 <= the_person.age < 40:
+                the_person "This almost makes me forget my mortgage!"
+            elif 40 <= the_person.age < 50:
+                the_person "Still better than my first marriage!"
+            elif 50 <= the_person.age < 70:
+                the_person "The universe and I both... approve."
+            else: #70+
+                the_person "If this kills me, what a way to go!"
     return
 
 label bimboed_sex_responses_oral(the_person):
