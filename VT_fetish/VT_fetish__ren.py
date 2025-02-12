@@ -5,7 +5,7 @@ from renpy import persistent
 from game.helper_functions.list_functions_ren import get_random_from_list
 from game.fetish.fetish_action_ren import Fetish_Action
 from game.major_game_classes.game_logic.Action_ren import Action
-from game.major_game_classes.character_related.Person_ren import Person, mc, lily, mom, aunt, starbuck, stephanie, erica, candace, sarah, myra
+from game.major_game_classes.character_related.Person_ren import Person, mc, lily, mom, aunt, starbuck, stephanie, erica, candace, sarah, myra, cousin
 from game.major_game_classes.game_logic.Room_ren import lily_bedroom, aunt_apartment, gym
 from game.sex_positions._position_definitions_ren import missionary, doggy_anal
 from game.people.Erica.erica_role_definition_ren import erica_get_progress, erica_has_given_morning_handjob
@@ -699,7 +699,7 @@ def VT_breeding_fetish_gabrielle_intro_requirement(cousin):
         # return True
     # return False
 
-def VT_breeding_fetish_stephanie_intro_requirement():
+def VT_breeding_fetish_stephanie_intro_requirement(stephanie):
     return mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25
     # if mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25:
         # return True
@@ -711,22 +711,22 @@ def VT_breeding_fetish_emily_intro_requirement():
 def VT_breeding_fetish_christina_intro_requirement():
     return False
 
-def VT_breeding_fetish_starbuck_intro_requirement():
+def VT_breeding_fetish_starbuck_intro_requirement(starbuck):
     return time_of_day == 3 and sex_shop_stage() > 0 and starbuck.is_available
 
-def VT_breeding_fetish_sarah_intro_requirement():
+def VT_breeding_fetish_sarah_intro_requirement(sarah):
     return day % 7 != 5 and mc.is_in_bed and sarah_threesomes_unlocked() and sarah.is_available
 
 def VT_breeding_fetish_ophelia_intro_requirement():
     return False
 
-def VT_breeding_fetish_erica_intro_requirement():
+def VT_breeding_fetish_erica_intro_requirement(erica):
     return mc.is_in_bed and day % 7 != 6 and erica.is_available
 
 def VT_breeding_fetish_erica_unsuccessful_followup_requirement():
     return True
 
-def VT_breeding_fetish_candace_intro_requirement(person: Person):
+def VT_breeding_fetish_candace_intro_requirement(candace):
     return candace.is_at_work and mc.is_at_office and candace.is_available
 
 def VT_breeding_fetish_ashley_intro_requirement():
