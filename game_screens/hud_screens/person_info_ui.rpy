@@ -1809,7 +1809,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     elif person.opinion.creampies < 2:
                                         $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love vaginal creampies."
 
-                                elif not person.known_opinion("bareback sex"):
+                                if not person.known_opinion("bareback sex"):
                                     $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Ask about Bareback Sex."
                                 elif person.opinion.bareback_sex < 2:
                                     $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love bareback sex."
