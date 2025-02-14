@@ -699,7 +699,7 @@ def VT_breeding_fetish_gabrielle_intro_requirement(cousin):
         # return True
     # return False
 
-def VT_breeding_fetish_stephanie_intro_requirement(stephanie):
+def VT_breeding_fetish_stephanie_intro_requirement():
     return mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25
     # if mc.business.is_open_for_business and stephanie.is_at_work and renpy.random.randint(0, 100) < 25:
         # return True
@@ -711,16 +711,16 @@ def VT_breeding_fetish_emily_intro_requirement():
 def VT_breeding_fetish_christina_intro_requirement():
     return False
 
-def VT_breeding_fetish_starbuck_intro_requirement(starbuck):
+def VT_breeding_fetish_starbuck_intro_requirement():
     return time_of_day == 3 and sex_shop_stage() > 0 and starbuck.is_available
 
-def VT_breeding_fetish_sarah_intro_requirement(sarah):
+def VT_breeding_fetish_sarah_intro_requirement():
     return day % 7 != 5 and mc.is_in_bed and sarah_threesomes_unlocked() and sarah.is_available
 
 def VT_breeding_fetish_ophelia_intro_requirement():
     return False
 
-def VT_breeding_fetish_erica_intro_requirement(erica):
+def VT_breeding_fetish_erica_intro_requirement():
     return mc.is_in_bed and day % 7 != 6 and erica.is_available
 
 def VT_breeding_fetish_erica_unsuccessful_followup_requirement():
@@ -844,17 +844,17 @@ def VT_start_breeding_fetish_quest(person: Person):
             )
             return True
         return False
-    if person.is_employee and not person in (erica, lily, mom, stephanie, starbuck, sarah, erica, candace, myra):
+    if person.is_employee and not person in (erica, lily, mom, aunt, cousin, stephanie, starbuck, sarah, erica, candace, myra):
         mc.business.add_mandatory_crisis(
             Fetish_Action("Employee breeding fetish intro", VT_breeding_fetish_employee_intro_requirement, "VT_breeding_fetish_employee_intro_label", args = person, priority = 10, fetish_type = "breeding")
         )
         return True
-    if person.is_family and not person in (erica, lily, mom, stephanie, starbuck, sarah, erica, candace, myra):
+    if person.is_family and not person in (erica, lily, mom, aunt, cousin, stephanie, starbuck, sarah, erica, candace, myra):
         person.add_unique_on_room_enter_event(
             Fetish_Action("Family Member breeding fetish intro", VT_breeding_fetish_family_intro_requirement, "VT_breeding_fetish_family_intro_label", fetish_type = "breeding", priority = 30)
         )
         return True
-    if not person in (erica, lily, mom, stephanie, starbuck, sarah, erica, candace, myra):
+    if not person in (erica, lily, mom, aunt, cousin, stephanie, starbuck, sarah, erica, candace, myra):
         person.add_unique_on_talk_event(
             Fetish_Action("Non Employee breeding fetish intro", VT_breeding_fetish_generic_intro_requirement, "VT_breeding_fetish_generic_intro_label", fetish_type = "breeding")
         )
