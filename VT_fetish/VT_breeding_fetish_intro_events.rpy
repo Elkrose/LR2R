@@ -336,7 +336,7 @@ label VT_breeding_fetish_lily_intro_label():
     the_person "No! You don't need to do that... I'm sure that's what it is! To watch as I pretend to get knocked up, to be bred like a little slut."
     "She gives a tell-tale sign. As she says that, she looks away from you and to the side, her cheeks flushing with desire. She is lying to you, but it's clear she wants to be bred, to be made pregnant."
     mc.name "That's what they want? Are you sure? Or is that what YOU want?"
-    "[the_person.possessive_title!c] begins to blush heavily, her eyes locked on yours with a hungry gaze."
+    "A flush crept up [the_person.possessive_title]'s cheeks as she met your gaze with an unmistakable hunger."
     the_person "Oh me? Want to get knocked up? By my brother? That's... I mean that's CRAZY!... right?"
     $ mc.change_locked_clarity(20)
     "She is struggling to give a reasonable explanation, but it's clear she wants to be bred, to be made pregnant. She wants to feel your cum deep inside her, to be filled with your seed."
@@ -344,7 +344,7 @@ label VT_breeding_fetish_lily_intro_label():
     $ the_person.change_arousal(10)
     the_person "Well yeah I mean obviously that sounds hot but you're my brother..."
     mc.name "Right, who happens to be a man? Someone you know and trust, someone who can give you what you want, what you need."
-    "She sighs, her body language screaming with desire. She resigns herself and opens up, her eyes locked on yours with a hungry gaze."
+    "She sighs, her posture conveyed a sense of longing. She resigns herself and opens up, her eyes locked on yours with a hungry gaze."
     the_person "I don't know... The way things between us have progressed... But I just can't stop thinking about it, about being bred, carrying my big bro's babies."
     the_person "My body wants it so bad, for you to pin me down and fuck me anywhere you want, cumming inside me over and over, filling me up with your seed."
     $ mc.change_locked_clarity(50)
@@ -360,9 +360,9 @@ label VT_breeding_fetish_lily_intro_label():
     the_person "Can we... can we do it on stream? No one on there believes we are actually siblings. They think it's all just for show, but I want to show them the truth, I want to show them how much I love being bred, being made pregnant."
     mc.name "Go ahead, set it up. I'll give them a show they'll never forget."
     $ the_person.draw_person(position = "sitting")
-    "[the_person.possessive_title!c] walks over to her laptop, her body language screaming with desire. You give her a few minutes to get everything set up."
+    "[the_person.possessive_title!c] strode over to her laptop with an air of confidence that belied her evident arousal. You give her a few minutes to get everything set up."
     the_person "Okay... I promised all the viewers a crazy show! Oh god, I'm so excited, I'm so ready to be bred, to be made pregnant."
-    "She stands up, her eyes locked on yours with a hungry gaze."
+    "A flush crept up [the_person.possessive_title!c]'s cheeks as she met your gaze with an unspoken invitation."
     $ the_person.draw_person()
     the_person "Just one more thing to do..."
     $ the_person.strip_outfit()
@@ -372,7 +372,7 @@ label VT_breeding_fetish_lily_intro_label():
     $ mc.change_locked_clarity(20)
     mc.name "Mmm... that sounds amazing... for the viewers too, but mostly for me, for my own pleasure."
     "She punches your arm half-heartedly and laughs, her eyes sparkling with desire."
-    "You walk over to her bed and lay down on it. After a minute she brings you the camera, her body language screaming with desire."
+    "You walk over to her bed and lay down on it. After a minute she brings you the camera, her eyes flashed with arousal."
     "She goes back over to the computer, and after a moment, she gives a countdown, her voice filled with excitement."
     the_person "Okay, we are streaming in 5, 4, 3..."
     "As she goes past three stops counting and instead starts to walk over to you, her eyes locked on yours with a hungry gaze."
@@ -383,7 +383,7 @@ label VT_breeding_fetish_lily_intro_label():
     $ the_person.draw_person(position = "doggy")
     $ mc.change_locked_clarity(50)
     "With that, she turns her back to you and swings one leg over your body, her ass now pointed back at you, her pussy open and ready to be bred."
-    "She reaches down and gives your bare cock a few strokes, then points it up at her cunt, her body language screaming with desire."
+    "She reaches down and gives your bare cock a few strokes, then points it up at her cunt, movements exuded a sensual energy."
     $ the_person.increase_vaginal_sex()
     "Her pussy is moist and she easily starts to slide down on it, your bare cock enveloped by her steamy flesh, her body wrapping around yours like a glove."
     $ the_person.break_taboo("condomless_sex")
@@ -392,7 +392,7 @@ label VT_breeding_fetish_lily_intro_label():
     "She's playing it up for the stream, but you know she is also having fun, fucking her brother, being bred and made pregnant."
     $ the_person.change_arousal(20)
     $ mc.change_locked_clarity(20)
-    "You lay back on the bed while [the_person.possessive_title] works your cock in and out of her, her body moving in a slow, sensual motion, her pussy milking your cock for all it's worth."
+    "As [the_person.possessive_title!c] began to move above you, her hips tracing slow circles around your cock..."
     "[the_person.possessive_title!c] gives you a few quick, shallow dips then pull off you almost completely, leaving just your tip inside her, teasing you, teasing the viewers."
     "She swirls her hips a couple times then impales herself on your again, her body wrapping around yours like a glove, her pussy milking your cock for all it's worth."
     $ the_person.change_arousal(30)
@@ -406,7 +406,7 @@ label VT_breeding_fetish_lily_intro_label():
     $ mc.change_locked_clarity(20)
     "[the_person.possessive_title!c] wiggles back and forth a few more times, then looks back at you and smiles, her eyes sparkling with desire."
     the_person "Do you like that, bro? Ah! That is so good, so amazing. I love being bred by my big bro."
-    "[the_person.possessive_title!c] reaches back between her legs and cups your balls, her body language screaming with desire."
+    "[the_person.possessive_title!c] reaches back between her legs and cups your balls, her movements exuded a sensual energy."
     the_person "Mmm, you feel so full... I want you to fill me up, to breed me, to make me pregnant. I want to feel your cum deep inside me, to know that I'm being made pregnant."
     $ the_person.change_arousal(30)
     $ mc.change_locked_clarity(20)
@@ -422,21 +422,22 @@ label VT_breeding_fetish_lily_intro_label():
     $ ClimaxController.manual_clarity_release(climax_type = "pussy", person = the_person)
     "Eventually the twitching stops, for both of you. You did it, you bred your sister, you made her pregnant, and it was amazing, incredible, life-changing."
     "When she slowly pulls off you, your seed immediately begins to leak out of her and down her legs, a sign of your successful breeding, a sign of your love, your desire for each other."
+    "The realization dawned on you – you'd just impregnated your own sister."
     $ mc.reset_arousal()
     $ the_person.reset_arousal()
     the_person "Oh god... I wonder if I got pregnant... I hope I did, I hope I'm going to be a mom, a mom to your child, your seed."
-    "[the_person.possessive_title!c] slowly recovers and gets up, her body language screaming with desire, her eyes sparkling with excitement."
+    "With a languid stretch, [the_person.possessive_title!c]  rose from the bed, her eyes sparkling with excitement."
     $ the_person.draw_person(position = "sitting")
     the_person "Well... I hope everyone enjoyed watching my brother try and knock me up... I know I enjoyed it, I loved every minute of it, every second of it."
     the_person "Time for the stream to end! Goodbye everyone, goodbye, and thank you for watching us, for watching us breed, for watching us make a new life."
     $ the_person.draw_person(position = "walking_away")
-    "[the_person.title] walks over to the computer, ending the live stream, her body language screaming with desire, her eyes sparkling with excitement."
+    "[the_person.title] walks over to the computer, ending the live stream, her eyes sparkling with excitement."
     $ the_person.draw_person()
     the_person "Well... I think that went well, don't you, bro? I think we made a great team, a great breeding team."
     mc.name "Me too, sis... want to have another round?"
     the_person "Oh god... my body says yes... but I think I need to rest, I need to recover from that amazing breeding session."
     "She bites her lip as she looks down at you, her eyes sparkling with desire, her body language screaming with need."
-    the_person "I meant it earlier though... I want you to breed me, to make me pregnant, anytime, anywhere. I want to be your cumdump, your breeding stock, your slut."
+    the_person "I meant it earlier though... I want you to breed me, to make me pregnant, anytime, anywhere. Make me yours. Use me for your pleasure."
     mc.name "Don't worry, sis, I'll give you more soon. I'll breed you again and again, until you're pregnant, until you're a mom, a mom to my child, my seed."
     "She chuckles, then smiles at you, her eyes sparkling with desire, her body language screaming with need."
     the_person "You better... Every day! Even if I am pregnant, I'll still want your cum inside me, I'll still want to be bred, to be made pregnant again and again."
@@ -477,7 +478,7 @@ label VT_breeding_fetish_rebecca_intro_label(): #NEeds testing, evening room ent
     "You look at her, and you see a sexy [the_person.title], a creature of beauty and desire. You know that you'll never forget this moment, this feeling of passion and desire."
     return
 
-label VT_breeding_fetish_gabrielle_intro_label(): #NEeds testing, evening room entry event
+label VT_breeding_fetish_gabrielle_intro_label(the_person): #NEeds testing, evening room entry event
     $ the_person = cousin
     "You step into [the_person.possessive_title]'s room, and you're immediately enveloped in the dark, moody atmosphere. The walls are adorned with Gothic-inspired artwork, and the air is thick with the scent of incense."
     $ the_person.draw_person()
@@ -520,7 +521,7 @@ label VT_breeding_fetish_gabrielle_intro_label(): #NEeds testing, evening room e
 
 label VT_breeding_fetish_stephanie_intro_label():  #Needs Testing
     $ the_person = stephanie
-    if stephanie.fetish_count == 0:
+    if the_person.fetish_count == 0:
         call VT_fetish_stephanie_first_fetish_label(the_person) from __VT_breeding_fetish_stephanie_intro_bimbo_choice_01
         if the_person.personality == bimbo_personality:
             call VT_breeding_fetish_stephanie_bimbo_label(the_person) from _VT_breeding_fetish_stephanie_intro_bimbo_01
@@ -539,7 +540,7 @@ label VT_breeding_fetish_stephanie_intro_label():  #Needs Testing
             the_person "Oh hey! You're here! I'm so ready for you!"
             mc.name "Of course. Can you lock the door? We don't want anyone to disturb us."
             the_person "Oh! Right right right... I don't want anyone to see us, to see what we're doing."
-            "[the_person.possessive_title!c] turns and locks your office door, her body language screaming with desire."
+            "[the_person.possessive_title!c] turns and locks your office door, her movements exuded a sensual energy."
             the_person "So... I saw this crazy video last night, and I thought maybe we could re-create it! It was so hot, so sexy!"
             mc.name "Oh yeah? What was it about? Tell me more."
             the_person "Basically, this guy with a monster cock bent his secretary over his desk and fucked her over and over until she was knocked up and full of cum! It was so amazing, so incredible!"

@@ -87,7 +87,7 @@ def alluring_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def alluring_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"My handsome Mr. {mc.last_name}")  # Default respectful
+    valid_titles.append(f"Mr. {mc.last_name}")  # Default respectful
     if person.love > 90:
         valid_titles.append("Eternal Flame")
         valid_titles.append("Obsession's Source")
@@ -125,7 +125,7 @@ def alluring_player_titles(person: Person) -> list[str]:
 ### Titles emphasize glitter, pink, and enthusiastic shallowness
 def bimboed_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"{person.name} {person.last_name}, Total Babe")
+    valid_titles.append(f"{person.name} {person.last_name}")
     # Love progression (max 100) - Shallow adoration
     if person.love > 90:
         valid_titles.append("Soulmate-BFF-Lover-Forever")
@@ -163,7 +163,7 @@ def bimboed_titles(person: Person) -> list[str]:
     return valid_titles
 def bimboed_possessive_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Like, My Total Babe")
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     if person.love > 90:
         valid_titles.append("my forever sparkle prince")
         valid_titles.append("my BFF-With-Benefits")
@@ -197,7 +197,7 @@ def bimboed_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def bimboed_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Daddy")  # Default address
+    valid_titles.append(f"Daddy {mc.last_name}")  # Default respectful
     if person.love > 90:
         valid_titles.append("Human Dildo")
         valid_titles.append("Walking Wallet")
@@ -217,6 +217,8 @@ def bimboed_player_titles(person: Person) -> list[str]:
         valid_titles.append("Fuck Fountain")
     elif person.sluttiness > 50:
         valid_titles.append("Horny ATM")
+    elif person.sluttiness >40:
+        valid_titles.append(f"Daddy")  # Default address
     if person.has_breeding_fetish:
         valid_titles.append("Baby Batter Bank")
     if person.has_cum_fetish:
@@ -306,7 +308,7 @@ def breeder_possessive_titles(person: Person) -> list[str]:
     return valid_titles  
 def breeder_player_titles(person: Person) -> list[str]:  
     valid_titles = []  
-    valid_titles.append(f"Stud Master")  
+    valid_titles.append(f"Mr. {mc.last_name}") 
     if person.love > 90:  
         valid_titles.append("Genetic Imperative")  
         valid_titles.append("Bloodline Architect")  
@@ -381,7 +383,7 @@ def cosplay_titles(person: Person) -> list[str]:
     return valid_titles
 def cosplay_possessive_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"My Con Buddy")
+    valid_titles.append(f"my Con Buddy")
     if person.love > 90:
         valid_titles.append("my OTP")
         valid_titles.append("my canon endgame")
