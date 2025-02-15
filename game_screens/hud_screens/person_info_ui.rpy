@@ -1160,7 +1160,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                             $ VTvaginalst = "spreadvag"
                             if person.hymen == 0:
                                 $ VTvaginaltt += f"\n{{image=virgin_vaginal_small}} She's aching to be fucked, her {random_pussy_word} throbbing with anticipation."
-                            elif person.anal_first == mc.name:
+                            elif person.vaginal_first == mc.name:
                                 $ VTvaginaltt += f"\n{{image=spreadvag_small}} Her fresh {random_pussy_word} is dripping with desire, begging to be claimed by your {random_cock_word}.\n*The scent of her arousal is intoxicating*"
                             else:
                                 $ VTvaginaltt += f"\n{{image=spreadvag_small}} Her {random_pussy_word} is drenched in her own juices, ready to be devoured by your hungry {random_cock_word}.\n*The smell of her arousal is driving you wild*"
@@ -1178,7 +1178,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                         $ VTvaginalst = "vaghymen"
                                         $ VTvaginaltt += f"\n{{image=handprint_token_small}}  Her fresh {random_pussy_word} is overflowing with the {person.vaginal_cum} doses of your cum, her{VTbreedfertile}{VTpro} womb struggling to contain the sheer volume of your seed.{daysince}"
                                     else:
-                                        $ VTvaginalst = "ahegaopeach"
+                                        $ VTvaginalst = "ahegaovag"
                                         $ VTvaginaltt += f"\n{{image=beezee_token_small}} Her {random_pussy_word} is a cum-soaked paradise, the {person.vaginal_cum} doses of your seed swimming in her{VTbreedfertile}{VTpro} womb and oozing out in a sticky, sweet mess.{daysince}"
                                 else:
                                     if person.hymen <= 1:
@@ -1214,7 +1214,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                         $ VTvaginalst = "vaghymen"
                                         $ VTvaginaltt += f"\n{{image=handprint_token_small}} Her fresh {random_pussy_word} is overflowing with the {person.vaginal_cum} doses of your cum, her{VTbreedfertile}{VTpro} womb struggling to contain the sheer volume of your seed.{daysince}"
                                     else:
-                                        $ VTvaginalst = "ahegaopeach"
+                                        $ VTvaginalst = "ahegaovag"
                                         $ VTvaginaltt += f"\n{{image=beezee_token_small}} Her {random_pussy_word} is a cum-soaked paradise, the {person.vaginal_cum} doses of your seed swimming in her{VTbreedfertile}{VTpro} womb and oozing out in a sticky, sweet mess.{daysince}"
                                 else:
                                     if person.hymen <= 1:
