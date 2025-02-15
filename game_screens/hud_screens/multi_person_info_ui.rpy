@@ -316,7 +316,7 @@ screen actor_info_block(actor):
             ### Oral Virgin Flag
                     if getattr(persistent, "knowlips")==1:
                         $ VToralat = "talking"
-                        $ VToralst = ""
+                        $ VToralst = "bitelip"
                         $ VToraltt = ""
                         #the interactive icons during sex stuff
                         if 'position_choice' in globals():
@@ -453,7 +453,7 @@ screen actor_info_block(actor):
             ### Vaginal Virgin Flag
                     if getattr(persistent, "knowvaginal")==1:
                         $ VTvaginalat = "talking"
-                        $ VTvaginalst = ""
+                        $ VTvaginalst = "spreadvag"
                         $ VTvaginaltt = ""
                         #the interactive icons during sex stuff
                         if 'position_choice' in globals():
