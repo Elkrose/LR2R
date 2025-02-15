@@ -610,7 +610,7 @@ screen actor_info_block(actor):
             ### Anal Virgin Flag
                     if getattr(persistent, "knowanal")==1:
                         $ VTanalat = "talking"
-                        $ VTanalst = ""
+                        $ VTanalst = "yespeach"
                         $ VTanaltt = ""
                         #the interactive icons during sex stuff
                         if 'position_choice' in globals():
@@ -678,6 +678,7 @@ screen actor_info_block(actor):
                                 # tooltip VTanaltt
 
                         if VTanalat=="talking":
+                            $ VTanalst = "yespeach"
                             if actor.person.anal_virgin == 0 and actor.person.anal_cum ==0:
                                 $ VTanalst = "virgin_anal"
                                 $ VTanaltt = f"{{image=virgin_anal_small}} Her ass sways so ripely, ready for the taking"
@@ -703,6 +704,7 @@ screen actor_info_block(actor):
                                         $ VTanalst = "ahegaopeach"
                                         $ VTanaltt += f"\n{{image=ahegaoanal_small}} "+ str(actor.person.anal_cum) +" doses of your cum \n coating her bowels."
                             else:
+                                $ VTanalst = "yespeach"
                                 if actor.person.anal_first == mc.name:
                                     $ VTanalst = "claimedass"
                                     $ VTanaltt = f"{{image=handprint_token_small}} You Claimed this Ass!"

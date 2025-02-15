@@ -105,7 +105,7 @@ label aggressive_vaginal_fetish_non_employee_label():
             $ the_person.break_taboo("vaginal_sex")
             "You drop your pants, take out your already hard cock and you shove it right into her greedy pussy, eliciting a satisfying grunt from [the_person.possessive_title]."
 
-            call fuck_person(the_person, start_position = vaginal_standing, start_object = make_desk(), skip_intro = True, skip_condom = True) from vt_call_fuck_person_SB_fetish_vaginal_recurring_non_employee
+            call fuck_person(the_person, start_position = standing_doggy, start_object = make_desk(), skip_intro = True, skip_condom = True) from vt_call_fuck_person_SB_fetish_vaginal_recurring_non_employee
 
             the_person "That was so good. I've been thinking about that all day."
             "[the_person.possessive_title!c] gets dressed again and smiles at you."
