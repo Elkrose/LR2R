@@ -295,7 +295,7 @@ label VT_breeding_fetish_mom_intro_label():
     $ mc.change_locked_clarity(10)
     return #Needs testing
 
-label VT_breeding_fetish_lily_intro_label(): 
+label VT_breeding_fetish_lily_intro_label(the_person): 
     $ the_person = lily
     "Note: This scene was written assuming that eventually you fuck [the_person.title] on a live stream, but so far Vren has not written this step."
     $ mc.change_location(the_person.home)
