@@ -446,7 +446,7 @@ label VT_breeding_fetish_lily_intro_label(the_person):
     "You can hardly believe it. Your own sister now has a fetish to get bred by you, to be your cumdump, your breeding stock, your slut."
     return
 
-label VT_breeding_fetish_rebecca_intro_label(): #NEeds testing, evening room entry event
+label VT_breeding_fetish_rebecca_intro_label(the_person): #NEeds testing, evening room entry event
     $ the_person = aunt
     "You step into [the_person.possessive_title]'s room, and you're immediately struck by the sight of her curves, her body. She's sitting at her desk, surrounded by books and papers, but her eyes are fixed on you, and you can see the desire burning in them."
     $ the_person.draw_person()
