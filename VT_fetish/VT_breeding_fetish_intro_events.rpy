@@ -861,7 +861,7 @@ label VT_breeding_fetish_erica_intro_label():
     "You say goodnight and head home, looking forward to many more creampies in your future together."
     $ mc.change_location(bedroom)
     $ the_person.add_unique_on_room_enter_event(
-        Action("Erica knocked up followup", VT_erica_breeding_fetish_followup_requirement, "erica_breeding_fetish_followup_label")
+        Action("Erica knocked up followup", erica_breeding_fetish_followup_requirement, "erica_breeding_fetish_followup_label")
     )
     return
 
@@ -903,7 +903,7 @@ label VT_breeding_fetish_erica_unsuccessful_followup_label():
     "You look down at your limp cock, still slick from her juices, and can't help but smile at the memory of their encounter."
     "How did she even get in? You have so many questions, but for now, you just get up and start your regular morning routine, feeling a sense of excitement and anticipation for what the future might hold."
     $ the_person.add_unique_on_room_enter_event(
-        Action("Erica knocked up followup", VT_erica_breeding_fetish_followup_requirement, "erica_breeding_fetish_followup_label")
+        Action("Erica knocked up followup", erica_breeding_fetish_followup_requirement, "erica_breeding_fetish_followup_label")
     )
     return
 
