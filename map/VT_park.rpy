@@ -266,8 +266,9 @@ init 30 python:
         initialization = park_initialization, menu_tooltip = "Bring a person to the park.", category = "Misc")
 
 label select_person_for_park():
+    $ _excluded = [x for x in known_people_in_the_game() if not mc.phone.has_number(x) and x not in people_at_location(park)]
     call screen main_choice_display(build_menu_items(
-        [get_sorted_people_list(known_people_in_the_game(), "Spend time with", "Back")]
+        [get_sorted_people_list(known_people_in_the_game(_excluded), "Spend time with", "Back")]
         ))
     $ the_person = _return
     if the_person != "Back":
@@ -276,6 +277,9 @@ label select_person_for_park():
         call select_person_for_park_response(the_person) from _call_select_person_for_park_response
         call advance_time from _call_advance_time_park
     return
+
+
+
 
 label select_person_for_park_response(the_person):
     $ scene_manager = Scene()

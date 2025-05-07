@@ -403,14 +403,14 @@ label breeder_sex_accept(the_person, the_position):
             "[the_person.title] smirks and winks at you, her eyes sparkling with mischief as she spreads her legs and invites you to penetrate her."
         else:
             if the_position.skill_tag == "Foreplay":
-                the_person "Oh, I've been wanting you to do that for a while now. Just thinking about it makes me wet and ready to breed. I want to feel your fingers inside me and know that we're making a baby."
+                the_person "Oh, I've been wanting you to do that for a while now. Just thinking about it makes me wet and ready to breed. I want to feel your fingers inside me, tantalizingly preparing me for the divine act of creating life."
                 "[the_person.title] bites her lip and looks up at you, her eyes shining with desire as she starts to move her hips and get into position."
             elif the_position.skill_tag == "Oral":
                 if "getting head" in the_position.opinion_tags:
-                    the_person "Ugh, I need your tongue on my clit, now! Make me cum and get me ready for breeding. I want to feel your mouth on my pussy and know that we're making a baby."
+                    the_person "Ugh, I need your tongue on my clit, now! Make me cum and get me ready for breeding. I want to feel your mouth on my pussy, tantalizingly preparing me for the divine act of creating life."
                     "[the_person.title] spreads her legs and pulls you in, her body tensing up with anticipation as she starts to moan and get into it."
                 else:
-                    the_person "You're going down on me right now, and you're going to make me cum and get me ready for breeding. I want to feel your mouth on my pussy and know that we're making a baby."
+                    the_person "You're going down on me right now, and you're going to make me cum and get me ready for breeding. I want to feel your mouth on my pussy, tantalizingly preparing me for the divine act of creating life."
                     "[the_person.title] nods and smiles, her eyes shining with excitement as she starts to move her hips and get into position."
             else:
                 the_person "Get over here and fuck me already. I've been waiting for this and I'm ready to breed. I want to feel your cock inside me and know that we're making a baby."
@@ -893,7 +893,7 @@ label breeder_flirt_response_girlfriend(the_person):
                 "Find somewhere more quiet\n{menu_yellow}[mc.location.interruption_info_text]{/menu_yellow}":
                     mc.name "Why wait? Come on, I'm sure we can find somewhere quiet and private to breed."
                     the_person "You're always so eager, aren't you? Alright, let's go and make some babies!"
-                    "You and [the_person.possessive_title!c]] hurry off, searching for a private spot to breed."
+                    "You and [the_person.possessive_title!c] hurry off, searching for a private spot to breed."
                     call mc_change_to_private_location(the_person) from _call_mc_change_to_private_location_breeder_flirt_response_girlfriend_2
                     call fuck_person(the_person, private = True, start_position = kissing, skip_intro = True) from _vt_breeder_call_fuck_person_76
                     $ the_person.call_dialogue("sex_review", the_report = _return)
@@ -909,7 +909,7 @@ label breeder_flirt_response_girlfriend(the_person):
         else:
             the_person "Well if I'm so beautiful, then why are you just standing there? Come on, kiss me and breed with me!"
             "You put your arm around her waist and pull her close, kissing her deeply and grinding against her."
-            "When you break the kiss, [the_person.possessive_title!c]] sighs and leans against you, her body aching for more breeding."
+            "When you break the kiss, [the_person.possessive_title!c] sighs and leans against you, her body aching for more breeding."
             the_person "You're not so bad yourself... But I think you could be better, with a little more practice breeding with me."
             menu:
                 "Make out":
@@ -944,7 +944,7 @@ label breeder_flirt_response_girlfriend(the_person):
                     $ the_person.call_dialogue("kissing_taboo_break")
                     $ the_person.break_taboo("kissing")
 
-                "You put your arms around [the_person.possessive_title!c]]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
+                "You put your arms around [the_person.possessive_title!c]'s waist and rest your hands on her ass. You pull her close and kiss her sensually."
                 "She responds by pressing her body against you and grinding her hips against your thigh, her body aching for more ."
                 "You grab her hips and pull her closer, your crotches pressed together as you imagine breeding with her."
                 call fuck_person(the_person, start_position = kissing, skip_intro = True) from _vt_breeder_call_fuck_person_78

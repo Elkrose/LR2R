@@ -744,14 +744,14 @@ def gothic_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def gothic_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Lord/Lady of Shadows")  # Default address
+    valid_titles.append(f"Lord of Shadows")  # Default address
     if person.love > 90:
         valid_titles.append("Eternal Darkness")
         valid_titles.append("Final Sunset")
     elif person.love > 80:
         valid_titles.append("Pale Sovereign")
     elif person.love > 60:
-        valid_titles.append("Crypt Lord/Lady")
+        valid_titles.append("Crypt Lord")
     elif person.love > 20:
         valid_titles.append(f"Mysterious Stranger")
     if person.obedience > 250:

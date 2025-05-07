@@ -402,7 +402,7 @@ def _vt_postfix_break_taboo(wrapped_func: Callable) -> Callable:
                     #vt_bloodrando = 33
                     #print( "vt_bloodrando =" + str(vt_bloodrando))
                     if vt_bloodrando <= vt_bloodshow:
-                        print("Bloodshow is occurring")
+                        #print("Bloodshow is occurring")
                         self.outfit.add_accessory(get_blood_item(creampie_cum))
                         self.outfit.add_accessory(get_blood_item(ass_cum))
                 self.event_triggers_dict["given_virginity"] = True

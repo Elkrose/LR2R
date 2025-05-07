@@ -2,7 +2,7 @@
 # Tweaked start
 define config.name = _("Lab Rats 2 Reformulate - Cherries Edition")
 define config.window_icon = "VTimages/mod_icon.png"
-define VT_Game_Version = "VTMod4.0.31"
+define VT_Game_Version = "VTMod4.0.32"
 
 init python:
     config.version += VT_Game_Version
@@ -397,7 +397,7 @@ label VT_start():
     if modsinstalled == []:
         "No mods are installed."
     else:
-        $ mod_message = "🍒The following mods are installed: \n " + ", ".join(modsinstalled)
+        $ mod_message = "{image=vtcherries_small} The following mods are installed: \n " + ", ".join(modsinstalled)
         "[mod_message]"
 
     "Lab Rats 2 contains content related to impregnation and pregnancy. These settings may be changed in the menu at any time."
@@ -412,7 +412,7 @@ label VT_start():
         "Semi-Realistic pregnancy content\n{size=16}Birth control is not 100%% effective. Girls may not be taking birth control.{/size}":
             $ persistent.pregnancy_pref = 2
 
-        "🍒Realistic🍒 pregnancy content\n{size=16}Realistic cycles. Girls know their fertile times. Pulling out not 100%% effective. Girls don't want to get pregnant.{/size}":
+        "{image=vtcherries_small} Realistic{image=vtcherries_small}  pregnancy content\n{size=16}Realistic cycles. Girls know their fertile times. Pulling out not 100%% effective. Girls don't want to get pregnant.{/size}":
             $ persistent.pregnancy_pref = 3
 
     "How quickly would you like stories from the game to play out? This will affect spacing between story events."
@@ -445,7 +445,7 @@ label VT_start():
             "Easier Game Play + Higher Max Stats for MC. All options for making the game easier will be applied after character creation."
             $ kina_mode = True
             $ easy_mode = True
-        "🍒Easy Cherries🍒":
+        "{image=vtcherries_small} Easy Cherries":
             "Easy Cherries! Easy Mode + Higher Stats, everything set to just have fun."
             $ cherry_mode = True
 
@@ -512,10 +512,10 @@ label VT_start():
             purchase_policy(max_attention_increase_1_policy, ignore_cost = True)
 
         if starting_hires:
-            market_hire = create_random_person()
-            hr_hire = create_random_person()
-            prod_hire = create_random_person()
-            supply_hire = create_random_person()
+            market_hire = create_random_person(title = None, possessive_title = None, mc_title = None)
+            hr_hire = create_random_person(title = None, possessive_title = None, mc_title = None)
+            prod_hire = create_random_person(title = None, possessive_title = None, mc_title = None)
+            supply_hire = create_random_person(title = None, possessive_title = None, mc_title = None)
 
             market_hire.market_skill = 4
             market_hire.charisma = 4

@@ -173,13 +173,13 @@ screen VTMOD_setup_ui():
                 hbox:
                     align (0.5, 0.5)
                     xsize 1000
-                    text "{size=22} 🍒🍒🍒 You can Enable/Disable the VT HUD! 🍒🍒🍒" style "warning_text"
+                    text "{size=22} {image=vtcherries_small}{image=vtcherries_small}{image=vtcherries_small} You can Enable/Disable the VT HUD! {image=vtcherries_small}{image=vtcherries_small}{image=vtcherries_small}" style "warning_text"
 
             if pref_selected == "Trackers":
                 hbox:
                     align (0.5, 0.5)
                     xsize 1000
-                    text "{size=22} 🍒🍒🍒Trackers work great!🍒🍒🍒" style "warning_text"
+                    text "{size=22} {image=vtcherries_small}{image=vtcherries_small}{image=vtcherries_small}Trackers work great!{image=vtcherries_small}{image=vtcherries_small}{image=vtcherries_small}" style "warning_text"
 
             if pref_selected in ["Population"]:
                 hbox:
@@ -190,7 +190,7 @@ screen VTMOD_setup_ui():
             if pref_selected in ["Virgin Stats"]:
                 hbox:
                     xsize 1000
-                    text "🍒 Virginal bleeding averages 15-30%. Set to 0% to disable or 100% to always enable.." xalign 1.0 style "VTmenu_text_style"
+                    text "{image=vtcherries_small} Virginal bleeding averages 15-30%. Set to 0% to disable or 100% to always enable.." xalign 1.0 style "VTmenu_text_style"
 
             vbar value YScrollValue("vtvp")
 

@@ -173,12 +173,12 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                         info.append("{image=stocking_token_small}")
                 if getattr(persistent, "serum_vial")==1:
                     if item.serum_effects:
-                        if len(item.serum_effects) > item.serum_tolerance:
-                            info.append("{image=vial3_token_small}")
-                        elif len(item.serum_effects) > 1:
-                            info.append("{image=vial2_token_small}")
-                        else:
-                            info.append("{image=vial_token_small}")
+                        if item.active_serum_count > item.serum_tolerance:
+                                info.append("{image=vial3_token_small}")
+                            elif len(item.serum_effects) > 1:
+                                info.append("{image=vial2_token_small}")
+                            else:
+                                info.append("{image=vial_token_small}")
                 if getattr(persistent, "feeding_bottle")==1:
                     if item.knows_pregnant and item.is_mc_father:
                         info.append("{image=feeding_bottle_token_small}")
@@ -265,6 +265,14 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                 mi.title = "\n".join(parts)
             mi.is_sensitive = False
 
+        if "(highlight_yellow)" in mi.title:
+            mi.title = mi.title.replace("(highlight_yellow)", "")
+            mi.highlight_yellow = True
+
+        if "(highlight_green)" in mi.title:
+            mi.title = mi.title.replace("(highlight_green)", "")
+            mi.highlight_green = True
+
         if mi.display:
             if isinstance(item, Person) and isinstance(item.title, basestring) and isinstance(mi.the_tooltip, basestring):
                 mi.the_tooltip = mi.the_tooltip.replace("[the_person.title]", item.title)
@@ -284,6 +292,8 @@ class MenuItem():
         self.display_scale: float | None = None
         self.person_preview_args = person_preview_args
         self.return_value = return_value
+        self.highlight_yellow = False
+        self.highlight_green = False
 
     def __hash__(self) -> int:
         return hash((self.title, self.display_key))
@@ -291,7 +301,7 @@ class MenuItem():
     def __eq__(self, other: MenuItem) -> bool:
         if not isinstance(other, MenuItem):
             return NotImplemented
-        return self.title == other.title and self.display_key == other.display_key
+        return (self.title, self.display_key) == (other.title, other.display_key)
 
     def __del__(self):
         try:
