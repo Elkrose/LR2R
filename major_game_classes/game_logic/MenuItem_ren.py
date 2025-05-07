@@ -174,11 +174,11 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                 if getattr(persistent, "serum_vial")==1:
                     if item.serum_effects:
                         if item.active_serum_count > item.serum_tolerance:
-                                info.append("{image=vial3_token_small}")
-                            elif len(item.serum_effects) > 1:
-                                info.append("{image=vial2_token_small}")
-                            else:
-                                info.append("{image=vial_token_small}")
+                            info.append("{image=vial3_token_small}")
+                        elif len(item.serum_effects) > 1:
+                            info.append("{image=vial2_token_small}")
+                        else:
+                            info.append("{image=vial_token_small}")
                 if getattr(persistent, "feeding_bottle")==1:
                     if item.knows_pregnant and item.is_mc_father:
                         info.append("{image=feeding_bottle_token_small}")
