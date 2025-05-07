@@ -282,7 +282,7 @@ screen person_info_detailed(person):
                                     if person is cousin:
                                         text "[mc.name] [mc.last_name] [[Cousin]]" size 14 style "menu_text_style"
                                 for relationship in relationship_list:
-                                    text "[relationship[0].name] [relationship[0].last_name] [[[relationship[1]]]]" size 14 style "menu_text_style"
+                                    text "[relationship[0].name] [relationship[0].last_name] [[[relationship[1]]]" size 14 style "menu_text_style"
                     else:
                         if hasattr(person, 'is_daughter_of_mc'):
                             text "[mc.name] [mc.last_name] [[Father]]" size 14 style "menu_text_style"
@@ -296,8 +296,7 @@ screen person_info_detailed(person):
                             if person is cousin:
                                 text "[mc.name] [mc.last_name] [[Cousin]]" size 14 style "menu_text_style"
                         for relationship in relationship_list:
-                            text "[relationship[0].name] [relationship[0].last_name] [[[relationship[1]]]]" size 14 style "menu_text_style"
-
+                            text "[relationship[0].name] [relationship[0].last_name] [[[relationship[1]]]" size 14 style "menu_text_style"
         hbox:
             xsize 1750
             spacing 30
