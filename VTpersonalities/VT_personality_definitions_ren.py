@@ -62,8 +62,10 @@ def alluring_possessive_titles(person: Person) -> list[str]:
         valid_titles.append("my forbidden muse")
     elif person.love > 60:
         valid_titles.append("my enchanting siren")
-    elif person.love > 20:
+    elif person.love > 40:
         valid_titles.append(f"my dear {person.name}")
+    elif person.love > 20:
+        valid_titles.append(person.name)
     if person.obedience > 250:
         valid_titles.append("my velvet dominator")
     elif person.obedience > 160:
@@ -197,7 +199,7 @@ def bimboed_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def bimboed_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Daddy {mc.last_name}")  # Default respectful
+    valid_titles.append(f"Mr. {mc.last_name}")  # Default respectful
     if person.love > 90:
         valid_titles.append("Human Dildo")
         valid_titles.append("Walking Wallet")
@@ -205,8 +207,10 @@ def bimboed_player_titles(person: Person) -> list[str]:
         valid_titles.append("Sugar Daddy")
     elif person.love > 60:
         valid_titles.append("Cock ATM")
-    elif person.love > 20:
-        valid_titles.append(f"Hot Stuff")
+    elif person.love > 40:
+        valid_titles.append(f"Daddy {mc.last_name}")
+    elif person.love > 10:
+        valid_titles.append(mc.name)
     if person.obedience > 250:
         valid_titles.append("Plastic Surgeon")
     elif person.obedience > 160:
@@ -235,53 +239,57 @@ def bimboed_player_titles(person: Person) -> list[str]:
 ### Breeder personality: Reproductive obsession with legacy focus  
 ### Titles emphasize fertility, lineage, and biological destiny  
 def breeder_titles(person: Person) -> list[str]:  
-    valid_titles = []  
-    valid_titles.append(f"Potential Mate")  # Default biological  
+    valid_titles = []
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     # Love progression (max 100) - Reproductive bonding  
-    if person.love > 90:  
-        valid_titles.append("Genetic Destiny")  
-        valid_titles.append("Womb of Providence")  
-    elif person.love > 80:  
-        valid_titles.append("Eternal Bloodline")  
-    elif person.love > 60:  
-        valid_titles.append("Prime Breeding Stock")  
-    elif person.love > 20:  
-        valid_titles.append(f"Fertile {person.name}")  
+    if person.love > 90:
+        valid_titles.append("Genetic Destiny")
+        valid_titles.append("Womb of Providence")
+    elif person.love > 80:
+        valid_titles.append("Prime Breeding Stock")
+    elif person.love > 60:
+        valid_titles.append(f"Potential Mate {person.name}")
+    elif person.love > 40:
+        valid_titles.append(f"Fertile {person.name}")
+    elif person.love > 20:
+        valid_titles.append(person.name)
     # Obedience hierarchy (max 300) - Breeding protocol  
-    if person.obedience > 250:  
-        valid_titles.append("Livestock Champion")  
-    elif person.obedience > 160:  
-        valid_titles.append("Broodmare")  
+    if person.obedience > 250:
+        valid_titles.append("Livestock Champion")
+    elif person.obedience > 160:
+        valid_titles.append("Broodmare")
     # Sluttiness progression (max 100) - Reproductive enthusiasm  
-    if person.sluttiness > 90:  
-        valid_titles.append("Heat Cycle Personified")  
-    elif person.sluttiness > 70:  
-        valid_titles.append("Fertility Idol")  
-    elif person.sluttiness > 50:  
-        valid_titles.append("Seedbed")  
+    if person.sluttiness > 90:
+        valid_titles.append("Heat Cycle Personified")
+    elif person.sluttiness > 70:
+        valid_titles.append("Fertility Idol")
+    elif person.sluttiness > 50:
+        valid_titles.append("Seedbed")
     # Fetish expressions (Agricultural metaphors)  
-    if person.has_breeding_fetish:  
-        valid_titles.append("Human Hatchery")  
-    if person.has_cum_fetish:  
-        valid_titles.append("Seedbank")  
-    if person.has_anal_fetish:  
-        valid_titles.append("Plowable Acreage")  
-    if person.has_exhibition_fetish:  
-        valid_titles.append("Public Breeding Display")  
-    if person.has_vaginal_fetish:  
-        valid_titles.append("Sacred Furrow")  
-        valid_titles.append("Fertile Crescent")  
+    if person.has_breeding_fetish:
+        valid_titles.append("Human Hatchery")
+    if person.has_cum_fetish:
+        valid_titles.append("Seedbank")
+    if person.has_anal_fetish:
+        valid_titles.append("Plowable Acreage")
+    if person.has_exhibition_fetish:
+        valid_titles.append("Public Breeding Display")
+    if person.has_vaginal_fetish:
+        valid_titles.append("Sacred Furrow")
+        valid_titles.append("Fertile Crescent")
     return valid_titles  
 def breeder_possessive_titles(person: Person) -> list[str]:  
-    valid_titles = []  
-    valid_titles.append(f"my Potential Mate")  
+    valid_titles = []
+    valid_titles.append(f"{person.formal_address} {person.last_name}")    
     if person.love > 90:  
         valid_titles.append("my genetic imperative")  
         valid_titles.append("my biological destiny")  
     elif person.love > 80:  
         valid_titles.append("my eternal lineage")  
     elif person.love > 60:  
-        valid_titles.append("my prime stock")  
+        valid_titles.append("my prime stock")
+    elif person.love > 40:  
+        valid_titles.append("my potential mate")
     elif person.love > 20:  
         valid_titles.append(f"my fertile ground")  
     if person.obedience > 250:  
@@ -345,13 +353,13 @@ def breeder_player_titles(person: Person) -> list[str]:
 ### Titles blend pop culture references with convention slang
 def cosplay_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Con Buddy")  # Default casual
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     # Love progression (max 100) - Shipping culture
     if person.love > 90:
         valid_titles.append("OTP")
         valid_titles.append("Canon Love Interest")
     elif person.love > 80:
-        valid_titles.append("Official Ship")
+        valid_titles.append("Official Con Buddy")
     elif person.love > 60:
         valid_titles.append("Fanfiction Pairing")
     elif person.love > 20:
@@ -383,12 +391,12 @@ def cosplay_titles(person: Person) -> list[str]:
     return valid_titles
 def cosplay_possessive_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"my Con Buddy")
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     if person.love > 90:
         valid_titles.append("my OTP")
         valid_titles.append("my canon endgame")
     elif person.love > 80:
-        valid_titles.append("my official ship")
+        valid_titles.append("my official con buddy")
     elif person.love > 60:
         valid_titles.append("my fanfic OTP")
     elif person.love > 20:
@@ -417,7 +425,7 @@ def cosplay_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def cosplay_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Senpai")  # Anime convention default
+    valid_titles.append(f"Mr. {mc.last_name}")
     if person.love > 90:
         valid_titles.append("Final Boss")
         valid_titles.append("Canon Protagonist")
@@ -425,8 +433,10 @@ def cosplay_player_titles(person: Person) -> list[str]:
         valid_titles.append("Fandom Husband/Wife")
     elif person.love > 60:
         valid_titles.append("Ship Captain")
-    elif person.love > 20:
-        valid_titles.append(f"Con Crush")
+    elif person.love > 40:
+        valid_titles.append("Con Crush")
+    elif person.love > 10:
+        valid_titles.append(f"Senpai")
     if person.obedience > 250:
         valid_titles.append("Game Master")
     elif person.obedience > 160:
@@ -566,7 +576,7 @@ def dandere_player_titles(person: Person) -> list[str]:
 ### Titles use gastronomic metaphors and consumption themes
 def foodie_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Sous-Chef")  # Default kitchen hierarchy
+    valid_titles.append(f"{person.formal_address} {person.last_name}")  # Default kitchen hierarchy
     # Love progression (max 100) - Romantic gastronomy
     if person.love > 90:
         valid_titles.append("Soul Food")
@@ -579,7 +589,7 @@ def foodie_titles(person: Person) -> list[str]:
         valid_titles.append(f"Snack {person.name}")
     # Obedience hierarchy (max 300) - Kitchen brigade
     if person.obedience > 250:
-        valid_titles.append("Head Chef")
+        valid_titles.append("Sous-Chef")
     elif person.obedience > 160:
         valid_titles.append("Pastry Commis")
     # Sluttiness progression (max 100) - Edible seduction
@@ -604,7 +614,7 @@ def foodie_titles(person: Person) -> list[str]:
     return valid_titles
 def foodie_possessive_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"My Sous-Chef")
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     if person.love > 90:
         valid_titles.append("my soul food")
         valid_titles.append("my last bite")
@@ -612,8 +622,10 @@ def foodie_possessive_titles(person: Person) -> list[str]:
         valid_titles.append("my signature dish")
     elif person.love > 60:
         valid_titles.append("my comfort food")
-    elif person.love > 20:
+    elif person.love > 40:
         valid_titles.append(f"my quick snack")
+    elif person.love > 20:
+        valid_titles.append(person.name)
     if person.obedience > 250:
         valid_titles.append("my head chef")
     elif person.obedience > 160:
@@ -638,7 +650,7 @@ def foodie_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def foodie_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Food Critic")  # Default address
+    valid_titles.append(f"Mr. {mc.last_name}") # Default address
     if person.love > 90:
         valid_titles.append("Michelin Star")
         valid_titles.append("Perfect Pairing")
@@ -646,8 +658,10 @@ def foodie_player_titles(person: Person) -> list[str]:
         valid_titles.append("Master Chef")
     elif person.love > 60:
         valid_titles.append("Personal Gourmet")
-    elif person.love > 20:
+    elif person.love > 40:
         valid_titles.append(f"Taste Tester")
+    elif person.love > 20:
+        valid_titles.append(f"Food Critic")
     if person.obedience > 250:
         valid_titles.append("Kitchen God")
     elif person.obedience > 160:
@@ -744,16 +758,19 @@ def gothic_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def gothic_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Lord of Shadows")  # Default address
+    valid_titles.append(f"Lord {mc.last_name}") # Default address
     if person.love > 90:
         valid_titles.append("Eternal Darkness")
         valid_titles.append("Final Sunset")
+        valid_titles.append(f"Lord of Shadows")
     elif person.love > 80:
         valid_titles.append("Pale Sovereign")
     elif person.love > 60:
         valid_titles.append("Crypt Lord")
-    elif person.love > 20:
+    elif person.love > 40:
         valid_titles.append(f"Mysterious Stranger")
+    elif person.love > 20:
+        valid_titles.append(mc.name)
     if person.obedience > 250:
         valid_titles.append("Architect of Ruin")
     elif person.obedience > 160:
@@ -1096,18 +1113,21 @@ def kuudere_player_titles(person: Person) -> list[str]:
 ### Pornstar personality: Performative eroticism with industry pride  
 ### Titles use film set terminology and adult film accolades  
 def pornstar_titles(person: Person) -> list[str]:  
-    valid_titles = []  
+    valid_titles = []
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     valid_titles.append(f"Scene Partner")  # Default professional  
     # Love progression (max 100) - Industry romance  
     if person.love > 90:  
         valid_titles.append("Oscar-Winning Hole")  
         valid_titles.append("Cummy Award Recipient")  
     elif person.love > 80:  
-        valid_titles.append("Vivid Entertainment Exclusive")  
-    elif person.love > 60:  
-        valid_titles.append("Feature Dance Partner")  
-    elif person.love > 20:  
         valid_titles.append(f"Co-Star {person.name}")  
+    elif person.love > 60:  
+        valid_titles.append("Scene Partner")
+    elif person.love > 40:  
+        valid_titles.append("Feature Dance Partner")
+    elif person.love > 20:  
+        valid_titles.append(person.name)
     # Obedience hierarchy (max 300) - Film set hierarchy  
     if person.obedience > 250:  
         valid_titles.append("Method Actor (Anal Only)")  
@@ -1134,17 +1154,19 @@ def pornstar_titles(person: Person) -> list[str]:
         valid_titles.append("Gonzo Star")  
     return valid_titles  
 def pornstar_possessive_titles(person: Person) -> list[str]:  
-    valid_titles = []  
-    valid_titles.append(f"My Scene Partner")
+    valid_titles = []
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     if person.love > 90:  
         valid_titles.append("my oscar-winning hole")  
         valid_titles.append("my personal cummy award")  
     elif person.love > 80:  
-        valid_titles.append("my studio exclusive")  
+        valid_titles.append("my co-star")  
     elif person.love > 60:  
-        valid_titles.append("my feature dancer")  
+        valid_titles.append("my scene partner")
+    elif person.love > 40:  
+        valid_titles.append("my feature dancer")        
     elif person.love > 20:  
-        valid_titles.append(f"my co-star")  
+        valid_titles.append(person.name)  
     if person.obedience > 250:  
         valid_titles.append("my method actor")  
     elif person.obedience > 160:  
@@ -1168,17 +1190,19 @@ def pornstar_possessive_titles(person: Person) -> list[str]:
         valid_titles.append("my gonzo hole")  
     return valid_titles  
 def pornstar_player_titles(person: Person) -> list[str]:  
-    valid_titles = []  
-    valid_titles.append(f"Director")  # Default power role  
+    valid_titles = []
+    valid_titles.append(f"Mr. {mc.last_name}")
     if person.love > 90:  
-        valid_titles.append("Human Sybian")  
+        valid_titles.append("Director")  
         valid_titles.append("Cum Oscar")  
     elif person.love > 80:  
         valid_titles.append("A-List Co-Star")  
     elif person.love > 60:  
         valid_titles.append("Stunt Cock/Cunt")  
+    elif person.love > 40:  
+        valid_titles.append(f"Fuck Double")
     elif person.love > 20:  
-        valid_titles.append(f"Fuck Double")  
+        valid_titles.append(mc.name) 
     if person.obedience > 250:  
         valid_titles.append("Executive Producer")  
     elif person.obedience > 160:  
@@ -1206,7 +1230,7 @@ def pornstar_player_titles(person: Person) -> list[str]:
 ### Titles emphasize sexual availability and carnal pride
 def slutty_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Fucktoy")  # Default address
+    valid_titles.append(f"{person.formal_address} {person.last_name}")  # Default address
     # Love progression (max 100) - Sexual obsession
     if person.love > 90:
         valid_titles.append("Cum-Crazed Soulmate")
@@ -1215,6 +1239,8 @@ def slutty_titles(person: Person) -> list[str]:
         valid_titles.append("Booty Call Forever")
     elif person.love > 60:
         valid_titles.append("Fuckbuddy Supreme")
+    elif person.love > 40:
+        valid_titles.append("Fucktoy")
     elif person.love > 20:
         valid_titles.append(f"Free Use {person.name}")
     # Obedience hierarchy (max 300) - Eager submission
@@ -1244,7 +1270,7 @@ def slutty_titles(person: Person) -> list[str]:
     return valid_titles
 def slutty_possessive_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"My Fucktoy")
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     if person.love > 90:
         valid_titles.append("my personal cum dump")
         valid_titles.append("my permanent hole")
@@ -1252,8 +1278,10 @@ def slutty_possessive_titles(person: Person) -> list[str]:
         valid_titles.append("my 24/7 booty call")
     elif person.love > 60:
         valid_titles.append("my fuckbuddy")
-    elif person.love > 20:
+    elif person.love > 40:
         valid_titles.append(f"my free use toy")
+    elif person.love > 20:
+        valid_titles.append(f"my fucktoy {person.name}")
     if person.obedience > 250:
         valid_titles.append("my living fleshlight")
     elif person.obedience > 160:
@@ -1278,10 +1306,10 @@ def slutty_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def slutty_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Fuck Master")  # Default address
+    valid_titles.append(f"Mr. {mc.last_name}") # Default address
     if person.love > 90:
         valid_titles.append("Walking Dildo")
-        valid_titles.append("Cum Fountain")
+        valid_titles.append("Fuck Master")
     elif person.love > 80:
         valid_titles.append("Human Sybian")
     elif person.love > 60:
@@ -1315,13 +1343,13 @@ def slutty_player_titles(person: Person) -> list[str]:
 ### Titles emphasize athleticism, friendly competition, and anti-femininity
 def tomboy_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Buddy")  # Default address
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     # Love progression (max 100) - Bro-to-romantic tension
     if person.love > 90:
         valid_titles.append("Partner in Crime")
         valid_titles.append("Bench Press Bae")
     elif person.love > 80:
-        valid_titles.append("Team Captain")
+        valid_titles.append(f"Buddy {person.name}")
     elif person.love > 60:
         valid_titles.append("Workout Buddy")
     elif person.love > 20:
@@ -1353,12 +1381,12 @@ def tomboy_titles(person: Person) -> list[str]:
     return valid_titles
 def tomboy_possessive_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"My Buddy")
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     if person.love > 90:
         valid_titles.append("my crime partner")
         valid_titles.append("my gym rat")
     elif person.love > 80:
-        valid_titles.append("my team captain")
+        valid_titles.append(f"my buddy {person.name}")
     elif person.love > 60:
         valid_titles.append("my workout buddy")
     elif person.love > 20:
@@ -1387,7 +1415,7 @@ def tomboy_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def tomboy_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append(f"Champ")  # Default address
+    valid_titles.append(f"Mr. {mc.last_name}")
     if person.love > 90:
         valid_titles.append("Ultimate Rival")
         valid_titles.append("Swolemate")
@@ -1395,8 +1423,10 @@ def tomboy_player_titles(person: Person) -> list[str]:
         valid_titles.append("Coach")
     elif person.love > 60:
         valid_titles.append("Drill Sergeant")
+    elif person.love > 40:
+        valid_titles.append("Hotshot")
     elif person.love > 20:
-        valid_titles.append(f"Hotshot")
+        valid_titles.append("Champ")
     if person.obedience > 250:
         valid_titles.append("Team Owner")
     elif person.obedience > 160:
@@ -1527,7 +1557,7 @@ def tsundere_player_titles(person: Person) -> list[str]:
 ### Titles blend elemental fury with predatory instinct  
 def wilder_titles(person: Person) -> list[str]:  
     valid_titles = []  
-    valid_titles.append(f"Feral One")  # Base state  
+    valid_titles.append(f"{person.formal_address} {person.last_name}")  # Base state  
     # Love progression (max 100) - Storm-bonding  
     if person.love > 90:  
         valid_titles.append("Thunder Mate")  
@@ -1535,7 +1565,9 @@ def wilder_titles(person: Person) -> list[str]:
     elif person.love > 80:  
         valid_titles.append("Pack Alpha")  
     elif person.love > 60:  
-        valid_titles.append("Hunting Partner")  
+        valid_titles.append("Hunting Partner")
+    elif person.love > 40:  
+        valid_titles.append("Feral One")        
     elif person.love > 20:  
         valid_titles.append(f"Territory {person.name}")  
     # Obedience hierarchy (max 300) - Pack dynamics  
@@ -1565,14 +1597,16 @@ def wilder_titles(person: Person) -> list[str]:
     return valid_titles  
 def wilder_possessive_titles(person: Person) -> list[str]:  
     valid_titles = []  
-    valid_titles.append(f"My Feral")  
+    valid_titles.append(f"{person.formal_address} {person.last_name}")
     if person.love > 90:  
         valid_titles.append("my storm mate")  
         valid_titles.append("my eclipse bond")  
     elif person.love > 80:  
         valid_titles.append("my pack alpha")  
     elif person.love > 60:  
-        valid_titles.append("my hunt partner")  
+        valid_titles.append("my hunt partner")
+    elif person.love > 40:  
+        valid_titles.append("my feral")        
     elif person.love > 20:  
         valid_titles.append(f"my territory")  
     if person.obedience > 250:  
@@ -1599,13 +1633,15 @@ def wilder_possessive_titles(person: Person) -> list[str]:
     return valid_titles  
 def wilder_player_titles(person: Person) -> list[str]:  
     valid_titles = []  
-    valid_titles.append(f"Alpha")  
-    if person.love > 90:  
+    valid_titles.append(f"Mr. {mc.last_name}")
+    if person.love >= 100:  
+        valid_titles.append("Alpha")
+    elif person.love > 80:  
         valid_titles.append("Stormbringer")  
         valid_titles.append("Eclipse Maker")  
-    elif person.love > 80:  
-        valid_titles.append("Pack Heart")  
     elif person.love > 60:  
+        valid_titles.append("Pack Heart")  
+    elif person.love > 40:  
         valid_titles.append("Blood Moon")  
     elif person.love > 20:  
         valid_titles.append(f"Territory Marker")  
@@ -1709,9 +1745,11 @@ def yandere_possessive_titles(person: Person) -> list[str]:
     return valid_titles
 def yandere_player_titles(person: Person) -> list[str]:
     valid_titles = []
-    valid_titles.append("Master")  # Surface devotion
-    if person.love > 90:
+    valid_titles.append(f"Mister {mc.last_name}")
+    if person.love >= 100:
         valid_titles.append("My Eternal Captor")
+    elif person.love > 90:
+        valid_titles.append("My Master")
         valid_titles.append("Blood-Smeared God")
     elif person.love > 80:
         valid_titles.append("Obsession Source")
