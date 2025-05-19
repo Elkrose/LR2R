@@ -46,7 +46,8 @@ def VT_exhibition_fetish_family_intro_requirement(person: Person):
         return time_of_day == 3 and person.location == person.home and person.location.person_count == 1 #She is alone in her bedroom
 
 def VT_exhibition_fetish_generic_intro_requirement(person: Person):
-    return person.location == mall and mc.is_at_office and time_of_day == 3
+    return person.location == mall and person.energy >= 80 and mc.energy >= 80 and person.is_available and mc.is_at_office and time_of_day == 3
+    #return person.location == mall and mc.is_at_office and time_of_day == 3
 
 def VT_exhibition_fetish_mom_intro_requirement():
     return False
