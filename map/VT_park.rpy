@@ -278,9 +278,6 @@ label select_person_for_park():
         call advance_time from _call_advance_time_park
     return
 
-
-
-
 label select_person_for_park_response(the_person):
     $ scene_manager = Scene()
     if the_person.location == park:
