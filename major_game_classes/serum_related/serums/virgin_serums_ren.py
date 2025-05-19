@@ -483,7 +483,7 @@ def smart_roses_on_remove(person: Person, serum: SerumDesign, add_to_log: bool):
     return
 
 def rose_gardens_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
-     if not person.is_pregnant:
+    if not person.is_pregnant:
         renpy.say(f"{person.title or person.create_formatted_title('???')}", "I'm not pregnant!")
         return
     if person in mc.location.people:
