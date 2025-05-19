@@ -175,6 +175,8 @@ def clone_womb_restore_on_remove(person: Person, serum: SerumDesign, add_to_log:
 
 #Rose Blossom Stims
 def rose_blossom_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
+    if add_to_log:
+        mc.log_event(f"{person.title or person.create_formatted_title('???')}: R053 BL0550M5 injested", "float_text_red")
     #basically to give a one quick shot, then daily small increases over time
     if person.suggestibility <= 30:
         person.change_suggest(30, add_to_log = add_to_log)
@@ -194,7 +196,29 @@ def rose_blossom_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
         person.change_focus(2, add_to_log = add_to_log)
     if person.int <= 4:
         person.change_int(2, add_to_log = add_to_log)
-
+    #fertile Security Locker and story locker
+    if person not in (erica, camila):
+        if person.on_birth_control:
+            person.bc_penalty += 40
+            if add_to_log: 
+                mc.log_event(f"{person.title or person.create_formatted_title('???')}: BC effectiveness reduced by 40%", "float_text_grey")
+        else:
+            person.fertility_percent = person.fertility_percent + 70
+            if person.baby_desire < 450:
+                person.change_baby_desire(person.baby_desire + 50)
+                if add_to_log: 
+                    mc.log_event(f"{person.title or person.create_formatted_title('???')}: Baby desire at {person.baby_desire}", "float_text_grey")
+            #to show that the first effects are kicking in
+            person.ideal_fertile_day = ((day+1) % 30)
+            if add_to_log: 
+                mc.log_event(f"{person.title or person.create_formatted_title('???')}: ovum is maturing...", "float_text_grey")
+        if person in mc.location.people:
+            renpy.say(f"{person.title or person.create_formatted_title('???')}", "mmmMM tastes like Butterscotch!")
+    else:
+        if add_to_log: 
+            mc.log_event(f"{person.title or person.create_formatted_title('???')}: R053 BL0550M5 5T0RY PR0T3CT3D!", "float_text_red")
+        if person in mc.location.people:
+            renpy.say(f"{person.title or person.create_formatted_title('???')}", "mmmMM minty!")
     return
 def rose_blossom_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     #basically to give a one quick shot, then daily small increases over time
@@ -204,7 +228,7 @@ def rose_blossom_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
         person.change_happiness(5, add_to_log = add_to_log)
     if person.sluttiness <= 95:
         person.change_slut(5, add_to_log = add_to_log)
-    if person.arousal <= 65:
+    if person.arousal <= 95:
         person.change_arousal(5, add_to_log = add_to_log)
     if person.obedience <= 295:
         person.change_obedience(5, add_to_log = add_to_log)
@@ -216,10 +240,35 @@ def rose_blossom_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
         person.change_focus(1, add_to_log = add_to_log)
     if person.int <= 19:
         person.change_int(1, add_to_log = add_to_log)
+    if person.arousal >=70:
+        if add_to_log: 
+            mc.log_event(f"{person.title or person.create_formatted_title('???')}:R053 BL0550M5 getting her wet...", "float_text_pink")
+    #fertile Security Locker and story locker
+    if person not in (erica, camila):
+        if not person.on_birth_control:
+            if person.fertility_percent <100:
+                person.fertility_percent = person.fertility_percent + 5
+                if add_to_log: 
+                    mc.log_event(f"{person.title or person.create_formatted_title('???')}:3GG H4XX3D! {person.effective_fertility:.1f}%", "float_text_grey")
+            if person.baby_desire < 450:
+                person.change_baby_desire(person.baby_desire + 50)
+                if add_to_log: 
+                    mc.log_event(f"{person.title or person.create_formatted_title('???')}: Baby desire increased", "float_text_grey")    
     return
 def rose_blossom_on_remove(person: Person, serum: SerumDesign, add_to_log: bool):
     #if on Rose Blossoms, the suggestion should always be above 50
-    #remove_suggest_effect(50)
+    #Arousal/Novelty
+    person.reset_arousal()
+    if person not in (erica, camila):
+        if person.on_birth_control:
+            #the BC helps regulate the fertility back to normal ranges
+            person.fertility_percent = 20.0 - ((person.age - Person.get_age_floor()) / 3.0)
+        else:
+            #Fertility Restored but permanently damaged due to R053 BL0550M5
+            if person.fertility_percent <50:
+                person.fertility_percent = renpy.random.randint(50, 100)
+    if add_to_log: 
+        mc.log_event(f"{person.title or person.create_formatted_title('???')}: R053 BL0550M5 Completed.", "float_text_grey")
     return
 def red_roses_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
     if add_to_log:
@@ -229,7 +278,7 @@ def red_roses_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
     #basically to give a one quick shot, then daily small increases over time
     if person.suggestibility <= 95:
         person.change_suggest(5, add_to_log = add_to_log)
-    if person.happiness <= 300:
+    if person.happiness <= 295:
         person.change_happiness(5, add_to_log = add_to_log)
     if person.sluttiness <= 95:
         person.change_slut(5, add_to_log = add_to_log)
@@ -239,24 +288,30 @@ def red_roses_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
         person.change_obedience(5, add_to_log = add_to_log)
     if person.love <= 80:
         person.change_love(5, add_to_log = add_to_log)
+    if person.arousal >=70:
+        if add_to_log: 
+            mc.log_event(f"{person.title or person.create_formatted_title('???')}:R3D R0535 getting her wet...", "float_text_pink")
     return
 def red_roses_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
    #basically to give a one quick shot, then daily small increases over time
     if person.suggestibility <= 95:
         person.change_suggest(5, add_to_log = add_to_log)
-    if person.happiness <= 300:
+    if person.happiness <= 295:
         person.change_happiness(5, add_to_log = add_to_log)
     if person.sluttiness <= 95:
         person.change_slut(5, add_to_log = add_to_log)
-    if person.arousal <= 65:
+    if person.arousal <= 95:
         person.change_arousal(5, add_to_log = add_to_log)
     if person.obedience <= 295:
         person.change_obedience(5, add_to_log = add_to_log)
     if person.love <= 80:
         person.change_love(5, add_to_log = add_to_log)
+    if person.arousal >=70:
+        if add_to_log: 
+            mc.log_event(f"{person.title or person.create_formatted_title('???')}:R3D R0535 getting her wet...", "float_text_pink")
     return
 def red_roses_on_remove(person: Person, serum: SerumDesign, add_to_log: bool):
-    person.change_focus(2, add_to_log = add_to_log)
+    #person.change_focus(2, add_to_log = add_to_log)
     if add_to_log:
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: R3D R0535 Completed", "float_text_red")
     return
@@ -286,31 +341,23 @@ def fertile_rose_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
     if person not in (erica, camila):
         if person.on_birth_control:
             person.fertility_percent = 0.001
-            if add_to_log: 
-                display_name = person.create_formatted_title("???")
-                if person.title: display_name = person.title
-                mc.log_event(display_name + ":F3RT1L3 R053 3GG PR0T3CT3D!", "float_text_red")
+            if add_to_log:
+                mc.log_event(f"{person.title or person.create_formatted_title('???')}:F3RT1L3 R053 3GG PR0T3CT3D!", "float_text_red")
         else:
             person.fertility_percent = person.fertility_percent + 100
             if person.baby_desire < 500:
                 person.change_baby_desire(person.baby_desire + 50)
-            if add_to_log: 
-                display_name = person.create_formatted_title("???")
-                if person.title: display_name = person.title
-                mc.log_event(display_name + ":F3RT1L3 R053 3GG H4XX3D!", "float_text_red")
+            if add_to_log:
+                mc.log_event(f"{person.title or person.create_formatted_title('???')}:F3RT1L3 R053 3GG H4XX3D!", "float_text_red")
             #to show that the first effects are kicking in
             person.ideal_fertile_day = ((day+1) % 30)
-            if add_to_log: 
-                    display_name = person.create_formatted_title("???")
-                    if person.title: display_name = person.title
-                    mc.log_event(f"{person.title or person.create_formatted_title('???')}: ovum is maturing...", "float_text_red")
+            if add_to_log:
+                mc.log_event(f"{person.title or person.create_formatted_title('???')}: ovum is maturing...", "float_text_red")
         if person in mc.location.people:
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "mmmMM tastes like watermelon!")
     else:
-        if add_to_log: 
-                display_name = person.create_formatted_title("???")
-                if person.title: display_name = person.title
-                mc.log_event(display_name + ":F3RT1L3 R053 5T0RY PR0T3CT3D!", "float_text_red")
+        if add_to_log:
+            mc.log_event(f"{person.title or person.create_formatted_title('???')}:F3RT1L3 R053 5T0RY PR0T3CT3D!", "float_text_red")
         if person in mc.location.people:
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "ew! tastes like lemons!")
     return
@@ -324,22 +371,18 @@ def fertile_rose_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     #love
     if person.love <=90:
         person.change_love(5, add_to_log=add_to_log)
-    if person.arousal < 100: 
+    if person.arousal <= 95: 
         person.change_arousal(5, add_to_log = add_to_log)
         if add_to_log and person.arousal>70: 
-            display_name = person.create_formatted_title("???")
-            if person.title: display_name = person.title
-            mc.log_event(display_name + ":F3RT1L3 R053 getting her wet...", "float_text_pink")
+            mc.log_event(f"{person.title or person.create_formatted_title('???')}:F3RT1L3 R053 getting her wet...", "float_text_pink")
     #fertile Security story locker
     if person not in (erica, camila):
         if not person.on_birth_control:
             person.fertility_percent = person.fertility_percent + 100
             if person.baby_desire < 500:
                 person.change_baby_desire(person.baby_desire + 10)
-            #if add_to_log: 
-            display_name = person.create_formatted_title("???")
-            if person.title: display_name = person.title
-            mc.log_event(display_name + f":3GG H4XX3D! {person.effective_fertility:.1f}%", "float_text_red")
+            if add_to_log: 
+                mc.log_event(f"{person.title or person.create_formatted_title('???')}:3GG H4XX3D! {person.effective_fertility:.1f}%", "float_text_red")
     return
 def fertile_rose_on_remove(person: Person, serum: SerumDesign, add_to_log: bool):
     #Sluttiness
@@ -359,34 +402,33 @@ def fertile_rose_on_remove(person: Person, serum: SerumDesign, add_to_log: bool)
             #Fertility Restored but permanently damaged due to F3RT1L3 R053
             person.fertility_percent = renpy.random.randint(50, 100)
     #to show the serum expired
-    #if add_to_log: 
-    display_name = person.create_formatted_title("???")
-    if person.title: display_name = person.title
-    mc.log_event(display_name + ":F3RT1L3 R053 3XP1R3D!", "float_text_red")
+    if add_to_log: 
+        mc.log_event(f"{person.title or person.create_formatted_title('???')}:F3RT1L3 R053 3XP1R3D!", "float_text_red")
     return
 
 def crimson_roses_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
     #basically to give a one quick shot, then daily small increases over time
-    person.fertility_percent += 70
-    person.bc_penalty += 40
-    display_name = person.create_formatted_title("???")
-    if person.title:
-        display_name = person.title
-    if add_to_log:
-        mc.log_event(display_name + ": Birth control effectiveness reduced by 40%", "float_text_grey")
+    #person.fertility_percent += 70
+   # person.bc_penalty += 40
+    if person not in (erica, camila):
+        person.fertility_percent = person.fertility_percent + 70
+        if person.on_birth_control:
+             person.bc_penalty += 40
+             if add_to_log:
+                mc.log_event(f"{person.title or person.create_formatted_title('???')}: Birth control effectiveness reduced by 40%", "float_text_grey")
     if person.arousal < person.suggestibility:
         person.change_arousal(65,add_to_log = False)
-    if person.suggestibility <= 95:
+    if person.suggestibility <= 45:
         person.add_suggest_effect(55, add_to_log = add_to_log)
-    if person.happiness <= 300:
+    if person.happiness <= 245:
         person.change_happiness(55, add_to_log = add_to_log)
-    if person.sluttiness <= 95:
+    if person.sluttiness <= 45:
         person.change_slut(55, add_to_log = add_to_log)
-    if person.arousal <= 65:
+    if person.arousal <= 45:
         person.change_arousal(55, add_to_log = add_to_log)
-    if person.obedience <= 295:
+    if person.obedience <= 245:
         person.change_obedience(55, add_to_log = add_to_log)
-    if person.love <= 80:
+    if person.love <= 45:
         person.change_love(55, add_to_log = add_to_log)
     return
 def crimson_roses_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
@@ -397,12 +439,18 @@ def crimson_roses_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
         person.change_arousal(15, add_to_log = False)
         #if add_to_log and person.arousal>70:
         if person.arousal>70:
-            display_name = person.create_formatted_title("???")
-            if person.title: display_name = person.title
-            mc.log_event(display_name + ":CR1M50N R053 is making her wet...", "float_text_pink")
+            if add_to_log:
+                mc.log_event(display_name + ":CR1M50N R053 is making her wet...", "float_text_pink")
     return
 def crimson_roses_on_remove(person: Person, serum: SerumDesign, add_to_log: bool):
     #person.change_focus(2, add_to_log = add_to_log)
+    #Arousal/Novelty
+    person.reset_arousal()
+    if person not in (erica, camila):
+        #tregulate the fertility back to normal ranges
+        person.fertility_percent = 20.0 - ((person.age - Person.get_age_floor()) / 3.0)
+        if person.on_birth_control:
+            person.bc_penalty -= 40
     return
 
 def smart_roses_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
@@ -431,13 +479,18 @@ def smart_roses_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
         person.focus +=1
     return
 def smart_roses_on_remove(person: Person, serum: SerumDesign, add_to_log: bool):
-    display_name = person.create_formatted_title("???")
-    if person.title: display_name = person.title
-    mc.log_event(display_name + ":5M4RT R0535 finished...", "float_text_blue")
+    mc.log_event(f"{person.title or person.create_formatted_title('???')}:5M4RT R0535 finished...", "float_text_blue")
     return
 
 def rose_gardens_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
-    if person.happiness <= 300:
+     if not person.is_pregnant:
+        renpy.say(f"{person.title or person.create_formatted_title('???')}", "I'm not pregnant!")
+        return
+    if person in mc.location.people:
+        renpy.say(f"{person.title or person.create_formatted_title('???')}", "mmmMM tastes like chocolate covered dill pickles!")
+    if add_to_log:
+        mc.log_event(f"{person.title or person.create_formatted_title('???')}: R053 G4RD3N5 injested", "float_text_red")
+    if person.happiness <= 265:
         person.change_happiness(35, add_to_log = add_to_log)
     if not person.has_role(pregnant_role):
         return
@@ -454,7 +507,7 @@ def rose_gardens_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
             person.event_triggers_dict["preg_finish_announce_day"] = person.event_triggers_dict.get("preg_finish_announce_day", day) - 1
     return
 def rose_gardens_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
-    if person.happiness <= 300:
+    if person.happiness <= 285:
         person.change_happiness(15, add_to_log = add_to_log)
     if not person.has_role(pregnant_role):
         return
@@ -469,11 +522,13 @@ def rose_gardens_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     if person.event_triggers_dict.get("preg_finish_announce_day", day) - 5 > day:
         if person.event_triggers_dict.get("preg_finish_announce_day", day) -5 > person.event_triggers_dict.get("preg_transform_day", 9999):
             person.event_triggers_dict["preg_finish_announce_day"] = person.event_triggers_dict.get("preg_finish_announce_day", day) - 5
+        if add_to_log:
+            babyday = person.event_triggers_dict["preg_finish_announce_day"]
+            mc.log_event(f"{person.title or person.create_formatted_title('???')}: Baby on day {babyday}", "float_text_blue")
     return
 def rose_gardens_on_remove(person: Person, serum: SerumDesign, add_to_log: bool):
-    display_name = person.create_formatted_title("???")
-    if person.title: display_name = person.title
-    mc.log_event(display_name + ":R053 G4RD3N5 finished...", "float_text_blue")
+    if add_to_log:
+        mc.log_event(f"{person.title or person.create_formatted_title('???')}: R053 G4RD3N5 finished", "float_text_blue")
     return
     
 ## Override/inject into core code
@@ -615,7 +670,7 @@ def init_Virginal_Serum():
     SerumTraitMod(name = "R3D R0535",
         desc = "Red Rose formula, meant to hugely stimulate neural pathways positively, in theory.",
         positive_slug = "Permanently increases suggest, happiness, sluttiness, arousal, obedience and love.",
-        negative_slug = "One dose lasts 7 durations. Arousal",
+        negative_slug = "One dose lasts minimum 7 durations. Arousal",
         research_added = 500,
         base_side_effect_chance = 35,
         duration_added = 7,
@@ -632,7 +687,7 @@ def init_Virginal_Serum():
 
     SerumTraitMod(name = "F3RT1L3 R053",
         desc = "Sexual stimulator, an increase arousal and urge to copulate. Security Lock with Birth Control (will not affect Camila or Erica Story)",
-        positive_slug = "One dose instant reaction, on turn +happiness and arousal",
+        positive_slug = "One dose instant reaction, on turn +happiness and arousal, minimum 5 durations.",
         negative_slug = "Will interfer with ovum cycles. Might cause cramping and baby desire.",
         research_added = 2000,
         base_side_effect_chance = 75,
@@ -649,8 +704,8 @@ def init_Virginal_Serum():
         mental_aspect = 4, physical_aspect = 2, sexual_aspect = 5, medical_aspect = 3, flaws_aspect = 0, attention = 3)
 
     SerumTraitMod(name = "CR1M50N R053",
-        desc = "A more silent R3D R053, which leads to rose petals on beds, of course.",
-        positive_slug = "7 durations +15 Arousal/turn",
+        desc = "A more silent R3D R053, which leads to rose petals on beds, of course. Also may permanently increase fertility, arousal, suggestibility, happiness, sluttiness, obedience, and love. Decreases Birth Control effectiveness.",
+        positive_slug = "minimum 7 durations +15 Arousal/turn",
         negative_slug = "BC -40%",
         research_added = 1000,
         base_side_effect_chance = 75,
@@ -669,7 +724,7 @@ def init_Virginal_Serum():
 
     SerumTraitMod(name = "SM4RT R053",
         desc = "Permanently increase base stats, and slowly increases per turn.",
-        positive_slug = "7 durations CHA/INT/FOC+ Max 20",
+        positive_slug = "minimum 7 durations CHA/INT/FOC+ Max 20",
         negative_slug = "",
         research_added = 1000,
         base_side_effect_chance = 75,
@@ -686,9 +741,9 @@ def init_Virginal_Serum():
         mental_aspect = 7, physical_aspect = 5, sexual_aspect = 5, medical_aspect = 3, flaws_aspect = 0, attention = 5)
 
     SerumTraitMod(name = "R053 BL0550M5",
-        desc = "Company secret Rose Blossom formula, specially brewed to ensure the user will never feel alone nor incompetent.",
+        desc = "Company secret Rose Blossom formula, specially brewed to ensure the user will never feel alone nor incompetent. May effect fertility and decrease effectiveness of Birth Control.",
         positive_slug = "Permanently increases in Int/Focus/Charisma, suggest, happiness, sluttiness, arousal, obedience and love.",
-        negative_slug = "One dose lasts 7 durations (max 20 Int/Foc/Cha)",
+        negative_slug = "One dose lasts minimum 7 durations (max 20 Int/Foc/Cha)",
         research_added = 2000,
         base_side_effect_chance = 75,
         duration_added = 7,
@@ -704,8 +759,8 @@ def init_Virginal_Serum():
         mental_aspect = 7, physical_aspect = 4, sexual_aspect = 6, medical_aspect = 4, flaws_aspect = 0, attention = 3)
 
     SerumTraitMod(name = "R053 G4RD3N5",
-        desc = "Company secret Rose Blossom formula, specially brewed to promote a healthy speedy, spectacular pregnancy! With Sparkles!",
-        positive_slug = "7 durations, increases in happiness, and speedy pregnancy.",
+        desc = "Company secret Rose Blossom formula, specially brewed to promote a healthy super speedy, spectacular pregnancy! With Sparkles!",
+        positive_slug = "minimum 7 durations, increases in happiness, and speedy pregnancy.",
         negative_slug = "One dose lasts 7 durations",
         research_added = 1000,
         base_side_effect_chance = 75,
