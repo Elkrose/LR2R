@@ -76,6 +76,7 @@ def hymen_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
                 mc.log_event(f"{person.title or person.create_formatted_title('???')}: Hymen 50% Restored", "float_text_grey")
         if person.hymen == 1:
             person.hymen = 0
+            person.vaginal_first = None
             person.restore_taboo('vaginal_sex')
             if add_to_log:
                 mc.log_event(f"{person.title or person.create_formatted_title('???')}: Vaginal Stimulation Ended", "float_text_pink")
@@ -88,6 +89,7 @@ def anal_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Oh my god! Excuse me! How embarrassing!")
     if person.anal_virgin == 0:
         person.restore_taboo('anal_sex')
+        person.anal_first = None
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: Anal Stimulation Ended", "float_text_pink")
 
 def oral_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
@@ -98,6 +100,7 @@ def oral_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Ugh, why am I drooling???!")
     if person.oral_virgin == 0:
         person.restore_taboo('sucking_cock')
+        person.oral_first = None
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: Throat Stimulation Ended", "float_text_pink")
 
 def true_virgin_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
@@ -114,6 +117,7 @@ def true_virgin_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
                 mc.log_event(f"{person.title or person.create_formatted_title('???')}: Hymen 50% Restored", "float_text_grey")
         if person.hymen == 1:
             person.hymen = 0
+            person.vaginal_first = None
             person.restore_taboo('vaginal_sex')
             if add_to_log:
                 mc.log_event(f"{person.title or person.create_formatted_title('???')}: True Vaginal Stimulation Ended", "float_text_pink")
@@ -123,6 +127,7 @@ def true_virgin_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Oh my god! Excuse me! How embarrassing!")
     if person.anal_virgin == 0:
         person.restore_taboo('anal_sex')
+        person.anal_first = None
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: True Anal Stimulation Ended", "float_text_pink")
     if person.oral_virgin >= 1:
         person.oral_virgin -= 1
@@ -130,6 +135,7 @@ def true_virgin_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
             renpy.say(f"{person.title or person.create_formatted_title('???')}", "Ugh, why am I drooling???!")
     if person.oral_virgin == 0:
         person.restore_taboo('sucking_cock')
+        person.oral_first = None
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: True Throat Stimulation Ended", "float_text_pink")
 
 def clone_womb_restore_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
