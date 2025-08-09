@@ -17,9 +17,9 @@ VT_Settings = {}
 
 VT_AGE_RANGES = {
     "preteen":          (0, 12),
-    "teen":             (13, 15),
-    "adolescent":       (16, 18),
-    "young_adult":      (19, 25),
+    "teen":             (13, 17),
+    "adolescent":       (18, 20),
+    "young_adult":      (21, 25),
     "early_adult":      (26, 30),
     "middle_adult":     (31, 46),
     "late_adult":       (47, 52),

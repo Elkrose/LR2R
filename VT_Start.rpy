@@ -2,7 +2,7 @@
 # Tweaked start
 define config.name = _("Lab Rats 2 Reformulate - Cherries Edition")
 define config.window_icon = "VTimages/mod_icon.png"
-define VT_Game_Version = "VTMod4.0.37"
+define VT_Game_Version = "VTMod4.0.39"
 
 init python:
     config.version += VT_Game_Version
@@ -327,6 +327,18 @@ init -1 python:
         try:
             return noncest_version
         except NameError:
+            return False
+
+    def CT_Mod_enabled():
+        try:
+            return CT_MOD is not None
+        except NameError:
+            return False 
+
+    def GenAI_enabled():
+        try:
+            return GenAI_Mod is not None
+        except NameError:
             return False 
 
     def kina_update_game_speed(speed):
@@ -393,6 +405,11 @@ label VT_start():
         $ modsinstalled.append("RealPorn Mod")
     if Moresomes_enabled():
         $ modsinstalled.append("Moresomes Mod")
+    if CT_Mod_enabled():
+        $ modsinstalled.append("CT Mod")
+    if GenAI_enabled():
+        $ modsinstalled.append("GenAI Mod")
+
 
     if modsinstalled == []:
         "No mods are installed."
