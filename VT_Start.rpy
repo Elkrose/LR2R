@@ -2,7 +2,7 @@
 # Tweaked start
 define config.name = _("Lab Rats 2 Reformulate - Cherries Edition")
 define config.window_icon = "VTimages/mod_icon.png"
-define VT_Game_Version = "VTMod4.0.39"
+define VT_Game_Version = "VTMod4.0.40"
 
 init python:
     config.version += VT_Game_Version
@@ -228,24 +228,25 @@ init python:
         global mouth_words
         global cock_words
 
-        renpy.random.shuffle(VTvaginalknowlist)
-        renpy.random.shuffle(VTvaginalvirginlist)
-        renpy.random.shuffle(VTvaginalclaimlist)
-        renpy.random.shuffle(VTvaginalclaimfirstlist)
-        renpy.random.shuffle(VToralknowlist)
-        renpy.random.shuffle(VToralvirginlist)
-        renpy.random.shuffle(VToralclaimlist)
-        renpy.random.shuffle(VToralclaimfirstlist)
-        renpy.random.shuffle(VTanalknowlist)
-        renpy.random.shuffle(VTanalfirstlist)
-        renpy.random.shuffle(VTanalclaimlist)
-        renpy.random.shuffle(VTanalclaimfirstlist)
-        renpy.random.shuffle(condom_words)
-        renpy.random.shuffle(condom_on_words)
-        renpy.random.shuffle(pussy_words)
-        renpy.random.shuffle(anal_words)
-        renpy.random.shuffle(mouth_words)
-        renpy.random.shuffle(cock_words)
+        import random
+        random.shuffle(VTvaginalknowlist)
+        random.shuffle(VTvaginalvirginlist)
+        random.shuffle(VTvaginalclaimlist)
+        random.shuffle(VTvaginalclaimfirstlist)
+        random.shuffle(VToralknowlist)
+        random.shuffle(VToralvirginlist)
+        random.shuffle(VToralclaimlist)
+        random.shuffle(VToralclaimfirstlist)
+        random.shuffle(VTanalknowlist)
+        random.shuffle(VTanalfirstlist)
+        random.shuffle(VTanalclaimlist)
+        random.shuffle(VTanalclaimfirstlist)
+        random.shuffle(condom_words)
+        random.shuffle(condom_on_words)
+        random.shuffle(pussy_words)
+        random.shuffle(anal_words)
+        random.shuffle(mouth_words)
+        random.shuffle(cock_words)
 
         # Update text variables
         global VTvaginalknow_index

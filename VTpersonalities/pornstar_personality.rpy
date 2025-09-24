@@ -209,7 +209,7 @@ label pornstar_sex_responses_anal(the_person):
             the_person "Mmm, baby... I'm so ready for this. Fuck my ass hard and deep, and make me scream with pleasure!"
             "[the_person.possessive_title!c] looks up at you with a sultry gaze, her eyes sparkling with desire and her ass wiggling with anticipation."
         else:
-            $ the_person.call_dialogue("teasing_exclaim")
+            $ the_person.call_dialogue("surprised_exclaim")
             the_person "Hehe, you want to stick it in my ass? Well, I suppose I can handle a big cock like yours... but don't think I'm going to go easy on you, I want it hard and fast!"
             "[the_person.possessive_title!c] winks, her expression playful and flirtatious as she spreads her legs and exposes her ass."
 
@@ -246,7 +246,7 @@ label pornstar_sex_responses_anal(the_person):
                 the_person "Mmm, yeah... I think I'm going to cum... and it's all because of you, [the_person.mc_title]... your cock is so big and hard, it's driving me crazy, and I just want to cum all over it!"
                 "[the_person.possessive_title!c] looks up at you with a sultry gaze, her eyes sparkling with pleasure as she cums all over your cock."
         else:
-            $ the_person.call_dialogue("teasing_exclaim")
+            $ the_person.call_dialogue("surprised_exclaim")
             the_person "Hehe, I think I might actually be enjoying myself... thanks to you, [the_person.mc_title]... your cock is so nice and big, it's making me feel so good, I just want to cum all over it and then suck it dry!"
             "[the_person.possessive_title!c] winks, her expression playful and flirtatious as she cums all over your cock and then starts to suck it dry."
     return

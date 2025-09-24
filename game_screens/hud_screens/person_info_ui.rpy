@@ -1475,42 +1475,42 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     $ VTexhibitfetishtt += f"\n{{image=triskelion_token_small}} Master her Anal Delights ({4 - person.anal_sex_skill} to go)!"
                                 # Opinions
                                 if not person.known_opinion("public sex"):
-                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Ask about public sex."
+                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Get her to like public sex."
                                 elif person.opinion.public_sex < 2:
                                     $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love public sex."
 
                                 elif not person.known_opinion("not wearing underwear"):
-                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Ask about going commando."
+                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Get her to like going commando."
                                 elif person.opinion.not_wearing_underwear < 2:
                                     $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love going without underwear."
 
                                 elif not person.known_opinion("not wearing anything"):
-                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Ask about nudity."
+                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Get her to like being naked."
                                 elif person.opinion.not_wearing_anything < 2:
                                     $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love being naked."
 
                                 elif not person.known_opinion("showing her ass"):
-                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Ask about showing her ass."
+                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Get her to like showing her ass."
                                 elif person.opinion.showing_her_ass < 2:
                                     $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing off her ass."
 
                                 elif not person.known_opinion("showing her tits"):
-                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Ask about flashing her tits."
+                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Get her to like flashing her tits."
                                 elif person.opinion.showing_her_tits < 2:
                                     $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing off her tits."
 
                                 elif not person.known_opinion("skimpy outfits"):
-                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Ask about sexy outfits."
+                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Get her to like sexy outfits."
                                 elif person.opinion.skimpy_outfits < 2:
                                     $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love wearing sexy outfits."
 
                                 elif not person.known_opinion("skimpy uniforms"):
-                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Ask about sexy uniforms."
+                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Get her to like sexy uniforms."
                                 elif person.opinion.skimpy_uniforms < 2:
                                     $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love wearing sexy uniforms."
 
                                 elif not person.known_opinion("masturbating"):
-                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Ask about masturbating."
+                                    $ VTexhibitfetishtt += f"\n{{image=question_mark_small}} Get her to like masturbating."
                                 elif person.opinion.masturbating < 2:
                                     $ VTexhibitfetishtt += f"\n{{image=red_heart_token_small}} Get her to love masturbating."
 
@@ -1643,47 +1643,47 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     $ VTcumfetishtt += f"\n{{image=triskelion_token_small}} Boost her Oral Skills ({4 - person.oral_sex_skill} to go)!"
                                 #the opinions required
                                 if not person.known_opinion("giving blowjobs"):
-                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Ask about giving blowjobs."
+                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Get her to like giving blowjobs."
                                 elif person.opinion.giving_blowjobs < 2:
                                     $ VTcumfetishtt += f"\n{{image=red_heart_token_small}} Get her to love blowjobs."
 
                                 elif not person.known_opinion("being covered in cum"):
-                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Ask about being covered in cum."
+                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Get her to like being covered in cum."
                                 elif person.opinion.being_covered_in_cum < 2:
                                     $ VTcumfetishtt += f"\n{{image=red_heart_token_small}} Get her to love being covered in cum."
 
                                 elif not person.known_opinion("cum facials"):
-                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Ask about cum facials."
+                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Get her to like cum facials."
                                 elif person.opinion.cum_facials < 2:
                                     $ VTcumfetishtt += f"\n{{image=red_heart_token_small}} Get her to love cum facials."
 
                                 elif not person.known_opinion("drinking cum"):
-                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Ask about drinking cum."
+                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Get her to like drinking cum."
                                 elif person.opinion.drinking_cum < 2:
                                     $ VTcumfetishtt += f"\n{{image=red_heart_token_small}} Get her to love drinking cum."
 
                                 elif not person.known_opinion("showing her tits"):
-                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Ask about flashing her tits."
+                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Get her to like flashing her tits."
                                 elif person.opinion.showing_her_tits < 2:
                                     $ VTcumfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing off her tits."
 
                                 elif not person.known_opinion("creampies"):
-                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Ask about vaginal creampies."
+                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Get her to like vaginal creampies."
                                 elif person.opinion.creampies < 2:
                                     $ VTcumfetishtt += f"\n{{image=red_heart_token_small}} Get her to love vaginal creampies."
 
                                 elif not person.known_opinion("anal creampies"):
-                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Ask about anal creampies."
+                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Get her to like anal creampies."
                                 elif person.opinion.anal_creampies < 2:
                                     $ VTcumfetishtt += f"\n{{image=red_heart_token_small}} Get her to love anal creampies."
 
                                 elif not person.known_opinion("giving handjobs"):
-                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Ask about handjobs."
+                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Get her to like handjobs."
                                 elif person.opinion.giving_handjobs < 2:
                                     $ VTcumfetishtt += f"\n{{image=red_heart_token_small}} Get her to love handjobs."
 
                                 elif not person.known_opinion("bareback sex"):
-                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Ask about bareback sex."
+                                    $ VTcumfetishtt += f"\n{{image=question_mark_small}} Get her to like bareback sex."
                                 elif person.opinion.bareback_sex < 2:
                                     $ VTcumfetishtt += f"\n{{image=red_heart_token_small}} Get her to love bareback sex."
 
@@ -1801,28 +1801,28 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 else:
                                     $ VTvaginalfetishtt += f"\n Make her opinion loves Vaginal Sex or Creampies"
                                     if not person.known_opinion("vaginal sex"):
-                                        $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Ask about Vaginal Sex."
+                                        $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Get her to like vaginal sex."
                                     elif person.opinion.vaginal_sex < 2:
                                         $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love vaginal sex."
                                     if not person.known_opinion("creampies"):
-                                        $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Ask about Vaginal Creampies."
+                                        $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Get her to like vaginal creampies."
                                     elif person.opinion.creampies < 2:
                                         $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love vaginal creampies."
 
                                 if not person.known_opinion("bareback sex"):
-                                    $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Ask about Bareback Sex."
+                                    $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to like bareback sex."
                                 elif person.opinion.bareback_sex < 2:
                                     $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love bareback sex."
 
                                 elif not person.known_opinion("showing her ass"):
-                                    $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Ask about showing her ass."
+                                    $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Get her to like showing her ass."
                                 elif person.opinion.showing_her_ass < 2:
                                     $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing her ass."
 
                                 elif not person.known_opinion("missionary style sex"):
-                                    $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Ask about Missionary Style Sex."
+                                    $ VTvaginalfetishtt += f"\n{{image=question_mark_small}} Get her to like missionary style sex."
                                 elif person.opinion.missionary_style < 2:
-                                    $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love Missionary Style Sex."
+                                    $ VTvaginalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love missionary style sex."
 
                 #the interactive icons during sex stuff
                 if 'position_choice' in globals():
@@ -1925,21 +1925,21 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                     pass
                                 else:
                                     if not person.known_opinion("anal sex"):
-                                        $ VTanalfetishtt += f"\n{{image=question_mark_small}} Ask about Anal Sex."
+                                        $ VTanalfetishtt += f"\n{{image=question_mark_small}} Get her to like anal sex."
                                     elif person.opinion.anal_sex < 2:
                                         $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love anal sex."
                                     if not person.known_opinion("anal creampies"):
-                                        $ VTanalfetishtt += f"\n{{image=question_mark_small}} Ask about Anal Creampies."
+                                        $ VTanalfetishtt += f"\n{{image=question_mark_small}} Get her to like anal creampies."
                                     elif person.opinion.anal_creampies < 2:
                                         $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love anal creampies."
 
                                 if not person.known_opinion("showing her ass"):
-                                    $ VTanalfetishtt += f"\n{{image=question_mark_small}} Ask about showing her ass."
+                                    $ VTanalfetishtt += f"\n{{image=question_mark_small}} Get her to like showing her ass."
                                 elif person.opinion.showing_her_ass < 2:
                                     $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing her ass."
 
                                 elif not person.known_opinion("doggy style sex"):
-                                    $ VTanalfetishtt += f"\n{{image=question_mark_small}} Ask about Doggy Style Sex."
+                                    $ VTanalfetishtt += f"\n{{image=question_mark_small}} Get her to like Doggy Style Sex."
                                 elif person.opinion.doggy_style < 2:
                                     $ VTanalfetishtt += f"\n{{image=red_heart_token_small}} Get her to love doggy style sex."
                 #the interactive icons during sex stuff
@@ -2050,29 +2050,29 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                                 #the opinions required
 
                                 if not person.known_opinion("vaginal sex"):
-                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Ask about Vaginal Sex."
+                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Get her to like vaginal sex."
                                 elif person.opinion.vaginal_sex < 2:
                                     $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Get her to love vaginal sex."
 
                                 elif not person.known_opinion("creampies"):
-                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Ask about Vaginal Creampies."
+                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Get her to like vaginal creampies."
                                 elif person.opinion.creampies < 2:
                                     $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Get her to love vaginal creampies."
 
                                 elif not person.known_opinion("bareback sex"):
-                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Ask about bareback sex."
+                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Get her to like bareback sex."
                                 elif person.opinion.bareback_sex < 2:
                                     $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Get her to love bareback sex."
 
                                 elif not person.known_opinion("showing her ass"):
-                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Ask about showing her ass."
+                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Get her to like showing her ass."
                                 elif person.opinion.showing_her_ass < 2:
                                     $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Get her to love showing her ass."
 
                                 elif not person.known_opinion("missionary style sex"):
-                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Ask about Missionary Style Sex."
+                                    $ VTbreedfetishtt += f"\n{{image=question_mark_small}} Get her to like missionary style sex."
                                 elif person.opinion.missionary_style < 2:
-                                    $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Get her to love Missionary Style Sex."
+                                    $ VTbreedfetishtt += f"\n{{image=red_heart_token_small}} Get her to love missionary style sex."
                 #the interactive icons during sex stuff
                 if 'position_choice' in globals():
                     if hasattr(position_choice, 'skill_tag'):

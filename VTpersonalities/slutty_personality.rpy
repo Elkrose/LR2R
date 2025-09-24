@@ -209,7 +209,7 @@ label slutty_sex_responses_anal(the_person):
             the_person "Mmm, baby... I'm so ready for this. Fuck my ass hard and deep!"
             "[the_person.possessive_title!c] looks up at you with a sultry gaze, her eyes sparkling with desire."
         else:
-            $ the_person.call_dialogue("teasing_exclaim")
+            $ the_person.call_dialogue("surprised_exclaim")
             the_person "Hehe, you want to stick it in my ass? Well, I suppose I can handle a big cock like yours..."
             "[the_person.possessive_title!c] winks, her expression playful and flirtatious."
 
@@ -246,7 +246,7 @@ label slutty_sex_responses_anal(the_person):
                 the_person "Mmm, yeah... I think I'm going to cum... and it's all because of you, [the_person.mc_title]... your cock is so big and hard, it's driving me crazy!"
                 "[the_person.possessive_title!c] looks up at you with a sultry gaze, her eyes sparkling with pleasure."
         else:
-            $ the_person.call_dialogue("teasing_exclaim")
+            $ the_person.call_dialogue("surprised_exclaim")
             the_person "Hehe, I think I might actually be enjoying myself... thanks to you, [the_person.mc_title]... your cock is so nice and big, it's making me feel so good!"
             "[the_person.possessive_title!c] winks, her expression playful and flirtatious."
 
