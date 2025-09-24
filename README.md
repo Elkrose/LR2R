@@ -1,6 +1,6 @@
 # LR2R-VTMod
 
-🍒🍒🍒🍒    LR2R-VTMod 4.0.39    🍒🍒🍒🍒
+🍒🍒🍒🍒    LR2R-VTMod 4.0.40    🍒🍒🍒🍒
 Lab Rats 2 Reformulate Virginity Tracker Mod
 
 * the VT Trackers now are persistent through saves.
@@ -23,36 +23,42 @@ Lab Rats 2 Reformulate Virginity Tracker Mod
 💮 Image Files added: 60+ images to gui
 
 💮 The Visuals: Located under the gal's info hud when you talk to them.
-- Relationship Status - Recently Sexed - Birth Control
-- Condom - Cream - Threesome - Oral Fetish
-- Anal Fetish - Breeding Fetish - Exhibitionist Fetish
-Last Inseminated : important on Realistic
-Sexualized Icons : State of Virginal Statuses
-Tranced : shows if Tranced; red eye already trained
-Note: Tool tips explain what they are.  Some will explain briefly how to achieve the next stages for unlocking fetishes.
+
+* Relationship Status - Recently Sexed - Birth Control
+* Condom - Cream - Threesome - Oral Fetish
+* Anal Fetish - Breeding Fetish - Exhibitionist Fetish
+  Last Inseminated : important on Realistic
+  Sexualized Icons : State of Virginal Statuses
+  Tranced : shows if Tranced; red eye already trained
+  Note: Tool tips explain what they are.  Some will explain briefly how to achieve the next stages for unlocking fetishes.
 
 💮 Map and Menu Visuals
-- Spot trances faster, waste less time and clarity.
-- Fertile ladies will be easier to spot due to the busy Bee icon
-- Harem Mansion named to 'Last Name' Mansion on the map overview
-- Tons of Icons on the map and menus;
-- \*access the VT-Mod in the Bedroom and turn trackers ON or OFF!
+
+* Spot trances faster, waste less time and clarity.
+* Fertile ladies will be easier to spot due to the busy Bee icon
+* Harem Mansion named to 'Last Name' Mansion on the map overview
+* Tons of Icons on the map and menus;
+* \*access the VT-Mod in the Bedroom and turn trackers ON or OFF!
 
 💮 Ladies Information/Overview
-- Virgin statuses listed there
+
+* Virgin statuses listed there
 
 💮 \*New Multi-Hud VT Interactions
-- added the VT Hud to the multi-hud when chatting with multiple Npcs for quick references.
+
+* added the VT Hud to the multi-hud when chatting with multiple Npcs for quick references.
 
 💮 Chat Interactions
-- Hug/Kiss Goodbye - Grants happy/love and stops npc follow naturally if they were following you.
-- \*Ability to hire Virgins in the CEO Office!
+
+* Hug/Kiss Goodbye - Grants happy/love and stops npc follow naturally if they were following you.
+* \*Ability to hire Virgins in the CEO Office!
 
 💮 6 Serums / Stims
-- Stims for resetting the Virgin Status Oral/Anal/Vaginal
-- Clone Womb Revival Stim - removes clone infertility
-- NEW STIM - 3 in 1 Virgin Status Stim (O/A/V) all in 1
-- can be enabled and disabled
+
+* Stims for resetting the Virgin Status Oral/Anal/Vaginal
+* Clone Womb Revival Stim - removes clone infertility
+* NEW STIM - 3 in 1 Virgin Status Stim (O/A/V) all in 1
+* can be enabled and disabled
 
 💮 \* 6 CHEAT SERUMS ADDED:
 R3D R053 - Red Rose formula, meant to hugely stimulate neural pathways positively, in theory.
@@ -65,20 +71,21 @@ R053 G4RD3N5 - Secret Rose Blossom formula, specially brewed to promote a health
 
 💮 \*14 NEW PERSONALITIES ADDED:
 A bunch of new personalities added! As well as icons!
-- Alluring Personality
-- Bimboed Personality - same icon as bimbo currently
-- Breeder\_Personality
-- Cosplay Personality - still a lil rough around the edges
-- Dandere Personality OwO
-- Gothic Personality
-- Goudere Personality -.-
-- Kuudere Personality -\_-
-- Pornstar Personality - mature rated NSFW >.>
-- Slutty Personality - eh?
-- Tomboy Personality - what?
-- Tsundere Personality ^.^
-- Wilder Personality
-- Yandere Personality! ^w^
+
+* Alluring Personality
+* Bimboed Personality - same icon as bimbo currently
+* Breeder\_Personality
+* Cosplay Personality - still a lil rough around the edges
+* Dandere Personality OwO
+* Gothic Personality
+* Goudere Personality -.-
+* Kuudere Personality -\_-
+* Pornstar Personality - mature rated NSFW >.>
+* Slutty Personality - eh?
+* Tomboy Personality - what?
+* Tsundere Personality ^.^
+* Wilder Personality
+* Yandere Personality! ^w^
 
 💮 5 Natural Fetish Forming Fetishes: Anal/Breeding/Cum/Exhibition/Vaginal
 

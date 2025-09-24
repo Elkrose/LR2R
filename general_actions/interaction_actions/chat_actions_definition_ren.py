@@ -56,27 +56,12 @@ specific_actions = ActionList([
         menu_tooltip = "Leverage her obedience and command her to do something."),
 ])
 
-def sort_display_list(the_item): #Function to use when sorting lists of actions (and potentially people or strings)
-    extra_args = None
-    if isinstance(the_item, list): #If it's a list it's actually an item of some sort with extra args. Break those out and continue.
-        extra_args = the_item[1]
-        the_item = the_item[0]
+# def build_specific_action_list(person: Person, keep_talking = True):
+    # specific_actions_list = ["Say goodbye"]
+    # for act in specific_actions:
+        # if keep_talking or act.is_fast:
+            # specific_actions_list.append((act, person))
 
-    if isinstance(the_item, Action):
-        if the_item.is_action_enabled(extra_args):
-            return the_item.priority
-        return the_item.priority - 1000 #Apply a ranking penalty to disabled items. They will appear in priority order but below enabled events (Unless something has a massive priority).
-
-    if isinstance(the_item, Person):
-        return the_item.sluttiness #Order people by sluttiness? Love? Something else?
-    return 0
-
-def build_specific_action_list(person: Person, keep_talking = True):
-    specific_actions_list = ["Say goodbye"]
-    for act in specific_actions:
-        if keep_talking or act.is_fast:
-            specific_actions_list.append((act, person))
-
-    specific_actions_list.sort(key = sort_display_list, reverse = True)
-    specific_actions_list.insert(0, "Do something specific")
-    return specific_actions_list
+    # specific_actions_list.sort(key = sort_display_list, reverse = True)
+    # specific_actions_list.insert(0, "Do something specific")
+    # return specific_actions_list
