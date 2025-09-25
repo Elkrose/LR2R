@@ -5,6 +5,10 @@ Please post any bugs you find into the #VT-Mod in the discord, so I can easily f
 
 Enjoy the Update log
 -------------------------------------------
+4.0.42
+- forgot to save spacing for icon.. fixed
+
+-------------------------------------------
 4.0.41
 - added BIO Collar to the VT Hud with information as well
 - added Company Slave Collar to the VT Hud with information
