@@ -359,7 +359,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
     #### Mandatory Preggo Collar ####
             $ VTcollarst = "blackcollar"
             $ VTcollarstt = f"She is in her moon time."
-            $ VTcollarsindex = f"\n\nWearing {b_name} Mandatory BIO-Collar: The collar will change colours depending on her cycle."+f"\n\nBlack: She is incapable of getting pregnant or on birth control."+f"\n\nWhite: Pregnant."+f"\n\nPink: Most fertile."+f"\n\nRed: Beginning of cycle."+f"\n\nGrey: End of cycle."
+            $ VTcollarsindex = f"\n\nWearing {b_name} BIO Collar: The collar will change colours depending on her cycle."+f"\n\nBlack: She is incapable of getting pregnant or on birth control."+f"\n\nWhite: Pregnant."+f"\n\nPink: Most fertile."+f"\n\nRed: Beginning of cycle."+f"\n\nGrey: End of cycle."
             if mandatory_fertility_collar_policy.is_active:
                 if person in [x for x in mc.business.employee_list + mc.business.intern_list]:
                     #Black: Infertile or Menstrual Phase
@@ -386,7 +386,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                         $ VTcollarst = "redcollar"
                         $ VTcollarstt = f"She is her ending cycle."
                     imagebutton:
-                        pos(212, 166)
+                        pos(200, 166)
                         idle VTcollarst
                         action NullAction()
                         tooltip VTcollarstt+VTcollarsindex
@@ -397,7 +397,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ VTcollarstt = f"She is owned by {b_name}."
                     $ VTcollarsindex = f"\n\nShe's chained to the corporate grind, a willing prisoner of the {b_name} machine!"
                     imagebutton:
-                        pos(212, 166)
+                        pos(200, 166)
                         idle VTcollarst
                         action NullAction()
                         tooltip VTcollarstt+VTcollarsindex
@@ -410,7 +410,7 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
                     $ VTcollarstt = f"She is owned by you."
                     $ VTcollarsindex = f"\n\nShe's your plaything, always ready to be at your beck and call, day or night!"
                 imagebutton:
-                    pos(212, 166)
+                    pos(200, 166)
                     idle VTcollarst
                     action NullAction()
                     tooltip VTcollarstt+VTcollarsindex
