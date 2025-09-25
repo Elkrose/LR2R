@@ -1,0 +1,23 @@
+==================================================
+Please post any bugs you find into the #VT-Mod in the discord, so I can easily find it.
+- be as informative as you can, so I can narrow down on the issue and solve it fast.
+- if your rude, I'll probably will still fix the bug, but will add you to my blocklist, don't have time for lame behaviour in discord.
+
+Enjoy the Update log
+-------------------------------------------
+4.0.41
+- added BIO Collar to the VT Hud with information as well
+- added Company Slave Collar to the VT Hud with information
+- added Slave Collar to VT Hud with info
+- that includes 6 new images for the collars
+- fixed Pokemon's lotus to show as it was supposed to.
+
+-------------------------------------------
+4.0.4 
+- slut/pornstar dialog fix - marcceras
+- chat_actions fix - Starbuck
+- VT Hud now says 'Get her to like' instead of 'Ask her about' - Novalith
+
+-------------------------------------------
+End of update log!
+I just started writing it on 4.0.4 :P

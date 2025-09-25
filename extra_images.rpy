@@ -187,3 +187,10 @@ init -10:
     image employee = "[employee_image.filename]"
     image intern = "[intern_image.filename]"
 
+### Collars ###
+    image slavecollar = "[slavecollar_image.filename]"
+    image blackcollar = "[blackcollar_image.filename]"
+    image redcollar = "[redcollar_image.filename]"
+    image pinkcollar = "[pinkcollar_image.filename]"
+    image greycollar = "[greycollar_image.filename]"
+    image whitecollar = "[whitecollar_image.filename]"

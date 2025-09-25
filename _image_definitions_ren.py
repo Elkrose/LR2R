@@ -414,4 +414,27 @@ renpy.image("intern_small", intern_small_image)
 
 redlabbook_image = Image(get_file_handle(modpath+"redlabbook.png"))
 
-#LEGEND###
+### Collars ###
+slavecollar_image = Image(get_file_handle(modpath+"slave_collar.png"))
+slavecollar_small_image = im.Scale(slavecollar_image, 18, 18)
+renpy.image("slavecollar_small", slavecollar_small_image)
+
+blackcollar_image = Image(get_file_handle(modpath+"black_collar.png"))
+blackcollar_small_image = im.Scale(blackcollar_image, 18, 18)
+renpy.image("blackcollar_small", blackcollar_small_image)
+
+redcollar_image = Image(get_file_handle(modpath+"red_collar.png"))
+redcollar_small_image = im.Scale(redcollar_image, 18, 18)
+renpy.image("redcollar_small", redcollar_small_image)
+
+pinkcollar_image = Image(get_file_handle(modpath+"pink_collar.png"))
+pinkcollar_small_image = im.Scale(pinkcollar_image, 18, 18)
+renpy.image("pinkcollar_small", pinkcollar_small_image)
+
+greycollar_image = Image(get_file_handle(modpath+"grey_collar.png"))
+greycollar_small_image = im.Scale(greycollar_image, 18, 18)
+renpy.image("greycollar_small", greycollar_small_image)
+
+whitecollar_image = Image(get_file_handle(modpath+"white_collar.png"))
+whitecollar_small_image = im.Scale(whitecollar_image, 18, 18)
+renpy.image("whitecollar_small", whitecollar_small_image)

@@ -82,7 +82,6 @@ Lab*.app/
 
 # Ren'Py
 **/*.rpyc
-/*.txt
 *.rpyc
 **/*.rpa
 local.code-workspace

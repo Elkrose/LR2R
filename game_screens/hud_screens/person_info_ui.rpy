@@ -355,6 +355,66 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
         $VTorifice_current = "None"
     #### VT HUD UI ####
         if getattr(persistent, "HUDVT")==1:
+
+    #### Mandatory Preggo Collar ####
+            $ VTcollarst = "blackcollar"
+            $ VTcollarstt = f"She is in her moon time."
+            $ VTcollarsindex = f"\n\nWearing {b_name} Mandatory BIO-Collar: The collar will change colours depending on her cycle."+f"\n\nBlack: She is incapable of getting pregnant or on birth control."+f"\n\nWhite: Pregnant."+f"\n\nPink: Most fertile."+f"\n\nRed: Beginning of cycle."+f"\n\nGrey: End of cycle."
+            if mandatory_fertility_collar_policy.is_active:
+                if person in [x for x in mc.business.employee_list + mc.business.intern_list]:
+                    #Black: Infertile or Menstrual Phase
+                    if person.is_infertile or person.on_birth_control:
+                        $ VTcollarst = "blackcollar"
+                        if person.is_infertile:
+                            $ VTcollarstt = f"She is incapable of getting pregnant."
+                        if person.on_birth_control:
+                            $ VTcollarstt = f"She is on birth control."
+                    #White: Pregnant
+                    elif person.is_pregnant:
+                        $ VTcollarst = "whitecollar"
+                        $ VTcollarstt = f"She is pregnant."
+                    #Pink: Ovulation Phase
+                    elif person.is_highly_fertile:
+                        $ VTcollarst = "pinkcollar"
+                        $ VTcollarstt = f"She is her most fertile stages."
+                    #Red: Prolific Phase
+                    elif person.days_from_ideal_fertility <= 6:
+                        $ VTcollarst = "redcollar"
+                        $ VTcollarstt = f"She is her beginning cycle."
+                    #Grey: Secretory Phase
+                    elif person.days_from_ideal_fertility > 6:
+                        $ VTcollarst = "redcollar"
+                        $ VTcollarstt = f"She is her ending cycle."
+                    imagebutton:
+                        pos(212, 166)
+                        idle VTcollarst
+                        action NullAction()
+                        tooltip VTcollarstt+VTcollarsindex
+    #### Mandatory Collar ####
+            if mandatory_collar_policy.is_active:
+                if person in [x for x in mc.business.employee_list + mc.business.intern_list]:
+                    $ VTcollarst = "slavecollar"
+                    $ VTcollarstt = f"She is owned by {b_name}."
+                    $ VTcollarsindex = f"\n\nShe's chained to the corporate grind, a willing prisoner of the {b_name} machine!"
+                    imagebutton:
+                        pos(212, 166)
+                        idle VTcollarst
+                        action NullAction()
+                        tooltip VTcollarstt+VTcollarsindex
+    #### Slave Collar ####
+            if person.is_slave:
+                $ VTcollarst = "slavecollar"
+                $ VTcollarstt = f"She is a slave."
+                $ VTcollarsindex = ""
+                if person.has_relation_with_mc:
+                    $ VTcollarstt = f"She is owned by you."
+                    $ VTcollarsindex = f"\n\nShe's your plaything, always ready to be at your beck and call, day or night!"
+                imagebutton:
+                    pos(212, 166)
+                    idle VTcollarst
+                    action NullAction()
+                    tooltip VTcollarstt+VTcollarsindex
+
     #### Relationship Status
             if getattr(persistent, "relationship")==1:
                 $ VTrelationshipst = "norelations"
@@ -466,40 +526,42 @@ screen person_info_ui(person): #Used to display stats for a person while you're 
             if getattr(persistent, "passionage")==1:
                 $ VTagest = "knowpeach"
                 $ VTagett = "Talk to her to get a glimpse of her age."
-                if person.age<=19:
-                    $ VTagest = "whitelotus"
-                    $ VTagett = f"{{image=whitelotus_small}} The White Lotus: Young, pure and growth."
-                    if person.hymen <= 1 and person.vaginal_virgin <=1:
-                        $ VTagett += f"\n{{image=virgin_token_small}} She looks so young, innocent and inexperienced."
-                    else:
-                        $ VTagett += f"\n{{image=vtcherries_small}} She looks like a young vixen."
-                if person.age >19 and person.age <=29:
-                    $ VTagest = "pinklotus"
-                    $ VTagett = f"{{image=pinklotus_small}} The Pink Lotus: Feminine energy and passion."
-                    if person.hymen <= 1 and person.vaginal_virgin <=1:
-                        $ VTagett += f"\n{{image=virgin_token_small}} She looks sexually inexperienced."
-                    else:
-                        $ VTagett += f"\n{{image=vtcherries_small}} She is in her prime sexual peak."
-                if person.age >29 and person.age <=35:
-                    $ VTagest = "redlotus"
-                    $ VTagett = f"{{image=redlotus_small}} The Red Lotus: Passion, inspiration and emotions."
-                    if person.hymen <= 1 and person.vaginal_virgin <=1:
-                        $ VTagett += f"\n{{image=virgin_token_small}} She looks sexually inexperienced."
-                    else:
-                        $ VTagett += f"\n{{image=vtcherries_small}} She is in her prime sexual peak."
-                if person.age >35:
-                    $ VTagest = "bluelotus"
-                    $ VTagett = f"{{image=bluelotus_small}} The Blue Lotus: Wisedom and maturity."
-                    if person.hymen <= 1 and person.vaginal_virgin <=1:
-                        $ VTagett += f"\n{{image=virgin_token_small}} She looks sexually inexperienced."
-                    else:
-                        $ VTagett += f"\n{{image=vtcherries_small}} She is ready to rumble and tumble."
-                if person.age>=31 and person.sluttiness>30:
-                    $ VTagest = "cougar"
-                    $ VTagett += f"\n{{image=vtcherries_small}} She is on the prowl.... Beware!"
                 if person.has_cum_fetish and (person.has_breeding_fetish or person.has_anal_fetish) and person.has_exhibition_fetish and person.opinion.polyamory>1:
                     $ VTagest = "goldlotus"
-                    $ VTagett += f"{{image=creamcherry_small}} The Golden Lotus: Total Sexual Enlightenment. \nThe Poke'Her'Man"
+                    $ VTagett = f"{{image=creamcherry_small}} The Golden Lotus {{image=creamcherry_small}}\nTotal Sexual Enlightenment.\nPoke'Her'Man"
+                else:
+                    if person.age<=19:
+                        $ VTagest = "whitelotus"
+                        $ VTagett = f"{{image=whitelotus_small}} The White Lotus: Young, pure and growth."
+                        if person.hymen <= 1 and person.vaginal_virgin <=1:
+                            $ VTagett += f"\n{{image=virgin_token_small}} She looks so young, innocent and inexperienced."
+                        else:
+                            $ VTagett += f"\n{{image=vtcherries_small}} She looks like a young vixen."
+                    if person.age >19 and person.age <=29:
+                        $ VTagest = "pinklotus"
+                        $ VTagett = f"{{image=pinklotus_small}} The Pink Lotus: Feminine energy and passion."
+                        if person.hymen <= 1 and person.vaginal_virgin <=1:
+                            $ VTagett += f"\n{{image=virgin_token_small}} She looks sexually inexperienced."
+                        else:
+                            $ VTagett += f"\n{{image=vtcherries_small}} She is in her prime sexual peak."
+                    if person.age >29 and person.age <=35:
+                        $ VTagest = "redlotus"
+                        $ VTagett = f"{{image=redlotus_small}} The Red Lotus: Passion, inspiration and emotions."
+                        if person.hymen <= 1 and person.vaginal_virgin <=1:
+                            $ VTagett += f"\n{{image=virgin_token_small}} She looks sexually inexperienced."
+                        else:
+                            $ VTagett += f"\n{{image=vtcherries_small}} She is in her prime sexual peak."
+                    if person.age >35:
+                        $ VTagest = "bluelotus"
+                        $ VTagett = f"{{image=bluelotus_small}} The Blue Lotus: Wisedom and maturity."
+                        if person.hymen <= 1 and person.vaginal_virgin <=1:
+                            $ VTagett += f"\n{{image=virgin_token_small}} She looks sexually inexperienced."
+                        else:
+                            $ VTagett += f"\n{{image=vtcherries_small}} She is ready to rumble and tumble."
+                    if person.age>=31 and person.sluttiness>30:
+                        $ VTagest = "cougar"
+                        $ VTagett += f"\n{{image=vtcherries_small}} She is on the prowl.... Beware!"
+                
                 imagebutton:
                     pos(286, 166)
                     idle VTagest
