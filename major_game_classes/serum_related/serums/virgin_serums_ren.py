@@ -368,10 +368,11 @@ def fertile_rose_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
     return
 def fertile_rose_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     #ensures the person will eventually get horny... soon
-    if person.happiness<=150:
-        person.change_happiness(15, add_to_log=add_to_log)
-    else:
-        person.change_happiness(5, add_to_log=add_to_log)
+    if person.happiness <=250:
+        if person.happiness<=150:
+            person.change_happiness(15, add_to_log=add_to_log)
+        else:
+            person.change_happiness(5, add_to_log=add_to_log)
     person.change_novelty(5, add_to_log = add_to_log)
     #love
     if person.love <=90:
@@ -438,9 +439,9 @@ def crimson_roses_on_apply(person: Person, serum: SerumDesign, add_to_log: bool)
     return
 def crimson_roses_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     #ensures the person will eventually get horny... soon
-    person.change_happiness(10, add_to_log = add_to_log)
-    person.change_happiness(5, add_to_log=add_to_log)
-    if person.arousal < 90: 
+    if person.happiness <=280:
+        person.change_happiness(15, add_to_log = add_to_log)
+    if person.arousal <= 75: 
         person.change_arousal(15, add_to_log = False)
         #if add_to_log and person.arousal>70:
         if person.arousal>70:
@@ -784,4 +785,5 @@ def init_Virginal_Serum():
         exclude_tags = "Pregnancy",
         hidden_tag = ["Pregnancy", "Medical", "Unique"],
         mental_aspect = 7, physical_aspect = 7, sexual_aspect = 5, medical_aspect = 9, flaws_aspect = 0, attention = 4)
+
 
