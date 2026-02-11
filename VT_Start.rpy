@@ -2,7 +2,7 @@
 # Tweaked start
 define config.name = _("Lab Rats 2 Reformulate - Cherries Edition")
 define config.window_icon = "VTimages/mod_icon.png"
-define VT_Game_Version = " + VTMod4.0.42"
+define VT_Game_Version = " + VTMod4.0.43"
 
 init python:
     config.version += VT_Game_Version
@@ -730,4 +730,5 @@ label VT_start():
 
         "Skip introduction and tutorial":
             $ mc.business.event_triggers_dict["Tutorial_Section"] = False
+
     jump normal_start
