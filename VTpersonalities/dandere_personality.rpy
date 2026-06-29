@@ -54,36 +54,36 @@ label dandere_greetings(the_person):
     return
 
 label dandere_sex_responses_foreplay(the_person):
-    if arousal_perc < 45:
-        if sluttiness > 50:
+    if the_person.arousal_perc < 45:
+        if the_person.sluttiness > 50:
             "[the_person.possessive_title!c] lets out a small squeak, her eyes widening in surprise."
             the_person "O-oh... I didn't expect it to feel so... good."
         else:
             "[the_person.possessive_title!c] blushes deeply and looks away, her voice barely above a whisper."
             the_person "I-I think I like this..."
-    elif arousal_perc < 60:
-        if sluttiness > 50:
+    elif the_person.arousal_perc < 60:
+        if the_person.sluttiness > 50:
             the_person "Mmm... your touch is so gentle... I love it."
             "She leans in closer, her eyes locked on yours."
         else:
             "[the_person.possessive_title!c] blushes deeply and whispers softly, her eyes darting around the room."
             the_person "I-I feel a little... embarrassed, but it feels so good..."
-    elif arousal_perc < 75:
-        if sluttiness > 50:
+    elif the_person.arousal_perc < 75:
+        if the_person.sluttiness > 50:
             "[the_person.possessive_title!c] lets out a small moan, her eyes locked on yours as she pants softly."
             the_person "You're so good at this... I feel like I'm melting in your hands."
         else:
             "[the_person.possessive_title!c] blushes deeply and looks away shyly, her voice barely above a whisper."
             the_person "I-I think I might be getting a little too excited... *giggles nervously*"
-    elif arousal_perc < 90:
-        if sluttiness > 50:
+    elif the_person.arousal_perc < 90:
+        if the_person.sluttiness > 50:
             "[the_person.possessive_title!c] moans seductively, her eyes locked on yours as she pants heavily."
             the_person "T-touch me all over... I want to feel your hands everywhere."
         else:
             "[the_person.possessive_title!c] blushes deeply and looks away shyly, her voice barely above a whisper."
             the_person "I-I think I'm going to... *gulps*... you know, if you keep touching me like that..."
     else:
-        if sluttiness > 50:
+        if the_person.sluttiness > 50:
             if not the_person.has_significant_other:
                 "[the_person.possessive_title!c] moans softly, her eyes locked on yours as she pants slightly."
                 the_person "O-oh no... I think I'm going to cum soon... *bites lip*"

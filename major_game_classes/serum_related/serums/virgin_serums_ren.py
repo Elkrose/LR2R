@@ -317,7 +317,6 @@ def red_roses_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
             mc.log_event(f"{person.title or person.create_formatted_title('???')}:R3D R0535 getting her wet...", "float_text_pink")
     return
 def red_roses_on_remove(person: Person, serum: SerumDesign, add_to_log: bool):
-    #person.change_focus(2, add_to_log = add_to_log)
     if add_to_log:
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: R3D R0535 Completed", "float_text_red")
     return
@@ -369,10 +368,11 @@ def fertile_rose_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
     return
 def fertile_rose_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     #ensures the person will eventually get horny... soon
-    if person.happiness<=150:
-        person.change_happiness(15, add_to_log=add_to_log)
-    else:
-        person.change_happiness(5, add_to_log=add_to_log)
+    if person.happiness <=250:
+        if person.happiness<=150:
+            person.change_happiness(15, add_to_log=add_to_log)
+        else:
+            person.change_happiness(5, add_to_log=add_to_log)
     person.change_novelty(5, add_to_log = add_to_log)
     #love
     if person.love <=90:
@@ -439,9 +439,9 @@ def crimson_roses_on_apply(person: Person, serum: SerumDesign, add_to_log: bool)
     return
 def crimson_roses_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     #ensures the person will eventually get horny... soon
-    person.change_happiness(10, add_to_log = add_to_log)
-    person.change_happiness(5, add_to_log=add_to_log)
-    if person.arousal < 90: 
+    if person.happiness <=280:
+        person.change_happiness(15, add_to_log = add_to_log)
+    if person.arousal <= 75: 
         person.change_arousal(15, add_to_log = False)
         #if add_to_log and person.arousal>70:
         if person.arousal>70:
@@ -463,18 +463,21 @@ def smart_roses_on_apply(person: Person, serum: SerumDesign, add_to_log: bool):
     #first dose brings them up to base good stats
     if add_to_log:
         mc.log_event(f"{person.title or person.create_formatted_title('???')}: 5M4RT R053 injested", "float_text_blue")
-    if person.charisma < 4:
-        person.charisma = 4
-    else:
-        person.charisma +=1
-    if person.int < 4:
-        person.int = 4
-    else:
-        person.int +=1
-    if person.focus < 4:
-        person.focus = 4
-    else:
-        person.focus +=1
+    if person.charisma <=19:
+        if person.charisma < 4:
+            person.charisma = 4
+        else:
+            person.charisma +=1
+    if person.int <=19:
+        if person.int < 4:
+            person.int = 4
+        else:
+            person.int +=1
+    if person.focus <=19:
+        if person.focus < 4:
+            person.focus = 4
+        else:
+            person.focus +=1
     return
 def smart_roses_on_turn(person: Person, serum: SerumDesign, add_to_log: bool):
     if person.charisma < 20:
@@ -782,3 +785,5 @@ def init_Virginal_Serum():
         exclude_tags = "Pregnancy",
         hidden_tag = ["Pregnancy", "Medical", "Unique"],
         mental_aspect = 7, physical_aspect = 7, sexual_aspect = 5, medical_aspect = 9, flaws_aspect = 0, attention = 4)
+
+

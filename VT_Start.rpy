@@ -2,7 +2,7 @@
 # Tweaked start
 define config.name = _("Lab Rats 2 Reformulate - Cherries Edition")
 define config.window_icon = "VTimages/mod_icon.png"
-define VT_Game_Version = " + VTMod4.0.42"
+define VT_Game_Version = " + VTMod4.0.45"
 
 init python:
     config.version += VT_Game_Version
@@ -590,6 +590,7 @@ label VT_start():
             mc.max_work_skills = 10
             mc.max_sex_skills = 10
             mc.max_energy_cap = 300
+            mc.absolute_max_energy = 400
             mc.business.supply_count = 500
             mc.business.supply_goal = 1000
             purchase_policy(theoretical_research, ignore_cost = True)
@@ -624,6 +625,7 @@ label VT_start():
             mc.business.supply_goal += 1000
             mc.energy = 500
             mc.max_energy = 600
+            mc.absolute_max_energy = 400
             mc.free_clarity += 10500
             mc.clarity_multiplier = 3.0     # gain clarity 3 times faster
             # default unlock policies
@@ -730,4 +732,5 @@ label VT_start():
 
         "Skip introduction and tutorial":
             $ mc.business.event_triggers_dict["Tutorial_Section"] = False
+
     jump normal_start
