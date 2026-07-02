@@ -5,6 +5,9 @@ Please post any bugs you find into the #VT-Mod in the discord, so I can easily f
 
 Enjoy the Update log
 -------------------------------------------
+4.0.46
+- added Strip Club employee tags
+-------------------------------------------
 4.0.42
 - forgot to save spacing for icon.. fixed
 

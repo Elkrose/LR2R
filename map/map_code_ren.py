@@ -227,6 +227,8 @@ def get_location_tooltip(location: Room) -> str:
         if getattr(persistent, "employee")==1:
             if person.is_employee:
                 info.append("{image=employee_small}")
+            if person.is_strip_club_employee:
+                info.append("{image=clubemployee_small}")
         if getattr(persistent, "intern")==1:
             if person.is_intern:
                 info.append("{image=intern_small}")
@@ -450,6 +452,8 @@ def build_tile_information(known_people: list[Person], total_people: int, locati
     if getattr(persistent, "employee")==1:
         if any(x for x in known_people if x.is_employee):
             extra_info.append("{image=employee_small}")
+        if any(x for x in known_people if x.is_strip_club_employee):
+            extra_info.append("{image=clubemployee_small}")
     if getattr(persistent, "intern")==1:
         if any(x for x in known_people if x.is_intern):
             extra_info.append("{image=intern_small}")

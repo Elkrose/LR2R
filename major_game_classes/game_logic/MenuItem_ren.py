@@ -215,6 +215,8 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                 if getattr(persistent, "employee")==1:
                     if item.is_employee:
                         info.append("{image=employee_small}")
+                    if person.is_strip_club_employee:
+                        info.append("{image=clubemployee_small}")
                 if getattr(persistent, "intern")==1:
                     if item.is_intern:
                         info.append("{image=intern_small}")

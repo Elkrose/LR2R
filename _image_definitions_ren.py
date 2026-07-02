@@ -408,6 +408,10 @@ employee_image = Image(get_file_handle(modpath+"employee.png"))
 employee_small_image = im.Scale(employee_image, 18, 18)
 renpy.image("employee_small", employee_small_image)
 
+clubemployee_image = Image(get_file_handle(modpath+"clubemployee.png"))
+clubemployee_small_image = im.Scale(clubemployee_image, 18, 18)
+renpy.image("clubemployee_small", clubemployee_small_image)
+
 intern_image = Image(get_file_handle(modpath+"intern.png"))
 intern_small_image = im.Scale(intern_image, 18, 18)
 renpy.image("intern_small", intern_small_image)

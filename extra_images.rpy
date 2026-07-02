@@ -185,6 +185,7 @@ init -10:
     image knowvaginalfetish = "[knowpeach_image.filename]"
     image virgin_blood = "[virgin_vaginal_image.filename]"
     image employee = "[employee_image.filename]"
+    image clubemployee = "[clubemployee_image.filename]"
     image intern = "[intern_image.filename]"
 
 ### Collars ###
