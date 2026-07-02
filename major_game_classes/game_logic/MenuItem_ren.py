@@ -207,7 +207,7 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                     if item.had_sex_today:
                         info.append("{image=hadsex_token_small}")
                 if getattr(persistent, "stripper")==1:
-                    if item.has_role(stripper_role) and item.is_job_known:
+                    if item.has_role(stripper_role) and item.is_job_known and not item.is_strip_club_employee:
                         info.append("{image=stripper_small}")
                 if getattr(persistent, "cashpanties")==1 :
                     if item.has_role(prostitute_role) and item.is_job_known:
@@ -215,7 +215,7 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                 if getattr(persistent, "employee")==1:
                     if item.is_employee:
                         info.append("{image=employee_small}")
-                    if person.is_strip_club_employee:
+                    if item.is_strip_club_employee:
                         info.append("{image=clubemployee_small}")
                 if getattr(persistent, "intern")==1:
                     if item.is_intern:

@@ -219,7 +219,7 @@ def get_location_tooltip(location: Room) -> str:
             if person.bc_status_known and person.is_highly_fertile and perk_system.has_ability_perk("Ovulation Cycle Perception"):
                 info.append("{image=beezee_token_small}")
         if getattr(persistent, "stripper")==1:
-            if person.has_role(stripper_role) and person.is_job_known:
+            if person.has_role(stripper_role) and person.is_job_known and not person.is_strip_club_employee:
                 info.append("{image=stripper_small}")
         if getattr(persistent, "cashpanties")==1:
             if person.has_role(prostitute_role) and person.is_job_known:
@@ -442,7 +442,7 @@ def build_tile_information(known_people: list[Person], total_people: int, locati
             extra_info.append("{image=hadsex_token_small}")
 
     if getattr(persistent, "stripper")==1:
-        if any(x for x in known_people if x.has_exact_role(stripper_role) and x.is_job_known):
+        if any(x for x in known_people if x.has_exact_role(stripper_role) and x.is_job_known and not x.is_strip_club_employee):
             extra_info.append("{image=stripper_small}")
 
     if getattr(persistent, "cashpanties")==1:
