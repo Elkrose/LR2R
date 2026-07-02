@@ -157,10 +157,10 @@ def get_location_tooltip(location: Room) -> str:
             if getattr(persistent, "redlotus")==1:
                 if person.age >19 and person.age <=29:
                     info.append("{image=redlotus_small}")
-            if getattr(persistent, "pinkllotus")==1:
+            if getattr(persistent, "pinklotus")==1:
                 if person.age >29 and person.age <31:
                     info.append("{image=pinklotus_small}")
-            if getattr(persistent, "bluellotus")==1:
+            if getattr(persistent, "bluelotus")==1:
                 if person.age >=31:
                     if person.sluttiness>30:
                         info.append("{image=cougar_small}")
@@ -362,10 +362,10 @@ def build_tile_information(known_people: list[Person], total_people: int, locati
     if getattr(persistent, "redlotus")==1:
         if any(x for x in known_people if x.age >19 and x.age <=29):
             extra_info.append("{image=redlotus_small}")
-    if getattr(persistent, "pinkllotus")==1:
+    if getattr(persistent, "pinklotus")==1:
         if any(x for x in known_people if x.age >29 and x.age <=31):
             extra_info.append("{image=pinklotus_small}")
-    if getattr(persistent, "bluellotus")==1:
+    if getattr(persistent, "bluelotus")==1:
         if any(x for x in known_people if x.age >31 and x.sluttiness>=30):
             extra_info.append("{image=cougar_small}")
         if any(x for x in known_people if x.age >31 and x.sluttiness<30):

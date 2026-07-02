@@ -5,6 +5,9 @@ Please post any bugs you find into the #VT-Mod in the discord, so I can easily f
 
 Enjoy the Update log
 -------------------------------------------
+4.0.48
+- Fixed Lotus Flowers
+-------------------------------------------
 4.0.47
 - fixed Strip Club employee tags on menu and made stripper tag disappear if they are strip club employees
 -------------------------------------------

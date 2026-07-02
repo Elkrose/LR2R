@@ -136,10 +136,10 @@ def build_menu_item_list(element_list, draw_hearts_for_people = True, draw_perso
                     if getattr(persistent, "redlotus")==1:
                         if item.age >19 and item.age <=29:
                             info.append("{image=redlotus_small}")
-                    if getattr(persistent, "pinkllotus")==1:
+                    if getattr(persistent, "pinklotus")==1:
                         if item.age >29 and item.age <=31:
                             info.append("{image=pinklotus_small}")
-                    if getattr(persistent, "bluellotus")==1:
+                    if getattr(persistent, "bluelotus")==1:
                         if item.age >31:
                             if item.sluttiness>30:
                                 info.append("{image=cougar_small}")
