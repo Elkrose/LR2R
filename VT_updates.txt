@@ -5,6 +5,8 @@ Please post any bugs you find into the #VT-Mod in the discord, so I can easily f
 
 Enjoy the Update log
 -------------------------------------------
+4.0.49 - annoyed_exclaim now passive face
+-------------------------------------------
 4.0.48
 - Fixed Lotus Flowers
 -------------------------------------------

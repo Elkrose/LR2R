@@ -167,7 +167,7 @@ label tsundere_sex_responses_anal(the_person):
             the_person "Ugh, fine. But don't expect me to be all smiles about it..."
             "She huffs and puffs, clearly not thrilled about the situation."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Oh, great. Just what I always wanted: a big, thick cock up my ass."
             "She grumbles to herself, clearly unenthusiastic."
 
@@ -202,7 +202,7 @@ label tsundere_sex_responses_anal(the_person):
                 the_person "You're just like my [the_person.so_title], always trying to get me to cum..."
                 "She sighs, resigned to her fate."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Great, just what I needed: another orgasm..."
             "She mutters to herself, clearly not thrilled about the prospect."
 

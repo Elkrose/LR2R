@@ -172,7 +172,7 @@ label cosplay_sex_responses_anal(the_person):
             the_person "Ugh, fine. But don't expect me to be all smiles about it... I'm only doing this because it's part of the cosplay script, after all."
             "She huffs and puffs, clearly not thrilled about the situation, but still trying to maintain her character."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Oh, great. Just what I always wanted: a big, thick cock up my ass... said no one ever, especially not in a cosplay scenario."
             "She grumbles to herself, clearly unenthusiastic, but still trying to play along with the role."
 
@@ -208,7 +208,7 @@ label cosplay_sex_responses_anal(the_person):
                 the_person "You're just like my [the_person.so_title], always trying to get me to cum... I guess it's all part of the cosplay script, but still..."
                 "She sighs, resigned to her fate, but still trying to maintain her character's personality."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Great, just what I needed: another orgasm... said no one ever, especially not in a cosplay scenario."
             "She mutters to herself, clearly not thrilled about the prospect, but still trying to play along with the role."
 

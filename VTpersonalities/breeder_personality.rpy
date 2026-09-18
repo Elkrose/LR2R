@@ -220,7 +220,7 @@ label breeder_sex_responses_anal(the_person):
             "She looks up at you with a hint of determination, her eyes focused on the task at hand as she leans in slightly."
             "She starts to relax, her body opening up to your touch as she begins to enjoy herself."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "I'm not sure I'm comfortable with this... but I suppose it's for a good cause. So just be gentle, okay?"
             "She grumbles to herself, clearly unenthusiastic, but starts to get more into it as you continue to touch her."
 
@@ -258,7 +258,7 @@ label breeder_sex_responses_anal(the_person):
                 the_person "You're just like my [the_person.so_title], always trying to get me to cum... and I suppose it's worth it if it means we can make a baby. So go ahead and cum inside me."
                 "She sighs, resigned to her fate, but starts to enjoy herself as you continue to touch her."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Great, just what I needed: another orgasm... and I hope it means we're making a baby. I want to feel your cum inside me and know that we're creating life. Cum with me, please."
             "She mutters to herself, clearly not thrilled about the prospect, but starts to get more into it as you continue to touch her."
 

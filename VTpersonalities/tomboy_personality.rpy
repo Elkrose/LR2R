@@ -207,7 +207,7 @@ label tomboy_sex_responses_anal(the_person):
             the_person "Gah, fine. But don't expect me to be all smiles about it, okay?"
             "She huffs and puffs, clearly not thrilled about the situation, and looks away with a scowl."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Ugh, great. Just what I always wanted: a big, thick cock up my ass. Just peachy."
             "She grumbles to herself, clearly unenthusiastic, and crosses her arms over her chest."
 
@@ -247,7 +247,7 @@ label tomboy_sex_responses_anal(the_person):
                 the_person "You're just like my [the_person.so_title], always trying to get me to cum... I swear, you two are like two peas in a pod."
                 "She sighs, resigned to her fate, and looks away with a scowl."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Great, just what I needed: another orgasm... just what I always wanted."
             "She mutters to herself, clearly not thrilled about the prospect, and looks away with a scowl."
     return

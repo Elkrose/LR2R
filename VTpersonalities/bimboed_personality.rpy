@@ -489,7 +489,7 @@ label bimboed_sex_responses_anal(the_person):
             the_person "Omigod, like, okay... But don't expect me to be all, like, smiles and sunshine about it..."
             "She pouts and looks away, clearly not thrilled about the situation, but still kinda into it."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Ugh, like, great. Just what I always wanted: a big, thick cock up my ass. Not."
             "She rolls her eyes and grumbles to herself, clearly unenthusiastic, but still kinda curious."
 
@@ -524,7 +524,7 @@ label bimboed_sex_responses_anal(the_person):
                 the_person "You're, like, just like my [the_person.so_title], always trying to get me to cum... But, like, I guess I kinda like it?"
                 "She sighs, resigned to her fate, but still kinda enjoying it."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Great, just what I needed: another orgasm... Like, thanks for nothing, I guess."
             "She mutters to herself, clearly not thrilled about the prospect, but still kinda into it."
     return

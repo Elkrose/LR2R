@@ -169,7 +169,7 @@ label foodie_sex_responses_anal(the_person):
             the_person "*sips an imaginary glass of wine* Ah, the bouquet of reluctance. How... refreshing."
             "She savors the moment, her eyes closed in anticipation."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Oh, dear. It seems I've been served a dish I didn't order. How... distressing."
             "She pushes the 'plate' away, clearly unenthusiastic."
 
@@ -204,7 +204,7 @@ label foodie_sex_responses_anal(the_person):
                 the_person "You're a bit like my favorite chef, always trying to create the perfect dish..."
                 "She smiles, her eyes sparkling with amusement."
         else:
-            $ the_person.call_dialogue("annoyed_exclaim")
+            $ the_person.draw_person(display_transform = character_left_flipped)
             the_person "Oh, dear. It seems I've been served a dessert I didn't order. How... tedious."
             "She pushes the 'plate' away, clearly unenthused about the prospect."
 
