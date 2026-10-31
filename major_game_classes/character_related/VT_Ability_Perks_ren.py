@@ -52,7 +52,7 @@ def condomless_sex_perk_unlock():
     return False
 
 def personality_insight_perk_unlock():
-    if not perk_system.has_ability_perk("Social Sage") and len(known_people_in_the_game()) == 20:
+    if not perk_system.has_ability_perk("Social Sage") and len(known_people_in_the_game()) > 20:
         perk_system.add_ability_perk(Ability_Perk(description = "A keen understanding of human nature that allows the user to discern the underlying personalities of those they meet. This intuitive insight taps into the subtle cues and behaviors of others, granting the user a profound comprehension of their motivations, values, and desires. With the Social Sage, the user can perceive the intricate tapestry of personalities that surrounds them, navigating social situations with ease and finesse.", active = True, togglable = False, usable = False), "Social Sage")
         return True
     return False
