@@ -122,18 +122,8 @@ def mandatory_fertility_collar_policy_on_turn():
 
     #if business is open apply collars
     for person in [x for x in mc.business.employee_list + mc.business.intern_list]:
-        #Black: Infertile or Menstrual Phase
-        if person.is_infertile or person.on_birth_control:
-            if person.has_breeding_fetish:
-                mandatory_policy_collar(person, breed_collar, [.04, .04, .04, 1], "Pattern_1", [.97, .97, 1, 1])
-            elif person.has_cum_fetish:
-                mandatory_policy_collar(person, cum_slut_collar, [.04, .04, .04, 1], "Pattern_1", [.97, .97, 1, 1])
-            elif person.sluttiness > 70 or person.has_vaginal_fetish or person.has_anal_fetish:
-                mandatory_policy_collar(person, fuck_doll_collar, [.04, .04, .04, 1], "Pattern_1", [.97, .97, 1, 1])
-            else: #no writing on the collar
-                mandatory_policy_collar(person, fuck_doll_collar, [.04, .04, .04, 1], "Pattern_1", [.04, .04, .04, 1])
         #White: Pregnant
-        elif person.is_pregnant:
+        if person.is_pregnant:
             if person.has_breeding_fetish:
                 mandatory_policy_collar(person, breed_collar, [1, 1, 1, 1], "Pattern_1", [.04, .04, .04, 1])
             elif person.has_cum_fetish:
@@ -142,6 +132,17 @@ def mandatory_fertility_collar_policy_on_turn():
                 mandatory_policy_collar(person, fuck_doll_collar, [1, 1, 1, 1], "Pattern_1", [.04, .04, .04, 1])
             else: #no writing on the collar
                 mandatory_policy_collar(person, fuck_doll_collar, [1, 1, 1, 1], "Pattern_1", [1, 1, .1, 1])
+        #Black: Infertile or Menstrual Phase
+        elif person.is_infertile or person.on_birth_control:
+            if person.has_breeding_fetish:
+                mandatory_policy_collar(person, breed_collar, [.04, .04, .04, 1], "Pattern_1", [.97, .97, 1, 1])
+            elif person.has_cum_fetish:
+                mandatory_policy_collar(person, cum_slut_collar, [.04, .04, .04, 1], "Pattern_1", [.97, .97, 1, 1])
+            elif person.sluttiness > 70 or person.has_vaginal_fetish or person.has_anal_fetish:
+                mandatory_policy_collar(person, fuck_doll_collar, [.04, .04, .04, 1], "Pattern_1", [.97, .97, 1, 1])
+            else: #no writing on the collar
+                mandatory_policy_collar(person, fuck_doll_collar, [.04, .04, .04, 1], "Pattern_1", [.04, .04, .04, 1])
+        
         #Pink: Ovulation Phase
         elif person.is_highly_fertile:
             if person.has_breeding_fetish:
